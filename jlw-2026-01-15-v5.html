@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Atrophy Trade-Off — January 15, 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F3F8;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #453672;
+            --border: #E5E0EB;
+            --border-strong: #D0C8DC;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 680px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #12111A;
+                --bg-alt: #1A1824;
+                --text: #F5F1EA;
+                --text-secondary: #B3A6BE;
+                --accent: #9B8AC4;
+                --accent-soft: rgba(155, 138, 196, 0.15);
+                --accent-hover: #B8A8D8;
+                --border: #2E2838;
+                --border-strong: #3E3650;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        .section:last-child { border-bottom: none; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover { border-color: var(--accent); }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child { margin-bottom: 0; }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+        }
+
+        .section-body a:hover { text-decoration-color: var(--accent); }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .section { padding: var(--space-lg) 0; }
+            .section-title { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 15, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Cognitive Science</span>
+            <h1 class="hero-title">The Atrophy Trade-Off</h1>
+            <p class="hero-subtitle">AI makes you faster. It might also make you dumber. A year of research is reaching the same uncomfortable conclusion: the productivity gains come with a cognitive tax we're only beginning to measure.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-cognitive-atrophy.jpg" alt="Abstract visualization of brain hemispheres in tension between human cognition and AI dependence">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Nov 13, 2025 - Harvard Gazette -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Harvard's Verdict: "If AI Does Your Thinking, You're Not Thinking"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.harvard.edu/gazette/story/2025/11/is-ai-dulling-our-minds/">Harvard Gazette</a></span>
+                <span class="section-date">Nov 13, 2025</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://news.harvard.edu/">Harvard Gazette</a> assembled six faculty experts to assess AI's cognitive impact. Their consensus is blunt: we're trading thinking for convenience, and the exchange rate is worse than we assumed.</p>
+
+                <p><a href="https://www.gse.harvard.edu/directory/faculty/christopher-dede">Christopher Dede</a>, Senior Research Fellow at Harvard's Graduate School of Education, frames the ideal as "AI like an owl on your shoulder"—augmenting rather than replacing cognition. But he warns against letting AI "do your thinking for you, whether through auto-complete or 'let AI write the first draft.'" That approach, he says, "undercuts your critical thinking and your creativity."</p>
+
+                <p><a href="https://www.hks.harvard.edu/faculty/dan-levy">Dan Levy</a> of the Kennedy School puts it even more plainly: "No learning occurs unless the brain is actively engaged." The essay you outsourced isn't just a shortcut—it's a skipped workout for your mind. Meanwhile, <a href="https://www.linkedin.com/in/karenthornber/">Karen Thornber</a> compares AI dependence to GPS navigation eroding our mental maps. Convenient? Absolutely. But what happens when the signal drops?</p>
+
+                <div class="callout">
+                    <p><strong>The distinction that matters:</strong> Using AI as a "crutch" versus a "learning tool" produces opposite outcomes. The technology is neutral. How you deploy it determines whether you're building capability or outsourcing it.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Jul 3, 2025 - MIT Media Lab -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">MIT's Brain Scans Show ChatGPT Users Have the Least Cognitive Engagement</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nextgov.com/artificial-intelligence/2025/07/new-mit-study-suggests-too-much-ai-use-could-increase-cognitive-decline/406521/">Nextgov</a></span>
+                <span class="section-date">Jul 3, 2025</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.media.mit.edu/">MIT Media Lab</a> went beyond surveys and measured what happens inside the brain. Their study divided 54 students into three groups: ChatGPT-only, Google-assisted, and unassisted. They monitored neural activity via EEG while participants wrote essays over four months.</p>
+
+                <p>The results weren't subtle. The ChatGPT group showed the lowest brainwave activity and measurable cognitive decline in focus, memory, and attention networks. The kicker: 83% of AI-dependent participants couldn't recall key points from their own essays. None could provide accurate quotes from papers they had "written."</p>
+
+                <p>Even more troubling: the cognitive impairment persisted after participants stopped using AI. The researchers found that early reliance on AI "impairs memory, meaning-making, and idea synthesis"—the very foundations of critical thinking.</p>
+
+                <div class="callout">
+                    <p><strong>The timing insight:</strong> MIT found that using AI <em>after</em> the brain has deeply engaged with material may actually support cognition. But reaching for ChatGPT first? That's when the damage occurs. The brain gets lazy before it has a chance to work.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Jul 1, 2025 - Wharton -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Wharton Finds AI Boosts Quality but Kills Diversity: Only 6% of Ideas Were Unique</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://knowledge.wharton.upenn.edu/article/does-ai-limit-our-creativity/">Knowledge at Wharton</a></span>
+                <span class="section-date">Jul 1, 2025</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.wharton.upenn.edu/">Wharton</a> professors <a href="https://oid.wharton.upenn.edu/profile/gnave/">Gideon Nave</a> and <a href="https://oid.wharton.upenn.edu/profile/terwiesch/">Christian Terwiesch</a>, along with <a href="https://mackinstitute.wharton.upenn.edu/">Mack Institute</a> fellow Lennart Meincke, published research in <a href="https://www.nature.com/">Nature</a> quantifying what many suspected: AI-generated ideas converge toward sameness.</p>
+
+                <p>The numbers are stark. Only 6% of AI-generated ideas were considered unique, compared to 100% in human-only groups. In 37 out of 45 comparisons, ChatGPT-assisted ideas showed significantly less diversity. "The ideas are great," Terwiesch notes, "but not as diverse as human-generated ideas. That points to a trade-off to be aware of."</p>
+
+                <p>The mechanism is straightforward: "When you give the model the same prompt, it tries to average the most likely completions," explains Meincke. What emerges is polished, plausible—and predictable. The researchers recommend deliberately varying prompts, starting with human ideas first, and testing multiple models simultaneously to break the homogeneity trap.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Apr 18, 2025 - Microsoft -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Microsoft's 319-Worker Study: Higher AI Confidence Means Less Critical Thinking</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.microsoft.com/en-us/research/blog/the-future-of-ai-in-knowledge-work-tools-for-thought-at-chi-2025/">Microsoft Research</a></span>
+                <span class="section-date">Apr 18, 2025</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.microsoft.com/en-us/research/">Microsoft Research</a> surveyed 319 professionals across occupations, collecting 936 real-world AI use cases and analyzing how AI affected their critical thinking. The pattern they found cuts against the "AI as thought partner" narrative.</p>
+
+                <p>Workers who trusted AI more applied less critical thinking. Those confident in their own abilities engaged more deeply—but reported higher cognitive costs. The study found that critical thinking shifted from generating ideas to "information verification, response integration, and task stewardship." In other words: instead of thinking, we're now fact-checking AI's thinking.</p>
+
+                <p>The barriers to deeper engagement? Lack of awareness that critical thinking was even needed, time pressure reducing motivation, and difficulty refining prompts. The researchers, led by <a href="https://www.microsoft.com/en-us/research/people/srintel/">Sean Rintel</a> and <a href="https://www.microsoft.com/en-us/research/people/leoreic/">Leon Reicherts</a>, found that high-stakes tasks triggered more careful scrutiny—but routine tasks under deadline? That's where thinking gets outsourced.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Jan 2025 - Gerlich -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">666 Participants, One Finding: AI Offloads Cognition and Weakens Critical Thinking</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.mdpi.com/2075-4698/15/1/6">MDPI Societies</a></span>
+                <span class="section-date">Jan 2025</span>
+            </div>
+            <div class="section-body">
+                <p>Researcher <a href="https://www.psypost.org/ai-tools-may-weaken-critical-thinking-skills-by-encouraging-cognitive-offloading-study-suggests/">Michael Gerlich's</a> study, published in the journal <a href="https://www.mdpi.com/journal/societies">Societies</a>, examined 666 participants across ages and educational backgrounds. The findings were unambiguous: frequent AI tool usage correlated negatively with critical thinking abilities, mediated by cognitive offloading.</p>
+
+                <p>"The key takeaway is that while AI tools can enhance productivity and information accessibility, their overuse may lead to unintended cognitive consequences," Gerlich told <a href="https://www.psypost.org/">PsyPost</a>. "Reliance on AI tools could reduce opportunities for deep, reflective thinking."</p>
+
+                <p>A generational divide emerged: younger participants showed higher AI dependence and lower critical thinking scores than older counterparts. The study introduces "AICICA"—AI Chatbot-Induced Cognitive Atrophy—to describe the deterioration of critical thinking, analytical acumen, and creativity from over-reliance on AI assistants. It's not just a concern. It has a name now.</p>
+
+                <div class="callout">
+                    <p><strong>The "use it or lose it" principle:</strong> Humans lose capabilities they don't exercise. We lose muscle mass without physical activity, spelling ability when autocorrect handles it, mental math when calculators are always present. AI-assisted cognition appears to follow the same rule.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Uncomfortable Question</h2>
+            <p class="closing-text">If AI makes work 20% more productive but 20% less meaningful—what's the net benefit? The research increasingly suggests we're not just outsourcing tasks but outsourcing the development of capability itself. The workers who extract the most value from AI are those with deep expertise: they ask better questions and recognize weak answers. They earned that discernment the hard way. The question for everyone else: if you skip the struggle that builds judgment, will you have judgment when you need it?</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

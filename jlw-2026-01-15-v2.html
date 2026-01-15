@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Deck is Stacked — January 15, 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F3F1F8;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #6B4C9A;
+            --accent-soft: rgba(107, 76, 154, 0.12);
+            --accent-hover: #533A7A;
+            --border: #E5E0E8;
+            --border-strong: #D1C9D8;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 680px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141214;
+                --bg-alt: #1E1B22;
+                --text: #F5F1EA;
+                --text-secondary: #A69EB3;
+                --accent: #9B7BC9;
+                --accent-soft: rgba(155, 123, 201, 0.15);
+                --accent-hover: #B08FD9;
+                --border: #2E2A32;
+                --border-strong: #3D3842;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        .section:last-child { border-bottom: none; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover { border-color: var(--accent); }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child { margin-bottom: 0; }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+        }
+
+        .section-body a:hover { text-decoration-color: var(--accent); }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .section { padding: var(--space-lg) 0; }
+            .section-title { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 15, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">AI Presentations</span>
+            <h1 class="hero-title">The Deck is Stacked</h1>
+            <p class="hero-subtitle">A $4.79 billion market is forming around the simple question: can AI make a slide deck that survives a real meeting? The answer depends on who you ask.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-ai-presentations.jpg" alt="Abstract visualization of ideas transforming into presentation slides">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The $4.79 Billion Bet on AI Slide Decks</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.globenewswire.com/news-release/2026/01/07/3214672/28124/en/Artificial-Intelligence-AI-Presentation-Generation-Global-Research-Report-2025-Automation-Drives-Market-Towards-4-79-Billion-by-2029-Long-term-Forecast-to-2034.html">GlobeNewswire</a></span>
+            </div>
+            <div class="section-body">
+                <p>The numbers tell you exactly how much corporate pain exists around presentation creation. The AI presentation generation market hit $1.94 billion in 2025 and is racing toward $4.79 billion by 2029—a 25.4% compound annual growth rate that few software categories can match.</p>
+
+                <p>What's driving this? Remote work's insatiable appetite for async communication. Brand consistency demands across global teams. The pressure to turn proposals around faster than competitors. Every one of these problems translates directly into someone staring at a blank PowerPoint at 10pm, wishing the machine would just do it.</p>
+
+                <div class="callout">
+                    <p><strong>The players:</strong> Microsoft, Adobe, Google, Canva, Prezi, and Zoho are all prioritizing "agentic chat-to-deck generation." The race isn't to generate slides—it's to generate slides that don't require humans to rebuild them afterward.</p>
+                </div>
+
+                <p>North America dominated 2024 spend, but Asia-Pacific is the fastest-growing region. EU enterprises increased natural language generation usage from 3.3% to 5.4% in just one year. The question is no longer whether AI will generate your presentations. It's which AI, and how much cleanup you'll accept.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">GenPPT Launches With a Different Philosophy: Research First, Slides Second</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://aijourn.com/genppt-launches-its-services-of-transforming-information-into-ai-slides-in-minutes-for-next-presentation/">The AI Journal</a> &amp; <a href="https://storychief.io/blog/best-ai-presentation-maker">StoryChief</a></span>
+            </div>
+            <div class="section-body">
+                <p>GenPPT launched January 6th with a premise that sounds obvious but apparently isn't: maybe the AI should understand the topic before it starts making slides.</p>
+
+                <p>Most AI presentation tools optimize for speed—feed them a prompt, get a deck in seconds. GenPPT integrates Gemini 2.5 Pro and Claude Sonnet to first research the topic, then generate slides based on what it actually learns. Testers report generating 10-slide decks in under 60 seconds that contain "researched facts about content marketing ROI and statistics"—not just placeholder text dressed up in bullet points.</p>
+
+                <p>The tool prioritizes structure and clarity over flashy design. You chat with the AI to refine content, add or remove slides, and adjust the narrative. Exports to PowerPoint clean, without the formatting wreckage that plagues competitors.</p>
+
+                <div class="callout">
+                    <p><strong>The verdict from Kinross Research:</strong> "What matters now is whether an AI product helps teams actually finish presentations—clear structure, editable exports, and workflows that hold up through review, revision, and stakeholder feedback."</p>
+                </div>
+
+                <p>Pricing runs $19/month or $99/year after a $1 three-day trial. They claim 40,000 customers. The interesting signal: a tool built around iteration rather than generation might be exactly what the market needs.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">NotebookLM Makes Slide Decks Free—With a Catch</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://blog.google/technology/google-labs/8-ways-to-make-the-most-out-of-slide-decks-in-notebooklm/">Google Blog</a> &amp; <a href="https://www.eesel.ai/blog/notebooklm-slide-deck-feature">Eesel AI</a></span>
+            </div>
+            <div class="section-body">
+                <p>Google's NotebookLM has quietly become one of the most interesting AI tools for knowledge workers—and now it generates full slide decks from your uploaded sources. The price? Free. The catch? Your output is a PDF.</p>
+
+                <p>The workflow inverts how most presentation tools operate. Instead of generating content from a prompt, NotebookLM synthesizes presentations from documents you've already gathered—research papers, meeting notes, handwritten scribbles, even rough drafts from Google Slides. It understands your specific context because you've fed it your specific sources.</p>
+
+                <p>You choose between two formats: "Detailed Deck" for comprehensive slides you can email standalone, or "Presenter Slides" with clean visuals and talking points for live delivery. Customization options let you set length, language, and focus.</p>
+
+                <p>The limitation is real: PDF output means no easy editing. What you see is what you get. For many use cases—internal reviews, research summaries, quick stakeholder updates—this is fine. For anything requiring iteration, you're back to rebuilding in PowerPoint. Google's positioning here is clear: NotebookLM is the thinking tool, not the production tool.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Claude Joins the Presentation Race—But Quietly</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.techrepublic.com/article/news-anthropic-update-transforms-claude/">TechRepublic</a> &amp; <a href="https://www.inc.com/ben-sherry/these-anthropic-ai-features-could-cut-hours-of-work-from-your-marketing-and-presentations/91252897">Inc.</a></span>
+            </div>
+            <div class="section-body">
+                <p>In September 2025, Anthropic announced that Claude can now create and edit PowerPoint slide decks directly in Claude.ai and the desktop app. The feature rolled out first to Max, Team, and Enterprise plans—Pro subscribers gained access shortly after.</p>
+
+                <p>What makes this interesting isn't the feature itself—it's the approach. Claude treats presentation creation as a skill it can invoke when needed, not a separate product requiring a separate subscription. You're already talking to Claude about your strategy, your data, your narrative. Now that same conversation can output a .pptx file.</p>
+
+                <p>Product Lead Brad Abrams demonstrated the PowerPoint skill by creating market performance slides that came out "well-formatted" and "easy to digest." The October 2025 Skills update refined this further, giving Claude dedicated resources for spreadsheet and presentation tasks.</p>
+
+                <div class="callout">
+                    <p><strong>The strategic play:</strong> While Gamma, Beautiful.ai, and GenPPT compete for "best AI presentation tool," Anthropic is betting the winning move is embedding presentation creation into the AI assistant you're already using for everything else.</p>
+                </div>
+
+                <p>The question is whether chat-first presentation creation can match purpose-built tools on quality. Early signs suggest it's viable for internal decks and quick turnarounds—less clear for high-stakes client pitches where every pixel matters.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The "Slop" Problem: When AI Slides Meet Real Meetings</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://plusai.com/blog/best-ai-presentation-makers">Plus AI</a> &amp; <a href="https://www.searchenginejournal.com/microsoft-ceo-google-engineer-deflect-ai-quality-complaints/564350/">Search Engine Journal</a></span>
+            </div>
+            <div class="section-body">
+                <p>Here's the uncomfortable truth the demos don't show: most AI presentation tools generate slides quickly, but the results often fail when used in real meetings.</p>
+
+                <p>The criticisms are consistent across reviews. Rewriting content causes layout issues. Adding a slide disrupts visual flow. Removing one leaves spacing problems. These issues force users back into manual design work—negating the time savings that justified the tool in the first place.</p>
+
+                <p>Microsoft Copilot for PowerPoint takes particular heat. "While the initial demos were very impressive, the actual product is quite basic, and not ready for real world, professional use cases. Every slide follows the same design, and the chatbot makes it difficult to understand what functionality is available." Teams report 30-50% reduction in initial drafting time—but time spent refining strategy and messaging remains unchanged.</p>
+
+                <p>The timing of this criticism matters. Merriam-Webster named "slop" its Word of the Year, and within a week both Satya Nadella and a Google Gemini engineer posted defensive comments about AI quality complaints. The response from both: redirect attention away from whether output is "good" and toward how people are "reacting to the technology."</p>
+
+                <p>An emerging counter-movement has a name: Anti-AI design—purposefully rejecting AI tools entirely due to quality and ethical concerns. The gap between AI-generated slides and designer-quality output is closing, but for high-stakes presentations, that gap still matters.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Real Question</h2>
+            <p class="closing-text">AI presentation tools are solving for speed in a domain where speed was never the actual bottleneck. The hard part of presentations isn't making slides—it's knowing what to say, to whom, and why they should care. Tools that understand this distinction will win. Tools that just make slides faster will generate a lot of slop that humans have to fix. Choose accordingly.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

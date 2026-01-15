@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vibe Shift — January 15, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="newsletter-brand">The Vibe Shift</a>
+            <time class="newsletter-date">January 15, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">AI-Assisted Development</span>
+            <h1 class="hero-title">The Week Vibe Coding Became Unavoidable</h1>
+            <p class="hero-subtitle">MIT names generative coding a breakthrough technology. Linus Torvalds admits he's using it. 92% of developers are already on board. Here's what it all means.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-vibe-coding.jpg" alt="Abstract visualization of human intent transforming into code">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">MIT Tech Review Declares Generative Coding a "Breakthrough Technology" for 2026</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.technologyreview.com/2026/01/12/1130027/generative-coding-ai-software-2026-breakthrough-technology/">MIT Technology Review</a></span>
+            </div>
+            <div class="section-body">
+                <p>When MIT Technology Review adds something to its annual 10 Breakthrough Technologies list, it's not a prediction—it's an acknowledgment that the future has already arrived. This week, generative coding earned its spot alongside quantum computing and fusion energy.</p>
+
+                <p>The numbers tell the story: Microsoft now uses AI to write approximately 30% of its code. Google's figure is over a quarter. And Mark Zuckerberg has publicly stated that AI agents will write "most of Meta's code" within 12-18 months. These aren't startups chasing hype—they're the companies that define what software development looks like at scale.</p>
+
+                <div class="callout">
+                    <p><strong>The uncomfortable truth:</strong> MIT researchers at CSAIL found that AI-generated code that looks plausible may not actually function as intended. Hallucinations remain a real problem, and the technology still struggles with large, complex codebases.</p>
+                </div>
+
+                <p>But here's what the establishment validation really signals: the debate over whether vibe coding "counts" as real development is over. The question now is how fast organizations can adapt their practices—and who gets left behind. Fewer entry-level positions for junior developers already suggest the productivity gains aren't free.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Linus Torvalds Admits He's Vibe Coding—For Fun</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.theregister.com/2026/01/13/linus_torvalds_vibe_coding/">The Register</a></span>
+            </div>
+            <div class="section-body">
+                <p>If you wanted a signal that vibe coding has crossed from tech-bro enthusiasm to mainstream tool, here it is: Linus Torvalds, the man who created Linux and Git, revealed he's been using AI to write code for his hobby projects.</p>
+
+                <p>In his AudioNoise project—a side venture creating random digital audio effects for guitar pedals—Torvalds disclosed that a Python visualizer was "basically written by vibe-coding." His explanation cuts through the usual hype: "It started out as my typical 'google and do the monkey-see-monkey-do' kind of programming, but then I cut out the middle-man—me—and just used Google Antigravity."</p>
+
+                <p>This tracks with his earlier comments at Open Source Summit Asia, where he said he's comfortable with vibe coding "as long as it's not used for anything that matters." The kernel? Still hand-crafted. A Raspberry Pi-driven guitar pedal effect? Let the AI handle it.</p>
+
+                <p>The distinction matters. Even the most famous low-level systems programmer on Earth has found a place for AI-assisted development in his workflow. He just knows exactly where that place is. The question for everyone else: do you?</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Claude Code 2.1 Ships, Opus 4.5 Dominates Benchmarks—And the Tool Wars Heat Up</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.faros.ai/blog/best-ai-coding-agents-2026">Faros AI</a> &amp; <a href="https://aitoolanalysis.com/claude-code/">AI Tool Analysis</a></span>
+            </div>
+            <div class="section-body">
+                <p>The AI coding tool landscape looked stable for about five minutes. Then Claude Code 2.1.0 dropped on January 7th with 1,096 commits, and the conversation shifted.</p>
+
+                <p>The headline feature: Claude Opus 4.5 now achieves 80.9% accuracy on SWE-bench, the industry standard for measuring AI's ability to solve real GitHub issues. That's not just leading—it's pulling away. Developer reviews are converging on a consensus: Opus 4.5 is currently "the only model trusted to run without constant manual code review."</p>
+
+                <p>New capabilities include skill hot-reloading, session teleportation via <code>/teleport</code>, and a Chrome integration beta for browser control directly from the terminal. Memory improvements hit 3x, which matters when you're working across large codebases.</p>
+
+                <div class="callout">
+                    <p><strong>Market disruption:</strong> Google Antigravity now offers FREE Claude Opus 4.5 access during its preview period, fundamentally changing the pricing dynamics. Meanwhile, Cursor's controversial shift to usage-based billing in mid-2025 continues to generate friction.</p>
+                </div>
+
+                <p>The emerging consensus from developers: "Copilot makes daily coding faster. Cursor makes large projects manageable. Claude makes complex problems understandable." Pick your tool for the specific job—or accept that your workflow probably needs all three.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">92% of US Developers Use AI Daily. 63% Have Spent More Time Debugging AI Code Than Writing It Themselves.</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.secondtalent.com/resources/vibe-coding-statistics/">Second Talent</a> &amp; <a href="https://www.itpro.com/software/development/ai-software-development-2026-vibe-coding-security">IT Pro</a></span>
+            </div>
+            <div class="section-body">
+                <p>Two statistics that explain everything about vibe coding in 2026—and why the discourse remains so heated.</p>
+
+                <p>First: 92% of US developers now use AI coding tools daily. Globally, 82% use them at least weekly. This isn't adoption—it's saturation. AI-generated code now accounts for 41% of all code written worldwide. And 74% of developers report increased productivity when using vibe coding approaches.</p>
+
+                <p>Second: 63% of developers have spent more time debugging AI-generated code than they would have spent writing the original code themselves—at least once. About 45% of AI-generated code contains security flaws. The JetBrains State of Developer Ecosystem study found that 48% of developers prefer to "stay hands-on" for core tasks like testing and code reviews.</p>
+
+                <p>The sharp divide in opinions comes down to variance. LLM-assisted development doesn't deliver uniform productivity gains—it produces a wide spread of outcomes depending on your baseline fluency, your ability to validate results, and whether you're prototyping or building systems that need to survive production.</p>
+
+                <p>Senior developers (10+ years experience) report 81% productivity gains. Junior developers show mixed results, with 40% admitting they deploy code without fully understanding it. That gap is the entire debate, compressed into two data points.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Stack Overflow's Reality Check: A Non-Coder Built an App in 10 Minutes. Then the Problems Started.</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://stackoverflow.blog/2026/01/02/a-new-worst-coder-has-entered-the-chat-vibe-coding-without-code-knowledge/">Stack Overflow Blog</a></span>
+            </div>
+            <div class="section-body">
+                <p>A non-technical writer at Stack Overflow used Bolt to build a functional bathroom-review Reddit app for a hackathon. Total time: about 10 minutes, using nothing but natural language prompts. The promise of vibe coding, delivered.</p>
+
+                <p>Then she showed it to developers.</p>
+
+                <p>The code was messy: inlined styling, massive components with no modularity, zero unit tests. Security? None. User data was completely exposed. As one colleague noted, anyone could inspect their way to extracted ZIP codes or passwords. The app worked—superficially—but cleaning it up for production would fall entirely on experienced developers.</p>
+
+                <p>Research cited in the article found that 66% of developers experience a "productivity tax" when using AI coding tools—the time spent fixing, validating, and understanding AI output that offsets the initial speed gains.</p>
+
+                <div class="callout">
+                    <p><strong>The silver lining:</strong> A physicist friend of the author used LLMs not to replace programming knowledge, but to accelerate learning—using AI explanations to understand bugs and build actual skills. Vibe coding as educational bridge rather than replacement.</p>
+                </div>
+
+                <p>The verdict: vibe coding works brilliantly for exploration, learning, and prototyping. It creates significant technical debt the moment "ship it" enters the conversation. Understanding that boundary is now a core professional skill.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Orchestrator Era Begins</h2>
+            <p class="closing-text">The winners in 2026 won't be the fastest typists or the deepest syntax experts. They'll be orchestrators—people who realized that in an age of infinite code, the only bottleneck left is human intent. The value proposition of a software engineer has shifted from "coder" to "architect and curator." The most successful developers will be those who can effectively communicate intent and maintain a high-level vision, rather than those who memorize syntax intricacies. What are you optimizing for?</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The Vibe Shift</span>
+            <nav class="footer-links">
+                <a href="#">Archive</a>
+                <a href="#">Subscribe</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

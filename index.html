@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLW Newsletter Archive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --border: #E5E0D8;
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --border: #2E2A25;
+            }
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+        }
+        .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .issue {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .issue:last-child { border-bottom: none; }
+        .issue a {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .issue a:hover { text-decoration: underline; }
+        .issue .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .issue .topic {
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JLW Newsletter</h1>
+        <p class="subtitle">Weekly deep dives on tech topics</p>
+
+        <div class="issue">
+            <a href="jlw-2026-01-15.html">The Vibe Shift</a>
+            <div class="date">January 15, 2026</div>
+            <div class="topic">Vibe coding goes mainstream: MIT breakthrough tech, Linus Torvalds experiments, and the 92% adoption reality</div>
+        </div>
+    </div>
+</body>
+</html>

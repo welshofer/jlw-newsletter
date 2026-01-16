@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Arrival — January 15, 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F3F9;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #6B47DC;
+            --accent-soft: rgba(107, 71, 220, 0.12);
+            --accent-hover: #5835B8;
+            --border: #E5E0D8;
+            --border-strong: #D4CEC4;
+            --success: #10B981;
+            --warning: #F59E0B;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 680px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1A1620;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #9B7AEF;
+                --accent-soft: rgba(155, 122, 239, 0.15);
+                --accent-hover: #B094F5;
+                --border: #2E2A25;
+                --border-strong: #3D3830;
+                --success: #34D399;
+                --warning: #FBBF24;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.35em 0.8em;
+            border-radius: 3px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 6vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .hero-image {
+            margin: var(--space-xl) auto 0;
+            max-width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md) var(--space-2xl);
+        }
+
+        .section {
+            margin-bottom: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--border);
+        }
+
+        .section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            background: var(--accent-soft);
+            padding: var(--space-md);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            margin: var(--space-md) 0;
+        }
+
+        .highlight p {
+            margin: 0;
+        }
+
+        .highlight strong {
+            color: var(--accent);
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.08);
+            padding: var(--space-md);
+            border-radius: 6px;
+            border-left: 3px solid var(--success);
+            margin: var(--space-md) 0;
+        }
+
+        .success-box strong {
+            color: var(--success);
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.08);
+            padding: var(--space-md);
+            border-radius: 6px;
+            border-left: 3px solid var(--warning);
+            margin: var(--space-md) 0;
+        }
+
+        .warning-box strong {
+            color: var(--warning);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--space-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .stat-card {
+            background: var(--bg-alt);
+            padding: var(--space-sm);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .chart-container {
+            margin: var(--space-lg) 0;
+            background: var(--bg-alt);
+            padding: var(--space-sm);
+            border-radius: 8px;
+        }
+
+        .chart-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .chart-caption {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: var(--space-xs);
+        }
+
+        blockquote {
+            margin: var(--space-md) 0;
+            padding: 0 0 0 var(--space-md);
+            border-left: 3px solid var(--border-strong);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote cite {
+            display: block;
+            font-style: normal;
+            font-size: 0.85rem;
+            margin-top: var(--space-xs);
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: var(--space-lg) var(--space-md);
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .stat-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="mailto:welshofer@gmail.com" class="newsletter-brand">welshofer</a>
+            <span class="newsletter-date">2026.01.15</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-tag">Artificial General Intelligence</span>
+            <h1>The Arrival</h1>
+            <p class="hero-subtitle">Sequoia says AGI is already here. A former OpenAI researcher says it's not coming until 2031. State regulators aren't waiting to find out. Welcome to the most confusing moment in AI history.</p>
+            <div class="hero-image">
+                <img src="images/hero-agi-emergence.jpg" alt="Abstract visualization of AGI emergence">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <article class="section">
+            <div class="section-number">01</div>
+            <h2>Sequoia Declares Victory</h2>
+            <p>On January 14, 2026, venture capital powerhouse Sequoia Capital published a report with a provocative title: <strong>"2026: This Is AGI."</strong></p>
+            <p>Their argument: stop waiting for some mythical moment of machine consciousness. For all practical purposes, AGI is already here. The evidence? Coding agents that autonomously write and debug software. Long-horizon agents capable of multi-step task completion without human intervention. Systems that can reason, plan, and execute across domains.</p>
+
+            <div class="success-box">
+                <p><strong>The Sequoia thesis:</strong> "Functionally, AGI is present. 2026 will be a pivotal year for these advancements to become mainstream."</p>
+            </div>
+
+            <p>This isn't philosophical musing from an academic&mdash;it's a major investor declaring that the technology they've been betting billions on has arrived. The framing matters: Sequoia is shifting the AGI conversation from "if and when" to "how fast can enterprises adopt it."</p>
+
+            <p>Not everyone agrees.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">02</div>
+            <h2>The Insider's Retreat</h2>
+            <p>Daniel Kokotajlo was an OpenAI researcher who left the company in 2024, citing concerns about its approach to AI safety. He'd previously predicted that AI systems would be capable of "fully autonomous coding"&mdash;a key AGI milestone&mdash;by 2027.</p>
+            <p>This month, he revised that estimate. <strong>The new timeline: early 2030s.</strong></p>
+
+            <blockquote>
+                "The jagged and sometimes unpredictable nature of AI progress" makes forecasting difficult. Capabilities don't advance uniformly&mdash;systems excel at some tasks while failing embarrassingly at others.
+                <cite>&mdash; Daniel Kokotajlo, former OpenAI researcher</cite>
+            </blockquote>
+
+            <p>Kokotajlo's revision is significant because it comes from someone who was inside one of the leading AGI labs and who has generally been bullish on AI capabilities. When insiders start pushing back timelines, it's worth paying attention.</p>
+
+            <div class="chart-container">
+                <img src="images/chart-agi-timeline.png" alt="AGI timeline predictions from various experts">
+                <div class="chart-caption">Expert AGI predictions span from "already here" to 2040+</div>
+            </div>
+
+            <p>The range of predictions is staggering: Sequoia says 2026, Anthropic CEO Dario Amodei says 2027, Sam Altman says "a few years," Demis Hassabis says 5-10 years, Kokotajlo now says early 2030s, and skeptics like Gary Marcus say we may never get there with current approaches.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">03</div>
+            <h2>The Hype Hangover</h2>
+            <p>Meanwhile, a growing chorus is declaring the AGI hype cycle officially over.</p>
+            <p>"The obsession with AGI is fading," notes one analysis from early January. "The AI conversation is becoming less dramatic, more grounded." The "Year of the Agent" in 2025 largely failed to deliver on promises of autonomous agents transforming the workforce. The gap between demos and deployable products remains wide.</p>
+
+            <div class="highlight">
+                <p><strong>The new paradigm:</strong> From "AI evangelism" to "AI evaluation." Less speculation about superintelligent systems, more focus on real-world utility and measurable ROI.</p>
+            </div>
+
+            <p>This doesn't mean AI capabilities aren't advancing&mdash;they clearly are. But the conversation is maturing. Enterprise buyers want to see proof that AI can solve specific problems, not promises about future god-like intelligence. The fever has broken; the hard work of deployment begins.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">04</div>
+            <h2>The Regulators Move In</h2>
+            <p>While philosophers debate definitions, regulators are writing laws.</p>
+            <p>As of January 1, 2026, sweeping AI regulations have taken effect in <strong>California (S.B. 53), New York (RAISE Act), and Texas (TRAIGA)</strong>. These laws require developers of "frontier AI models" to:</p>
+            <ul style="margin: var(--space-sm) 0; padding-left: 1.5rem;">
+                <li>Establish and publish AI safety frameworks</li>
+                <li>Report safety incidents to regulators</li>
+                <li>Provide transparency around risk assessments</li>
+                <li>Implement documented testing procedures</li>
+            </ul>
+
+            <p>This marks a fundamental shift from voluntary frameworks to legally binding requirements. The three most economically significant US states are now telling frontier labs: prove your systems are safe, or face consequences.</p>
+
+            <p>The regulations are designed to be technology-neutral&mdash;they apply regardless of whether you call your system "AGI," "frontier AI," or "really sophisticated autocomplete." What matters is capability, not labels.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">05</div>
+            <h2>The Safety Alarm</h2>
+            <p>David Dalrymple, an AI safety expert at the UK government's Aria agency, issued a stark warning this month: the world "may not have time" to adequately prepare for advanced AI risks.</p>
+
+            <div class="warning-box">
+                <p><strong>The acceleration concern:</strong> AI systems could automate significant R&D work by late 2026, leading to a rapid and potentially uncontrollable acceleration of AI capabilities. Once AI can improve itself, timelines compress dramatically.</p>
+            </div>
+
+            <p>This is the recursive self-improvement scenario that AI safety researchers have worried about for decades. The difference now: it's not a thought experiment. Major labs are actively pursuing AI systems that can do AI research.</p>
+
+            <p>Google DeepMind announced this month that it's opening its first <strong>fully automated research lab</strong> in the UK. The lab will use AI (powered by Gemini) and robotics to autonomously synthesize and test hundreds of new materials per day. Initial focus: superconductors and advanced semiconductors.</p>
+
+            <p>When AI can run scientific experiments without human intervention, the pace of discovery&mdash;including AI discovery&mdash;could accelerate beyond our ability to govern it.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">06</div>
+            <h2>The Hardware Push</h2>
+            <p>NVIDIA announced a new suite of "physical AI" models designed for robotics&mdash;systems that can perceive, reason, and act in the real world. The new models include <strong>Cosmos Reason 2</strong> and <strong>Isaac GR00T N1.6</strong>, designed for humanoid robots and autonomous machines.</p>
+
+            <p>The significance: AGI discussions have historically focused on language and reasoning. But intelligence in the physical world requires different capabilities&mdash;real-time sensor fusion, spatial reasoning, motor control, safety constraints. NVIDIA is betting that embodied AI will be the next frontier.</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value">$1.4B</div>
+                    <div class="stat-label">Skild AI funding</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$14B</div>
+                    <div class="stat-label">Skild valuation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3x</div>
+                    <div class="stat-label">Valuation jump</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">~$130B</div>
+                    <div class="stat-label">2025 AI funding</div>
+                </div>
+            </div>
+
+            <p>Speaking of bets: <strong>Skild AI</strong>, a robotics company building a unified foundation model for robots, raised $1.4 billion this month, tripling its valuation to over $14 billion. Investors clearly believe that AGI in physical form is worth funding at unprecedented scale.</p>
+
+            <div class="chart-container">
+                <img src="images/chart-ai-funding.png" alt="AI funding trends 2020-2025">
+                <div class="chart-caption">Frontier and AGI labs now capture the majority of AI investment</div>
+            </div>
+        </article>
+
+        <article class="section">
+            <div class="section-number">07</div>
+            <h2>The Efficiency Revolution</h2>
+            <p>While headlines focus on ever-larger models, a quieter revolution is underway: <strong>smaller, more efficient "reasoning-first" models</strong> that match the performance of systems many times their size.</p>
+
+            <p>The Technology Innovation Institute (TII) released <strong>Falcon-H1R 7B</strong> this month&mdash;a model that achieves performance comparable to models seven times larger. The key: internal deliberation loops that improve logical consistency and correctness.</p>
+
+            <p>This matters for AGI because raw scale may not be the path forward. If smaller models can match larger ones through better architecture and training, then:</p>
+            <ul style="margin: var(--space-sm) 0; padding-left: 1.5rem;">
+                <li>AGI becomes cheaper to develop and deploy</li>
+                <li>More players can compete at the frontier</li>
+                <li>Local, private AI becomes viable</li>
+                <li>The compute bottleneck relaxes</li>
+            </ul>
+
+            <p>The "scaling hypothesis"&mdash;the idea that throwing more compute at models will eventually produce AGI&mdash;isn't dead. But the efficiency gains suggest that algorithmic breakthroughs may matter as much as raw compute.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">08</div>
+            <h2>What It All Means</h2>
+            <p>Here's the uncomfortable truth about AGI in January 2026: <strong>nobody knows what's happening.</strong></p>
+
+            <p>Sequoia says AGI is here. Kokotajlo says it's five years away. Skeptics say current architectures will never get there. Regulators are writing laws for systems they can't define. Safety researchers warn we may not have time to prepare. And billions of dollars continue flowing into labs racing to build it.</p>
+
+            <p>Perhaps the most honest assessment comes from the observation that "AGI" has always been a moving target. When AI beats humans at chess, that's not AGI. When it beats us at Go, that's not AGI. When it writes code, passes bar exams, and generates photorealistic video&mdash;still not AGI. The goalposts keep moving because we keep redefining intelligence to exclude whatever machines can currently do.</p>
+
+            <blockquote>
+                "AGI is whatever AI can't do yet."
+                <cite>&mdash; Often attributed to Larry Tesler (Tesler's Theorem)</cite>
+            </blockquote>
+
+            <p>Maybe Sequoia is right and we should stop waiting for a moment that may never feel like "arrival." Or maybe the skeptics are right and we're still missing something fundamental. What's certain is that the systems being built today are more capable than anything we've seen before&mdash;and the pace of improvement shows no signs of slowing.</p>
+
+            <p>Whether you call that AGI is almost beside the point. What matters is what we do with it.</p>
+        </article>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>Read more at <a href="index.html">welshofer newsletter archive</a></p>
+            <p style="margin-top: var(--space-xs); font-size: 0.8rem;">
+                Sources: Sequoia Capital, The Guardian, WSGR, NVIDIA, Crunchbase, TII, UK Aria
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

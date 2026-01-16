@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Document Revolution — January 16, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for legal tech */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #0A5A72;
+            --border: #D8E2E8;
+            --border-strong: #B8C8D0;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F1214;
+                --bg-alt: #181C1F;
+                --text: #F5F1EA;
+                --text-secondary: #8FA3B0;
+                --accent: #2AA3C8;
+                --accent-soft: rgba(42, 163, 200, 0.15);
+                --accent-hover: #3BB8DD;
+                --border: #2A3238;
+                --border-strong: #3A464F;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">Legal Document Weekly</a>
+            <time class="newsletter-date">January 16, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Legal Tech</span>
+            <h1 class="hero-title">The Document Revolution</h1>
+            <p class="hero-subtitle">AI stops being experimental and becomes infrastructure. This week: record tech spending, commoditized e-discovery, federal preemption battles, and a UK ruling that changes everything about AI discoverability.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-legal-documents-2026-01-16.jpg" alt="Legal documents transforming into streams of luminous data, ancient law books merging with holographic contract interfaces">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Icertis Bets Big on the "Living Contract"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.icertis.com/news/icertis-launches-next-generation-ci-cloud-unifying-contract-lifecycle/">Icertis</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Here's a question that keeps general counsels up at night: what's actually in your contracts? Not what was negotiated six months ago—what's happening <em>now</em>? What obligations are coming due? What risks are quietly compounding?</p>
+
+                <p><a href="https://www.icertis.com">Icertis</a> just launched what they're calling the "Contract Intelligence Cloud," and the positioning is telling. They're not selling contract management anymore. They're selling contracts as "living data assets"—a unified platform that handles everything from initial drafting through compliance monitoring, all infused with generative AI that learns from your historical contract data.</p>
+
+                <p>The real innovation isn't any single feature. It's the recognition that the pre-signature and post-signature worlds have been artificially separated for too long. Most CLM tools help you get the deal done, then leave you to figure out what you actually agreed to. Icertis is betting that forward-looking intelligence—predicting problems before they materialize—is where the value lies.</p>
+
+                <p>Watch for competitors to follow this playbook. The era of contract management as workflow automation is ending. Contract management as strategic intelligence is beginning.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">E-Discovery's AI Moment: From Premium to Utility</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.revealdata.com/press-releases/reveal-launches-discovery-co-pilot-for-generative-ai-review-automation">Reveal Data</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.revealdata.com">Reveal</a> just made a strategic decision that will ripple through the entire e-discovery market: their new "Discovery Co-Pilot"—which automates first-pass document review, privilege log generation, and case investigation summaries—is being bundled into standard subscription tiers. Not a premium add-on. Standard.</p>
+
+                <p>Think about what that signals. When a major platform commoditizes AI-assisted review, it's declaring that this capability is now table stakes. Every other e-discovery vendor now faces an uncomfortable choice: match the pricing or explain why your AI is worth paying extra for.</p>
+
+                <div class="callout">
+                    <p>"Our goal is to commoditize the most time-consuming aspects of discovery. AI-assisted review should be a standard utility, not a luxury, allowing lawyers to focus on strategy, not sifting through data."</p>
+                </div>
+
+                <p>The immediate beneficiaries are mid-size firms and corporate legal departments who've been priced out of sophisticated AI tooling. The losers? Document review contract attorneys and vendors whose entire business model was built on the assumption that human eyeballs would always be needed at scale. That assumption just got a lot shakier.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Numbers Are In: Legal Tech's 9.7% Surge</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.lawnext.com/2026/01/state-of-legal-market-report-shows-ai-drove-record-tech-spending-in-2025.html">LawNext</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>We've been hearing about AI transformation in law for years now. <a href="https://www.thomsonreuters.com">Thomson Reuters</a> just put hard numbers on it, and they're striking: law firm technology spending surged 9.7% in 2025—the largest single-year increase ever recorded in the State of the Legal Market report.</p>
+
+                <p>But here's the number that should get your attention: generative AI tools and platforms accounted for <strong>over 60% of new technology budgets</strong>. Not incremental improvements to existing systems. Not infrastructure upgrades. New AI capabilities.</p>
+
+                <p>Perhaps more surprising: mid-size and Am Law 200 firms outpaced the Am Law 100 in technology adoption rates for the first time. The conventional wisdom was always that the largest firms would lead and everyone else would follow. That script has flipped. Smaller firms, it turns out, can move faster when they're not burdened by legacy system integrations and partnership politics.</p>
+
+                <p>The report's framing says it all: "We've moved past the experimental phase. In 2025, AI became infrastructure." If your firm is still treating AI as a pilot program or an innovation exercise, you're not early anymore. You're behind.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">DOJ Declares War on State AI Regulations</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.whitecase.com/insight-alert/doj-forms-ai-litigation-task-force-challenge-patchwork-state-laws">White & Case</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The regulatory landscape for legal AI just got significantly more complicated—and uncertain. Following Executive Order 14365, the Attorney General has established a new "AI Litigation Task Force" with a pointed mandate: monitor and legally challenge state-level AI regulations that conflict with federal policy or impede interstate commerce.</p>
+
+                <p>The timing is not coincidental. California and New York both saw significant AI regulations take effect on January 1st. The administration is essentially putting states on notice: your AI laws may not survive federal preemption challenges.</p>
+
+                <p>For legal tech companies and law firms, this creates an uncomfortable limbo. Do you build compliance programs around California's requirements, knowing the DOJ might successfully challenge them? Do you adopt a wait-and-see approach and risk penalties if the state laws survive? The <a href="https://www.whitecase.com">White & Case</a> analysis doesn't mince words: "significant preemption questions" are now front and center.</p>
+
+                <p>The practical implication: anyone deploying AI in legal workflows needs a regulatory strategy that accounts for both state compliance <em>and</em> potential federal preemption. Budget for legal uncertainty. It's going to be a messy couple of years.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">UK Court: Your AI's Receipts Are Discoverable</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.jdsupra.com/legalnews/uk-high-court-ruling-ai-prompts-and-outputs-are-discoverable-658132/">JD Supra</a></span>
+                <span class="section-date">January 9, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>A London High Court ruling just established a precedent that will reshape how lawyers think about AI usage: prompts and outputs from generative AI systems used in business are discoverable. Full stop.</p>
+
+                <p>The case involved a party that had used an internal AI system to analyze case documents and formulate strategy. The opposing side demanded production of the AI system's logs—every prompt, every response, everything. The court agreed, reasoning that if you use AI to do your work, its records are part of that work.</p>
+
+                <div class="callout">
+                    <p>"The notion that communications with an AI are somehow privileged or outside the scope of discovery has been firmly rejected."</p>
+                </div>
+
+                <p>Think through the implications. Every time you paste confidential documents into an AI to get a summary, every strategic question you ask, every draft you iterate on—all of it could be demanded by opposing counsel. The casual way many lawyers currently use AI tools? That needs to change, immediately.</p>
+
+                <p>This is a UK ruling, but US courts are watching. The reasoning is straightforward and portable. If you're using AI for case work, start assuming those interactions will eventually be scrutinized. Document retention policies need updating. Privilege protocols need rethinking. The era of casual AI experimentation just ended.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Infrastructure Era</h2>
+            <p class="closing-text">Five stories, one theme: AI in legal isn't a feature anymore—it's the foundation. The firms that recognized this early are now setting the terms of competition. The firms still "experimenting" are discovering that the experiment is over. What infrastructure decisions are you making this quarter?</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">Legal Document Weekly</span>
+        </div>
+    </footer>
+</body>
+</html>

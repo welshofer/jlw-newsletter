@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Warning Shot — January 15, 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F0F5F7;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #1E6F8C;
+            --accent-soft: rgba(30, 111, 140, 0.12);
+            --accent-hover: #165A73;
+            --border: #E5E0D8;
+            --border-strong: #D4CEC4;
+            --danger: #D32F2F;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 680px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #121A1C;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #4BA3C3;
+                --accent-soft: rgba(75, 163, 195, 0.15);
+                --accent-hover: #6BB8D4;
+                --border: #2E2A25;
+                --border-strong: #3D3830;
+                --danger: #EF5350;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.35em 0.8em;
+            border-radius: 3px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 6vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .hero-image {
+            margin: var(--space-xl) auto 0;
+            max-width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md) var(--space-2xl);
+        }
+
+        .section {
+            margin-bottom: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--border);
+        }
+
+        .section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            background: var(--accent-soft);
+            padding: var(--space-md);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            margin: var(--space-md) 0;
+        }
+
+        .highlight p {
+            margin: 0;
+        }
+
+        .highlight strong {
+            color: var(--accent);
+        }
+
+        .danger-box {
+            background: rgba(211, 47, 47, 0.08);
+            padding: var(--space-md);
+            border-radius: 6px;
+            border-left: 3px solid var(--danger);
+            margin: var(--space-md) 0;
+        }
+
+        .danger-box strong {
+            color: var(--danger);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--space-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .stat-card {
+            background: var(--bg-alt);
+            padding: var(--space-sm);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.1;
+        }
+
+        .stat-value.danger {
+            color: var(--danger);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .chart-container {
+            margin: var(--space-lg) 0;
+            background: var(--bg-alt);
+            padding: var(--space-sm);
+            border-radius: 8px;
+        }
+
+        .chart-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .chart-caption {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: var(--space-xs);
+        }
+
+        blockquote {
+            margin: var(--space-md) 0;
+            padding: 0 0 0 var(--space-md);
+            border-left: 3px solid var(--border-strong);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote cite {
+            display: block;
+            font-style: normal;
+            font-size: 0.85rem;
+            margin-top: var(--space-xs);
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: var(--space-lg) var(--space-md);
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .stat-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">welshofer</a>
+            <span class="newsletter-date">2026.01.15</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-tag">Climate Research</span>
+            <h1>The Warning Shot</h1>
+            <p class="hero-subtitle">2025 was the third-hottest year on record. The last three years crossed a critical threshold. Scientists say the acceleration is real.</p>
+            <div class="hero-image">
+                <img src="images/hero-climate-crisis.jpg" alt="Split image showing healthy vs damaged ocean ecosystem">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <article class="section">
+            <div class="section-number">01</div>
+            <h2>The Three-Year Threshold</h2>
+            <p>Six of eight global climate monitoring agencies ranked 2025 as the third-hottest year on record. Two others&mdash;NASA and a joint American-British team&mdash;said it essentially tied with 2023 for second place. The difference: 0.02&deg;C.</p>
+            <p>But here's what matters: <strong>the last three years have been the planet's three hottest in recorded history.</strong> And together, they represent the first three-year period in which average global temperatures exceeded 1.5&deg;C above pre-industrial levels&mdash;the limit governments pledged to avoid under the Paris Agreement.</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value danger">1.47&deg;C</div>
+                    <div class="stat-label">2025 anomaly</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value danger">1.52&deg;C</div>
+                    <div class="stat-label">2024 (record)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value danger">1.45&deg;C</div>
+                    <div class="stat-label">2023 anomaly</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">11</div>
+                    <div class="stat-label">Hottest years in a row</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <img src="images/chart-temperature-anomaly.png" alt="Global temperature anomaly chart 2015-2025">
+                <div class="chart-caption">The last three years clustered near the 1.5&deg;C Paris limit</div>
+            </div>
+
+            <blockquote>
+                "The last three years are indicative of an acceleration in the warming. They're not consistent with the linear trend that we've been observing for the 50 years before that."
+                <cite>&mdash; Robert Rohde, Chief Scientist, Berkeley Earth</cite>
+            </blockquote>
+
+            <p>The 1.5&deg;C goal was set in Paris in 2015. Scientists now say it could be permanently breached by 2030&mdash;a full decade earlier than predicted when the agreement was signed.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">02</div>
+            <h2>The Ocean's Breaking Point</h2>
+            <p>While atmospheric temperatures grabbed headlines, the oceans quietly absorbed a staggering amount of heat. According to a study published in <em>Advances in Atmospheric Sciences</em>, global ocean heat content (0-2000m depth) increased by approximately 23 Zettajoules in 2025&mdash;equivalent to <strong>37 years of global energy consumption</strong>.</p>
+
+            <p>It was the ninth consecutive year the ocean heat record was broken.</p>
+
+            <div class="chart-container">
+                <img src="images/chart-ocean-heat.png" alt="Ocean heat content trend 2005-2025">
+                <div class="chart-caption">Ocean heat content has risen relentlessly for nearly two decades</div>
+            </div>
+
+            <div class="highlight">
+                <p><strong>Why it matters:</strong> Hotter oceans fuel stronger hurricanes, intensify marine heatwaves, bleach coral reefs, and drive sea level rise. The ocean has absorbed about 90% of the excess heat trapped by greenhouse gases&mdash;it's been buffering us from the worst. That buffer is filling up.</p>
+            </div>
+
+            <p>The "10 New Insights in Climate Science 2025/2026" report, released this month, called out the unprecedented pace of ocean surface warming: marine heatwaves are intensifying, driving severe ecological losses and weakening the ocean's role as a carbon sink.</p>
+
+            <p>Tropical oceans, the South Atlantic, the Mediterranean, the northern Indian Ocean, and the Southern Ocean all absorbed record heat in 2025. Warm-water coral reefs are now past their tipping point&mdash;80% experienced unprecedented heat waves, bleaching events, and die-offs.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">03</div>
+            <h2>The Ice Sheet Reckoning</h2>
+            <p>A May 2025 study in <em>Nature Communications Earth & Environment</em> delivered a sobering message: <strong>1.5&deg;C is too high for polar ice sheets.</strong> Even current forcing (+1.2&deg;C), if sustained, is likely to generate several meters of sea-level rise over coming centuries. A "safe" global temperature may be closer to +1&deg;C&mdash;a threshold we passed years ago.</p>
+
+            <div class="danger-box">
+                <p><strong>Critical thresholds:</strong> Just 2&deg;C of additional warming could trigger irreversible collapse of the Greenland Ice Sheet, raising sea levels by 7 meters (23 feet). Some West Antarctic catchments continue losing mass even when melting is reduced to zero&mdash;suggesting a tipping point has already been crossed.</p>
+            </div>
+
+            <p>2025 marked the 29th consecutive year Greenland lost more ice than it gained. Arctic surface temperatures from October 2024 through September 2025 were the warmest on record since 1900, with the last 10 years representing the 10 warmest Arctic years ever observed.</p>
+
+            <p>Scientists have identified three instability mechanisms that could accelerate ice loss: marine ice sheet instability (already underway in West Antarctica), marine ice cliff instability, and surface elevation melt instability. Satellite observations show Pine Island and Thwaites glaciers retreating, thinning, and accelerating toward the ocean.</p>
+
+            <blockquote>
+                "The initiation of at least partial collapse of the West Antarctic Ice Sheet is almost inevitable this century, even if it has not already been triggered."
+                <cite>&mdash; 10 New Insights in Climate Science 2025/2026</cite>
+            </blockquote>
+        </article>
+
+        <article class="section">
+            <div class="section-number">04</div>
+            <h2>The Attribution Revolution</h2>
+            <p>When the Palisades and Eaton wildfires erupted in Los Angeles on January 7, 2025, they became the most destructive in Southern California's history&mdash;and the costliest wildfires on record at $61.2 billion in damages. Within days, World Weather Attribution had an answer: <strong>climate change made the conditions 35% more likely</strong> than they would have been before industrial warming.</p>
+
+            <p>The analysis also found drought conditions in the region are now 2.4 times more likely than in a pre-industrial climate. Nearly three dozen researchers across the globe contributed to the rapid attribution study.</p>
+
+            <div class="chart-container">
+                <img src="images/chart-disaster-costs.png" alt="US billion-dollar disasters 2018-2025">
+                <div class="chart-caption">US billion-dollar weather disasters have become the norm</div>
+            </div>
+
+            <p>Extreme weather attribution is becoming faster and more precise. A new study in <em>Nature Climate Change</em> found that when people are informed about the climate link to specific disasters, their support for climate policy increases significantly&mdash;regardless of political affiliation.</p>
+
+            <p>The 2025 toll extends far beyond LA: a record number of flash flood warnings in the US (including July floods in Texas that killed 135 people), and floods across South and Southeast Asia that claimed 1,800 lives and caused $25 billion in damages.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">05</div>
+            <h2>The Insurance Exodus</h2>
+            <p>Natural disasters caused $224 billion in global damages in 2025, with insurers covering $108 billion. That makes it another year in a growing list where insured losses exceeded $100 billion.</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value">$224B</div>
+                    <div class="stat-label">Global damage</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">23</div>
+                    <div class="stat-label">US billion-$ events</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$115B</div>
+                    <div class="stat-label">US damages</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">90%</div>
+                    <div class="stat-label">US share of insured loss</div>
+                </div>
+            </div>
+
+            <p>Since 1980, the US has sustained 426 billion-dollar weather and climate disasters, with a cumulative cost exceeding <strong>$3.1 trillion</strong>. The rate is accelerating: 2023 saw a record 28 billion-dollar events, 2024 had 27, and 2025 recorded 23.</p>
+
+            <p>The insurance industry is responding by retreating. State Farm and Allstate have stopped writing new policies in California and Florida. When California's one-year moratorium on policy cancellations expires in January 2026, the exodus is expected to accelerate.</p>
+
+            <div class="highlight">
+                <p><strong>The protection gap:</strong> UN estimates suggest climate-driven uninsured losses could double to $560 billion by 2030. The Network for Greening the Financial System projects economic losses could reach 15% of global GDP by 2050 under 2&deg;C warming&mdash;three times larger than earlier estimates.</p>
+            </div>
+        </article>
+
+        <article class="section">
+            <div class="section-number">06</div>
+            <h2>The Technology Response</h2>
+            <p>Carbon capture is scaling, but slowly. By 2026, over 20 direct air capture (DAC) facilities operate worldwide. Leading projects now capture CO2 for under $300 per ton&mdash;a sharp drop from early pilots. Climeworks will deliver over 50,000 tons of verified carbon removal credits this year, with buyers including Stripe and Schneider Electric paying $600-800 per ton.</p>
+
+            <p>GE Vernova is launching a 1,500-tonne commercial DAC unit in 2026, designed to scale to 50,000 tonnes and beyond. Project Greensand in Denmark and Stratos in Texas (the world's largest DAC facility) are set to begin commercial operations.</p>
+
+            <p>But the sector faces headwinds. Two major DAC projects that received $1.2 billion from the Biden administration's DOE appeared on a leaked list of grant cancellations. One industry advisor warned: "If growth continues at a slow pace, it will get harder for startups to raise funding. I would expect quite a few companies to go out of business in 2026."</p>
+
+            <p>Meanwhile, Finnish researchers discovered a new compound&mdash;TBN combined with benzyl alcohol&mdash;that captures CO2 from ambient air without reacting with other atmospheric gases. It's still at laboratory scale, but represents the kind of breakthrough needed for affordable atmospheric carbon removal.</p>
+
+            <p>The "10 New Insights" report emphasized that carbon dioxide removal must complement, not substitute for, rapid emissions cuts. The climate math is unforgiving: we can't capture our way out of the hole we keep digging deeper.</p>
+        </article>
+
+        <article class="section">
+            <div class="section-number">07</div>
+            <h2>What Comes Next</h2>
+            <p>NOAA gives less than a 1% chance that 2026 will surpass 2024 as the hottest year on record, with a 75% chance of being a top-five hottest year. Berkeley Earth expects temperatures similar to 2025, perhaps ranking fourth overall, as La Ni&ntilde;a transitions to neutral conditions.</p>
+
+            <p>But Carlo Buontempo, director of Copernicus' climate service, notes that when the next El Ni&ntilde;o materializes&mdash;likely within two years&mdash;it will probably drive another record annual temperature.</p>
+
+            <div class="danger-box">
+                <p><strong>The cascade risk:</strong> A 2022 study in <em>Science</em> found that exceeding 1.5&deg;C could trigger multiple tipping points simultaneously: ice sheet collapse, abrupt permafrost thaw, coral die-off, and potential cascade effects. Like dominoes, the climate changes accompanying an AMOC collapse could worsen Amazon drought and accelerate Antarctic ice loss.</p>
+            </div>
+
+            <p>The last three years aren't an aberration. They're a warning shot&mdash;a glimpse of the new normal if emissions continue unabated. The 2025/2026 "10 New Insights" report puts it starkly: the failure to cut emissions at the speed and scale required is behind nearly every major climate risk we now face.</p>
+
+            <p>The physics hasn't changed. The atmosphere and oceans don't negotiate. They just keep score.</p>
+        </article>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>Read more at <a href="index.html">welshofer newsletter archive</a></p>
+            <p style="margin-top: var(--space-xs); font-size: 0.8rem;">
+                Sources: Berkeley Earth, WMO, NOAA, Copernicus, NASA, NPR, Nature, Carbon Brief, World Weather Attribution, Munich Re
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

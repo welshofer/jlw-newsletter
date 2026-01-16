@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sensor Wars — January 15, 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F0E8;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.15);
+            --accent-hover: #9A4A2C;
+            --border: #E5E0D8;
+            --border-strong: #D4CEC4;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 680px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1C1916;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F09070;
+                --border: #2E2A25;
+                --border-strong: #3D3830;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child { border-bottom: none; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover { border-color: var(--accent); }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child { margin-bottom: 0; }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+        }
+
+        .section-body a:hover { text-decoration-color: var(--accent); }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .section { padding: var(--space-lg) 0; }
+            .section-title { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 15, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Camera Market</span>
+            <h1 class="hero-title">The Sensor Wars</h1>
+            <p class="hero-subtitle">Full frame, medium format, APS-C—which sensor size wins 2026? After a 94% shipment collapse, the camera industry just posted its first growth in seven years. Here's who's thriving, who's surviving, and whether phones have finally won.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-camera-market.jpg" alt="Artistic still life of vintage and modern cameras with warm amber lighting">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Market Overview -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">First Growth in Seven Years: The Market Stabilizes</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://cameradecision.com/blog/2024-Camera-Market-Share-Canon-ahead-of-Sony-Nikon">Camera Decision</a></span>
+                <span class="section-date">Jan 2026</span>
+            </div>
+            <div class="section-body">
+                <p>After nearly a decade of freefall, the dedicated camera market posted its first year-over-year growth since 2017. Global shipments hit 8.07 million units in 2024, up 14% from 7.08 million in 2023. It's not a boom—it's a floor. The market has finally found the audience that smartphones can't replace.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-camera-market-share.png" alt="Donut chart showing 2024 camera market share: Canon 43.2%, Sony 28.5%, Nikon 11.7%, Fujifilm 9%">
+                    <figcaption>Canon leads with 3.53M units (43.2%), followed by Sony (28.5%), Nikon (11.7%), and Fujifilm (9%). Total market: 8.07M units. Source: Nikkei Industry Map 2026</figcaption>
+                </figure>
+
+                <p><a href="https://canon.com">Canon</a> dominates with 3.53 million units shipped, maintaining its 43% market share through aggressive product releases and a full-frame strategy that spans entry-level to flagship. <a href="https://sony.com">Sony</a> holds second at 28.5% with 2.33 million units, while <a href="https://nikon.com">Nikon</a> takes third at 11.7%. The real story is <a href="https://fujifilm.com">Fujifilm</a>: they jumped from 430,000 units (6% share) in 2023 to 740,000 units (9% share) in 2024—a 72% increase driven almost entirely by one camera.</p>
+
+                <div class="callout">
+                    <p><strong>The segment breakdown:</strong> Mirrorless bodies lead with 57.85% share and 6.23% CAGR. APS-C sensors dominate unit sales (65% of market) due to affordability, while full-frame commands 37.25% share with higher revenue per unit. Medium format remains niche but growing among professional creators.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: The Smartphone Reality -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Has the Smartphone Won? The Numbers Say Almost</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.statista.com/chart/15524/worldwide-camera-shipments/">Statista</a></span>
+                <span class="section-date">2025</span>
+            </div>
+            <div class="section-body">
+                <p>The numbers are brutal. Between 2010 and 2023, global camera shipments dropped 94%—from 121 million units at peak to just over 8 million. The <a href="https://apple.com">iPhone 4</a>'s 2010 launch marks the inflection point. Within a decade, the point-and-shoot market evaporated, and entry-level interchangeable lens cameras followed.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-camera-shipments.png" alt="Line chart showing camera shipments falling from 121M in 2010 to 8M in 2024, with annotation showing 94% decline">
+                    <figcaption>Camera shipments collapsed 94% from 2010 peak. 2024 marked the first uptick in seven years. Source: CIPA (Camera & Imaging Products Association)</figcaption>
+                </figure>
+
+                <p>92% of global consumers now use smartphones as their primary photography device. Advanced phones with 48MP–200MP sensors have influenced buying behavior, with 47% of potential camera customers postponing purchases in 2024 citing smartphone capability. The convenience argument is unassailable: 63% of users cite portability, instant editing, and social sharing as reasons for preferring phones.</p>
+
+                <p>But here's what the doom narrative misses: the surviving camera market is healthier than the peak-era market. Average selling prices are up. Margins are up. The buyers who remain are enthusiasts, professionals, and creators who need capabilities phones can't match—dynamic range, lens selection, low-light performance, and creative control.</p>
+
+                <div class="callout">
+                    <p><strong>The smartphone paradox:</strong> Phones aren't killing dedicated cameras anymore—they've already killed everything they could. What's left is the segment that genuinely needs what smartphones can't deliver: sensor size, optical quality, and professional reliability.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Format Wars -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Full Frame vs. APS-C vs. Medium Format: The 2026 Landscape</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.researchandmarkets.com/reports/6143057/digital-mirrorless-camera-market-sensor-type">Research and Markets</a></span>
+                <span class="section-date">2026</span>
+            </div>
+            <div class="section-body">
+                <p>The sensor format wars have reached an interesting equilibrium. Each size has found its audience, and the old hierarchy—bigger is always better—no longer applies cleanly.</p>
+
+                <p><strong>APS-C (65% unit share):</strong> The workhorse format for most photographers. The <a href="https://fujifilm-x.com/en-us/products/cameras/x100vi/">Fujifilm X100VI</a> proved APS-C can command premium prices ($1,599) and cult status. Canon's EOS R7 and Sony's A6700 deliver impressive specs at accessible prices. The creator economy—YouTube, TikTok, content production—runs largely on APS-C.</p>
+
+                <p><strong>Full Frame (37% revenue share):</strong> The professional benchmark. The <a href="https://sony.com/electronics/interchangeable-lens-cameras/ilce-9m3">Sony A9 III</a> pioneered global shutter at this size. Canon's EOS R5 II and Nikon's Z8 pushed hybrid photo-video workflows. Full frame dominates wedding, portrait, and commercial work where dynamic range and shallow depth of field matter.</p>
+
+                <p><strong>Medium Format:</strong> The resolution kings. <a href="https://fujifilm-x.com/en-us/products/cameras/gfx100-ii/">Fujifilm's GFX 100 II</a> (102MP) offers the best hybrid capability, while <a href="https://www.hasselblad.com">Hasselblad's</a> X2D II delivers legendary color science. The <a href="https://www.phaseone.com">Phase One</a> IQ4 serves the commercial elite at $50,000+. Medium format grows at 6% CAGR among fashion, product, and fine art photographers.</p>
+
+                <div class="callout">
+                    <p><strong>The 2026 verdict:</strong> APS-C wins on volume and versatility. Full frame wins on professional adoption and revenue. Medium format wins on pure image quality. There's no single "winner"—the market has segmented into three distinct ecosystems, each serving different needs.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4: The Retro Renaissance -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Fujifilm Effect: Gen Z Discovers Analog Aesthetics</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://fujiaddict.com/2025/03/04/pt-fujifilm-cp-2025-interview-strong-sales-x100vi-demand-gfx-stacked-sensor-gfx100rf-ai-and-more/">Fuji Addict</a></span>
+                <span class="section-date">2025</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://fujifilm-x.com/en-us/products/cameras/x100vi/">Fujifilm X100VI</a> spent over a year perpetually backordered—a $1,599 compact camera that couldn't stay in stock. The reason: 20-something photographers discovered film simulations on TikTok, and the retro aesthetic went viral. China alone accounts for massive demand, with 20–39 year olds making up over 40% of the market.</p>
+
+                <p>The broader trend is a film photography revival. #FilmCamera and #DisposableCamera hashtags generate hundreds of millions of views. Young photographers are deliberately choosing imperfection—grain, color shifts, limited exposures—as a rebellion against AI-polished smartphone imagery. Film labs report processing backlogs as Gen Z floods them with disposable cameras.</p>
+
+                <p>The industry is responding. Pentax announced new 35mm film cameras. <a href="https://www.polaroid.com">Polaroid</a> and Fujifilm Instax continue double-digit growth. Fujifilm announced massive capital investment in Instax production, with new lines coming online by fall 2026—the behavior of a company that sees instant film as a permanent, high-margin category.</p>
+
+                <div class="callout">
+                    <p><strong>The aesthetic shift:</strong> Film grain, flash-on snapshots, and VHS-style frames define the new retro wave. It's a backlash against AI-generated imagery—people want photos that feel imperfect and rooted in the real world. The irony: digital cameras selling best are the ones that simulate analog imperfection.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Technology Horizon -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Tech Horizon: Global Shutter, AI, and Computational Photography</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.dailycameranews.com/2025/12/daisy-looks-ahead-mirrorless-cameras-2026-2028/">Daily Camera News</a></span>
+                <span class="section-date">Dec 2025</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://sony.com/electronics/interchangeable-lens-cameras/ilce-9m3">Sony A9 III</a> changed everything by putting a full-frame global shutter in a mainstream body. Global shutter captures the entire image simultaneously, eliminating rolling shutter distortion—a feat previously requiring cinema cameras costing five times more. Canon and Nikon are expected to follow by 2027-2028.</p>
+
+                <p>Stacked sensors represent the next frontier. Current dual-layer sensors separate pixel arrays from processing circuitry for faster readout. Sony is developing tri-sensor technology that promises expanded dynamic range, enhanced sensitivity, and improved efficiency. Combined with global shutter, these sensors could eliminate the compromises that have defined digital imaging for two decades.</p>
+
+                <p>AI has transformed autofocus from reactive to predictive. Modern systems anticipate motion by analyzing movement patterns, speed changes, and body posture—focusing where subjects will be, not where they were. Computational photography is entering serious territory: in-camera focus stacking, multi-frame blending, and AI-enhanced dynamic range without post-production.</p>
+
+                <div class="callout">
+                    <p><strong>Sony's AI vision:</strong> The upcoming A7 V reportedly includes an AI processing unit that assists with composition, exposure optimization, and even learning user preferences over time. Whether photographers want cameras that "think" for them remains to be seen—but the capability is coming regardless.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 6: 2026 Predictions -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">2026 Predictions: The Cameras to Watch</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://fstoppers.com/gear/most-anticipated-camera-releases-2026-what-will-see-721226">Fstoppers</a></span>
+                <span class="section-date">Jan 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The camera industry enters 2026 at a crossroads. Several long-awaited successors approach their release windows while others may never arrive.</p>
+
+                <p><strong>Canon EOS R7 Mark II:</strong> Canon's 2025 focused on full frame; 2026 looks like APS-C's year. Expect improved autofocus, better video specs, and potentially a global shutter introduction to the crop-sensor lineup.</p>
+
+                <p><strong>Nikon Z9 II:</strong> The Z9 turns four in 2026, placing it squarely in refresh territory. Nikon's acquisition of RED Digital Cinema suggests video-focused enhancements. Whether it arrives in time for the Milan-Cortina Olympics remains uncertain—if not announced by now, it's likely a post-Olympic release.</p>
+
+                <p><strong>Sony A7 V / A9 IV:</strong> Sony continues pushing global shutter downstream. The A7 V is expected to bring global shutter to the mainstream hybrid category, while A9 IV rumors suggest resolution improvements without sacrificing speed.</p>
+
+                <p><strong>Fujifilm:</strong> New fixed-lens medium format patents suggest another GFX compact may follow the GFX 100RF. The X-series likely sees X-T6 or X-Pro4 updates, continuing the film simulation excellence that drives their cult following.</p>
+
+                <div class="callout">
+                    <p><strong>The wildcard:</strong> Global shutter democratization is the biggest variable. If Sony, Canon, or Nikon can deliver global shutter at mainstream price points ($2,000–3,000), it fundamentally changes the market—eliminating rolling shutter artifacts that have plagued digital cameras since their inception.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The New Equilibrium</h2>
+            <p class="closing-text">Smartphones haven't killed the camera—they've killed the camera market that didn't need to exist. What remains is smaller but healthier: enthusiasts who want creative control, professionals who need reliability, and a Gen Z cohort rediscovering the joy of intentional image-making. Full frame wins on specs, APS-C wins on value and virality, and medium format wins on pure quality. Global shutter will democratize; AI will assist; film simulation will sell. The camera industry isn't dying—it's finally figuring out what it's for.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

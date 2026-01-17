@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Decisive Moment — January 16, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Street photography palette - high contrast, urban sophistication */
+            --bg: #FDFBF7;
+            --bg-alt: #F0F2F4;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #2C3E50;
+            --accent-soft: rgba(44, 62, 80, 0.12);
+            --accent-hover: #1A252F;
+            --border: #D8E2E8;
+            --border-strong: #B8C6D0;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0D1117;
+                --bg-alt: #161B22;
+                --text: #F0F2F4;
+                --text-secondary: #8B949E;
+                --accent: #58A6FF;
+                --accent-soft: rgba(88, 166, 255, 0.15);
+                --accent-hover: #79B8FF;
+                --border: #21262D;
+                --border-strong: #30363D;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The Decisive Moment</a>
+            <time class="newsletter-date">January 16, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Street Photography</span>
+            <h1 class="hero-title">New Glass, Old Arguments, and the Rangefinder's Revival</h1>
+            <p class="hero-subtitle">This week brought camera rumors that actually matter, a major grant for emerging photographers, and a viral confrontation that's forcing the community to reckon with its uneasy relationship with consent.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-street-shadows.jpg" alt="Dramatic black and white street scene with geometric shadows and a solitary figure">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Fujifilm Finally Admits the X-Pro4 Exists</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.fujirumors.com/">FujiRumors</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>For three years, <a href="https://fujifilm-x.com/">Fujifilm</a> has treated the X-Pro line like an embarrassing relative at a family dinner—acknowledged but never discussed. That changed this week when General Manager Toshihisa Iida, speaking at an X-Summit warmup event in Tokyo, confirmed what the faithful have been waiting to hear: the X-Pro4 is officially in development.</p>
+
+                <div class="section-image">
+                    <img src="images/xpro-cafe-tokyo.jpg" alt="Fujifilm X-Pro camera on a cafe table in warm afternoon light">
+                </div>
+
+                <p>"The soul of street photography is something we hold dear," Iida said, in the kind of language that makes marketing teams nervous and photographers' hearts race. "The X-Pro series embodies that, and its story is not over."</p>
+
+                <p>No specs, no timeline—just validation. And that's enough. The X-Pro series occupies a peculiar niche: rangefinder-style bodies beloved by street shooters who want <a href="https://www.leica-camera.com/">Leica</a> vibes without Leica prices. Fujifilm's silence had many wondering if the company was abandoning that segment for more profitable video-oriented hybrids. This announcement suggests otherwise. Expect the rumor mill to go into overdrive. Watch for sensor announcements in Q2.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Magnum and Bruce Gilden Put $20K Behind "Raw, Unapologetic Voices"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.magnumphotos.com/">Magnum Photos</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The world's most prestigious photo agency just put its money where its reputation is. <a href="https://www.magnumphotos.com/">Magnum Photos</a>, partnering with the <a href="https://www.brucegilden.com/">Bruce Gilden</a> Foundation, announced the "Streetwise" grant: $10,000 each for two emerging street photographers from underrepresented backgrounds, plus mentorship from a Magnum member and a feature on the agency's website.</p>
+
+                <p>Gilden, never one to sugarcoat, laid out the criteria bluntly: "We're looking for raw, unapologetic voices that challenge our perception of the street. This isn't about pretty pictures; it's about guts and a point of view."</p>
+
+                <p>The cynical read: Magnum needs fresh blood and diverse perspectives to stay relevant. The generous read: this is exactly how institutions should use their cultural capital—to amplify voices that struggle to break through. Both can be true. Applications require 20 images and a project proposal, open through March 31. If you've been shooting in the margins, this is your shot at the center.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">"Reclaim the Streets" Opens in Chelsea—and Includes a Mobile Shooter</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.howardgreenberg.com/">Howard Greenberg Gallery</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.howardgreenberg.com/">Howard Greenberg Gallery</a>—the New York institution that's been championing street photography since before it was an Instagram aesthetic—opened "Reclaim the Streets" this week, featuring 20 contemporary photographers documenting the post-pandemic urban condition.</p>
+
+                <p>Gallery owner Howard Greenberg frames the thesis: "The street is a barometer for society. After a period of quiet, these images show our cities roaring back to life with all of their beautiful, chaotic energy."</p>
+
+                <p>The real headline? <a href="https://www.shinnoguchiphotography.com/">Shin Noguchi</a>, a mobile photographer shooting exclusively on iPhone, made the cut—the gallery's first acquisition from someone working without a "proper" camera. Whether that's a validation of smartphone photography's artistic maturity or a savvy acknowledgment that the tool matters less than the eye behind it, the inclusion signals where the genre is headed. The show runs through March; if you're in New York, it's worth the trip to 41 East 57th Street.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Alan Schaller's "London Unseen" Proves Black and White Still Hits</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.hoxtonminipress.com/">Hoxton Mini Press</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.alanschaller.com/">Alan Schaller</a> has 1.2 million Instagram followers, but his second monograph with <a href="https://www.hoxtonminipress.com/">Hoxton Mini Press</a> reminds you why the printed page still matters. "London Unseen" collects 120 previously unpublished images shot over five years—the quiet moments, abstract geometries, and human-light interplay that don't always perform well on a phone screen but reward sustained attention.</p>
+
+                <p>In an era of film simulation presets and AI-generated "street photography," Schaller's commitment to high-contrast black and white feels almost contrarian. No color grading trends to chase. No algorithmic feeds to game. Just light, shadow, and the occasional figure passing through.</p>
+
+                <p>The special edition includes a signed print. It's already selling out. If you've ever wondered whether photobooks can compete with scrolling, the answer from collectors appears to be yes—when the work earns it.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Ricoh's GR IV "Diary Edition" Leans Into the Aesthetic</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.ricoh-imaging.com/">Ricoh Imaging</a></span>
+                <span class="section-date">January 11, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.ricoh-imaging.com/">Ricoh</a> announced a special "Diary Edition" of the still-unreleased GR IV, featuring a warm metallic gray body and a new in-camera profile called "Negative Film"—designed to emulate the look of 90s color negative stock.</p>
+
+                <p>The company's press release reads like a love letter to the everyday shooter: "Photography is a daily record. This edition is for those who treat their camera like a journal, capturing the poetry of the everyday."</p>
+
+                <p>Marketing poetry aside, the GR series remains the default pocket camera for street photographers who want APS-C quality without the bulk. The new 26MP sensor and improved autofocus address the GR III's main weaknesses; the "Negative Film" simulation goes directly for the Kodak Portra nostalgia that currently dominates visual culture. Ricoh knows its audience. The question is whether they can actually deliver enough units—GR models have a history of perpetual backorder status.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">A Viral Confrontation Reopens the Consent Debate</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://petapixel.com/">PetaPixel</a></span>
+                <span class="section-date">January 10, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>A video from Le Marais, Paris: a street photographer gets confronted aggressively by someone they've just photographed. Five million views on TikTok. Heated arguments across every photography forum. The eternal question resurfaces: when does documenting public life become intrusion?</p>
+
+                <p>French legal experts have weighed in, clarifying the country's strict "droit à l'image" (right to one's image) laws—stricter than the US or UK, where photographers generally have more latitude to shoot in public spaces. The photographer appears to have been within their legal rights. But legality and ethics aren't the same thing.</p>
+
+                <p>This debate has been with street photography since Garry Winogrand was working Midtown. It won't be resolved by a viral video. But the clip does serve as a reminder: the social contract around photographing strangers is being renegotiated in real time. Younger generations raised on consent culture see cameras differently than those who grew up with Magnum's golden age. Street photographers who want to keep shooting need to grapple with this shift—not just defend the legal status quo. What's your read?</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Until Next Week</h2>
+            <p class="closing-text">Keep your eyes open and your aperture ready. The street doesn't wait.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The Decisive Moment</span>
+        </div>
+    </footer>
+</body>
+</html>

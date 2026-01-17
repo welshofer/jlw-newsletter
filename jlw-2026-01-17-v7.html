@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The King's Digital Court: Elvis at 11 Billion Streams — January 17, 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - gold/purple for Elvis theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #D4AF37;
+            --accent-soft: rgba(212, 175, 55, 0.15);
+            --accent-hover: #B8960F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --highlight: #5B2C6F;
+
+            /* Topic pill colors */
+            --tag-culture: #F59E0B;
+            --tag-culture-bg: rgba(245, 158, 11, 0.12);
+            --tag-tech: #0D6E8A;
+            --tag-tech-bg: rgba(13, 110, 138, 0.12);
+            --tag-markets: #059669;
+            --tag-markets-bg: rgba(5, 150, 105, 0.12);
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E8C252;
+                --accent-soft: rgba(232, 194, 82, 0.18);
+                --accent-hover: #F5D56A;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --highlight: #9B59B6;
+
+                --tag-culture-bg: rgba(245, 158, 11, 0.25);
+                --tag-tech-bg: rgba(13, 110, 138, 0.25);
+                --tag-markets-bg: rgba(5, 150, 105, 0.25);
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .pill {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 500;
+            padding: 0.3em 0.7em;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: transform 0.15s ease;
+        }
+
+        .pill:hover { transform: translateY(-1px); }
+
+        .pill[data-tag="culture"] { background: var(--tag-culture-bg); color: var(--tag-culture); }
+        .pill[data-tag="tech"] { background: var(--tag-tech-bg); color: var(--tag-tech); }
+        .pill[data-tag="markets"] { background: var(--tag-markets-bg); color: var(--tag-markets); }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:last-child { border-bottom: none; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover { border-color: var(--accent); }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child { margin-bottom: 0; }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+        }
+
+        .section-body a:hover { text-decoration-color: var(--accent); }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p { margin: 0; font-size: 0.95rem; }
+
+        .chart {
+            margin: var(--space-md) 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            line-height: 1.5;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .section { padding: var(--space-lg) 0; }
+            .section-title { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Weekly</a>
+            <time class="newsletter-date">January 17, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Cultural Resurgence</span>
+            <div class="hero-pills">
+                <a href="index.html#culture" class="pill" data-tag="culture">Culture</a>
+                <a href="index.html#tech" class="pill" data-tag="tech">Tech</a>
+                <a href="index.html#markets" class="pill" data-tag="markets">Markets</a>
+            </div>
+            <h1 class="hero-title">The King's Digital Court: Elvis at 11 Billion Streams</h1>
+            <p class="hero-subtitle">Nearly fifty years after his death, Elvis Presley isn't just surviving in the streaming era—he's thriving. A new documentary, AI plans for Graceland, and 3.76 million daily plays reveal an artist whose relevance refuses to fade.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-elvis-resurgence.png" alt="Abstract editorial illustration celebrating Elvis Presley's enduring cultural legacy with geometric patterns suggesting vinyl records and streaming waves">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Viral Tribute -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">A Filipino Singer Just Proved Elvis Is Still the Benchmark</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.abs-cbn.com/entertainment/2026/01/17/jason-dy-transforms-into-elvis-presley">ABS-CBN News</a></span>
+                <span class="section-date">January 17, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>When <a href="https://www.abs-cbn.com">ABS-CBN's</a> "Your Face Sounds Familiar" needed a showstopper, they didn't reach for a contemporary pop star. Singer Jason Dy underwent hours of prosthetic application to transform into 1970s-era Elvis, complete with the iconic jumpsuit and sideburns.</p>
+
+                <p>The performance trended across Filipino social media—not as nostalgia, but as spectacle. In 2026, "doing Elvis" still means one thing: going all out. The full production, the commitment, the unapologetic showmanship. No half measures.</p>
+
+                <p><strong>What this reveals:</strong> Elvis has transcended the category of "legacy artist." He's become a performance archetype—the template for maximum effort entertainment. When a show wants to signal "this is serious," they reach for the King.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: 11 Billion Streams -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">11 Billion Streams: Elvis Outpaces the Algorithm</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://kworb.net/spotify/artist/43ZHCT0cAZBISjO8DG9PnE.html">Kworb / Spotify Data</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Elvis Presley crossed 11.19 billion total Spotify streams this week—a milestone that puts him in rarefied company among artists of any era. More remarkable: he's averaging 3.76 million streams <em>per day</em> in mid-January, well after the holiday spike has faded.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-elvis-streaming.png" alt="Bar chart showing Elvis Presley's Spotify streaming growth from 4.2 billion in 2020 to 11.2 billion in January 2026">
+                    <figcaption>Elvis's streaming numbers have nearly tripled since 2020, with acceleration during and after the Baz Luhrmann biopic</figcaption>
+                </figure>
+
+                <p>To put this in context: Elvis died in 1977. Spotify launched in 2008. The man never knew streaming existed, yet he's competing directly with artists who build careers around playlist placement and algorithmic optimization.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-elvis-daily-streams.png" alt="Line chart showing Elvis daily streams from holiday spike of 6.8 million settling to steady state of 3.76 million per day">
+                    <figcaption>The holiday listening surge fades, but Elvis maintains nearly 4 million daily streams—a floor, not a ceiling</figcaption>
+                </figure>
+
+                <div class="callout">
+                    <p><strong>The business math:</strong> At roughly $0.003-0.004 per stream, 3.76 million daily plays generates $11,000-15,000 per day in streaming revenue alone—over $4 million annually from Spotify, before considering Apple Music, YouTube, and physical/licensing revenue.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Christmas Album -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Evergreen Engine: Why Elvis Owns December</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.forbes.com/sites/hughmcintyre/2026/01/13/elvis-presley-streaming-chart-peak">Forbes</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>"Elvis's Christmas Album" hit a new peak of No. 20 on the Top Streaming Albums chart this month—68 years after its original 1957 release. This wasn't a one-week holiday novelty; it's a pattern that repeats every winter.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-elvis-monthly-listeners.png" alt="Horizontal bar chart comparing monthly Spotify listeners for legacy artists including Elvis at 45 million">
+                    <figcaption>Elvis maintains 45 million monthly listeners, competitive with other legacy superstars like The Beatles and Michael Jackson</figcaption>
+                </figure>
+
+                <p>The estate has optimized this brilliantly. "Blue Christmas" and "Can't Help Falling in Love" appear on seemingly every holiday playlist. The catalog generates predictable, massive revenue spikes every Q4—a seasonal asset that rivals retail companies.</p>
+
+                <p><strong>Why it matters:</strong> Elvis's music has become infrastructure. Like Mariah Carey's "All I Want for Christmas," certain Elvis tracks are no longer optional for the holiday season. They're expected, automated, inevitable.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Graceland AI -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Graceland's Bet: AI Elvis and the Future of Legacy</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.graceland.com">Graceland Holdings</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.graceland.com">Graceland Holdings</a> managing partner Joel Weinshanker outlined ambitious plans this week: using AI voice synthesis and potentially holographic technology to let visitors "interact" with Elvis.</p>
+
+                <p>The initial focus? Elvis's faith—letting fans explore his spiritual beliefs through conversations with an AI trained on his interviews, letters, and known statements. It's a careful entry point, avoiding the uncanny valley of performance reproduction while offering something genuinely new.</p>
+
+                <div class="callout">
+                    <p><strong>The strategic logic:</strong> Graceland needs to capture younger visitors who didn't grow up with Elvis. A static museum competes poorly with immersive digital experiences. AI interaction bridges the generational gap—you can't meet Elvis, but you might be able to talk to him.</p>
+                </div>
+
+                <p>The risks are obvious: AI Elvis saying something "un-Elvis" could be a PR disaster. But the estate is betting that controlled, themed interactions (faith, music philosophy) can extend the brand into the AI era without compromising authenticity.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Documentary -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Baz Luhrmann Returns With Lost Vegas Footage</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://parade.com/entertainment/elvis-presley-in-concert-documentary-baz-luhrmann">Parade</a></span>
+                <span class="section-date">January 11, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>"EPiC: Elvis Presley in Concert" premiered at Graceland during the annual birthday celebration, directed by <a href="https://en.wikipedia.org/wiki/Baz_Luhrmann">Baz Luhrmann</a>—who helmed the 2022 biopic that grossed $288 million and introduced Elvis to Gen Z audiences.</p>
+
+                <p>The documentary features previously unseen 16mm and 8mm footage from the Vegas residency years, remastered to modern standards. Early reviews highlight behind-the-scenes moments that showcase Elvis's humor and work ethic—countering the tragic decline narrative that often dominates discussions of his final years.</p>
+
+                <p><strong>The content strategy:</strong> The Elvis estate has learned from Disney and Marvel—you need a steady pipeline of new content to maintain cultural relevance. A major biopic in 2022, now a documentary in 2026, with AI experiences coming next. It's IP management applied to a single artist.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Anniversaries -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">53 Years Later, "Aloha From Hawaii" Still Matters</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.forbes.com/sites/travel/memphis-music-history-2026">Forbes / PressBee</a></span>
+                <span class="section-date">January 17, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Media outlets published retrospectives this week marking the anniversary of Elvis's January 14, 1973 "Aloha From Hawaii" concert—the first entertainment special to be broadcast live via satellite to a global audience, watched by an estimated 1 billion people.</p>
+
+                <p>The numbers still stagger: more viewers than the Apollo moon landings. The "American Eagle" jumpsuit from that night became perhaps the most iconic garment in rock history. Elvis didn't just perform for the world—he proved it was possible.</p>
+
+                <p>Memphis is also marking the 90th anniversary of Overton Park Shell, where Elvis gave his first major public performance in 1954. The city is positioning 2026 as a year of significant musical anniversaries, with tourism campaigns built around Elvis's origin story.</p>
+
+                <div class="callout">
+                    <p><strong>The enduring appeal:</strong> Elvis was the original global superstar—before MTV, before the internet, before social media. His story is the template that every subsequent megastar has followed. Understanding Elvis means understanding how modern celebrity works.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The King Abides</h2>
+            <p class="closing-text">Forty-nine years after his death, Elvis Presley isn't merely preserved in amber. He's actively managed, strategically extended, and algorithmically distributed. The estate has turned a 20th-century icon into a 21st-century content engine. The question isn't whether Elvis remains relevant—it's whether any artist will ever achieve this level of posthumous vitality again.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Weekly</span>
+        </div>
+    </footer>
+</body>
+</html>

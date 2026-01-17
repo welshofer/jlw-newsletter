@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy, Chips, and Gold: The Week That Defined 2026 — January 17, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for economic/forecasting theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #095A72;
+            --border: #D8E2E8;
+            --border-strong: #B8C8D0;
+            --alert: #B85C38;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #2BA3C6;
+                --accent-soft: rgba(43, 163, 198, 0.15);
+                --accent-hover: #3BB8DC;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --alert: #E07B52;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .callout.alert {
+            border-left-color: var(--alert);
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Weekly</a>
+            <time class="newsletter-date">January 17, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">US Economic Outlook</span>
+            <h1 class="hero-title">Policy, Chips, and Gold: The Week That Defined 2026</h1>
+            <p class="hero-subtitle">Semiconductors surge, safe havens soar, and Washington's policy gambits reshape the economic landscape. A week of crosscurrents that reveals where the economy is really headed.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-economy-2026.png" alt="Abstract illustration of US economy 2026 featuring gold bars, semiconductor chips, and oil barrels in a dynamic composition">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: TSMC Earnings -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">AI Chips Are the New Oil—And TSMC Just Proved It</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nasdaq.com/articles/tsmc-earnings-q4-2025">Nasdaq</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>While Washington debates tariffs and the Fed wrestles with inflation, <a href="https://www.tsmc.com">Taiwan Semiconductor Manufacturing Co.</a> just reminded everyone what's actually driving this economy. A 35% jump in quarterly profit doesn't happen by accident—it happens when every major tech company on earth is scrambling to secure capacity for AI workloads.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-tsmc-profit.png" alt="Chart showing TSMC quarterly profit surge with Q4 2025 at $10.9B, up 35% year-over-year">
+                    <figcaption>TSMC's Q4 2025 profit surge reflects insatiable AI chip demand</figcaption>
+                </figure>
+
+                <p>The ripple effect was immediate: <a href="https://www.nvidia.com">Nvidia</a> and <a href="https://www.amd.com">AMD</a> rallied hard, pulling the entire semiconductor index with them. This single earnings report recovered most of the mid-week market losses caused by inflation jitters and Fed uncertainty.</p>
+
+                <p><strong>The bigger picture:</strong> The US economy in 2026 is increasingly bifurcated. The tech sector—particularly anything touching AI infrastructure—operates in a different gravitational field than traditional banking, retail, or manufacturing. This divergence will only accelerate.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Oil Prices -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Oil Drops 5% as Trump Signals Iran Thaw</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.bnnbloomberg.ca/commodities/oil-prices-jan-15-2026">BNN Bloomberg</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>In a week dominated by inflationary pressure stories, energy markets delivered an unexpected gift: crude prices sank roughly 5% on Thursday after the administration hinted at de-escalating tensions with Iran.</p>
+
+                <p>The timing couldn't be better. With December inflation data coming in "middle-of-the-road" and the Fed stuck in a holding pattern, lower oil prices act as a stealth tax cut for American consumers. Every dollar not spent at the pump is a dollar that flows elsewhere in the economy.</p>
+
+                <div class="callout">
+                    <p><strong>Watch this space:</strong> If Iran de-escalation holds, it provides the Fed cover to stay patient on rates while letting energy deflation do some of the work. If tensions flare again, all bets are off.</p>
+                </div>
+
+                <p>The counterbalancing dynamic is notable: new tariff threats on Europe (more below) would push prices up on imported goods, while easing geopolitical risk pulls energy costs down. The net effect on household budgets depends entirely on which force wins.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Inflation Data -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">December CPI: Not Cold Enough to Cut</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.investopedia.com/economic-calendar-jan-2026">Investopedia</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The December 2025 inflation print landed squarely in the "meh" zone—not hot enough to trigger panic, not cool enough to give the Fed a green light for rate cuts. Markets, hoping for unambiguous good news, sold off on Tuesday.</p>
+
+                <p>Here's what the data actually tells us: inflation remains sticky in services, energy costs are moderating but volatile, and the Fed's 2% target still feels distant. <a href="https://www.federalreserve.gov">Chair Powell</a> will likely hold steady at the January 27-28 meeting, keeping the fed funds rate unchanged and disappointing those betting on early 2026 cuts.</p>
+
+                <p><strong>Why it matters for 2026:</strong> The "higher for longer" narrative isn't dead—it's just on pause. Businesses and consumers planning for the year ahead should assume borrowing costs stay elevated through at least Q2. Mortgage rates, credit card APRs, and business loans won't get cheaper anytime soon.</p>
+
+                <p>The irony? Sticky inflation is partly a sign of economic resilience. The labor market remains tight, wages are still growing, and consumers keep spending. It's a good problem to have—unless you're trying to refinance your home.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: JPMorgan Earnings -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">JPMorgan's $2.2B Apple Card Reserve Says More Than the Headlines</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.jpmorganchase.com/ir/quarterly-earnings">JPMorgan Chase</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.jpmorganchase.com">JPMorgan's</a> Q4 numbers look great on the surface: $13 billion in net income, $46.8 billion in revenue (up 7% YoY), and another quarter proving why Jamie Dimon runs the most profitable bank in America.</p>
+
+                <p>But buried in the details is a $2.2 billion credit reserve set aside specifically for the <a href="https://www.apple.com/apple-card/">Apple Card</a> portfolio they acquired from <a href="https://www.goldmansachs.com">Goldman Sachs</a>. That's not a routine accounting entry—that's JPMorgan telling the world they expect a meaningful chunk of Apple Card holders to default.</p>
+
+                <div class="callout alert">
+                    <p><strong>Credit risk signal:</strong> When the largest bank in America sets aside $2.2B against consumer credit losses, pay attention. This suggests the consumer resilience story may be fraying at the edges, particularly among younger cardholders who dominate the Apple Card user base.</p>
+                </div>
+
+                <p>Dimon himself flagged "inflation risks" and warned that the proposed 10% credit card interest rate cap would create chaos in consumer lending markets. The banking sector's mood: cautiously profitable, but bracing for turbulence.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Gold Record -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Gold Hits $4,600—Flight to Safety in Real Time</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.investopedia.com/gold-price-record-jan-2026">Kitco / Investopedia</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>For the first time in history, gold futures topped $4,600 per ounce. Silver followed with its own record. This isn't just metals traders having a good week—it's a referendum on policy uncertainty.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-gold-price.png" alt="Gold price chart showing surge from $2,050 in January 2024 to record $4,600 in January 2026">
+                    <figcaption>Gold's two-year surge reflects growing investor anxiety over policy and Fed independence</figcaption>
+                </figure>
+
+                <p>The drivers are stacking up: the DOJ reportedly probing Fed Chair Powell (more uncertainty), aggressive tariff threats on allies (trade war fears), and a credit card interest cap proposal that spooked bank stocks. When investors can't figure out where policy is headed, they park money in the one asset that doesn't depend on any government's decisions.</p>
+
+                <p><strong>What gold is telling us:</strong> The price of bullion is inversely correlated with trust in institutions. At $4,600, the market is saying: we don't know what Washington will do next, and we're not willing to bet our portfolios on finding out.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Tariffs -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">25% Tariffs on Europe? The Greenland Gambit Escalates</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.theguardian.com/world/2026/jan/10/trump-tariffs-europe-greenland">The Guardian</a></span>
+                <span class="section-date">January 10, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The week opened with a bang: President Trump threatened 25% tariffs on eight European nations—Denmark, Norway, Sweden, France, Germany, UK, Netherlands, and Finland—unless Denmark agrees to sell Greenland to the United States.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-tariff-timeline.png" alt="Timeline showing proposed tariff escalation from 10% on February 1 to 25% by June 1, 2026">
+                    <figcaption>The tariff escalation timeline: 10% starting February 1, rising to 25% by June if demands aren't met</figcaption>
+                </figure>
+
+                <p>The mechanics: a 10% tariff begins February 1st, escalating to 25% by June 1st if Denmark refuses. The practical impact on supply chains would be severe—European goods from machinery to pharmaceuticals to luxury items would become substantially more expensive for American buyers.</p>
+
+                <p>Analysts are split on whether this is genuine policy or negotiating theater. But markets don't care about intent—they care about probability-weighted outcomes. And even a 30% chance of 25% tariffs on your largest trading partner is enough to reshape inventory decisions and pricing strategies today.</p>
+
+                <p><strong>The 2026 outlook:</strong> Trade policy uncertainty is now a structural feature of the economic landscape, not a one-time shock. Businesses should assume volatility, build in pricing flexibility, and consider the tariff risk premium on any cross-border supply chain.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Week Ahead</h2>
+            <p class="closing-text">The Fed meets January 27-28—expect a hold on rates but intense focus on the post-meeting statement for hints about H1 2026 policy direction. Meanwhile, watch European responses to tariff threats and whether the Iran de-escalation rhetoric translates to action. The divergence between tech's AI boom and traditional sectors' struggles will only sharpen. Position accordingly.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Weekly</span>
+        </div>
+    </footer>
+</body>
+</html>

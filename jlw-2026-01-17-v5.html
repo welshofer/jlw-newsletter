@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Decisive Moment, Threatened — January 17, 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body {
+            margin: 0; padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400; line-height: 1.7;
+            color: var(--text); background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem; font-weight: 600;
+            color: var(--text); text-decoration: none;
+        }
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem; font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700; line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0; transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:last-child { border-bottom: none; }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem; font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem; font-weight: 600;
+            line-height: 1.3; margin: 0 0 var(--space-sm);
+        }
+        .section-meta {
+            display: flex; gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .section-source a:hover { border-color: var(--accent); }
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+        .section-date::before { content: "•"; margin: 0 0.5em; }
+        .section-body p { margin: 0 0 var(--space-sm); }
+        .section-body p:last-child { margin-bottom: 0; }
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+        }
+        .section-body ul { margin: var(--space-sm) 0; padding-left: 1.5em; }
+        .section-body li { margin-bottom: 0.3em; }
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .chart { margin: var(--space-md) 0; }
+        .chart img {
+            width: 100%; height: auto; display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            line-height: 1.5;
+        }
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem; font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem; font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .hero-title { font-size: 1.9rem; }
+            .section-title { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 17, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Street Photography</span>
+            <h1 class="hero-title">The Decisive Moment, Threatened</h1>
+            <p class="hero-subtitle">AI deepfakes force a reckoning, Ricoh goes monochrome, and the street photography community grapples with what it means to point a camera at strangers in 2026.</p>
+            <div class="hero-image">
+                <img src="images/hero-street-photography.webp" alt="Atmospheric black and white street scene with lone figure on rain-slicked pavement">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">ICP's "Hard Copy" Show Asks: Is the Physical City Still Real?</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://dazeddigital.com/">Dazed Digital</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.icp.org/">International Center of Photography</a> announced "Hard Copy New York," a major retrospective opening January 29th that places <a href="https://en.wikipedia.org/wiki/Eug%C3%A8ne_Atget">Eugène Atget's</a> turn-of-the-century Paris documentation alongside contemporary NYC street work. The show's premise is provocative: can photography still be trusted to show us the physical world?</p>
+
+                <p>The timing is deliberate. As AI-generated imagery floods social media, ICP is mounting a defense of the camera as witness. The curatorial statement describes "a dialogue between the asphalt and the algorithm"—positioning street photography not as nostalgia, but as essential counter-programming to synthetic reality.</p>
+
+                <p>For working street photographers, this institutional validation matters. It signals that the genre isn't dying; it's becoming more important precisely because everything else is becoming fake.</p>
+            </div>
+        </article>
+
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Grok Scandal: AI Turns Street Portraits Into a Liability</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://theguardian.com/">The Guardian</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>This is the existential crisis nobody wanted. <a href="https://x.ai/">Elon Musk's Grok AI</a> was caught enabling users to generate non-consensual nude imagery from ordinary photos—including street portraits. UK and EU regulators launched immediate investigations, but the damage to street photography's social contract may be permanent.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ai-sentiment.png" alt="Line chart showing 400% spike in negative AI sentiment after Grok scandal">
+                    <figcaption>Anti-AI sentiment on photography platforms spiked 400% following the Grok revelation.</figcaption>
+                </figure>
+
+                <p>The response has been swift and alarming. Photographers report deleting years of public-facing street portrait archives. The unspoken agreement that made street photography possible—"I photograph you, you become part of the human record"—now carries unacceptable risk for subjects.</p>
+
+                <div class="callout">
+                    <p><strong>The stakes:</strong> "Street photography is becoming a battleground for privacy rights," one photographer told The Guardian. When posting a candid portrait means potentially enabling its weaponization, the entire genre faces a fundamental rethinking.</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Ricoh Announces GR IV Monochrome: The Purist's Camera</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://camerajabber.com/">Camera Jabber</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.ricoh-imaging.co.jp/english/">Ricoh</a> officially confirmed what street photographers had been praying for: the GR IV Monochrome. A dedicated black-and-white camera with an APS-C monochrome sensor, 28mm f/2.8 lens, and the signature "Snap Focus" system that made the GR series the default pocket camera for serious street work.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-camera-demand.png" alt="Bar chart showing compact camera demand outstripping supply 3:1">
+                    <figcaption>Pre-orders for compact "invisible cameras" are outstripping supply by 3:1 across the market.</figcaption>
+                </figure>
+
+                <p>The announcement reflects a broader shift. In an era when computational photography promises infinite flexibility, Ricoh is betting on <em>constraint</em> as a feature. No color means no distraction—just light and composition. The magnesium alloy body is unchanged; what's new is the deliberate limitation.</p>
+
+                <p>Pricing and release date remain unannounced, but given the 3:1 demand-to-supply ratio plaguing the compact camera market, expect waitlists measured in months, not weeks.</p>
+            </div>
+        </article>
+
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Sartorialist's "One Lens" Legacy Sparks Gear Minimalism Debate</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://digitalcameraworld.com/">Digital Camera World</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>A feature analyzing <a href="https://www.thesartorialist.com/">Scott Schuman's</a> two-decade career reignited the eternal street photography gear debate. Schuman famously shot with a single prime lens for years, developing what the article calls "consistency as currency"—a signature visual rhythm that made his work instantly recognizable.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-used-prices.png" alt="Horizontal bar chart showing used camera price increases up to 15%">
+                    <figcaption>Used prices for "pure photography" cameras have surged as photographers flee computational complexity.</figcaption>
+                </figure>
+
+                <p>The online response was predictably polarized. Minimalists celebrated validation; zoom defenders called it gatekeeping. But the data tells a story: used prices for cameras like the <a href="https://fujifilm-x.com/products/cameras/x-pro3/">Fujifilm X-Pro 3</a> and <a href="https://leica-camera.com/en-US/photography/cameras/q">Leica Q2</a> have jumped 15% in a month as photographers seek "pure" tools unburdened by computational baggage.</p>
+
+                <p>The underlying question isn't about focal lengths—it's about creative process. Does endless optionality improve work, or does it just produce more forgettable images faster?</p>
+            </div>
+        </article>
+
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">"Street Life" Winners Revealed: The Quiet Revolution</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://moments-collective.com/">Moments Collective</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The International "Street Life" competition announced its 2026 winners, with a physical exhibition opening January 23rd at iFocus Gallery in Athens. The curatorial direction signals where the genre is heading: away from flash-and-confrontation toward what the organizers describe as "quiet streets" and "unscripted moments."</p>
+
+                <p>This isn't a rejection of energy—it's a rejection of aggression. The winning images emphasize observation over intrusion, documentary patience over ambush aesthetics. In a post-Grok world where subjects are increasingly hostile to being photographed, this gentler approach may be both ethical necessity and survival strategy.</p>
+
+                <p>For photographers still refining their vision, the message is clear: the future of street photography may be won by those who can disappear into the scene rather than dominate it.</p>
+            </div>
+        </article>
+
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Street Photography Magazine: Harvey Stein and the Human Face</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://streetphotographymagazine.com/">Street Photography Magazine</a></span>
+                <span class="section-date">January 11, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The January 2026 issue dropped with features on Markus Bolliger and <a href="https://harveystein.net/">Harvey Stein</a>, the latter a deliberate throwback at a moment when street portraiture faces its deepest crisis. Stein's work—intimate, consent-negotiated, deeply humanist—offers a model for how the genre might adapt.</p>
+
+                <p>The accompanying technical deep-dive on managing highlights in high-contrast urban settings is quietly essential. As cameras get better at computational HDR, the article argues for <em>embracing</em> harsh contrast rather than flattening it—letting shadows go black, letting highlights blow, finding the graphic power in imperfect exposure.</p>
+
+                <p>It's a fitting metaphor for the moment: street photography can't control what AI does to its images, but it can double down on what makes the work authentic in the first place.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The View From Here</h2>
+            <p class="closing-text">Street photography has always operated on borrowed trust—strangers tolerating our presence in exchange for being seen as part of something larger than themselves. The Grok scandal didn't create the privacy crisis; it just made the stakes undeniable. What happens next will determine whether pointing a camera at the street remains an act of witnessing or becomes an act of extraction. The decisive moment, it turns out, might be this one.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

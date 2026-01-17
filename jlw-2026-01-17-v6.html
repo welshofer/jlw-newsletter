@@ -24,6 +24,18 @@
             --border-strong: #B8C8D0;
             --alert: #B85C38;
 
+            /* Topic pill colors */
+            --tag-ai: #7C3AED;
+            --tag-ai-bg: rgba(124, 58, 237, 0.12);
+            --tag-tech: #0D6E8A;
+            --tag-tech-bg: rgba(13, 110, 138, 0.12);
+            --tag-markets: #059669;
+            --tag-markets-bg: rgba(5, 150, 105, 0.12);
+            --tag-economy: #D97706;
+            --tag-economy-bg: rgba(217, 119, 6, 0.12);
+            --tag-policy: #DC2626;
+            --tag-policy-bg: rgba(220, 38, 38, 0.12);
+
             /* Typography scale */
             --font-display: 'Fraunces', Georgia, serif;
             --font-body: 'Source Sans 3', -apple-system, sans-serif;
@@ -55,6 +67,12 @@
                 --border: #2E2A25;
                 --border-strong: #3D3832;
                 --alert: #E07B52;
+
+                --tag-ai-bg: rgba(124, 58, 237, 0.25);
+                --tag-tech-bg: rgba(13, 110, 138, 0.25);
+                --tag-markets-bg: rgba(5, 150, 105, 0.25);
+                --tag-economy-bg: rgba(217, 119, 6, 0.25);
+                --tag-policy-bg: rgba(220, 38, 38, 0.25);
             }
         }
 
@@ -139,6 +157,38 @@
             border-radius: 2px;
             margin-bottom: var(--space-md);
         }
+
+        /* Topic pills */
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .pill {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 500;
+            padding: 0.3em 0.7em;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .pill:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .pill[data-tag="ai"] { background: var(--tag-ai-bg); color: var(--tag-ai); }
+        .pill[data-tag="tech"] { background: var(--tag-tech-bg); color: var(--tag-tech); }
+        .pill[data-tag="markets"] { background: var(--tag-markets-bg); color: var(--tag-markets); }
+        .pill[data-tag="economy"] { background: var(--tag-economy-bg); color: var(--tag-economy); }
+        .pill[data-tag="policy"] { background: var(--tag-policy-bg); color: var(--tag-policy); }
 
         .hero-title {
             font-family: var(--font-display);
@@ -491,6 +541,12 @@
     <section class="hero">
         <div class="hero-inner">
             <span class="hero-label">US Economic Outlook</span>
+            <div class="hero-pills">
+                <a href="index.html#economy" class="pill" data-tag="economy">Economy</a>
+                <a href="index.html#markets" class="pill" data-tag="markets">Markets</a>
+                <a href="index.html#policy" class="pill" data-tag="policy">Policy</a>
+                <a href="index.html#tech" class="pill" data-tag="tech">Tech</a>
+            </div>
             <h1 class="hero-title">Policy, Chips, and Gold: The Week That Defined 2026</h1>
             <p class="hero-subtitle">Semiconductors surge, safe havens soar, and Washington's policy gambits reshape the economic landscape. A week of crosscurrents that reveals where the economy is really headed.</p>
 

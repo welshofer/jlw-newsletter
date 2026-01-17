@@ -16,6 +16,29 @@
             --border: #E5E0D8;
             --font-display: 'Fraunces', Georgia, serif;
             --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Topic pill colors */
+            --tag-ai: #7C3AED;
+            --tag-ai-bg: rgba(124, 58, 237, 0.12);
+            --tag-tech: #0D6E8A;
+            --tag-tech-bg: rgba(13, 110, 138, 0.12);
+            --tag-markets: #059669;
+            --tag-markets-bg: rgba(5, 150, 105, 0.12);
+            --tag-economy: #D97706;
+            --tag-economy-bg: rgba(217, 119, 6, 0.12);
+            --tag-policy: #DC2626;
+            --tag-policy-bg: rgba(220, 38, 38, 0.12);
+            --tag-energy: #16A34A;
+            --tag-energy-bg: rgba(22, 163, 74, 0.12);
+            --tag-health: #EC4899;
+            --tag-health-bg: rgba(236, 72, 153, 0.12);
+            --tag-photo: #8B5CF6;
+            --tag-photo-bg: rgba(139, 92, 246, 0.12);
+            --tag-legal: #64748B;
+            --tag-legal-bg: rgba(100, 116, 139, 0.12);
+            --tag-culture: #F59E0B;
+            --tag-culture-bg: rgba(245, 158, 11, 0.12);
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -24,6 +47,17 @@
                 --text-secondary: #A69E93;
                 --accent: #E07B52;
                 --border: #2E2A25;
+
+                --tag-ai-bg: rgba(124, 58, 237, 0.25);
+                --tag-tech-bg: rgba(13, 110, 138, 0.25);
+                --tag-markets-bg: rgba(5, 150, 105, 0.25);
+                --tag-economy-bg: rgba(217, 119, 6, 0.25);
+                --tag-policy-bg: rgba(220, 38, 38, 0.25);
+                --tag-energy-bg: rgba(22, 163, 74, 0.25);
+                --tag-health-bg: rgba(236, 72, 153, 0.25);
+                --tag-photo-bg: rgba(139, 92, 246, 0.25);
+                --tag-legal-bg: rgba(100, 116, 139, 0.25);
+                --tag-culture-bg: rgba(245, 158, 11, 0.25);
             }
         }
         * { box-sizing: border-box; }
@@ -36,7 +70,7 @@
             line-height: 1.6;
         }
         .container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
         h1 {
@@ -47,11 +81,79 @@
         }
         .subtitle {
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
+
+        /* Filter bar */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .filter-btn {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.35em 0.8em;
+            border-radius: 3px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .filter-btn:hover {
+            border-color: var(--text-secondary);
+        }
+        .filter-btn.active {
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
+        }
+        .filter-btn[data-tag="all"].active {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Topic pills */
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+        .pill {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 500;
+            padding: 0.25em 0.6em;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .pill[data-tag="ai"] { background: var(--tag-ai-bg); color: var(--tag-ai); }
+        .pill[data-tag="tech"] { background: var(--tag-tech-bg); color: var(--tag-tech); }
+        .pill[data-tag="markets"] { background: var(--tag-markets-bg); color: var(--tag-markets); }
+        .pill[data-tag="economy"] { background: var(--tag-economy-bg); color: var(--tag-economy); }
+        .pill[data-tag="policy"] { background: var(--tag-policy-bg); color: var(--tag-policy); }
+        .pill[data-tag="energy"] { background: var(--tag-energy-bg); color: var(--tag-energy); }
+        .pill[data-tag="health"] { background: var(--tag-health-bg); color: var(--tag-health); }
+        .pill[data-tag="photo"] { background: var(--tag-photo-bg); color: var(--tag-photo); }
+        .pill[data-tag="legal"] { background: var(--tag-legal-bg); color: var(--tag-legal); }
+        .pill[data-tag="culture"] { background: var(--tag-culture-bg); color: var(--tag-culture); }
+
         .issue {
             padding: 1rem 0;
             border-bottom: 1px solid var(--border);
+            transition: opacity 0.2s ease;
+        }
+        .issue.hidden {
+            display: none;
         }
         .issue:last-child { border-bottom: none; }
         .issue a {
@@ -69,6 +171,17 @@
         .issue .topic {
             color: var(--text-secondary);
             margin-top: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .no-results {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            display: none;
+        }
+        .no-results.visible {
+            display: block;
         }
     </style>
 </head>
@@ -77,155 +190,338 @@
         <h1><a href="mailto:welshofer@gmail.com" style="color: inherit; text-decoration: none;">welshofer</a></h1>
         <p class="subtitle">Weekly deep dives on tech topics</p>
 
-        <div class="issue">
+        <div class="filter-bar">
+            <button class="filter-btn active" data-tag="all">All</button>
+            <button class="filter-btn" data-tag="ai">AI</button>
+            <button class="filter-btn" data-tag="tech">Tech</button>
+            <button class="filter-btn" data-tag="markets">Markets</button>
+            <button class="filter-btn" data-tag="economy">Economy</button>
+            <button class="filter-btn" data-tag="policy">Policy</button>
+            <button class="filter-btn" data-tag="energy">Energy</button>
+            <button class="filter-btn" data-tag="health">Health</button>
+            <button class="filter-btn" data-tag="photo">Photo</button>
+            <button class="filter-btn" data-tag="legal">Legal</button>
+            <button class="filter-btn" data-tag="culture">Culture</button>
+        </div>
+
+        <div class="no-results">No newsletters match this filter.</div>
+
+        <div class="issue" data-tags="economy markets policy tech">
             <a href="jlw-2026-01-17-v6.html">Policy, Chips, and Gold: The Week That Defined 2026</a>
             <div class="date">January 17, 2026</div>
             <div class="topic">US economic outlook: TSMC's 35% profit surge proves AI dominance, gold hits record $4,600, oil drops 5% on Iran thaw, sticky inflation delays Fed cuts, JPMorgan's $2.2B Apple Card reserve signals consumer strain, and 25% EU tariffs loom</div>
+            <div class="pills">
+                <span class="pill" data-tag="economy">Economy</span>
+                <span class="pill" data-tag="markets">Markets</span>
+                <span class="pill" data-tag="policy">Policy</span>
+                <span class="pill" data-tag="tech">Tech</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="photo ai tech">
             <a href="jlw-2026-01-17-v5.html">The Decisive Moment, Threatened</a>
             <div class="date">January 17, 2026</div>
             <div class="topic">Street photography this week: Grok AI deepfake scandal chills the genre, Ricoh GR IV Monochrome announced, ICP's "Hard Copy" show defends documentary truth, Sartorialist's one-lens philosophy sparks minimalism debate</div>
+            <div class="pills">
+                <span class="pill" data-tag="photo">Photo</span>
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="health">
             <a href="jlw-2026-01-17-v4.html">The Butterfly Effect: Hashimoto's Treatment Breakthroughs</a>
             <div class="date">January 17, 2026</div>
             <div class="topic">Hashimoto's treatment research: selenium meta-analysis confirms efficacy, weekly injection trials, stem cells target STING pathway, metformin repurposing, TRIUMPH trial for fatigue, and red light therapy gains evidence</div>
+            <div class="pills">
+                <span class="pill" data-tag="health">Health</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="tech ai energy">
             <a href="jlw-2026-01-17-v3.html">The Quarter That Changed Everything</a>
             <div class="date">January 17, 2026</div>
             <div class="topic">Tech industry quarterly: DeepSeek's price shock, Google's quantum breakthrough, CES 2025's agent pivot, OpenAI's o3, AMD's exascale crown, and Big Tech's nuclear future</div>
+            <div class="pills">
+                <span class="pill" data-tag="tech">Tech</span>
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="energy">Energy</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="markets economy policy">
             <a href="jlw-2026-01-17-v2.html">The Valuation Tightrope</a>
             <div class="date">January 17, 2026</div>
             <div class="topic">Stock market 2026: Wall Street's unanimous bull call, CAPE at 39 (second-highest ever), Magnificent 7 losing grip, the great sector rotation, and tariffs nobody's pricing</div>
+            <div class="pills">
+                <span class="pill" data-tag="markets">Markets</span>
+                <span class="pill" data-tag="economy">Economy</span>
+                <span class="pill" data-tag="policy">Policy</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai tech markets">
             <a href="jlw-2026-01-17.html">The Intelligence Escalator</a>
             <div class="date">January 17, 2026</div>
             <div class="topic">LLM performance this week: GPT-5.2 takes benchmark crown, Anthropic's $350B valuation, Google-Apple Gemini partnership, Meta's nuclear pivot, and DeepSeek closing the gap</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+                <span class="pill" data-tag="markets">Markets</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="energy policy">
             <a href="jlw-2026-01-16-v6.html">Electrons in Motion</a>
             <div class="date">January 16, 2026</div>
             <div class="topic">Renewable energy this week: NECEC hydropower live, 35% solar efficiency breakthrough, UK's £22B offshore wind commitment, courts clear stalled projects, and McKinsey's execution reality check</div>
+            <div class="pills">
+                <span class="pill" data-tag="energy">Energy</span>
+                <span class="pill" data-tag="policy">Policy</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="energy policy">
             <a href="jlw-2026-01-16-v5.html">The Grid Awakens</a>
             <div class="date">January 16, 2026</div>
             <div class="topic">Renewable energy this week: Quebec hydropower finally reaches New England, 35% solar efficiency breakthrough, UK's £22B offshore wind bet, and Puerto Rico's $300M setback</div>
+            <div class="pills">
+                <span class="pill" data-tag="energy">Energy</span>
+                <span class="pill" data-tag="policy">Policy</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="culture">
             <a href="jlw-2026-01-16-v4.html">The 19x19</a>
             <div class="date">January 16, 2026</div>
             <div class="topic">Professional Go this week: Nie Weiping passes at 73, Shin Min-joon claims LG Cup in historic Japan-Korea final, three generations of one family turn pro, and the 50th Kisei heads to Hawaii</div>
+            <div class="pills">
+                <span class="pill" data-tag="culture">Culture</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="photo tech">
             <a href="jlw-2026-01-16-v3.html">The Decisive Moment</a>
             <div class="date">January 16, 2026</div>
             <div class="topic">Street photography this week: Fujifilm confirms X-Pro4 development, Magnum's $20K emerging talent grant, Howard Greenberg's mobile-first acquisition, and a viral Paris confrontation reopens the consent debate</div>
+            <div class="pills">
+                <span class="pill" data-tag="photo">Photo</span>
+                <span class="pill" data-tag="tech">Tech</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="economy markets">
             <a href="jlw-2026-01-16-v2.html">The $2.8 Million Zip Code</a>
             <div class="date">January 16, 2026</div>
             <div class="topic">Cost of living in 94087: $2.8M median home prices, $157K salary floor for singles, A+ schools, and why dual tech incomes still struggle to make it work</div>
+            <div class="pills">
+                <span class="pill" data-tag="economy">Economy</span>
+                <span class="pill" data-tag="markets">Markets</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="legal ai tech">
             <a href="jlw-2026-01-16.html">The Document Revolution</a>
             <div class="date">January 16, 2026</div>
             <div class="topic">Legal documents in the AI era: record 9.7% tech spending, e-discovery commoditization, DOJ vs state regulators, and the UK ruling that makes AI prompts discoverable</div>
+            <div class="pills">
+                <span class="pill" data-tag="legal">Legal</span>
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai policy tech">
             <a href="jlw-2026-01-15-v13.html">The Arrival</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">AGI quest in 2026: Sequoia declares it's already here, ex-OpenAI researcher says 2031, three states pass frontier AI laws, $1.4B robotics bet, and the efficiency revolution changing the game</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="policy">Policy</span>
+                <span class="pill" data-tag="tech">Tech</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="energy economy">
             <a href="jlw-2026-01-15-v12.html">The Warning Shot</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">Climate research in crisis: 2025 as 3rd-hottest year, ocean heat records, ice sheet tipping points crossed, $224B in disaster costs, and the acceleration that scientists can't explain</div>
+            <div class="pills">
+                <span class="pill" data-tag="energy">Energy</span>
+                <span class="pill" data-tag="economy">Economy</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="photo tech markets">
             <a href="jlw-2026-01-15-v11.html">The Shutter Reckoning</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">Camera market in 2026: Canon's 43% dominance, the 94% smartphone apocalypse, Fujifilm's Gen Z miracle, global shutter revolution, and which sensor format actually wins</div>
+            <div class="pills">
+                <span class="pill" data-tag="photo">Photo</span>
+                <span class="pill" data-tag="tech">Tech</span>
+                <span class="pill" data-tag="markets">Markets</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="legal policy">
             <a href="jlw-2026-01-15-v10.html">The Compliance Maze</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">University bias response teams and DOJ guidance: Title VI enforcement, the "inclusive excellence" rebrand, First Amendment circuit split, and what compliance actually requires</div>
+            <div class="pills">
+                <span class="pill" data-tag="legal">Legal</span>
+                <span class="pill" data-tag="policy">Policy</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai tech markets">
             <a href="jlw-2026-01-15-v9.html">The Slide Wars</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">AI presentation tools in 2026: Gamma's $2.1B unicorn status, Tome's collapse, Microsoft's Agent Mode counter-attack, and the $4.79B market opportunity</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+                <span class="pill" data-tag="markets">Markets</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="markets economy">
             <a href="jlw-2026-01-15-v8.html">The Bull Case</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">US stock market predictions for 2026: Wall Street's unanimous bull call, Shiller PE at dot-com levels, Magnificent 7 stumbling, and the Fed's balancing act</div>
+            <div class="pills">
+                <span class="pill" data-tag="markets">Markets</span>
+                <span class="pill" data-tag="economy">Economy</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai tech">
             <a href="jlw-2026-01-15-v7.html">The Trajectory</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">LLM forecasts with data visualizations: 17 expert predictions, the AI 2027 AGI scenario, METR's doubling law chart, and Epoch AI's data exhaustion timeline</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai tech">
             <a href="jlw-2026-01-15-v6.html">The Trajectory (v6)</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">LLM forecasts: 17 expert predictions for 2026, the AI 2027 AGI scenario, METR's doubling law, and Epoch AI's data exhaustion timeline</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai health">
             <a href="jlw-2026-01-15-v5.html">The Atrophy Trade-Off</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">AI makes you faster—and maybe dumber. MIT brain scans, Harvard experts, Wharton research, and Microsoft's 319-worker study reach the same uncomfortable conclusion</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="health">Health</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai tech markets">
             <a href="jlw-2026-01-15-v4.html">The PM Pivot</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">AI transforms product management: 100% adoption rate, Marty Cagan's reality check, investor predictions on labor displacement, and the job market paradox</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+                <span class="pill" data-tag="markets">Markets</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai tech">
             <a href="jlw-2026-01-15-v3.html">Vibes Check</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">Linus Torvalds vibe codes, 167 engineers share their opinions, GitHub deprecates older AI models, and the quality debate gets data</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai tech markets">
             <a href="jlw-2026-01-15-v2.html">The Deck is Stacked</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">AI presentation tools race toward $4.79B: GenPPT's research-first approach, NotebookLM's free tier, and the "slop" problem</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+                <span class="pill" data-tag="markets">Markets</span>
+            </div>
         </div>
 
-        <div class="issue">
+        <div class="issue" data-tags="ai tech">
             <a href="jlw-2026-01-15.html">The Vibe Shift</a>
             <div class="date">January 15, 2026</div>
             <div class="topic">Vibe coding goes mainstream: MIT breakthrough tech, Linus Torvalds experiments, and the 92% adoption reality</div>
+            <div class="pills">
+                <span class="pill" data-tag="ai">AI</span>
+                <span class="pill" data-tag="tech">Tech</span>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const issues = document.querySelectorAll('.issue');
+        const noResults = document.querySelector('.no-results');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const tag = btn.dataset.tag;
+                let visibleCount = 0;
+
+                issues.forEach(issue => {
+                    if (tag === 'all') {
+                        issue.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        const issueTags = issue.dataset.tags || '';
+                        if (issueTags.includes(tag)) {
+                            issue.classList.remove('hidden');
+                            visibleCount++;
+                        } else {
+                            issue.classList.add('hidden');
+                        }
+                    }
+                });
+
+                // Show/hide no results message
+                noResults.classList.toggle('visible', visibleCount === 0);
+            });
+        });
+
+        // URL hash support for direct linking to filters
+        function applyFilterFromHash() {
+            const hash = window.location.hash.slice(1);
+            if (hash) {
+                const btn = document.querySelector(`.filter-btn[data-tag="${hash}"]`);
+                if (btn) btn.click();
+            }
+        }
+
+        // Update hash when filter changes
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tag = btn.dataset.tag;
+                window.location.hash = tag === 'all' ? '' : tag;
+            });
+        });
+
+        // Apply on page load
+        applyFilterFromHash();
+        window.addEventListener('hashchange', applyFilterFromHash);
+    </script>
 </body>
 </html>

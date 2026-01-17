@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The $2.8 Million Zip Code — January 16, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Infographic styling */
+        .infographic {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .infographic img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .infographic figcaption {
+            background: var(--bg-alt);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: var(--space-sm) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Stat highlight boxes */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--space-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .stat-box {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: var(--space-xs);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 16, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Cost of Living Report</span>
+            <h1 class="hero-title">The $2.8 Million Zip Code</h1>
+            <p class="hero-subtitle">What it actually costs to live in 94087, Sunnyvale's most expensive corner of Silicon Valley—and whether the premium is worth paying.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-sunnyvale-94087.jpg" alt="Aerial view of Sunnyvale suburban neighborhood at golden hour">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Housing Reality -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The $2.8 Million Entry Fee</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.redfin.com/zipcode/94087/housing-market">Redfin</a></span>
+                <span class="section-date">November 2025</span>
+            </div>
+            <div class="section-body">
+                <p>Here's the number that defines 94087: <strong>$2,800,000</strong>. That's the median home sale price according to <a href="https://www.redfin.com">Redfin</a>'s latest data—up 2.4% year-over-year in a market where most of America is seeing prices plateau.</p>
+
+                <p>But that number obscures the real story. Homes in this zip code sell in an average of 9 days. Not weeks. Days. This is a seller's market so tight that buyers routinely waive inspections and bid $200K over asking just to get a seat at the table. If you've ever wondered what pure demand economics looks like, it's a 1,800 square foot ranch home with original 1960s finishes going for seven figures.</p>
+
+                <div class="callout">
+                    <p><strong>The rent escape hatch?</strong> Not really. A 2-bedroom apartment averages $3,713/month. A 3-bedroom: $4,624. You're paying roughly $44,500 per year just to rent a modest family apartment.</p>
+                </div>
+
+                <p><a href="https://www.zillow.com/home-values/344/sunnyvale-ca/">Zillow</a>'s broader Sunnyvale data shows a slight dip (-0.4% YoY), suggesting the frenzy might be concentrated in specific pockets. 94087 sits adjacent to <a href="https://www.cupertino.org">Cupertino</a>'s top-rated school districts, which explains much of the premium. Parents aren't buying houses here—they're buying zip codes.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Income Requirements -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The $157K Solo Salary Floor</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.apartments.com/sunnyvale-ca/">Apartments.com</a> & <a href="https://www.bestplaces.net/cost_of_living/city/california/sunnyvale">BestPlaces</a></span>
+                <span class="section-date">January 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Want to live in 94087 comfortably as a single person? You'll need to clear <strong>$157,000</strong> in annual income. A family of four? <strong>$337,680</strong>.</p>
+
+                <p>Those aren't aspirational figures—they're the minimums calculated by cost-of-living researchers at <a href="https://www.bestplaces.net">BestPlaces</a> for basic financial stability. That means saving for retirement, maintaining an emergency fund, and not living paycheck to paycheck. Anything below and you're making trade-offs most financial advisors would wince at.</p>
+
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">$157K</div>
+                        <div class="stat-label">Single Person</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">$338K</div>
+                        <div class="stat-label">Family of Four</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">$201K</div>
+                        <div class="stat-label">Median Income</div>
+                    </div>
+                </div>
+
+                <p>The median household income in 94087 is $200,778 according to <a href="https://www.census.gov">Census Bureau</a> data. That's genuinely impressive—about 3x the national median. But it still falls $137,000 short of what a family of four needs for "comfortable" living. The math doesn't math, which is why dual-tech-income households dominate the demographics here. One <a href="https://www.apple.com">Apple</a> or <a href="https://www.google.com">Google</a> salary isn't enough. You need two.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Cost Index Breakdown -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">224% of Normal: The Cost Index Breakdown</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.bestplaces.net/cost_of_living/zip-code/california/sunnyvale/94087">BestPlaces.net</a></span>
+                <span class="section-date">January 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The overall cost of living index for 94087 is <strong>223.8</strong>. The U.S. average is 100. California's average is 149.9. This zip code isn't just expensive by American standards—it's expensive by California standards, which is saying something.</p>
+
+                <p>But the real story is in the breakdown. Housing carries an index of <strong>433.2</strong>—more than four times the national average. This single category pulls the entire index skyward. Everything else? Surprisingly reasonable by comparison.</p>
+
+                <div class="callout">
+                    <p><strong>Monthly expense snapshot:</strong> Groceries run a family about $1,348/month. Utilities (electricity, heating, water, garbage) average $255 for a 900 sq ft apartment. Internet: $62.50. Gas: $4.95/gallon. Transportation runs 30% above national average—expect to budget accordingly if you're commuting.</p>
+                </div>
+
+                <p>The practical implication: if you can crack the housing nut—whether through buying early, inheriting, or lucking into rent control—the rest of life here is manageable. But housing is doing all the heavy lifting in making this area unaffordable. Fix that (somehow), and 94087 becomes merely expensive rather than prohibitive.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Quality of Life -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">A+ Schools, A+ Price Tags</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.niche.com/places-to-live/z/94087/">Niche.com</a></span>
+                <span class="section-date">January 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Here's what you're actually buying with that $2.8 million: access to some of the best public schools in America. <a href="https://www.niche.com">Niche</a> gives 94087 an A+ overall grade, with public schools also rated A+. <a href="https://www.cusdk8.org/cherrychase">Cherry Chase Elementary</a> consistently ranks among the top in California.</p>
+
+                <p>The safety premium is real too. Violent crime rates run 14.6 compared to the national average of 22.7. Property crime sits at 21.8 versus 35.4 nationally. This is genuinely one of the safer communities in America—the kind of place where teenagers walk home after dark and parents don't panic.</p>
+
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">A+</div>
+                        <div class="stat-label">Schools</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">24 min</div>
+                        <div class="stat-label">Avg Commute</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">-36%</div>
+                        <div class="stat-label">vs Nat'l Crime</div>
+                    </div>
+                </div>
+
+                <p>Commute times average 24.1 minutes—actually below the U.S. average of 26.4 minutes. In the Bay Area, that's almost miraculous. The proximity to <a href="https://www.apple.com/apple-park/">Apple Park</a>, <a href="https://about.google/intl/ALL_us/locations/?region=north-america&office=mountain-view">Google's Mountain View campus</a>, and dozens of other tech employers means many residents can live genuinely close to work. That's a quality-of-life multiplier that's hard to quantify but easy to feel.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Future Outlook -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">240 New Homes Won't Fix This</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.theownteam.com/blog/sunnyvale-approves-over-240-new-homes-on-sunnyvale-saratoga-road/">TheOWNTeam</a> & <a href="https://www.sammamishmortgage.com/silicon-valley-housing-market-forecast/">Sammamish Mortgage</a></span>
+                <span class="section-date">2025-2026 Forecast</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.sunnyvale.ca.gov">Sunnyvale</a> approved 240 new homes at 777 Sunnyvale Saratoga Road in May 2025—162 apartments and 80 townhomes. It's the kind of development that makes headlines and gives planners something to point to. But let's be honest: in a market this supply-constrained, 240 units is a rounding error.</p>
+
+                <p>Market forecasters at <a href="https://www.sammamishmortgage.com">Sammamish Mortgage</a> predict Silicon Valley will remain a seller's market through 2026. Supply stays tight. Demand stays high. Mortgage rates may ease slightly, which will actually make competition worse by bringing sidelined buyers back into the market.</p>
+
+                <div class="callout">
+                    <p><strong>The fundamental equation:</strong> Tech companies keep hiring. High salaries keep flowing. Housing construction can't keep up with demand. Until one of those variables changes dramatically, 94087 will remain exactly what it is: beautiful, safe, excellently schooled, and almost impossibly expensive.</p>
+                </div>
+
+                <p>The tech industry's health remains the ultimate variable. A prolonged downturn could cool prices, as it did briefly in 2022-2023. But betting against Silicon Valley's long-term trajectory has historically been a losing proposition. For now, the $2.8 million zip code remains exactly that—and anyone hoping for a correction should probably start looking at Fresno.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Worth the Premium?</h2>
+            <p class="closing-text">94087 offers a genuine trade: extraordinary schools, safety, and career proximity in exchange for extraordinary cost. Whether that calculus works depends entirely on what you value—and whether you have two tech salaries to make it pencil.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

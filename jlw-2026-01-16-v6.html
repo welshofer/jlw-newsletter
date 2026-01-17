@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrons in Motion — January 16, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for energy tech */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #095A72;
+            --border: #D8E2E8;
+            --border-strong: #B8C8D4;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #8FA3B0;
+                --accent: #2EAED4;
+                --accent-soft: rgba(46, 174, 212, 0.15);
+                --accent-hover: #4DC0E2;
+                --border: #2E3A40;
+                --border-strong: #3D4A52;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 16, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Renewable Energy</span>
+            <h1 class="hero-title">Electrons in Motion</h1>
+            <p class="hero-subtitle">A week of infrastructure milestones and efficiency breakthroughs—but McKinsey's sobering analysis asks whether ambition is outpacing execution.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-renewable-v2.jpg" alt="Offshore wind turbines rising from morning mist with transmission lines stretching toward city skyline">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">1,200 Megawatts Now Flow from Quebec to New England</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.avangrid.com">Avangrid</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.avangrid.com">New England Clean Energy Connect</a> transmission line is finally live, delivering 1,200 MW of <a href="https://www.hydroquebec.com">Hydro-Québec</a> hydropower directly into the New England grid. After years of ballot initiatives, court challenges, and regulatory battles that would exhaust any project manager, electrons are flowing.</p>
+
+                <p>This is what grid modernization actually looks like: not slideware about smart meters, but steel towers through Maine's forests connecting one of North America's largest clean baseload sources to a region that desperately needs it. New England's grid has long been constrained by limited pipeline capacity and expensive natural gas—problems that don't exist when your fuel is gravity and snowmelt.</p>
+
+                <p>The harder lesson for developers everywhere: NECEC survived a voter referendum that initially killed it. If you're building transmission infrastructure in 2026, plan for a decade of opposition and build coalitions that can outlast political cycles. The project's persistence is as notable as its megawatts.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">35% Solar Efficiency Exits the Laboratory</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.miragenews.com">Mirage News</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Researchers announced commercial-grade photovoltaic panels exceeding 35% efficiency, a significant jump from the 22-25% range that's defined the market for years. The breakthrough combines perovskite layering with quantum-level waste heat harvesting—converting thermal energy that panels usually shed into additional electricity.</p>
+
+                <p>The math is stark. A 35% efficient panel produces roughly 50% more power than a 23% panel from identical real estate. Rooftops that were marginally viable become obvious investments. Utility-scale projects need less land. The economics that were already tilting toward solar just accelerated—again.</p>
+
+                <div class="callout">
+                    <p>Companion innovations include adaptive-geometry wind turbines whose blades reshape in real-time based on conditions. The technology stack emerging from labs this decade would have seemed science fiction in 2020.</p>
+                </div>
+
+                <p>For fossil fuel incumbents, every efficiency point compounds across millions of installations. The question isn't whether renewables will dominate new capacity—that's already happening. It's how fast existing infrastructure becomes stranded assets.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The UK Writes a £22 Billion Check for Energy Independence</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://oeuk.org.uk">Offshore Energies UK</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://oeuk.org.uk">OEUK</a> announced a wave of offshore wind projects adding 8.4 GW of capacity, backed by over £22 billion in private investment. This isn't government spending—it's capital markets voting with real money on the UK's energy future.</p>
+
+                <p>The strategic calculus is obvious post-Ukraine. The UK watched Europe scramble for LNG tankers and decided: never again. Offshore wind doesn't require importing anything but expertise, and that expertise is increasingly homegrown. When your energy security and climate goals point in the same direction, policy becomes straightforward.</p>
+
+                <p>While the US debates permitting reform and navigates court challenges, the UK has streamlined offshore wind development into a bankable asset class. Investors aren't betting on subsidies—they're betting on cheap electrons and a government that won't change the rules mid-game. For countries still debating whether to commit, the UK's trajectory provides a clear answer: go big, go fast, don't look back.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Federal Courts Clear Three Stalled Offshore Projects</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://lasvegassun.com">Las Vegas Sun</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Federal judges lifted suspensions on three major offshore wind projects: <a href="https://www.dominionenergy.com">Coastal Virginia Offshore Wind</a>, <a href="https://www.equinor.com/energy/empire-wind">Empire Wind</a> off New York, and <a href="https://revolutionwind.com">Revolution Wind</a> serving Rhode Island and Connecticut. Construction can resume.</p>
+
+                <p>The projects represent gigawatts of clean capacity that had been frozen by legal challenges and administrative reversals. This ruling signals that courts won't allow policy whiplash to strand projects that cleared every regulatory hurdle. Developers who followed the rules get to build.</p>
+
+                <p>But the harder truth remains: the US offshore wind industry has lost years to uncertainty. Projects that should be generating power are still climbing out of legal limbo. Every delay is a delay in emissions reductions, in jobs, in learning-curve improvements that make subsequent projects cheaper. The ruling is a win—but it's a win that shouldn't have been necessary.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">McKinsey's Reality Check: Ambition Isn't Execution</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.mckinsey.com">McKinsey & Company</a></span>
+                <span class="section-date">January 9, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>New analysis from <a href="https://www.mckinsey.com">McKinsey</a> highlights a widening gap between renewable project commitments and actual delivery. Despite accelerated deployment, execution risks are jeopardizing 2030 targets. The culprits: supply chain bottlenecks, permitting delays, and workforce constraints that can't be solved with press releases.</p>
+
+                <p>This is the uncomfortable counterweight to the week's good news. We can announce gigawatts, secure billions in investment, win court battles—and still fall short if the steel doesn't arrive, the permits don't clear, and the trained workers don't exist.</p>
+
+                <p>The report isn't pessimism; it's pragmatism. Policy ambitions have sprinted ahead of implementation capabilities. Closing the gap requires less focus on targets and more focus on the mundane: port infrastructure, grid interconnection queues, apprenticeship programs, environmental review timelines. Boring problems, but the ones that actually determine whether electrons flow.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Week Ahead</h2>
+            <p class="closing-text">The renewable energy transition is building momentum—infrastructure is being completed, technology is advancing, capital is flowing. But McKinsey's analysis is the asterisk on every headline: execution is the constraint, not ambition. Watch the permitting battles, the supply chain logistics, the workforce pipelines. That's where 2030 targets will be met or missed.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

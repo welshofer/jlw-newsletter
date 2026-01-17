@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Quarter That Changed Everything — January 17, 2026</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Indigo accent for science/research */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D73;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 680px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7BB4;
+                --accent-soft: rgba(139, 123, 180, 0.15);
+                --accent-hover: #9B8BC4;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.15s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.25s; }
+        .section:nth-child(5) { animation-delay: 0.3s; }
+        .section:nth-child(6) { animation-delay: 0.35s; }
+        .section:nth-child(7) { animation-delay: 0.4s; }
+
+        .section:last-child { border-bottom: none; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover { border-color: var(--accent); }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child { margin-bottom: 0; }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover { text-decoration-color: var(--accent); }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p { margin: 0; font-size: 0.95rem; }
+
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .section { padding: var(--space-lg) 0; }
+            .section-title { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">welshofer</a>
+            <time class="newsletter-date">January 17, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Tech Industry Quarterly</span>
+            <h1 class="hero-title">The Quarter That Changed Everything</h1>
+            <p class="hero-subtitle">From DeepSeek's price shock to quantum breakthroughs, the last three months rewrote the rules of the tech industry. Here's what mattered.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-tech-quarter.jpg" alt="Abstract visualization of technology evolution with neural pathways and quantum orbs">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">DeepSeek Drops a Bomb on AI Economics</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.theverge.com/2025/1/deepseek-v3-r1-openai-competitor-price-drop">The Verge</a></span>
+                <span class="section-date">January 2025</span>
+            </div>
+            <div class="section-body">
+                <p>A Chinese startup just did what Silicon Valley said was impossible. <a href="https://www.deepseek.com">DeepSeek</a> released V3 and R1—models that match <a href="https://openai.com">OpenAI's</a> GPT-4o performance at roughly 5% of the cost. The market noticed: <a href="https://nvidia.com">Nvidia</a> shed billions in market cap as investors suddenly questioned whether more efficient software might reduce hardware demand.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-api-pricing.png" alt="API pricing comparison showing DeepSeek at ~95% cheaper than GPT-4o">
+                    <figcaption>DeepSeek's API pricing undercuts Western models by an order of magnitude. The cost curve just broke.</figcaption>
+                </figure>
+
+                <p>R1 introduced "reasoning" capabilities similar to OpenAI's o1—but as an open-weights model anyone can run. The geopolitical implications are staggering: state-of-the-art AI is now accessible without US-centric infrastructure or budgets.</p>
+
+                <div class="callout">
+                    <p><strong>The signal:</strong> "DeepSeek represents the first credible threat to US hegemony in the foundation model layer." The commoditization of intelligence has begun.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">CES 2025: The Year of the Agent</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.theverge.com/2025/1/ces-2025-ai-agents-robots">The Verge</a></span>
+                <span class="section-date">January 2025</span>
+            </div>
+            <div class="section-body">
+                <p>Forget chatbots. The theme of <a href="https://www.ces.tech">CES 2025</a> was unmistakable: AI agents that <em>do things</em>, not just talk about them. <a href="https://microsoft.com">Microsoft</a>, Nvidia, and a swarm of startups showcased software that codes, shops, automates—anything a human might do at a keyboard.</p>
+
+                <p>The hardware followed suit. "AI PCs" with dedicated neural processing units took center stage, alongside purpose-built agent devices that live on your desk, not in your browser. The pitch: 2024 was about generating text; 2025 is about completing tasks.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ai-models-timeline.png" alt="Timeline of major AI model releases from Q4 2024 to January 2025">
+                    <figcaption>The model release cadence accelerated dramatically. Seven major releases in four months.</figcaption>
+                </figure>
+
+                <p>This isn't just marketing. When <a href="https://anthropic.com">Anthropic</a> gave Claude the ability to control a mouse cursor in October, they crossed a threshold: from "AI that answers questions" to "AI that executes workflows." CES confirmed the industry is all-in on that transition.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Google's Quantum "Kitty Hawk" Moment</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://blog.google/technology/research/google-quantum-ai-willow-chip/">Google AI Blog</a></span>
+                <span class="section-date">December 2024</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://quantumai.google">Google Quantum AI</a> unveiled Willow, a chip that does something previously theoretical: error rates that <em>decrease</em> as you add more qubits. In quantum computing, that's the Holy Grail—the breakthrough required to build useful machines instead of lab curiosities.</p>
+
+                <p>The benchmark numbers border on absurd. Willow completed a computation in minutes that would take a classical supercomputer 10 septillion years. More importantly, it demonstrated that scaling up quantum systems is now possible without drowning in noise.</p>
+
+                <div class="callout">
+                    <p><strong>Why it matters:</strong> "We've passed the break-even point... quantum error correction is now working." This is the Wright Brothers taking flight, not building better gliders.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">OpenAI's 12 Days of Shipping</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://openai.com/12-days">OpenAI</a></span>
+                <span class="section-date">December 2024</span>
+            </div>
+            <div class="section-body">
+                <p>OpenAI staged a 12-day launch blitz that felt less like a product announcement and more like a flex. The finale: <strong>o3</strong>, their most capable reasoning model yet, blowing past o1 on coding and math benchmarks (including the notoriously difficult Arc-AGI tests).</p>
+
+                <p>The supporting cast was just as significant: Sora video generation went live (turbo mode), Canvas debuted as a collaborative interface, and a $200/month "Pro" tier signaled that enterprise-grade AI is no longer cheap. The pace from o1 to o3 was months, not years.</p>
+
+                <p>The message: the "reasoning model" race is accelerating faster than anyone predicted. If you thought GPT-4 was the plateau, you weren't paying attention.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">AMD Takes the Exascale Crown</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.top500.org/lists/top500/2024/11/">Top500</a></span>
+                <span class="section-date">November 2024</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.amd.com">AMD's</a> Instinct MI300A chips now power the fastest computer on Earth. El Capitan, built for Lawrence Livermore National Laboratory, hit 1.742 exaflops—crushing the previous record and cementing AMD as a legitimate rival to Nvidia in high-performance computing.</p>
+
+                <p>The machine's purpose is nuclear weapons simulation, but the implications extend far beyond defense. AMD has proven its silicon can compete at the absolute frontier of compute. That changes the conversation for anyone building AI infrastructure at scale.</p>
+
+                <div class="callout">
+                    <p><strong>The takeaway:</strong> "The Exascale era is fully here." Nvidia's dominance is no longer unchallenged—competition in AI hardware is finally real.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Anthropic Teaches Claude to Use a Computer</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.anthropic.com/news/3-5-models-and-computer-use">Anthropic</a></span>
+                <span class="section-date">October 2024</span>
+            </div>
+            <div class="section-body">
+                <p>Claude 3.5 Sonnet gained a new capability in October: controlling a computer cursor, clicking buttons, typing text, navigating software. Not in a sandboxed demo—on actual desktops, executing real workflows.</p>
+
+                <p>This is the bridge between "AI that reasons" and "AI that acts." Developers can now build agents that use browsers, IDEs, spreadsheets—any tool a human would. The beta release was cautious, but the direction is clear: chatbots are evolving into digital workers.</p>
+
+                <p>Combined with CES's agent-everywhere message, Anthropic's move marked the philosophical inflection point. The question is no longer "can AI understand?" but "what can AI do?"</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7 -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">Big Tech Becomes an Energy Company</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.wsj.com/business/energy-oil/google-backs-new-nuclear-plants-to-power-ai-wants-reactors-by-2030-97500508">Wall Street Journal</a></span>
+                <span class="section-date">October 2024</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://google.com">Google</a> signed the world's first corporate deal to buy power from small modular nuclear reactors. <a href="https://microsoft.com">Microsoft</a> is restarting Three Mile Island. <a href="https://amazon.com">Amazon</a> is shopping for nuclear capacity. <a href="https://meta.com">Meta</a> issued RFPs for 1-4 gigawatts of nuclear power.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-nuclear-deals.png" alt="Big Tech nuclear energy commitments showing Google, Microsoft, Amazon, and Meta capacity targets">
+                    <figcaption>The AI giants are becoming energy stakeholders. Combined commitments exceed 2.6 gigawatts.</figcaption>
+                </figure>
+
+                <p>The message is unmistakable: AI's growth is now constrained by electricity, not software. Training frontier models and running inference at scale requires power that existing grids can't reliably provide. Big Tech's response? Vertical integration into energy infrastructure.</p>
+
+                <div class="callout">
+                    <p><strong>The reality:</strong> "The grid needs new electricity sources to support AI technologies." Tech companies are no longer just customers of utilities—they're becoming utilities themselves.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Shape of Things to Come</h2>
+            <p class="closing-text">Cheaper models. Quantum breakthroughs. Agents that act. Nuclear-powered data centers. The last three months didn't just advance the industry—they redefined its constraints. The next quarter will be even stranger.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">welshofer</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 19x19 — January 16, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Go palette - contemplative indigo, traditional warmth */
+            --bg: #FDFBF7;
+            --bg-alt: #F3F1F5;
+            --text: #1A1815;
+            --text-secondary: #5A5266;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #453A6A;
+            --border: #E0DCE8;
+            --border-strong: #C8C2D4;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #12101A;
+                --bg-alt: #1A1724;
+                --text: #F0EEF5;
+                --text-secondary: #9A94A8;
+                --accent: #9B8CD4;
+                --accent-soft: rgba(155, 140, 212, 0.15);
+                --accent-hover: #B8ACEB;
+                --border: #2A2638;
+                --border-strong: #3D3850;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The 19x19</a>
+            <time class="newsletter-date">January 16, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Professional Go</span>
+            <h1 class="hero-title">The Go Sage Has Left the Board</h1>
+            <p class="hero-subtitle">Nie Weiping's passing marks the end of an era, while Shin Min-joon claims the LG Cup and the 50th Kisei prepares to make history in Hawaii.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-goban-meditation.jpg" alt="Traditional Go board with black and white stones in soft natural light">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Nie Weiping, China's "Go Sage," Dies at 73</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chinadailyasia.com/">China Daily</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/Nie_Weiping">Nie Weiping</a>, the man who made Go a national obsession in China, passed away in Beijing this week at the age of 73. If you're under 40 and Chinese, there's a decent chance you first learned about Go because of him.</p>
+
+                <div class="section-image">
+                    <img src="images/go-ceremony-memorial.jpg" alt="Traditional Go match ceremony setting">
+                </div>
+
+                <p>In the 1980s, Nie became a folk hero through his victories in the China-Japan Supergo series—matches that drew television audiences in the tens of millions. This was before the internet, before streaming, before esports. People gathered around televisions to watch a board game. Nie's fierce playing style and his refusal to defer to Japan's then-dominant Go establishment turned him into something more than a champion. He became a symbol of Chinese resurgence.</p>
+
+                <p>The <a href="http://www.weiqi.org.cn/">Chinese Weiqi Association</a>, where Nie served as honorary president, called him "a national hero and an icon who inspired a generation." That's not hyperbole. The current golden age of Chinese Go—<a href="https://en.wikipedia.org/wiki/Ke_Jie">Ke Jie</a>, the AI collaborations, the deep government support—traces a direct line back to what Nie built. His legacy isn't just his games; it's the infrastructure of ambition he created.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Shin Min-joon Takes Second LG Cup in Japan-Korea Final</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cyberoro.com/">Cyberoro</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://gotoeveryone.k2ss.info/player/1632">Shin Min-joon</a> 9p defeated <a href="https://www.nihonkiin.or.jp/player/htm/ki000451.html">Ichiriki Ryo</a> 9p 2-1 in the final of the 30th <a href="https://en.wikipedia.org/wiki/LG_Cup_(Go)">LG Cup</a>, held at the National Museum of Korea in Seoul. It's Shin's second LG Cup title—his first came in 2021—and the final itself was notable: the first Japan-Korea showdown in this tournament in 28 years.</p>
+
+                <p>For those keeping score at home, the LG Cup is one of Go's "triple crown" world championships. Shin's victory reinforces Korea's current dominance in international competition, though Ichiriki's presence in the final signals that Japan isn't conceding the field. The two players split the first two games before Shin closed it out decisively in game three.</p>
+
+                <p>The geographic narrative matters here. Korean Go has been ascendant for two decades, but Japan—once the unquestioned center of the Go world—has been mounting a quiet comeback through players like Ichiriki and <a href="https://www.nihonkiin.or.jp/player/htm/ki000483.html">Shibano Toramaru</a>. This final felt like a preview of rivalries to come.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Shin Jinseo's Ulsan Team Rides 7-Game Streak</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cyberoro.com/">Cyberoro</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>If you want to understand why Korea keeps producing world champions, look at the <a href="https://badukleague.kbstar.com/">KB Kookmin Bank Baduk League</a>. The team format—with its draft system, salary caps, and broadcast schedule—has professionalized domestic Go in ways other countries haven't matched.</p>
+
+                <p>This week, Ulsan Korea Zinc extended their winning streak to seven games, moving into second place behind league leaders Wonik. The team's anchor is <a href="https://gotoeveryone.k2ss.info/player/1531">Shin Jinseo</a> 9p—currently ranked #1 in the world by most metrics—alongside rising star Park Geun-ho 7p.</p>
+
+                <p>The streak puts Ulsan in strong position for the playoffs. But beyond the standings, the league itself is the story: a sustainable economic model for professional Go that keeps talent in Korea rather than scattered across individual tournaments. It's infrastructure, again—the same kind Nie Weiping built in China decades ago, now refined and replicated.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Three Generations of Pros: The Ak Family Makes History</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cyberoro.com/">Cyberoro</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Ak Jiyu became a professional Go player this week, which would be unremarkable except for one detail: his grandfather is a 9-dan professional, and his father is a 7-dan professional. Three generations. One family. All pros.</p>
+
+                <p>This is apparently the first time in Korean Baduk history that three consecutive generations of a single family have achieved professional status. Go has always had dynasties—the Honinbo house in Japan passed mastery through adoptive succession for centuries—but genetic lineage reaching pro level three times is genuinely rare.</p>
+
+                <p>It raises interesting questions about nature versus nurture in expertise development. Did Ak Jiyu inherit some ineffable pattern-recognition gift, or did he simply grow up in a household where 4,000-year-old board games were dinner table conversation? Probably both. Either way, the kid earned his title. The board doesn't care about your family tree.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The 50th Kisei Opens in Honolulu—First US Title Match Since 2016</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="http://www.usgo.org/">American Go E-Journal</a></span>
+                <span class="section-date">January 10, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.nihonkiin.or.jp/match/kisei/">Kisei</a> is one of Japanese Go's three major titles, and its 50th edition will make a statement: Game 1 of the championship match between defending Kisei Ichiriki Ryo and challenger Shibano Toramaru will be played in Honolulu, Hawaii, January 22-23.</p>
+
+                <p>This is the first time a major Japanese title match has been held in the United States since 2016. The <a href="https://www.nihonkiin.or.jp/english/">Nihon Ki-in</a> is billing it as part of a broader internationalization push—the event will include public commentary, lectures, and simultaneous games with professional players.</p>
+
+                <p>Why does this matter? Because Go's future growth depends on expanding beyond East Asia, and symbolic gestures like this help. Hawaii isn't a random choice—it's the geographic and cultural midpoint between Japan and the American mainland, a bridge. If the Nihon Ki-in is serious about global outreach, expect more title matches in unexpected venues. The 50th Kisei might be remembered less for who wins than for where it was played.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Korea Baduk Association Unveils 2026 Vision: AI, Talent, Global Reach</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="http://www.baduk.or.kr/eng/">Korea Baduk Association</a></span>
+                <span class="section-date">January 9, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="http://www.baduk.or.kr/eng/">Korea Baduk Association</a> released its 2026 annual report, and the priorities are clear: find new talent, embrace AI, and expand internationally.</p>
+
+                <p>The talent pipeline remains the KBA's obsession. They've announced a new recruitment campaign for "researchers"—the intermediate rank between amateur and professional that serves as Go's minor league system. Upcoming tournaments include the 26th Regional Researcher Instantiation Tournament and the 163rd General Admission Tournament, both feeders into the pro ranks.</p>
+
+                <p>More interesting is the AI integration plan. The KBA is moving beyond treating AI as a training tool toward something more systemic—game analysis, talent identification, even broadcast enhancement. When <a href="https://deepmind.com/research/case-studies/alphago">AlphaGo</a> beat Lee Sedol in 2016, some wondered if it would kill human Go. Instead, it seems to be accelerating its evolution. The KBA is betting that AI makes human players more interesting to watch, not less. The 2026 season will test that hypothesis.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Until Next Week</h2>
+            <p class="closing-text">The stones are patient. The board remembers. Keep playing.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The 19x19</span>
+        </div>
+    </footer>
+</body>
+</html>

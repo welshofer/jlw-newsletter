@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Three-Year Horizon — January 18, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for tech forecasting */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #0A5670;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #14A3C7;
+                --accent-soft: rgba(20, 163, 199, 0.15);
+                --accent-hover: #17B8E0;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Intelligence</a>
+            <time class="newsletter-date">January 18, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">LLM Performance Forecast</span>
+            <h1 class="hero-title">The Three-Year Horizon</h1>
+            <p class="hero-subtitle">Where large language models are heading by 2029—and the hard walls they'll hit along the way.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-llm-evolution.jpg" alt="Abstract visualization of neural network evolution through time, crystalline structures ascending through temporal layers with teal glowing pathways">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Energy Demand -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Hard Cap: Energy Demand Will Double by 2028</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.trigyn.com/insights/ai-energy-consumption-forecast-2026">Trigyn Technologies / IEA Analysis</a></span>
+                <span class="section-date">January 17, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-energy-demand.jpg" alt="Power grid infrastructure straining under glowing data center towers">
+            </figure>
+            <div class="section-body">
+                <p>Here's the uncomfortable truth about our AGI ambitions: we're about to run out of electricity. A new analysis from <a href="https://www.trigyn.com">Trigyn Technologies</a>, synthesizing data from the <a href="https://www.iea.org">International Energy Agency</a>, projects that AI-related energy consumption will <em>double</em> global compute power demand by 2028.</p>
+
+                <p>The culprit isn't training—it's inference. When users shift from simple search queries (low energy) to agentic tasks that require models to "think" before they respond (high energy), the grid strain multiplies. <a href="https://www.vistracorp.com">Vistra Corp's</a> recent acquisition of gas-fired power plants isn't about crypto mining—it's preparation for the inference explosion.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-energy-doubling.png" alt="Chart showing AI compute energy demand doubling from 2024 to 2028">
+                    <figcaption>AI compute demand indexed to 2024 baseline, with inference share growing from 35% to 85%.</figcaption>
+                </figure>
+
+                <p>The quote that should keep AI lab executives awake: "We are effectively turning electricity into intelligence, and the conversion rate is becoming the defining economic metric of the decade." Without efficiency breakthroughs, scaling laws may hit a physical wall before they hit a capability ceiling.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Bio-Inspired -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Stanford Challenges "Bigger is Better" With Brain-Like Pruning</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://hai.stanford.edu">Stanford HAI / ScienceDaily</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-bio-inspired.jpg" alt="Biological brain neurons with synaptic pruning, teal neural connections being selectively strengthened">
+            </figure>
+            <div class="section-body">
+                <p>What if we've been thinking about scaling all wrong? Researchers at <a href="https://hai.stanford.edu">Stanford's Human-Centered AI Institute</a> just demonstrated a model architecture that mimics biological synaptic pruning—neurons selectively strengthening and weakening connections during training, not after.</p>
+
+                <p>The result: a 15-billion parameter model matching the reasoning performance of traditional 100-billion parameter models on the <a href="https://github.com/hendrycks/math">MATH benchmark</a>. That's not incremental improvement. That's a potential phase change in how we think about capability-per-parameter.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-param-efficiency.png" alt="Chart comparing bio-inspired vs traditional scaling on MATH benchmark">
+                    <figcaption>Bio-inspired architectures achieve equivalent performance at ~6x fewer parameters.</figcaption>
+                </figure>
+
+                <p>"We may not need massive training data or trillion parameters if the system is designed to forget noise as effectively as a biological brain," the researchers write. If this validates at scale, it could crash the cost of training state-of-the-art models—potentially letting smaller labs and enterprises compete with hyperscalers. Watch for replication attempts from <a href="https://deepmind.google">DeepMind</a> and <a href="https://research.facebook.com/ai/">Meta AI</a> within months.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Apple-Google -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Apple and Google Make Siri Actually Useful</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.apple.com/newsroom">Apple Newsroom / Bloomberg</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-siri-gemini.jpg" alt="Siri orb merging with Gemini AI neural streams, smartphones radiating capability waves">
+            </figure>
+            <div class="section-body">
+                <p>After years of being the punchline to "voice assistant" jokes, <a href="https://www.apple.com/siri/">Siri</a> is getting a brain transplant. <a href="https://www.apple.com">Apple</a> officially confirmed deep integration of <a href="https://deepmind.google/technologies/gemini/">Google's Gemini 2.5</a> (Flash variant) into the upcoming iOS 20 Siri overhaul.</p>
+
+                <p>The architecture is clever: sensitive personal context stays on-device via Apple Silicon, while complex reasoning queries offload to Gemini through <a href="https://security.apple.com/blog/private-cloud-compute/">Apple's Private Cloud Compute</a>. The result? "Agentic" capabilities that let Siri perform multi-step actions across apps—"Plan my travel and book these flights"—with claimed 99.5% success rates in controlled tests.</p>
+
+                <p>This is the first mass-market deployment of agentic AI to billions of users. The distinction matters: chatbots are reactive, agents are proactive. "The new Siri is not just a voice assistant; it is an agentic layer that understands the semantic web of your life." If Apple pulls this off, the competitive pressure on <a href="https://www.amazon.com/alexa">Alexa</a> and <a href="https://assistant.google.com">Google Assistant</a> (ironically) becomes existential.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: OpenAI Safety -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">OpenAI Admits Safety Tuning Has Structural Limits</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://openai.com/research">OpenAI Research / arXiv</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-safety-limits.jpg" alt="Digital safety shield with structural cracks, prompt injection attacks as glowing red tendrils">
+            </figure>
+            <div class="section-body">
+                <p>In a remarkably candid technical paper, <a href="https://openai.com">OpenAI</a> concedes what security researchers have long suspected: current RLHF techniques cannot mathematically guarantee immunity to complex prompt injection attacks. The more capable models become at reasoning, the more capable they become at reasoning <em>around</em> safety constraints.</p>
+
+                <p>"Prompt injection is not a bug to be patched, but a structural property of instruction-following systems," the paper states. "We must move beyond alignment tuning to architectural verification." Their proposed solution: a "Constitution-as-Code" layer operating separately from main model weights to verify outputs.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-compute-shift.png" alt="Stacked area chart showing training vs inference compute shift from 2023-2028">
+                    <figcaption>The crossover happened in 2025: inference now dominates AI compute, amplifying safety concerns.</figcaption>
+                </figure>
+
+                <p>This signals a major pivot in safety research—and potentially delays autonomous agent deployment in banking, defense, and healthcare. If "unhackable" models are architecturally impossible with current designs, every enterprise deployment becomes a risk-tolerance decision rather than a solved problem.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Microsoft Quantum -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Microsoft's AI-Quantum Hybrid Cracks Material Science</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://azure.microsoft.com/en-us/solutions/quantum-computing/">Microsoft Azure Quantum</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-quantum-classical.jpg" alt="Quantum computer with swirling qubit states orchestrated by AI, molecular structures emerging">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://microsoft.com">Microsoft</a> just demonstrated something that shifts the timeline on "useful quantum computing": an AI model that orchestrates a quantum computer to simulate molecular interactions for battery materials, correcting the noisy quantum device's errors in real-time.</p>
+
+                <p>The hybrid approach solved a material simulation problem in 4 hours that classical supercomputers would need 500 years to complete. This isn't quantum supremacy for its own sake—it's quantum <em>utility</em> for industrial R&D. "AI is the software that makes quantum hardware usable. Together, they are solving the physical world's hardest problems."</p>
+
+                <p>The implication for LLM evolution: we're witnessing AI's expansion from "digital" tasks (text, code, images) to "physical" scientific discovery. The next three years will likely see AI-quantum hybrids tackling drug discovery, materials engineering, and climate modeling. The models aren't just getting smarter at conversation—they're becoming tools for manipulating atoms.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: NVIDIA Rubin -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">NVIDIA's "Vera Rubin" Architecture: Built for Trillion-Parameter Thought</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://nvidianews.nvidia.com">NVIDIA Newsroom</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-nvidia-rubin.jpg" alt="NVIDIA GPU architecture as monumental teal crystalline structure with inference streams">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://nvidia.com">NVIDIA's</a> new "Rubin" architecture (R-series) isn't just another GPU refresh—it's purpose-built for a different era of AI. While Blackwell optimized for training throughput, Rubin optimizes for <em>inference latency</em> on trillion-parameter models. The shift reflects where compute dollars are flowing.</p>
+
+                <p>Key innovations: the H300 Tensor Core GPU with 40% reduction in inference latency compared to Blackwell, and—crucially—hardware-native support for "Test-Time Training" (TTT), allowing models to "learn" from context dynamically without full weight updates. <a href="https://twitter.com/jensen">Jensen Huang</a> at the post-CES briefing: "We are moving from an era of training-compute dominance to inference-compute dominance, where the model must 'think' before it speaks. Rubin is the engine for that thought."</p>
+
+                <p>Hardware constraints have been the primary bottleneck for deploying AGI-level reasoning at scale. Rubin ships in late 2027. Mark your calendars.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7: Samsung Edge -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">Samsung's 800 Million AI-Native Devices: The Edge Takes Over</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.samsung.com">Samsung Newsroom</a></span>
+                <span class="section-date">January 11, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-samsung-edge.jpg" alt="Samsung ecosystem of AI-native devices connected through ambient intelligence network">
+            </figure>
+            <div class="section-body">
+                <p>While everyone debates cloud-versus-local, <a href="https://samsung.com">Samsung</a> is quietly building the infrastructure for both. Their updated strategic roadmap targets 800 million devices—phones, TVs, refrigerators, appliances—running local <a href="https://news.samsung.com/global/samsung-introduces-samsung-gauss">Gauss 2</a> or <a href="https://deepmind.google/technologies/gemini/nano/">Gemini Nano</a> models by Q4 2026.</p>
+
+                <p>The focus is "Ambient Intelligence": devices that proactively suggest actions based on user habits without explicit prompts. New NPU designs in the <a href="https://semiconductor.samsung.com/processor/mobile-processor/">Exynos line</a> support always-on voice listening with local processing for privacy. "The era of the 'smart' phone is over; the era of the 'intelligent' companion has begun."</p>
+
+                <figure class="chart">
+                    <img src="images/chart-capability-roadmap.png" alt="Timeline showing LLM capability milestones from 2026 to 2029">
+                    <figcaption>The three-year roadmap: from agentic early adoption to potential AGI-level reasoning—if energy and efficiency challenges are solved.</figcaption>
+                </figure>
+
+                <p>This highlights the massive edge-compute infrastructure being built in parallel to cloud AI. By 2029, the inference load may be distributed across a billion local devices rather than concentrated in hyperscale data centers. That changes everything about how we think about AI access, privacy, and capability distribution.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The View from 2029</h2>
+            <p class="closing-text">Three years out, the trajectory is clear but the landing is not. Bio-inspired efficiency might solve the energy crisis—or we hit the wall. Agentic AI goes mainstream—or safety limits force a pause. Quantum-classical hybrids accelerate scientific discovery—or remain lab curiosities. The models are getting better. The question is whether the infrastructure, the safety guarantees, and the grid can keep up.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Intelligence</span>
+        </div>
+    </footer>
+</body>
+</html>

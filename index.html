@@ -39,6 +39,10 @@
             --tag-legal-bg: rgba(100, 116, 139, 0.12);
             --tag-culture: #F59E0B;
             --tag-culture-bg: rgba(245, 158, 11, 0.12);
+            --tag-fashion: #E8A4B8;
+            --tag-fashion-bg: rgba(232, 164, 184, 0.15);
+            --tag-business: #722F37;
+            --tag-business-bg: rgba(114, 47, 55, 0.12);
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -58,6 +62,8 @@
                 --tag-photo-bg: rgba(139, 92, 246, 0.25);
                 --tag-legal-bg: rgba(100, 116, 139, 0.25);
                 --tag-culture-bg: rgba(245, 158, 11, 0.25);
+                --tag-fashion-bg: rgba(232, 164, 184, 0.25);
+                --tag-business-bg: rgba(114, 47, 55, 0.25);
             }
         }
         * { box-sizing: border-box; }
@@ -146,6 +152,8 @@
         .pill[data-tag="photo"] { background: var(--tag-photo-bg); color: var(--tag-photo); }
         .pill[data-tag="legal"] { background: var(--tag-legal-bg); color: var(--tag-legal); }
         .pill[data-tag="culture"] { background: var(--tag-culture-bg); color: var(--tag-culture); }
+        .pill[data-tag="fashion"] { background: var(--tag-fashion-bg); color: var(--tag-fashion); }
+        .pill[data-tag="business"] { background: var(--tag-business-bg); color: var(--tag-business); }
 
         .issue {
             padding: 1rem 0;
@@ -202,9 +210,22 @@
             <button class="filter-btn" data-tag="photo">Photo</button>
             <button class="filter-btn" data-tag="legal">Legal</button>
             <button class="filter-btn" data-tag="culture">Culture</button>
+            <button class="filter-btn" data-tag="fashion">Fashion</button>
+            <button class="filter-btn" data-tag="business">Business</button>
         </div>
 
         <div class="no-results">No newsletters match this filter.</div>
+
+        <div class="issue" data-tags="fashion business culture">
+            <a href="jlw-2026-01-17-v9.html">Lace, Luxury & Legislation: High Fashion's Intimate Revolution</a>
+            <div class="date">January 17, 2026</div>
+            <div class="topic">The $40B lingerie market at an inflection point: Paris's Salon International unveils AI-designed lace, Milan softens menswear with intimate techniques, UK criminalizes deepfake imagery, Victoria's Secret surges +230% on Y2K nostalgia, and the Golden Globes declares "visible intimates" the trend</div>
+            <div class="pills">
+                <span class="pill" data-tag="fashion">Fashion</span>
+                <span class="pill" data-tag="business">Business</span>
+                <span class="pill" data-tag="culture">Culture</span>
+            </div>
+        </div>
 
         <div class="issue" data-tags="ai tech policy">
             <a href="jlw-2026-01-17-v8.html">The Agents Are Here: AI Coding's Breakout Week</a>

@@ -351,6 +351,21 @@
             .hero { padding: var(--space-lg) var(--space-sm) var(--space-xl); }
             .content { padding: 0 var(--space-sm) var(--space-xl); }
         }
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
     </style>
 </head>
 <body>
@@ -371,6 +386,13 @@
             <span class="hero-label">Breaking Analysis</span>
             <h1>The Minnesota Standoff: Federal Power Meets State Resistance</h1>
             <p class="hero-intro">A week of federal shootings, mass deployment, and constitutional threats has transformed Minneapolis into the front line of the most significant federal-state confrontation since the civil rights era.</p>
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-minnesota-standoff.wav" type="audio/wav">
+                </audio>
+            </div>
 
             <figure class="hero-image">
                 <img src="images/hero-minnesota-unrest.png" alt="Abstract representation of constitutional tension between federal and state power">

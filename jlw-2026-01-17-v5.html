@@ -235,6 +235,21 @@
             .hero-title { font-size: 1.9rem; }
             .section-title { font-size: 1.35rem; }
         }
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
     </style>
 </head>
 <body>
@@ -250,6 +265,13 @@
             <span class="hero-label">Street Photography</span>
             <h1 class="hero-title">The Decisive Moment, Threatened</h1>
             <p class="hero-subtitle">AI deepfakes force a reckoning, Ricoh goes monochrome, and the street photography community grapples with what it means to point a camera at strangers in 2026.</p>
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-decisive-moment-threatened.wav" type="audio/wav">
+                </audio>
+            </div>
             <div class="hero-image">
                 <img src="images/hero-street-photography.webp" alt="Atmospheric black and white street scene with lone figure on rain-slicked pavement">
             </div>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Slide Wars Heat Up — January 19, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - violet/indigo for tech */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D72;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #9B8BC8;
+                --accent-soft: rgba(155, 139, 200, 0.15);
+                --accent-hover: #B8A8D8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Weekly</a>
+            <time class="newsletter-date">January 19, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">AI Presentation Tools</span>
+            <h1 class="hero-title">The Slide Wars Heat Up</h1>
+            <p class="hero-subtitle">From "make slides" to "think with me": the AI presentation market pivots to agentic workflows as Microsoft, Google, and scrappy startups battle for the $2.5B market.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/slide-wars-heat-up.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/ai-presentations-2026-01-19/hero-ai-presentations.jpg" alt="Futuristic control room with holographic presentation slides floating in mid-air">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Canva Takes Magic Design Mobile—And Bets Big on "Code Without Coding"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://canva.com">Canva Newsroom</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ai-presentations-2026-01-19/article-01-canva-mobile.jpg" alt="Designer holding smartphone with holographic slide elements floating above the screen">
+            </figure>
+            <div class="section-body">
+                <p>Your next pitch deck might be built between subway stops. <a href="https://canva.com">Canva</a> this week rolled out full "Magic Design" functionality to iOS and Android—the same AI engine that generates complete presentations from a prompt—now available wherever you've got cell service and five minutes to kill.</p>
+
+                <p>But the bigger reveal is <strong>Canva Code</strong>, a feature that lets non-developers create interactive widgets (think: live polls, animated data visualizations, mini-apps) entirely through natural language prompts. It's a direct assault on the "static slides are dead" thesis that's fueled competitors like <a href="https://gamma.app">Gamma</a> and <a href="https://tome.app">Tome</a>.</p>
+
+                <p>The subtext: <a href="https://canva.com">Canva</a> is no longer content to be the "good enough" option for SMBs. With 190+ million monthly users and a $40B valuation, they're gunning for the enterprise—and betting that accessibility trumps sophistication. The risk? Canva Code could end up a gimmick if the interactivity doesn't translate to measurable outcomes for presenters.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Microsoft's "Creative Model" Finally Escapes the Corporate Template Prison</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://microsoft.com/copilot">Microsoft Copilot Blog</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ai-presentations-2026-01-19/article-02-microsoft-copilot.png" alt="Surface laptop with slides transforming from bland templates into artistic designs">
+            </figure>
+            <div class="section-body">
+                <p>For two years, the knock on <a href="https://www.microsoft.com/en-us/microsoft-365/copilot">Copilot for PowerPoint</a> has been consistent: it's fast, it's integrated, and every deck looks like it came from the same corporate beige factory. This week, Microsoft answered with the "Creative Model"—an experimental frontier feature that generates highly custom, artistic slides one at a time, consuming AI credits rather than defaulting to safe templates.</p>
+
+                <p>The positioning is shrewd: leave the default experience alone for the risk-averse enterprise, but give ambitious presenters an escape hatch. Template selection also hit general availability on desktop, fixing a long-standing complaint about rigid starting points.</p>
+
+                <figure class="chart">
+                    <img src="images/ai-presentations-2026-01-19/chart-feature-comparison.png" alt="Feature comparison chart showing Microsoft, Google, Gamma, Canva, and Beautiful.ai across six capability dimensions">
+                    <figcaption>Feature comparison across major AI presentation tools. Microsoft leads in data integration and collaboration; Canva dominates mobile editing.</figcaption>
+                </figure>
+
+                <p>The credit-based pricing model is the detail to watch. Microsoft is signaling that truly creative AI work isn't a flat-rate commodity—it's a premium feature for high-stakes presentations. If this catches on, expect the entire market to stratify between "good enough" free tiers and pay-per-creation artisanal modes.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Prezi Pivots from Pretty Slides to "Strategic Thinking Partner"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://prezi.com">Prezi Blog</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ai-presentations-2026-01-19/article-03-prezi-strategic.png" alt="Abstract visualization of interconnected nodes forming a strategic mind map with zooming perspective">
+            </figure>
+            <div class="section-body">
+                <p>Remember when <a href="https://prezi.com">Prezi</a> was the "zooming presentation" company? That identity is now table stakes. The latest AI updates focus squarely on strategic planning and task delegation—features designed to help you structure your argument <em>before</em> a single visual gets generated.</p>
+
+                <p>The framing is deliberate: "evolving towards prioritizing strategic planning... particularly in professional settings like healthcare." Prezi is betting that the real value isn't in making slides prettier, but in helping domain experts think more clearly. The zooming UI becomes a visualization layer for complex narratives, not the product itself.</p>
+
+                <p>It's a smart differentiation play in a crowded market. While <a href="https://gamma.app">Gamma</a> and <a href="https://beautiful.ai">Beautiful.ai</a> compete on speed and aesthetics, Prezi is positioning as the "thinking partner" for specialized verticals. The question is whether enough users will pay premium prices for strategic scaffolding when free tools generate acceptable decks in seconds.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Pitch.com Evolves Beyond Slides Into a "Complete Pitching Platform"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://pitch.com">Pitch Product Updates</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ai-presentations-2026-01-19/article-04-pitch-platform.jpg" alt="Virtual presentation room with floating analytics dashboards and deal pipeline metrics">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://pitch.com">Pitch</a> is done being called a "PowerPoint alternative." This week's release of refined AI Image Generation and Instant Insights (auto-generated charts from prompts) arrives alongside the continued rollout of "Pitch Rooms"—branded, client-ready spaces for sharing decks that move the product firmly into sales enablement territory.</p>
+
+                <p>The strategic logic: if you're building pitch decks, you probably care about whether they worked. Pitch is integrating the presentation tool directly into the deal-closing workflow with CRM connections, viewing analytics, and follow-up automation. The slide becomes a data collection surface, not just a communication medium.</p>
+
+                <figure class="chart">
+                    <img src="images/ai-presentations-2026-01-19/chart-positioning-map.png" alt="Market positioning scatter plot showing AI presentation tools mapped by Enterprise Focus vs Design Freedom">
+                    <figcaption>Market positioning map. Bubble size indicates market presence. Pitch occupies the "creative enterprise" quadrant targeting sales teams.</figcaption>
+                </figure>
+
+                <p>For sales teams exhausted by context-switching between Figma, PowerPoint, and Salesforce, Pitch's integrated approach is compelling. The risk is scope creep—building a "complete pitching platform" means competing not just with presentation tools but with the entire revenue operations stack.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Google Brings Gemini Inside the Slides Sidebar</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://workspace.google.com">Google Workspace Updates</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ai-presentations-2026-01-19/article-05-google-gemini.jpg" alt="Google Workspace interface with Gemini sparkle effects and data streams transforming into infographics">
+            </figure>
+            <div class="section-body">
+                <p>Google's AI-in-Slides strategy has felt scattered for years—Duet AI, then Gemini, various experimental labs features that came and went. This week's update brings clarity: <a href="https://workspace.google.com">Gemini</a> now lives in a persistent sidebar within Slides, letting users generate infographics, rewrite text, or create new slides without leaving the editor.</p>
+
+                <p>The deeper play is seamless Drive integration. Google's pitch is that Gemini can pull data from your spreadsheets, docs, and forms to generate context-aware presentations—something Microsoft can match but startups cannot. For organizations already committed to Google Workspace, the friction reduction is meaningful.</p>
+
+                <p>The aggressive student pricing (free "AI Pro" access until January 31, 2026) signals Google's long game: lock in the next generation of knowledge workers while Microsoft charges enterprise rates. Whether students who learned on Gemini will stick with Google when they enter the workforce remains the billion-dollar question.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Beautiful.ai Doubles Down on Brand Control as Its Competitive Moat</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://beautiful.ai">Beautiful.ai Blog</a></span>
+                <span class="section-date">January 7, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ai-presentations-2026-01-19/article-06-beautiful-ai.jpg" alt="Designer workstation with floating brand guidelines forming elegant constraints around creative elements">
+            </figure>
+            <div class="section-body">
+                <p>While competitors race to add more generative capabilities, <a href="https://beautiful.ai">Beautiful.ai</a> is playing defense through design constraints. The updated Custom Theme Builder released this month lets enterprises lock in brand compliance at the platform level—ensuring that even AI-generated slides stay within approved color palettes, typography, and layout rules.</p>
+
+                <p>The positioning is counterintuitive in an era of "generate anything" enthusiasm: Beautiful.ai's moat is that "it's impossible to make an ugly slide." As wild, hallucinating AI generators flood the market, the promise of brand-safe outputs becomes increasingly valuable to marketing teams who've spent years building visual identity systems.</p>
+
+                <figure class="chart">
+                    <img src="images/ai-presentations-2026-01-19/chart-market-growth.png" alt="Line chart showing AI presentation software market growth from $1.2B in 2022 to projected $3.9B in 2028">
+                    <figcaption>AI presentation software market projected to reach $3.9B by 2028 at ~25% CAGR. The "agentic" pivot may accelerate this growth.</figcaption>
+                </figure>
+
+                <p>The strategic question: is brand control enough? As Microsoft and Google add their own guardrails, Beautiful.ai's differentiation narrows. The company's pricing transparency push this month suggests they're preparing for a commoditization fight—one where value shifts from "what the AI can do" to "how reliably it stays on-brand."</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Bottom Line</h2>
+            <p class="closing-text">The presentation software market is bifurcating. On one side: Microsoft and Google leverage their ecosystem lock-in and enterprise relationships. On the other: nimble startups like Gamma, Pitch, and Beautiful.ai carve out niches around speed, sales integration, and brand safety. The winners won't be decided by whose AI generates prettier slides—they'll be whoever best answers the question: "Did this presentation actually work?"</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Weekly</span>
+        </div>
+    </footer>
+</body>
+</html>

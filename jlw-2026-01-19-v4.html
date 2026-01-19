@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bones Are Rebuilding (Or Not) — January 19, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for bone health theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #0A5A72;
+            --border: #D8E2E8;
+            --border-strong: #B8C8D0;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #3AB8D8;
+                --accent-soft: rgba(58, 184, 216, 0.15);
+                --accent-hover: #5CC8E8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* HEADER */
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* HERO */
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* CONTENT SECTIONS */
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* CLOSING / FOOTER */
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 19, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Bone Health</span>
+            <h1 class="hero-title">Your Bones Are Rebuilding (Or Not)</h1>
+            <p class="hero-subtitle">This week's research upends assumptions about osteopenia: that acne medication you took, the protein you're not eating, and why NASA astronauts might know more about your skeleton than your doctor.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/your-bones-are-rebuilding.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-bone-health.jpg" alt="Crystalline bone lattice structure with areas of healthy amber warmth contrasting fragile translucent sections">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Isotretinoin/Accutane -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Acne Drug That May Be Stealing Your Bones</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://link.springer.com/journal/403">Archives of Dermatological Research</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-accutane-bone.jpg" alt="Prescription medication capsules casting shadows that transform into fractured bone silhouettes">
+            </figure>
+            <div class="section-body">
+                <p>Here's a question that probably never came up in your dermatologist's office: What does clear skin cost your skeleton? A new systematic review and meta-analysis finds that <a href="https://www.drugs.com/isotretinoin.html">isotretinoin</a>—the nuclear option for severe acne, sold under brand names like Accutane and Absorica—may be quietly altering bone remodeling in ways that increase osteopenia risk.</p>
+
+                <p>The mechanism isn't mysterious. Isotretinoin is a vitamin A derivative, and vitamin A in excess is a known bone antagonist. What's new is the quantified correlation: patients on long-term isotretinoin therapy showed measurably decreased bone mineral density compared to controls. The effect was most pronounced in younger patients—exactly the demographic most likely to be prescribed it.</p>
+
+                <p>The clinical implication is straightforward but rarely practiced: if you're prescribing isotretinoin for more than a few months, bone health monitoring should probably be part of the protocol. For the millions who took it as teenagers and are now hitting their 40s, this is another variable to consider when your doctor mentions "age-related bone loss." It might not be entirely about age.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Protein as Bone Drug -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Protein Isn't Just for Muscles—It's a Bone Drug</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.verywellhealth.com">Verywell Health</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-protein-igf1.jpg" alt="Protein-rich foods with ethereal golden light beams connecting to bone structure">
+            </figure>
+            <div class="section-body">
+                <p>Calcium gets all the bone-health attention. Vitamin D gets the supplement aisle. But protein? That's still filed under "gym bros and bodybuilders" in most people's mental health categories. A new report makes the case that this is a critical blind spot—especially for post-menopausal women watching their bone density decline.</p>
+
+                <p>The mechanism is hormonal: adequate protein intake directly stimulates <a href="https://en.wikipedia.org/wiki/Insulin-like_growth_factor_1">Insulin-like Growth Factor 1 (IGF-1)</a>, a hormone that doesn't just build muscle but actively promotes bone formation. When protein intake drops, IGF-1 drops, and your bones lose a key anabolic signal. Worse, low protein also compromises calcium absorption—so even if you're dutifully taking your calcium supplements, your body may not be using them effectively.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-lifestyle-factors.png" alt="Bar chart showing relative impact of lifestyle interventions on bone health">
+                    <figcaption>Lifestyle interventions ranked by relative impact on bone mineral density. Resistance exercise and adequate protein lead the pack.</figcaption>
+                </figure>
+
+                <p>The practical implication: if you're treating osteopenia with calcium and vitamin D alone, you may be leaving your most powerful lever untouched. Protein recommendations specifically target 1.0-1.2 grams per kilogram of body weight for older adults—significantly higher than the general RDA. For a 150-pound post-menopausal woman, that's 68-82 grams daily, not the 45 grams she might be getting on a typical diet.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Romosozumab -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Builder Drug That's Outperforming Everything Else</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.frontiersin.org">Frontiers in Endocrinology</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-romosozumab.jpg" alt="Modern syringe pen injector before bone cross-section showing transformation from porous to dense structure">
+            </figure>
+            <div class="section-body">
+                <p>For years, the osteoporosis medication landscape has been dominated by drugs that slow bone loss. <a href="https://www.evenity.com/">Romosozumab</a> (brand name Evenity) does something different: it actually builds new bone. A new meta-analysis confirms what early trials suggested—this anti-sclerostin antibody therapy significantly outperforms everything else on the market.</p>
+
+                <p>The numbers are striking. At the lumbar spine, romosozumab achieved a 13.3% increase in bone mineral density—compared to 9.2% for teriparatide (Forteo), 8.8% for denosumab (Prolia), and just 5.3% for alendronate (Fosamax). The advantage held at the hip and femoral neck too. This isn't marginal improvement; it's a different category of outcome.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-drug-efficacy.png" alt="Horizontal bar chart comparing bone mineral density increases across different osteoporosis medications">
+                    <figcaption>Bone-building medication efficacy comparison. Romosozumab leads with 13.3% BMD increase at the lumbar spine.</figcaption>
+                </figure>
+
+                <p>The clinical positioning is now clearer: romosozumab isn't just an option—it's arguably the first-line choice for patients with severe osteopenia who need aggressive reversal rather than maintenance. The main barrier remains access: it's expensive, requires monthly injections for a year, and insurers often demand trial and failure of older drugs first. But for high-risk patients, the "wait and see" approach with bisphosphonates may now be harder to justify.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: AI Diagnosis -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">AI Can Now Spot Your Bone Loss Before You Feel It</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.jmir.org">Journal of Medical Internet Research</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-ai-diagnosis.jpg" alt="X-ray image with AI neural network overlays highlighting bone density patterns">
+            </figure>
+            <div class="section-body">
+                <p>You've probably had a chest X-ray or CT scan for reasons having nothing to do with your bones. But those images contain information about bone density that, until now, required a separate DEXA scan to assess. A systematic review confirms that machine learning models can now extract that hidden signal with remarkable accuracy—opening the door to opportunistic screening at massive scale.</p>
+
+                <p>Deep learning models analyzing X-rays achieved 92% sensitivity and 89% specificity for osteoporosis detection. CT-based models did even better: 94% sensitivity, 91% specificity. For context, that's approaching DEXA-level performance (88% sensitivity, 90% specificity) without requiring a dedicated bone density test.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ai-accuracy.png" alt="Grouped bar chart comparing AI vs traditional methods for osteoporosis detection">
+                    <figcaption>Diagnostic accuracy comparison: Deep learning on routine imaging vs. traditional screening methods.</figcaption>
+                </figure>
+
+                <p>The population health implications are significant. Most osteoporosis goes undiagnosed until a fracture occurs. If every CT and X-ray could automatically flag patients at risk, the screening gap would collapse overnight. The technology exists; what's needed now is integration into clinical workflows and validation in diverse populations. Watch for pilot programs from major health systems within the year.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Sugar and Bone Fat -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">How Sugar Turns Into "Bone Fat"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.uwa.edu.au/news">University of Western Australia News</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-sugar-bone-fat.jpg" alt="Sugar cubes dissolving into golden droplets infiltrating bone marrow cross-section">
+            </figure>
+            <div class="section-body">
+                <p>Here's a mechanism for osteopenia you won't find in most patient education materials: dietary sugar converting to fat inside your bones. New federal funding has been awarded to <a href="https://www.uwa.edu.au">University of Western Australia</a> researcher Dr. Kai Chen to investigate exactly how this happens—and whether RNA therapies could block it.</p>
+
+                <p>The target is marrow adiposity—the accumulation of fat cells within bone marrow that weakens bone structure. Unlike subcutaneous fat you can see, bone marrow fat is invisible but metabolically active. High sugar intake appears to drive stem cells in the marrow toward becoming fat cells rather than bone-building osteoblasts. The result: bones that look normal on the outside but are increasingly hollow and fragile on the inside.</p>
+
+                <p>The research is early-stage, but the therapeutic vision is compelling: a targeted treatment that could reprogram the metabolic pathway without requiring patients to dramatically change their diets. That said, while we wait for RNA therapies, the interim recommendation is obvious—reducing sugar intake isn't just about weight and diabetes anymore. Your skeleton has a stake too.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Tea and Bone Density -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Case for Your Daily Tea Ritual</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nutritioninsight.com">Nutrition Insight</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-tea-bones.jpg" alt="Elegant ceramic teacup with steam transforming into bone lattice patterns">
+            </figure>
+            <div class="section-body">
+                <p>Sometimes the most actionable health findings are also the most pleasant. A 10-year longitudinal study of older women found that habitual tea consumption is associated with modestly higher bone mineral density in the hip—one of the most fracture-prone sites in the osteoporotic skeleton.</p>
+
+                <p>The protective effect is attributed to <a href="https://en.wikipedia.org/wiki/Flavonoid">flavonoids</a>—bioactive compounds abundant in tea that appear to support bone formation or reduce resorption. The study distinguished between tea and coffee: moderate coffee consumption showed no negative effect, but excessive intake (more than 5 cups daily) combined with alcohol was detrimental. Tea consumption across all levels studied showed a positive association.</p>
+
+                <p>The magnitude of effect isn't transformative—we're not talking about tea replacing medication for established osteoporosis. But for the vast middle ground of people with osteopenia or normal bone density who want to maintain what they have, a daily tea habit is now a defensible part of a bone-health strategy. It's also a reminder that not every intervention needs to be a pill or a workout.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7: NASA Exercise Study -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">What Astronauts Prove About Exercise and Bone</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://link.springer.com/journal/11657">Archives of Osteoporosis</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-nasa-exercise.jpg" alt="Astronaut performing resistance training in space station with Earth visible through window">
+            </figure>
+            <div class="section-body">
+                <p>Space is the ultimate bone-loss laboratory. Remove gravity, and bone density plummets faster than any disease can cause on Earth. That's what makes <a href="https://www.nasa.gov/johnson">NASA Johnson Space Center</a>'s research on 51 astronauts so relevant to everyone sitting in a chair reading this newsletter.</p>
+
+                <p>The finding: specialized in-flight resistance exercise regimens successfully maintained bone microarchitecture even during extended missions. The study validated a new measurement approach—Trabecular Bone Score (TBS)—alongside standard DEXA scans to assess not just density but quality of bone structure. Both metrics held steady with rigorous exercise protocols.</p>
+
+                <p>The translation to Earth isn't complicated: if high-intensity resistance training can preserve bone in the most extreme unloading environment possible, it can certainly do the same for someone whose biggest gravitational challenge is getting off the couch. The astronaut protocol—heavy resistance exercises targeting major muscle groups—isn't exotic. It's what any decent strength training program already includes. The difference is consistency and intensity. Your bones, like astronauts' bones, respond to mechanical load. The question is whether you're providing enough of it.</p>
+
+                <div class="callout">
+                    <p><strong>The Bottom Line:</strong> Bone health isn't just about calcium pills and annual DEXA scans. This week's research points to a more integrated approach—watching medication side effects, eating enough protein, embracing resistance training, and yes, having your tea. Your skeleton is constantly rebuilding itself. The question is what signals you're sending it.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Until Next Week</h2>
+            <p class="closing-text">Bones are patient. They don't complain until they break. The research is getting better at catching problems before that happens—now it's about acting on what we know.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

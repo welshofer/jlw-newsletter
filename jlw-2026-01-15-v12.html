@@ -319,6 +319,22 @@
             html { font-size: 16px; }
             .stat-grid { grid-template-columns: 1fr 1fr; }
         }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
     </style>
 </head>
 <body>
@@ -334,6 +350,15 @@
             <span class="hero-tag">Climate Research</span>
             <h1>The Warning Shot</h1>
             <p class="hero-subtitle">2025 was the third-hottest year on record. The last three years crossed a critical threshold. Scientists say the acceleration is real.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-warning-shot.wav" type="audio/wav">
+                </audio>
+            </div>
+
             <div class="hero-image">
                 <img src="images/hero-climate-crisis.jpg" alt="Split image showing healthy vs damaged ocean ecosystem">
             </div>

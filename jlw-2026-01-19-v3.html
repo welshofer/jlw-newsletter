@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Do We Know This Is Good? — January 19, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - deep violet indigo for research/evaluation */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D73;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7EB8;
+                --accent-soft: rgba(139, 126, 184, 0.15);
+                --accent-hover: #9B8EC8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">2026-01-19</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">AI Evaluation</span>
+            <h1 class="hero-title">How Do We Know This Is Good?</h1>
+            <p class="hero-subtitle">The scramble to evaluate AI-generated content is producing new benchmarks, new frameworks, and new humility about what we can actually measure.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/how-do-we-know-this-is-good.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-ai-evaluation.jpg" alt="Abstract visualization of AI evaluation with neural networks being examined through elegant assessment frameworks">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-reasoning-leaderboard.jpg" alt="AI models competing on a crystalline leaderboard podium with neural network visualizations">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">Reasoning Models Sweep the Leaderboards</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard">Hugging Face</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The leaderboards have flipped. Mid-January updates to <a href="https://huggingface.co">Hugging Face</a>'s Open LLM Leaderboard show a decisive pattern: "reasoning" models like <a href="https://openai.com">OpenAI</a>'s o3-high and <a href="https://deepmind.google">Google DeepMind</a>'s Gemini 3.0-Reason have displaced standard zero-shot models from the top five in coding and hard reasoning tasks.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-reasoning-vs-zero-shot.png" alt="Bar chart showing reasoning models outperforming standard zero-shot models on GPQA benchmark">
+                    <figcaption>Reasoning models achieve 10-15% higher scores on challenging graduate-level reasoning benchmarks.</figcaption>
+                </figure>
+
+                <p>The secret sauce isn't architectural novelty—it's compute. These models use "Time-to-Thought," spending inference-time compute on multi-step deliberation before answering. Think of it as System 2 thinking for LLMs: slower, more deliberate, and dramatically more accurate on tasks that punish first-instinct responses.</p>
+
+                <p>The evaluation implications are profound. Standard benchmarks now need to account for "thinking time" to ensure fair comparisons. A model that takes 30 seconds to answer correctly might score higher than one that answers instantly but wrongly—but is that a fair comparison when your production system has a 500ms latency budget? The new frontier isn't just "what can this model do?" but "what can it do <em>within the constraints you actually have</em>?"</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-idea-first.jpg" alt="Split brain visualization showing idea generation and code synthesis as connected but distinct processes">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Idea Matters More Than the Syntax</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://arxiv.org/abs/2601.08342">arXiv</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>A new paper from Cornell researchers proposes a deceptively simple insight: when evaluating LLMs on coding tasks, we've been conflating two very different skills. The "Idea First, Code Later" protocol disentangles problem-solving from code generation—and the results are humbling.</p>
+
+                <p>Using 83 ICPC-style competitive programming problems, the researchers found that many models fail not at writing valid syntax, but at the initial "idea generation" phase. Standard pass@k metrics mask this distinction entirely. A model might produce syntactically correct code that solves the <em>wrong problem</em>, and traditional evals often can't tell the difference.</p>
+
+                <div class="callout">
+                    <p>"Current metrics conflate implementation details with reasoning failures; our protocol isolates the 'idea' phase."</p>
+                </div>
+
+                <p>The paper also validates a scalable "LLM-as-a-judge" protocol for evaluating the quality of ideas independent of implementation. As coding agents become ubiquitous—from <a href="https://cursor.com">Cursor</a> to <a href="https://github.com/features/copilot">GitHub Copilot</a> to Anthropic's own Claude Code—distinguishing between a model's ability to <em>plan</em> a solution versus merely <em>write</em> it becomes critical for debugging, reliability, and knowing when to trust the output.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-cowork-agentic.jpg" alt="Digital assistant reaching through screen to organize files in a physical workspace">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">Agentic AI Demands Agentic Evaluation</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.anthropic.com/news/claude-cowork">Anthropic</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://anthropic.com">Anthropic</a> launched a research preview of Claude Cowork this week—an agentic capability that extends Claude Code's philosophy to general knowledge work. The system can read, edit, and create files across a user's local environment, acting as an autonomous collaborator rather than a stateless chatbot.</p>
+
+                <p>The evaluation challenge is obvious: how do you benchmark a system that operates across multi-step workflows, makes intermediate decisions, and produces outputs that can only be assessed in context? Traditional single-turn accuracy metrics become nearly meaningless.</p>
+
+                <p>Anthropic's internal evaluation framework for Cowork reportedly focuses on "task completion rate" across realistic workflow scenarios—things like "research this topic and produce a memo" or "organize these files according to this schema." Success isn't a simple accuracy score; it's whether the human reviewing the work accepts it without significant revision.</p>
+
+                <p>This represents a philosophical shift in evaluation: from "did the model produce the correct answer?" to "did the model do useful work?" The former has ground truth; the latter requires judgment. And judgment, as we'll see, is exactly what LLMs struggle most to provide.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-economic-index.jpg" alt="Economic graphs transforming into human figures with productivity metrics floating as building blocks">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Beyond Benchmarks: Measuring Economic Impact</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.anthropic.com/news/economic-index">Anthropic Research</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Anthropic introduced its "Economic Index" this week—a new evaluation framework that abandons the question "how smart is this model?" in favor of "how does this model change what people can do?" The index tracks five "economic primitives": task complexity, skill level, purpose of use, autonomy, and success rate.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-economic-index-matrix.png" alt="Bubble chart showing AI use cases mapped by skill level and autonomy, with adoption volume indicated by bubble size">
+                    <figcaption>The Economic Index maps AI use cases across skill and autonomy dimensions, revealing that high-skill, high-autonomy tasks are seeing the fastest adoption.</figcaption>
+                </figure>
+
+                <p>Initial data from November 2025 shows a surprising pattern: AI is accelerating higher-skilled tasks more than routine work. Code generation and research synthesis—both high-skill, high-autonomy activities—show the largest productivity gains. Meanwhile, routine tasks like meeting scheduling show high autonomy but modest skill amplification.</p>
+
+                <div class="callout">
+                    <p>"We need new building blocks for understanding AI use that go beyond static benchmarks."</p>
+                </div>
+
+                <p>The implication for evaluation is significant. MMLU can tell you whether a model knows the capital of France; it can't tell you whether that model will help a knowledge worker finish a complex analysis faster. Anthropic is betting that economic measurement—rooted in real usage patterns and workflow outcomes—will prove more durable than academic benchmarks that models increasingly saturate or game.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-messy-apis.jpg" alt="Robot agent navigating a chaotic landscape of broken API connections and error storms">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Sandbox Lie</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://arxiv.org/abs/2601.09122">arXiv</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>A new study titled "Beyond Perfect APIs" delivers a sobering message to anyone deploying LLM agents in production: sandbox success does not translate to production reliability. The researchers evaluated agents under "real-world API complexity"—latency, partial outages, non-standard error messages—and watched performance collapse.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-sandbox-vs-realworld.png" alt="Grouped bar chart showing dramatic performance drop from sandbox to real-world API conditions">
+                    <figcaption>Agent task success rates drop by 24-53 percentage points when facing real-world API conditions instead of sanitized sandbox environments.</figcaption>
+                </figure>
+
+                <p>The numbers are stark. Agents that achieved 95% success rates on clean APIs dropped to 42% when facing non-standard error messages and 48% when authentication tokens expired mid-workflow. The paper proposes a "Robustness Score" that measures recovery from API failures—a metric conspicuously absent from benchmarks like ToolBench.</p>
+
+                <p>This matters because it exposes a fundamental gap in current evaluation: we're testing models in conditions they'll never actually encounter in deployment. It's like evaluating a self-driving car only on sunny days with perfect lane markings. The real world has potholes, and our benchmarks are pretending they don't exist.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-enterprise-agent.jpg" alt="Enterprise Slack interface transformed into mission control with AI agent orchestrating connected systems">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">The $50 Billion Vibe Check</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.salesforce.com/news">Salesforce</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://salesforce.com">Salesforce</a> began rolling out its rebuilt Slackbot this week—powered by Anthropic's Claude and transformed from a simple chatbot into a full "agent" that can search enterprise data, draft emails, and schedule meetings autonomously. The integration with Salesforce CRM, Google Drive, and Confluence is deep.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-judgebench-results.png" alt="Horizontal bar chart showing LLM judge accuracy, with GPT-4o barely beating random baseline">
+                    <figcaption>JudgeBench reveals that even frontier models like GPT-4o perform only slightly better than random guessing when evaluating complex responses.</figcaption>
+                </figure>
+
+                <p>But here's the evaluation challenge: how do you know if the agent did a good job? Salesforce's internal metrics reportedly focus on "task acceptance rate"—whether the human on the other end approved the action or needed to intervene. It's essentially a sophisticated vibe check, scaled to enterprise.</p>
+
+                <p>And that's the uncomfortable truth about AI evaluation in 2026. We have <a href="https://openreview.net/forum?id=G0dksFayVq">JudgeBench</a> showing that even GPT-4o performs only slightly better than random guessing when evaluating complex LLM outputs. We have economic indices trying to measure productivity instead of accuracy. We have agents deployed in high-stakes enterprise environments where "hallucination" isn't an academic concern—it's a compliance violation.</p>
+
+                <p>The scramble to answer "is this good?" is producing humility as much as methodology. As IBM researcher Pin-Yu Chen put it: "You should use LLM-as-a-judge to improve your judgment, not replace your judgment." In other words, the machines can help us evaluate—but the buck still stops with the humans who have to live with the consequences.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Quality Question Remains Open</h2>
+            <p class="closing-text">This week's developments make one thing clear: the harder AI systems work, the harder they are to evaluate. Reasoning models that "think longer" break our latency assumptions. Agentic systems that operate over workflows break our single-turn metrics. Economic impact assessments break our academic benchmark traditions. The frontier isn't just building better AI—it's building better ways to know if we've succeeded.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creatine for the Brain — January 18, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for brain health */
+            --bg: #FDFBF7;
+            --bg-alt: #F0F7F9;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #085870;
+            --accent-light: #4DA8C9;
+            --border: #D8E2E8;
+            --border-strong: #B8CCD4;
+            --amber: #D4A259;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F1416;
+                --bg-alt: #1A2226;
+                --text: #F5F1EA;
+                --text-secondary: #A0B0B8;
+                --accent: #4DA8C9;
+                --accent-soft: rgba(77, 168, 201, 0.15);
+                --accent-hover: #6BC0DD;
+                --accent-light: #7DD0ED;
+                --border: #2A3438;
+                --border-strong: #3A4850;
+                --amber: #E8B86D;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           AUDIO PLAYER
+           ======================================== */
+
+        .audio-player {
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+            padding: var(--space-sm) var(--space-md);
+        }
+
+        .audio-player-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .audio-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .audio-player audio {
+            flex: 1;
+            height: 36px;
+            max-width: 100%;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .callout strong {
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Key takeaway boxes */
+        .takeaway {
+            background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 100%);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+
+        .takeaway-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: var(--space-xs);
+        }
+
+        .takeaway p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-note {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+
+            .audio-player-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer,
+            .audio-player {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The Creatine Report</a>
+            <time class="newsletter-date">January 18, 2026</time>
+        </div>
+    </header>
+
+    <div class="audio-player">
+        <div class="audio-player-inner">
+            <span class="audio-label">Listen to this issue</span>
+            <audio controls preload="metadata">
+                <source src="audio/newsletter-creatine-2026-01-18.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Brain Health</span>
+            <h1 class="hero-title">The Gym Bro's Supplement Just Got a PhD</h1>
+            <p class="hero-subtitle">This week, creatine crossed from weight rooms into neurology journals. Here's what changed—and what it means for your brain.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-creatine-cognition.jpg" alt="Abstract visualization of creatine molecules crossing the blood-brain barrier">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Nutrition Reviews Systematic Review -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Oxford Puts Its Name on the Line</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://academic.oup.com/nutritionreviews">Nutrition Reviews</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>When Oxford University Press publishes something, tenure committees pay attention. Their February 2026 issue of <em>Nutrition Reviews</em> features a systematic review with a verdict that would have seemed absurd a decade ago: creatine supplementation provides measurable cognitive benefits in healthy older adults.</p>
+
+                <div class="section-image">
+                    <img src="images/article-03-aging-review.jpg" alt="Scientific illustration of aging brain with neural pathways">
+                </div>
+
+                <p>The key finding isn't that creatine helps cognition generally—it's the specificity. Memory and attention showed significant improvements. Global cognition scores? Not so much. This distinction matters because it suggests creatine isn't some blunt cognitive enhancer; it's addressing particular metabolic bottlenecks in the aging brain.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-cognitive-domains.png" alt="Bar chart showing cognitive improvement effect sizes by domain">
+                    <figcaption>Effect sizes (Cohen's d) by cognitive domain. Memory and attention show the strongest response.</figcaption>
+                </figure>
+
+                <div class="takeaway">
+                    <div class="takeaway-label">What this means</div>
+                    <p>Creatine just moved from "gym supplement" to "potential geriatric intervention." Expect to see it mentioned alongside vitamin D and omega-3s in longevity protocols by year's end.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: News-Medical.Net #1 Supplement -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The #1 Brain Supplement of 2026 Isn't What You'd Guess</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.news-medical.net">News-Medical.Net</a></span>
+                <span class="section-date">January 17, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Move over, lion's mane. Forget your nootropic stacks. According to News-Medical.Net's annual analysis, the supplement most likely to actually improve your cognitive performance in 2026 is the same powder bodybuilders have been dumping in their shakes since the 1990s.</p>
+
+                <div class="section-image">
+                    <img src="images/article-02-top-supplement.png" alt="Conceptual image of creatine molecule as brain fuel">
+                </div>
+
+                <p>The analysis highlights two groups who benefit most: vegetarians and vegans (who get essentially zero dietary creatine) and the sleep-deprived (whose brains are running on empty ATP reserves). For these populations, supplementation isn't optimization—it's addressing a genuine deficit.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-population-benefits.png" alt="Bar chart showing relative cognitive benefits by population group">
+                    <figcaption>Vegetarians and sleep-deprived individuals show the largest cognitive improvements from creatine supplementation.</figcaption>
+                </figure>
+
+                <div class="callout">
+                    <p><strong>The mechanism:</strong> Creatine acts as a "rechargeable battery" for neurons, buffering ATP during high-demand cognitive tasks. When your brain's energy reserves are already low, the buffer matters more.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Eudemonia Journal -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Wellness Industry Smells Opportunity</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://eudemonia.net">Eudēmonia Journal</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>When Eudēmonia—the wellness publication that shapes what Goop readers think about next—dedicates an entire issue to creatine, something has shifted. Their "Creatine Issue" positions the supplement as foundational to what they call "metabolic psychiatry."</p>
+
+                <div class="section-image">
+                    <img src="images/article-03-eudemonia-issue.jpg" alt="Magazine cover featuring abstract brain and energy visualization">
+                </div>
+
+                <p>The thesis: brain fog, attention problems, and even depression may share a common root cause—cellular energy deficits. Creatine, in this framework, isn't treating symptoms. It's restoring the bioenergetic substrate that healthy brain function requires.</p>
+
+                <p>They highlight emerging data on creatine as an adjunctive treatment for depression, particularly when combined with SSRIs or therapy. The early trials show faster response times and stronger symptom reduction. It's not replacing conventional treatment, but it may be amplifying it.</p>
+
+                <div class="takeaway">
+                    <div class="takeaway-label">What to watch</div>
+                    <p>The "bioenergetic deficit" theory of mental health is gaining steam. Creatine is just the first intervention—expect more focus on brain metabolism in psychiatric research.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Economic Times -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">When the Financial Press Covers Supplements, Pay Attention</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://economictimes.indiatimes.com">The Economic Times</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The Economic Times doesn't usually cover nutritional supplements. Their beat is markets, commodities, and capital flows. So when they ran a feature on creatine as "brain fuel," the subtext was clear: this isn't just a health story anymore. It's an economic one.</p>
+
+                <p>Their angle focused on workforce productivity—specifically, the economic cost of cognitive fatigue and how knowledge workers might use creatine to maintain output during demanding periods. The piece recommended dosages ranging from 10g daily for general cognitive support to 20-30g during acute sleep deprivation.</p>
+
+                <div class="callout">
+                    <p><strong>The signal:</strong> When financial press starts covering a supplement, it means the mass-market adoption curve is beginning. Executives, consultants, and knowledge workers are the new target demographic—not athletes.</p>
+                </div>
+
+                <p>This reframing from "performance" to "productivity" is significant. Gyms sell to the fitness-conscious. Brain optimization sells to everyone with a demanding job. That's a much larger market.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Prevention.com Depression -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Women's Health Gets Specific</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.prevention.com">Prevention</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Prevention's coverage zeroed in on something the academic reviews often bury in their data tables: the gender disparity in creatine's mood effects. Early clinical trials suggest that women with depression may respond more strongly to creatine supplementation than men.</p>
+
+                <div class="section-image">
+                    <img src="images/article-01-cbt-depression.jpg" alt="Calming abstract illustration representing mental wellness">
+                </div>
+
+                <p>The proposed mechanism involves hormonal interactions with creatine kinase—the enzyme that mediates creatine's energy-buffering effects. Estrogen appears to influence how effectively creatine restores ATP in the prefrontal cortex, a region frequently showing energy deficits in depression.</p>
+
+                <p>Most striking: in studies combining creatine with cognitive behavioral therapy (CBT), participants showed significantly stronger reductions in depressive symptoms compared to CBT alone. This positions creatine not as an antidepressant replacement, but as a treatment potentiator—making existing therapies work better.</p>
+
+                <div class="takeaway">
+                    <div class="takeaway-label">The bigger picture</div>
+                    <p>For treatment-resistant depression, the standard approach is to add or switch medications. Creatine offers a lower-risk option that may accelerate existing treatments. Expect more psychiatrists to consider it as an adjunct.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Vitafoods Bioavailability -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Blood-Brain Barrier Problem (And Why Your Dose Matters)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.vitafoodsinsights.com">Vitafoods Insights</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Here's the inconvenient truth the hype articles skip: getting creatine into your brain is significantly harder than getting it into your muscles. Vitafoods Insights published a technical deep-dive on the bioavailability challenge, and the numbers are sobering.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-brain-muscle-uptake.png" alt="Line chart comparing brain and muscle creatine uptake over time">
+                    <figcaption>Muscle creatine saturates quickly (+37% in 12 weeks). Brain creatine shows more modest gains (~9%) due to blood-brain barrier transport limitations.</figcaption>
+                </figure>
+
+                <p>The blood-brain barrier limits creatine transport, meaning muscle saturation happens within weeks while brain saturation may require 12 weeks or longer. This explains why someone taking a standard "gym dose" for a week and expecting cognitive effects will be disappointed.</p>
+
+                <p>The review found that micronized creatine monohydrate remains the superior form for absorption—outperforming the various esters and proprietary blends that cost 3-4x more. Sometimes the boring option is also the best one.</p>
+
+                <div class="callout">
+                    <p><strong>Practical guidance:</strong> For cognitive benefits, plan on consistent supplementation for at least 8-12 weeks before expecting measurable effects. Standard dosing (3-5g daily) works, but patience is required.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Bottom Line</h2>
+            <p class="closing-text">Creatine's cognitive benefits are real, supported by peer-reviewed research, and most pronounced in populations with lower baseline stores. The main challenge isn't efficacy—it's patience. Brain uptake takes months, not days. If you're considering it, commit to the timeline or don't bother starting.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The Creatine Report</span>
+            <span class="footer-note">Generated with AI assistance • January 2026</span>
+        </div>
+    </footer>
+</body>
+</html>

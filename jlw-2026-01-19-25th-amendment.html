@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Check That Has Never Cleared — January 19, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - constitutional navy and gold */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #1A365D;
+            --accent-soft: rgba(26, 54, 93, 0.12);
+            --accent-hover: #0F2340;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #5B8DD9;
+                --accent-soft: rgba(91, 141, 217, 0.15);
+                --accent-hover: #7BA3E5;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image, .article-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img, .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 19, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Constitutional Law</span>
+            <h1 class="hero-title">The Check That Has Never Cleared</h1>
+            <p class="hero-subtitle">For 59 years, the 25th Amendment has included a mechanism to remove an incapacitated president. It has never been used. This week, that silence got louder.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-check-that-has-never-cleared.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/25th-amendment/hero.png" alt="The United States Constitution with the 25th Amendment illuminated">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Markey Pulls the Fire Alarm</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://denvergazette.com">Denver Gazette</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/25th-amendment/article-01-markey-senate.png" alt="Senate chamber podium with dramatic lighting">
+            </figure>
+            <div class="section-body">
+                <p>Senator <a href="https://www.markey.senate.gov/">Ed Markey</a> (D-Mass.) didn't mince words: the 25th Amendment should be invoked. Now. This isn't a late-night cable news hypothetical—it's a sitting U.S. Senator formally calling for the constitutional mechanism designed to remove an incapacitated president.</p>
+
+                <p>The trigger? President Trump's renewed demands to acquire <a href="https://en.wikipedia.org/wiki/Greenland">Greenland</a> and his escalating tariff threats against NATO allies. Markey cited "erratic behavior" and a detachment from reality as grounds for presidential inability under Section 4.</p>
+
+                <div class="callout">
+                    <p>"We cannot allow the stability of our nation and our alliances to be held hostage."</p>
+                </div>
+
+                <p>This is the first formal call by a sitting Senator in 2026 to trigger Section 4. It moves the conversation from academic speculation to concrete political demand. The question now: will anyone else join him?</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Coalition Grows Younger</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://economictimes.com">The Economic Times</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/25th-amendment/article-02-ansari-social.png" alt="Smartphone showing trending hashtags with blue glow">
+            </figure>
+            <div class="section-body">
+                <p>Freshman Congresswoman <a href="https://ansari.house.gov/">Yassamin Ansari</a> (D-AZ) joined Markey's call within hours—a signal that the push for Section 4 isn't confined to the party's old guard. She urged Democratic leadership to formalize a request to the Cabinet, knowing full well such a request would be dead on arrival.</p>
+
+                <p>But dead on arrival might be the point. Social media campaigns supporting the 25th Amendment trended significantly following Ansari's announcement. The hashtag <code>#25thAmendmentNow</code> isn't a legislative strategy—it's a messaging one. It forces every Republican to either defend the President's behavior or maintain conspicuous silence.</p>
+
+                <p>Watch for more progressives to join this chorus. The political calculation is straightforward: there's no downside to calling for something that won't happen but puts your opponents in an uncomfortable spotlight.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Sound of Silence</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://thefulcrum.us">The Fulcrum</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/25th-amendment/article-03-fulcrum-silence.png" alt="Empty ornate chair in government office with dramatic shadows">
+            </figure>
+            <div class="section-body">
+                <p>David L. Nevins's analysis in The Fulcrum cuts to the heart of the matter: the 25th Amendment's "disability rule" is effectively abandoned because it relies entirely on a Cabinet politically beholden to the President who appointed them.</p>
+
+                <p>This is constitutional design meeting political reality. The framers of the 25th Amendment (ratified in 1967) assumed that Cabinet secretaries would prioritize the nation over their appointer when faced with genuine presidential incapacity. That assumption has aged poorly in an era of hyperpartisan loyalty tests.</p>
+
+                <figure class="chart">
+                    <img src="images/25th-amendment/chart-sections.png" alt="Bar chart showing 25th Amendment usage by section">
+                    <figcaption>Section 4 has been available since 1967 but has never been invoked. Section 3 (voluntary transfer) has been used five times—all for medical procedures.</figcaption>
+                </figure>
+
+                <p>Nevins argues that "silence" from Republican leadership is being interpreted as complicity. But silence is a rational political choice: speaking up invites primary challengers; staying quiet lets the news cycle move on. The 25th Amendment was designed for a crisis of capacity. It was not designed for a crisis of political will.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Check That Bounced</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://thedailybeast.com">The Daily Beast</a></span>
+                <span class="section-date">January 17, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/25th-amendment/article-04-cabinet-loyalty.png" alt="Cabinet room table viewed from above with empty chairs">
+            </figure>
+            <div class="section-body">
+                <p>Political commentator <a href="https://twitter.com/TheRickWilson">Rick Wilson</a> and others have shifted focus from the President's actions to the <em>inaction</em> of the executive branch officers empowered to act. The Cabinet is the only check left—and the check has bounced.</p>
+
+                <p>The dilemma facing Cabinet secretaries is brutally simple: declaring a leader unfit is political suicide. These are appointees who owe their positions to the President. Many will owe their post-government careers to staying in his good graces. The incentive structure bends entirely toward loyalty, not accountability.</p>
+
+                <figure class="chart">
+                    <img src="images/25th-amendment/chart-process.png" alt="Flowchart showing Section 4 process">
+                    <figcaption>The Section 4 process requires the Vice President plus a majority of Cabinet secretaries—all appointed by the President they would be declaring unfit.</figcaption>
+                </figure>
+
+                <p>There's no "break-glass" mechanism when the Cabinet itself is comprised of loyalists. The 25th Amendment assumed good-faith actors making difficult judgments. It did not anticipate a scenario where the gatekeepers would uniformly decline to gatekeep.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Letter That Changed Everything</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://theguardian.com">The Guardian</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/25th-amendment/article-05-greenland-letter.png" alt="Handwritten letter with Greenland visible through window reflection">
+            </figure>
+            <div class="section-body">
+                <p>The precipitating event: a letter from President Trump to Norwegian Prime Minister <a href="https://en.wikipedia.org/wiki/Jonas_Gahr_St%C3%B8re">Jonas Gahr Støre</a> that allegedly linked the U.S. desire to "control" Greenland with Trump's personal grievance over not receiving the <a href="https://www.nobelprize.org/prizes/peace/">Nobel Peace Prize</a>.</p>
+
+                <p>Trump reportedly wrote that he felt "no obligation to think purely of Peace" without the award. He threatened economic retaliation against Denmark and Norway if his requests were not met.</p>
+
+                <p>The direct linkage of foreign policy and territorial acquisition to personal grievances has reignited immediate legal and medical questions about fitness for office. Previous 25th Amendment discussions focused on hypothetical scenarios. This letter provides something concrete to point to—a documented instance where foreign policy appears driven by personal pique rather than national interest.</p>
+
+                <p>Critics argue this crosses the line from "unconventional" to "incapacitated." Defenders argue it's simply aggressive negotiation. What neither side disputes: it's now in writing.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Body That Congress Never Created</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://ibanet.org">International Bar Association</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/25th-amendment/article-06-legal-scales.png" alt="Legal scales of justice with one side empty">
+            </figure>
+            <div class="section-body">
+                <p>Legal scholars are renewing discussions about the "Other Body" clause buried in Section 4. The Constitution explicitly allows Congress to create an alternative body—other than the Cabinet—to declare presidential inability alongside the Vice President.</p>
+
+                <p>Representative <a href="https://raskin.house.gov/">Jamie Raskin</a> proposed exactly this in 2020 and 2021: a bipartisan commission of medical experts and former officials who could evaluate presidential capacity without the career-ending political consequences facing Cabinet members. The proposal went nowhere.</p>
+
+                <figure class="chart">
+                    <img src="images/25th-amendment/chart-timeline.png" alt="Timeline of 25th Amendment key moments">
+                    <figcaption>Key moments in 25th Amendment history. Section 4 has been available since 1967 but has never been invoked.</figcaption>
+                </figure>
+
+                <p>The current crisis makes this structural vulnerability impossible to ignore. The 25th Amendment gives Congress the power to create a non-political body for exactly this scenario. Congress has declined to use that power for 59 years. Legal experts note the "fragility of America's constitutional safeguards" isn't an accident—it's a policy choice.</p>
+
+                <p>The question isn't whether Section 4 works. The question is whether Congress will ever create the conditions under which it <em>could</em> work.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Silence Speaks</h2>
+            <p class="closing-text">The 25th Amendment was written for a crisis. What its framers didn't anticipate was that the crisis itself would be silence—the deliberate choice of those empowered to act to instead look away. The constitutional mechanism exists. The political will to use it does not. That gap is the story of this week, and likely the story of this administration.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

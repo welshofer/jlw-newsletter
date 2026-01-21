@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Muscles Are Talking — January 20, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/health focused */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #095A72;
+            --border: #D8E2E8;
+            --border-strong: #B8C8D4;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #3A9FC2;
+                --accent-soft: rgba(58, 159, 194, 0.15);
+                --accent-hover: #4DB3D6;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Infographic styling */
+        .infographic {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .infographic img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .infographic figcaption {
+            background: var(--bg-alt);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: var(--space-sm) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">welshofer</a>
+            <time class="newsletter-date">January 20, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Fitness & Longevity</span>
+            <h1 class="hero-title">Your Muscles Are Talking</h1>
+            <p class="hero-subtitle">This week's research delivers a clear message to middle-aged men: variety beats intensity, 10 minutes beats zero, and your brain needs your biceps more than you thought.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/your-muscles-are-talking.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-farmers-walk.jpg" alt="Man performing farmer's walk at golden hour in urban fitness park">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Exercise Variety (Jan 20) -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Cross-Training Vindication</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.hsph.harvard.edu/news/press-releases/variety-exercise-lower-risk-mortality/">Harvard T.H. Chan School of Public Health</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-variety.jpg" alt="Diverse fitness activities - swimming, cycling, hiking">
+            </figure>
+            <div class="section-body">
+                <p>If you've been loyally showing up to the same gym routine for years, Harvard just gave you permission to shake things up. A 30-year study of 111,000 adults found that people who mixed different types of exercise had a <strong>19% lower risk of premature death</strong> compared to those who stuck to a single modality.</p>
+
+                <p>The kicker? This benefit held true <em>regardless of total exercise volume</em>. A guy doing moderate amounts of swimming, biking, and lifting outperformed the marathon purist logging twice the hours. The researchers attribute this to complementary physiological adaptations—aerobic capacity from running, muscular strength from lifting, balance and flexibility from yoga or tai chi.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-exercise-variety.png" alt="Bar chart showing mortality risk reduction by exercise variety level">
+                    <figcaption>Higher exercise variety correlates with significantly lower mortality risk, independent of total volume.</figcaption>
+                </figure>
+
+                <p>For middle-aged men worried about sarcopenia, this is actionable intelligence. Don't abandon your compound lifts—but add a Zone 2 bike ride Wednesday, a swim on Saturday, maybe pickleball with the neighbors. Your body reads variety as a signal to stay adaptable. And adaptability, it turns out, is what keeps you alive.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: 10 Minutes Walking (Jan 20) -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Ten-Minute Threshold</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.healthline.com/health-news/10-minute-daily-walk-longevity-study">eClinicalMedicine / Healthline</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-walking.jpg" alt="Feet walking on morning path with dew and sunlight">
+            </figure>
+            <div class="section-body">
+                <p>The "no time" excuse just got demolished. A new study in <a href="https://www.thelancet.com/journals/eclinm/home">eClinicalMedicine</a> found that just 10 minutes of daily walking is associated with a <strong>15% reduction in all-cause mortality</strong>. Not 30 minutes. Not an hour. Ten.</p>
+
+                <p>The research specifically highlighted the "sedentary to active" transition as having the steepest return on investment. Going from zero to 10 minutes delivers more marginal benefit than going from 30 to 60. For the busy professional who thinks fitness requires an hour at the gym or it's not worth doing—this is the data that should change your mental model.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-walking-mortality.png" alt="Line chart showing diminishing returns of walking minutes on mortality reduction">
+                    <figcaption>The first 10 minutes deliver outsized returns. Additional time helps, but with diminishing marginal benefit.</figcaption>
+                </figure>
+
+                <p>The researchers also emphasized "combinatory effects"—pairing activity with adequate sleep and nutrition amplifies the longevity benefit. But the core message is clear: the minimum effective dose is lower than you think. Park farther away. Take the stairs. Walk while you take calls. Small movements compound.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Resistance Training Cognitive (Jan 16) -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Your Brain on Barbells</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.fightaging.org/archives/2026/01/resistance-training-improves-cognitive-function-in-older-adults/">Fight Aging!</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-brain-lift.jpg" alt="Neural pathways lighting up with dumbbells in foreground">
+            </figure>
+            <div class="section-body">
+                <p>We've known for years that cardio helps the brain. But a comprehensive meta-analysis now confirms that <strong>resistance training has distinct neuroprotective effects</strong> that aerobic exercise doesn't provide. Specifically: improved working memory, verbal learning, and spatial memory.</p>
+
+                <p>The mechanism appears different from cardio's brain benefits. While running increases <a href="https://en.wikipedia.org/wiki/Brain-derived_neurotrophic_factor">BDNF</a> and blood flow, lifting seems to trigger growth factors and hormonal responses that support neural plasticity through separate pathways. The implication: you need both. Cardio isn't a substitute for strength work, and vice versa.</p>
+
+                <div class="callout">
+                    <p><strong>Key finding:</strong> Cognitive improvements were observed even in participants who started resistance training later in life—suggesting it's never too late to pick up the dumbbells.</p>
+                </div>
+
+                <p>For middle-aged men worried about cognitive decline, this reframes the gym conversation entirely. Those squats aren't just preventing sarcopenia and osteoporosis—they're protecting your memory, your verbal recall, your spatial reasoning. Every rep is a deposit in the brain bank.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Light Activity Survival (Jan 14) -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Case for Moving—Any Moving</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.ahajournals.org/doi/10.1161/JAHA.125.042385">Journal of the American Heart Association</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-light-activity.jpg" alt="Older man gardening in morning light">
+            </figure>
+            <div class="section-body">
+                <p>Here's news for anyone who feels too out of shape to start: a study in <a href="https://www.ahajournals.org/">JAHA</a> found that for men with "Cardiovascular-Kidney-Metabolic" syndrome (CKM)—the cluster of conditions common in sedentary midlife—even <strong>light physical activity offers meaningful survival benefits</strong>.</p>
+
+                <p>The study specifically measured outcomes for people with existing metabolic dysfunction: high blood pressure, prediabetes, kidney stress. The more severe the syndrome, the more impactful light movement became. This challenges the "all or nothing" mentality that keeps deconditioned people on the couch. You don't need to crush a HIIT workout to move the needle.</p>
+
+                <p>Gardening counts. Housework counts. A slow walk counts. The researchers noted that "small increases in daily movement can provide significant survival benefits"—particularly for the people who need it most. If you've been avoiding exercise because you're too far gone, this study says the opposite is true: you have the most to gain.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Aerobic Brain Age (Jan 13) -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Cardio as Time Machine</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.miragenews.com/aerobic-exercise-linked-to-younger-brain-age-1160452/">AdventHealth Research Institute</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-zone2.jpg" alt="Runner in Zone 2 training with heart rate monitor">
+            </figure>
+            <div class="section-body">
+                <p>A year-long study just put a number on cardio's anti-aging effects: participants who maintained consistent aerobic exercise showed a brain age <strong>0.6 years younger</strong> than their chronological age. That's measurable structural youthfulness on brain scans.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-brain-age-exercise.png" alt="Line chart comparing brain age trajectory with and without aerobic exercise">
+                    <figcaption>After 12 months, the aerobic exercise group's brains were measurably younger than expected for their chronological age.</figcaption>
+                </figure>
+
+                <p>The protocol wasn't extreme—moderate-to-vigorous intensity, the kind that aligns with <a href="https://www.zonesofexercise.com/zone-2/">Zone 2</a> and Zone 3 training. Think: able to hold a conversation, but just barely. Sustained, consistent effort over time beat sporadic high-intensity bursts.</p>
+
+                <p>For men in their 40s and 50s watching their parents navigate cognitive decline, this is quantifiable hope. Your brain isn't passively aging—it responds to inputs. Zone 2 cardio, done consistently, literally keeps your brain younger. The question isn't whether you have time for it. The question is whether you can afford not to.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Heart Health Crisis (Jan 12) -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Numbers That Should Scare You</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.jacc.org/doi/10.1016/j.jacc.2025.12.001">Journal of the American College of Cardiology</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-heart.jpg" alt="Anatomical heart illustration with blood pressure cuff">
+            </figure>
+            <div class="section-body">
+                <p>The inaugural "JACC Cardiovascular Statistics" report dropped this week, and the headline is brutal: <strong>hypertension-related cardiovascular deaths have nearly doubled</strong> in recent years. Obesity now affects over 40% of U.S. adults. Diabetes and heart disease mortality are rising specifically in the 40-50 demographic.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-heart-crisis.png" alt="Horizontal bar chart showing hypertension deaths, obesity rates, and diabetes prevalence">
+                    <figcaption>The trifecta of metabolic dysfunction: hypertension deaths up 95%, obesity at 40%, diabetes rising in younger adults.</figcaption>
+                </figure>
+
+                <p>This is the context for everything else in this newsletter. The exercise variety study, the 10-minute walking research, the brain-barbell connection—they matter because the baseline is deteriorating. The average American man in his 40s is statistically likely to be obese, pre-hypertensive, and on a trajectory toward metabolic disease.</p>
+
+                <p>The JACC report isn't doom-scrolling—it's a wake-up call with a clear prescription. Blood pressure management. Weight control. Movement. The same boring interventions your doctor has been recommending. The difference now is we have harder data on the consequences of ignoring them, and better data on the minimal viable intervention. Ten minutes of walking. Mix up your workouts. Lift something heavy. Your heart, brain, and muscles are all asking for the same thing.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Minimum Effective Life</h2>
+            <p class="closing-text">This week's research converges on a single theme: the bar for meaningful intervention is lower than you think, but the stakes are higher than you assumed. Ten minutes beats zero. Variety beats monotony. Starting late beats never starting. Your muscles are talking—to your heart, to your brain, to your future self. The question is whether you're listening.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">welshofer</span>
+        </div>
+    </footer>
+</body>
+</html>

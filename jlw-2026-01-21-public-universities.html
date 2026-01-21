@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public University Dispatch — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - academic navy */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #1A365D;
+            --accent-soft: rgba(26, 54, 93, 0.12);
+            --accent-hover: #2D4A73;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #4A7DB5;
+                --accent-soft: rgba(74, 125, 181, 0.15);
+                --accent-hover: #5E94CC;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           AUDIO PLAYER
+           ======================================== */
+
+        .audio-section {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: var(--space-lg) var(--space-md);
+        }
+
+        .audio-player {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+        }
+
+        .audio-player-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .audio-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+        }
+
+        .audio-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+        }
+
+        .audio-player audio {
+            width: 100%;
+            height: 40px;
+        }
+
+        .audio-duration {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Infographic styling */
+        .infographic {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .infographic img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .infographic figcaption {
+            background: var(--bg-alt);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: var(--space-sm) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer,
+            .audio-section {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">Public University Dispatch</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Higher Education</span>
+            <h1 class="hero-title">$155 Million in Gifts, a Physics Breakthrough, and 12 Billion Radio Signals</h1>
+            <p class="hero-subtitle">This week's biggest moves from America's flagship public universities—where the money's going, what the labs discovered, and why one campus is under scrutiny.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-public-universities.png" alt="Collegiate architecture panorama representing top public universities">
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio section disabled - narrator CLI not available
+    <section class="audio-section">
+        <div class="audio-player">
+            <div class="audio-player-header">
+                <svg class="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
+                </svg>
+                <span class="audio-label">Listen to this edition</span>
+            </div>
+            <audio controls preload="metadata">
+                <source src="audio/jlw-2026-01-21-public-universities.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </section>
+    -->
+
+    <main class="content">
+        <!-- SECTION 1: Binghamton AI Center -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">New York Bets $55 Million on the First Independent AI Research Center at a Public University</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.ny.gov/">New York State Government</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-01-ai-center.png" alt="Visualization of AI research laboratory with neural network displays">
+                </div>
+                <p>When Governor Kathy Hochul announced <a href="https://www.binghamton.edu/">Binghamton University</a> would house the nation's first independent AI research center at a public institution, she wasn't just cutting a ribbon—she was placing a stake in the ground about who should shape AI's future. The $55 million backing ($30 million philanthropic, $25 million state) funds something deliberately different from the corporate-adjacent labs at Stanford or MIT.</p>
+
+                <p>The key word is "independent." While Google, Meta, and OpenAI dominate AI research with agendas tied to product roadmaps and shareholder returns, Binghamton's center promises research driven by public interest. That's not naïve idealism—it's structural. A SUNY institution answers to New York taxpayers, not quarterly earnings calls.</p>
+
+                <div class="callout">
+                    <p><strong>What to watch:</strong> The center's mandate for "responsible and transparent" AI development will be tested immediately. Will it produce research that makes industry uncomfortable? That's the real measure of independence.</p>
+                </div>
+
+                <p>For students considering graduate programs in AI ethics, policy, or safety research, Binghamton just became a destination worth monitoring. The first cohort of researchers will define whether "independent" means genuinely countervailing or merely government-funded-but-harmless.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: UCLA Thermal Material -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">UCLA Discovers a Metal That Conducts Heat 3x Better Than Copper—And Shouldn't Exist</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://newsroom.ucla.edu/">UCLA Newsroom</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-02-thermal-material.png" alt="Crystalline structure of theta-phase tantalum nitride material">
+                </div>
+                <p>Physics has rules. One of the most reliable is the <a href="https://en.wikipedia.org/wiki/Wiedemann%E2%80%93Franz_law">Wiedemann-Franz law</a>, which says metals that conduct electricity well also conduct heat well, in a predictable ratio. For 150 years, this relationship held. Until a UCLA-led team found a material that breaks it.</p>
+
+                <p>Theta-phase tantalum nitride conducts heat nearly three times better than copper while maintaining different electrical properties than the law predicts. This isn't a marginal improvement—it's a category violation that demands new theoretical frameworks.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-thermal-conductivity.png" alt="Chart comparing thermal conductivity of UCLA's theta-phase TaN against common metals">
+                    <figcaption>UCLA's discovery (orange) dwarfs copper, silver, and aluminum in thermal conductivity.</figcaption>
+                </figure>
+
+                <p>The practical implications cascade immediately. Data centers burn through electricity managing heat. Advanced chips throttle performance because they can't dissipate thermal energy fast enough. Electric vehicle batteries degrade from temperature management compromises. A material that moves heat this efficiently, if manufacturable at scale, addresses bottlenecks across multiple industries.</p>
+
+                <div class="callout">
+                    <p><strong>The catch:</strong> "Theta-phase" hints at manufacturing complexity. Novel crystal structures rarely leap from lab to fab easily. The question isn't whether this material is revolutionary—it's whether anyone can make enough of it to matter.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: UC Berkeley SETI -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">SETI@home's Final Answer: 100 Signals Worth a Second Look from 12 Billion Candidates</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.berkeley.edu/">UC Berkeley News</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-03-seti-signals.png" alt="Radio telescope array under starfield representing SETI research">
+                </div>
+                <p>For over two decades, <a href="https://setiathome.berkeley.edu/">SETI@home</a> turned millions of personal computers into a distributed supercomputer, crunching through radio telescope data in humanity's most ambitious citizen science project. Now <a href="https://www.berkeley.edu/">UC Berkeley</a> has released the final tally: 12 billion signals in, 100 promising candidates out.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-seti-signals.png" alt="Logarithmic chart showing SETI@home signal filtering from 12 billion to 100">
+                    <figcaption>The mathematical scale of elimination: 99.9999992% of signals rejected to find 100 candidates.</figcaption>
+                </figure>
+
+                <p>Those 100 signals—now being re-observed by China's FAST telescope, the world's largest single-dish radio telescope—represent something beyond their extraterrestrial potential. They prove distributed computing works for real science. The model pioneered by SETI@home spawned <a href="https://foldingathome.org/">Folding@home</a> (protein folding), <a href="https://einsteinathome.org/">Einstein@home</a> (gravitational waves), and dozens of other projects.</p>
+
+                <p>The 100 candidates probably aren't aliens. Natural phenomena mimic artificial signals in frustrating ways. But the infrastructure to identify them—and the public engagement model that made analysis possible—represents a genuine legacy. SETI@home demonstrated that scientific computing doesn't require exclusive access to supercomputers when you have three million volunteers.</p>
+
+                <div class="callout">
+                    <p><strong>Next phase:</strong> FAST's follow-up observations will take months. If any signals repeat with non-natural characteristics, expect headlines. If they don't, SETI@home still succeeded at everything except the one thing everyone hoped for.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4: UT Austin Medical Center -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">UT Austin's $100 Million Medical Center Gift Signals a Regional Healthcare Power Shift</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.utexas.edu/">UT News</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-04-ut-medical.png" alt="Modern medical research facility architecture">
+                </div>
+                <p>Tench and Simone Coxe's $100 million gift to <a href="https://www.utexas.edu/">UT Austin</a>'s new medical center isn't just philanthropy—it's a bet on Austin's transformation. Central Texas has grown explosively without corresponding growth in academic medical infrastructure. Houston has MD Anderson and the Texas Medical Center. Dallas has UT Southwestern. Austin has been the gap in Texas's healthcare map.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-university-investments.png" alt="Bar chart comparing major university donations this week">
+                    <figcaption>This week's major gifts to public universities. UT Austin's donation leads at $100M.</figcaption>
+                </figure>
+
+                <p>The timing matters. Austin's population exceeds 2.4 million in the metro area, with continued growth from tech migration. That population has healthcare needs that currently funnel to Houston or Dallas for complex care. A world-class medical center changes the patient flow calculus entirely.</p>
+
+                <p>For UT Austin, this accelerates a strategic pivot. The university already operates Dell Medical School; this investment transforms an academic program into a clinical delivery system. Research hospitals generate their own funding streams through patient care, creating a sustainability model that tuition and state appropriations can't match.</p>
+
+                <div class="callout">
+                    <p><strong>Stakes:</strong> "This gift will change the trajectory of health care in Central Texas and beyond." When donors use language like that, they're signaling competitive intent. Watch for medical school rankings and NIH funding battles to intensify.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5: UNC Surveillance -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">UNC Chapel Hill Faculty Report "Self-Censorship" Amid Surveillance Investigation</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.dailytarheel.com/">The Daily Tar Heel</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-05-unc-freedom.png" alt="Conceptual image representing academic freedom and surveillance tension">
+                </div>
+                <p><a href="https://www.unc.edu/">UNC Chapel Hill</a> is facing questions about something most universities don't discuss publicly: how they monitor their own people. Reports of a surveillance investigation have surfaced, with faculty members describing an environment where they've begun to self-censor out of uncertainty about what's being watched and why.</p>
+
+                <p>This gets at a fundamental tension in modern universities. Campuses have legitimate security concerns—research theft, threat assessment, compliance requirements. But surveillance infrastructure, once built, tends to expand beyond original justifications. Faculty who can't determine the boundaries of monitoring may rationally assume the worst.</p>
+
+                <p>The "self-censorship" language is particularly damaging. Academic freedom doesn't just mean formal protection from punishment; it requires an environment where scholars feel genuinely free to pursue controversial ideas. When that perception erodes, the damage happens before any actual punishment occurs.</p>
+
+                <div class="callout">
+                    <p><strong>Institutional risk:</strong> UNC competes for faculty against private institutions with different governance structures. Researchers with options—and the best ones always have options—may factor administrative climate into where they choose to work. Recruitment just got harder.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 6: UF Cancer Research -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">UF Researchers Find Gut Bacteria Molecule That Makes Lung Cancer Treatment Work Better</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.ufl.edu/">UF News</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-06-uf-microbiome.png" alt="Scientific visualization of gut microbiome and molecular interactions">
+                </div>
+                <p><a href="https://www.ufl.edu/">University of Florida</a> researchers have identified something oncologists have suspected but couldn't prove: a specific molecular mechanism connecting gut bacteria to cancer treatment response. Their work isolated a molecule produced by certain gut bacteria that enhances how the body responds to lung cancer immunotherapy.</p>
+
+                <p>This matters because immunotherapy works brilliantly in some patients and fails entirely in others. Doctors haven't been able to predict who will respond. If gut microbiome composition partly explains that variance—and if that composition can be modified—treatment outcomes become more controllable.</p>
+
+                <p>The research doesn't immediately change clinical practice. Identifying a mechanism is the first step; developing it into an adjuvant therapy requires years of additional work. But the implication is clear: the microbiome isn't just digestive infrastructure, it's an immunological control system that can be engineered.</p>
+
+                <div class="callout">
+                    <p><strong>Practical path:</strong> Expect clinical trials testing whether probiotic interventions or fecal microbiota transplants can precondition patients for better immunotherapy response. The UF finding provides the biological rationale; the clinical validation comes next.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Through Line</h2>
+            <p class="closing-text">This week showed public universities doing what they do at their best: creating infrastructure private markets won't build (Binghamton's independent AI center), pursuing fundamental research without product deadlines (UCLA's physics breakthrough), and operating at scales that require public coordination (SETI@home's citizen science). The $155 million in donations to UT Austin, Binghamton, and UCLA demonstrates that philanthropists still see flagship public institutions as serious bets. The question for UNC is whether governance controversies erode that confidence.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">Public University Dispatch</span>
+            <div class="footer-links">
+                <a href="index.html">Archive</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

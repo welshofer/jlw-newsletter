@@ -13,7 +13,10 @@ OUTPUT_DIR = Path("/Users/welshofer/clawd/jlw-newsletter/images")
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 model = "gemini-3-pro-image-preview"
-api_key = os.environ.get("GEMINI_API_KEY") or "REDACTED_API_KEY"
+api_key = os.environ.get("GEMINI_API_KEY")
+if not api_key:
+    print("Error: GEMINI_API_KEY environment variable not set")
+    exit(1)
 
 # Get prompt and filename from args
 if len(sys.argv) < 3:

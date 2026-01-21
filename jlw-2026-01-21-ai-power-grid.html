@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grid Cannot Wait — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Teal/Electric palette for energy theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F0F5F7;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #0A5A72;
+            --border: #D8E2E8;
+            --border-strong: #B8CCD6;
+            --warning: #C4654A;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F1214;
+                --bg-alt: #161A1D;
+                --text: #F5F1EA;
+                --text-secondary: #8FA3B0;
+                --accent: #2BA5CC;
+                --accent-soft: rgba(43, 165, 204, 0.15);
+                --accent-hover: #3BBAE0;
+                --border: #2A3238;
+                --border-strong: #3D4A52;
+                --warning: #E07B52;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Energy &amp; AI Infrastructure</span>
+            <h1 class="hero-title">The Grid Cannot Wait</h1>
+            <p class="hero-subtitle">AI's appetite for electricity is forcing the most consequential energy decisions since rural electrification. This week: nuclear restarts accelerate, grid operators pump the brakes, and your utility bill enters the crosshairs.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-grid-cannot-wait.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-grid-strain.jpg" alt="Power transmission towers under strain with glowing data centers, representing AI's impact on America's electrical grid">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: PJM Forecast Revision -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Hype Check: PJM Slashes AI Power Forecasts</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.energyconnects.com/news/pjm-forecast-revision-2026">Energy Connects</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-pjm-forecast.jpg" alt="Abstract visualization of diverging forecast lines showing announced versus interconnected power capacity">
+            </figure>
+            <div class="section-body">
+                <p>Here's a number that should humble every AI power apocalypse narrative: <a href="https://www.pjm.com">PJM Interconnection</a>, the nation's largest grid operator serving 65 million people from New Jersey to Illinois, just revised its load growth forecast <em>downward</em> for the first time in two years.</p>
+
+                <p>The reason? "A divergence between announced gigawatts and interconnected gigawatts." Translation: tech companies have announced more data center capacity than they can actually build, finance, or connect. Supply chain bottlenecks, financing hiccups, and the sheer complexity of grid interconnection are throttling the AI buildout.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-announced-vs-interconnected.png" alt="Bar chart showing gap between announced and interconnected data center capacity from 2023-2028">
+                    <figcaption>The gap between announced AI power capacity and what actually gets built is widening, not narrowing.</figcaption>
+                </figure>
+
+                <p>This isn't good news, exactly—the long-term demand trajectory remains steep. But it suggests the "grid collapse by 2027" scenario is overblown. The more likely future: a prolonged, expensive slog where AI expansion proceeds at the speed of permitting, not the speed of venture capital.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Amazon Indiana -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Amazon Bets $15 Billion on Indiana's Quiet Grid</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.digitalcommerce360.com/2026/01/20/amazon-indiana-investment">Digital Commerce 360</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-amazon-indiana.jpg" alt="Aerial view of data center campus rising from Indiana farmland with transmission lines converging">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.aboutamazon.com">Amazon</a> broke ground this week on its largest AI-focused data center complex ever—a sprawling $15 billion campus in Northern Indiana designed from scratch for "energy-intensive AI computing."</p>
+
+                <p>Why Indiana? Because Ashburn, Virginia—the world's data center capital—is full. The grid there is groaning under existing load, with multi-year waits for new interconnections. Indiana, by contrast, has surplus capacity on a grid originally built for heavy manufacturing that has since declined. Amazon is essentially arbitraging regional grid capacity.</p>
+
+                <p>The campus includes provisions for future Small Modular Reactor deployment and a partnership with local utilities to upgrade transmission lines, largely funded by Amazon itself. As an Amazon spokesperson put it: "This campus is designed not just for today's models, but for the compute density of the next decade."</p>
+
+                <p>Watch Indiana and Ohio become the new "Silicon Prairie" as tech giants flee the congested coasts. The political implications are interesting too: red states with excess grid capacity may become unlikely allies of AI expansion.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: PJM Colocation Deadline -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Colocation Battle Grinds to a Stall</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.ferc.gov/news-events/news/pjm-colocation-deadline-missed">FERC / RTO Insider</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-colocation-battle.jpg" alt="Split image showing tension between traditional utility infrastructure and modern data centers connected by tangled power lines">
+            </figure>
+            <div class="section-body">
+                <p>PJM missed a critical <a href="https://www.ferc.gov">FERC</a>-imposed deadline to file new tariffs for "behind-the-meter" data center arrangements—the technical term for plugging AI facilities directly into power plants, bypassing the transmission grid entirely.</p>
+
+                <p>The stakes here are enormous. Colocation deals let tech companies skip the years-long interconnection queue and potentially negotiate cheaper power rates directly with generators. Utilities hate this because they lose both transmission revenue and regulatory oversight. Grid operators worry about "gigawatt-scale loads disappearing from the visible grid."</p>
+
+                <p>PJM's filing was an informational report rather than concrete tariff proposals, citing "unresolved reliability concerns." Read: the fight between utilities who want their cut and tech companies who want speed is nowhere near resolution.</p>
+
+                <p>Billions of dollars in planned infrastructure investment now sit in regulatory limbo. The <a href="https://www.constellation.com">Constellation</a>-Microsoft deal at Crane depends on favorable colocation rules. Amazon's Talen Energy arrangement faces similar scrutiny. Until FERC provides clarity, the nuclear-AI alliance remains legally precarious.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Crane Nuclear Restart -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Three Mile Island Rises Again—A Year Early</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.constellationenergy.com/news/crane-restart-update-jan-2026">Constellation Energy</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-crane-nuclear.jpg" alt="Nuclear cooling tower being revived with glowing energy emanating from within, phoenix rising metaphor">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.microsoft.com">Microsoft</a> and <a href="https://www.constellation.com">Constellation Energy</a> announced that the restart of the Crane Clean Energy Center—yes, that's the rebranded Three Mile Island Unit 1—is now expected in late 2027, a full year ahead of the original 2028 target.</p>
+
+                <p>The accelerant? A $1 billion federal loan from the Department of Energy that fast-tracked safety inspections and fuel loading procedures. "Federal support has allowed us to compress the timeline," Constellation said. The 835 megawatt plant will supply 100% of its power directly to Microsoft's regional data centers.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-nuclear-timeline.png" alt="Timeline showing Big Tech nuclear power deals from mid-2024 to mid-2026">
+                    <figcaption>18 months of nuclear deals: Big Tech is rewriting America's energy map.</figcaption>
+                </figure>
+
+                <p>This is proof of concept for the "zombie nuclear" strategy: resurrecting shuttered plants is faster than building new ones or waiting for SMRs to mature. Crane isn't alone—similar discussions are reportedly underway for retired plants in Illinois and Pennsylvania. The nuclear renaissance, it turns out, may be a nuclear resurrection.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Google Suncatcher -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Google's Escape Plan: Move the Computers to Space</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://carboncredits.com/google-project-suncatcher-2026">Carbon Credits</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-suncatcher.jpg" alt="Futuristic satellite data center orbiting Earth with massive solar panel arrays and Earth's curvature below">
+            </figure>
+            <div class="section-body">
+                <p>When your terrestrial options run out, look up. <a href="https://about.google">Google</a> unveiled "Project Suncatcher" this week—a plan to launch satellite-based data centers equipped with specialized AI inference chips into orbit.</p>
+
+                <p>The logic is elegant if audacious: space offers continuous solar power (no nights, no clouds) and passive radiative cooling (no water needed). Google plans to offload non-latency-sensitive training tasks to these orbital platforms, reserving terrestrial data centers for real-time inference.</p>
+
+                <p>"The ultimate solution to the terrestrial energy bottleneck is to move the computation to where the energy is limitless," Google said. Prototypes are scheduled for launch in early 2027.</p>
+
+                <p>Is this practical at scale? Probably not anytime soon—launch costs, latency, and maintenance challenges are severe. But it illustrates the extreme lengths tech giants will go to circumvent grid constraints and sustainability criticism. Space-based compute is less a near-term solution than an expensive hedge against a future where terrestrial power becomes politically or physically unavailable.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Vanderbilt Ratepayer Report -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Who Pays for AI's Appetite? Probably You.</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.vanderbilt.edu/2026/01/15/ai-energy-consumer-report">Vanderbilt University News</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-ratepayer-shock.jpg" alt="Electric bill paper burning with flames climbing upward, worried suburban house silhouette below">
+            </figure>
+            <div class="section-body">
+                <p>A new <a href="https://www.vanderbilt.edu">Vanderbilt University</a> study puts numbers to the nagging question: who actually pays when Big Tech's data centers strain the grid?</p>
+
+                <p>The answer, absent policy intervention, is ordinary households. The study estimates residential electricity bills in data center hubs like Northern Virginia and Central Ohio could rise 15-20% by 2028 as transmission upgrades get rolled into rate bases that everyone pays.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ratepayer-increases.png" alt="Horizontal bar chart showing projected residential electricity rate increases by region, with Northern Virginia and Central Ohio exceeding 15%">
+                    <figcaption>Data center hubs face the steepest rate increases, but the national average will rise too.</figcaption>
+                </figure>
+
+                <p>The report doesn't mince words: "Without guardrails, the American household is effectively subsidizing the training of private AI models." It proposes nine policy interventions, including "AI Impact Fees" and mandatory onsite backup generation for facilities over 50 megawatts.</p>
+
+                <p>Expect this report to become a blueprint for state-level legislation and a rallying point for populist pushback against Big Tech's energy appetite. The political coalition forming here is unusual: environmentalists concerned about emissions, ratepayer advocates worried about bills, and utilities seeking leverage against bypassing arrangements all find common cause.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7: FERC HILL Rules -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">FERC Creates a Fast Lane for "High Impact" AI Loads</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.jdsupra.com/legalnews/ferc-approves-spp-rules-ai-grid">JDSupra / Politico Pro</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-ferc-hills.jpg" alt="Regulatory gavel creating shockwaves through an electrical grid network of power lines and data center icons">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.ferc.gov">FERC</a> approved the Southwest Power Pool's new framework for connecting "High Impact Large Loads" (HILLs)—a regulatory category invented essentially for AI data centers. The rules offer a 90-day expedited review for facilities that agree to co-locate with generation or bring their own power.</p>
+
+                <p>This is the first regulatory framework to explicitly treat AI data centers as a distinct class of industrial load, separating them from standard residential and commercial connections. The implications ripple outward: other grid operators like PJM and MISO will likely adopt similar frameworks, potentially clearing the interconnection backlog that has been choking AI expansion.</p>
+
+                <p>The trade-off is significant: expedited review means less public scrutiny and potentially rushed environmental assessments. Grid reliability concerns get compressed into 90-day windows. But the alternative—multi-year queues that push AI investment overseas—was becoming untenable.</p>
+
+                <p>As one FERC filing noted, this is "the first in the nation to integrate transmission, generation, and load interconnection services into a single framework." A regulatory template is born.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Grid Decides</h2>
+            <p class="closing-text">AI's future will be shaped as much by kilowatt-hours as by parameters. The companies that secure reliable power will dominate; the rest will wait in queue. Watch the utilities, the regulators, and the rate cases—that's where the next trillion-dollar decisions are being made.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

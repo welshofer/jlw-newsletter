@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Charge Ahead — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Electric Blue palette - clean energy, technology */
+            --bg: #FDFBF7;
+            --bg-alt: #EEF5F9;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0066CC;
+            --accent-soft: rgba(0, 102, 204, 0.12);
+            --accent-hover: #004D99;
+            --border: #D8E2E8;
+            --border-strong: #B8CCD8;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0D1117;
+                --bg-alt: #161B22;
+                --text: #E6EDF3;
+                --text-secondary: #8B949E;
+                --accent: #58A6FF;
+                --accent-soft: rgba(88, 166, 255, 0.15);
+                --accent-hover: #79B8FF;
+                --border: #21262D;
+                --border-strong: #30363D;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The JLW Newsletter</a>
+            <time class="newsletter-date">2026-01-21</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Electric Vehicle Market</span>
+            <h1 class="hero-title">The Charge Ahead</h1>
+            <p class="hero-subtitle">This week's EV landscape reshapes around a simple truth: infrastructure is destiny. From China's staggering 20-million-charger milestone to Canada's geopolitical pivot, the race isn't just about who builds the best car—it's about who controls where it plugs in.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-charge-ahead.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/ev-market-2026/hero-ev-charging.jpg" alt="Electric vehicles charging at a futuristic station at dusk">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Volvo EX60 (Jan 21) -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Volvo's 503-Mile Answer to Range Anxiety</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.autocarindia.com/car-news/volvo-ex60-global-debut-on-january-21-434078">Autocar India</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ev-market-2026/article-01-volvo-ex60.jpg" alt="Volvo EX60 electric SUV debut on a minimalist Stockholm stage">
+            </figure>
+            <div class="section-body">
+                <p>Forget incremental improvements. <a href="https://www.volvocars.com">Volvo</a> unveiled the EX60 today in Stockholm, and the spec sheet reads like a declaration of war against the industry's comfortable assumptions. An 800-volt architecture enabling 10-80% charging in under 20 minutes. A WLTP range of 503 miles—numbers that until recently felt like science fiction.</p>
+
+                <p>But here's what makes this genuinely interesting: the EX60 marks <a href="https://www.media.volvocars.com">Volvo's</a> debut of its SPA3 platform, a ground-up rethinking that treats the car as a software-first product. The deep integration with <a href="https://deepmind.google/technologies/gemini/">Google's Gemini AI</a> for conversational voice control isn't a gimmick bolted onto an existing system—it's the foundation. The car doesn't just respond to commands; it understands context.</p>
+
+                <p>The question now shifts from "can EVs match gas cars?" to "what else becomes possible when the platform assumes software will evolve faster than hardware?" Volvo's bet: the 503-mile EX60 you buy today will drive itself differently—and better—in five years.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: China 20M Charging (Jan 21) -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">China's 20 Million Chargers: The Infrastructure Moat Widens</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.metal.com/news/content/Chinas-EV-charging-infrastructure-sees-robust-growth-in-2025">Metal.com / National Energy Administration</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ev-market-2026/article-02-china-charging.jpg" alt="Massive network of glowing EV charging points across China">
+            </figure>
+            <div class="section-body">
+                <p>The numbers released today by China's <a href="http://www.nea.gov.cn">National Energy Administration</a> aren't just impressive—they're disqualifying for competitors. 20.09 million charging points. A 49.7% year-over-year increase. Private home chargers surging 56%.</p>
+
+                <figure class="chart">
+                    <img src="images/ev-market-2026/chart-china-charging.png" alt="Chart showing China's EV charging network growth from 2021 to 2025">
+                    <figcaption>China's charging network has grown nearly 8x in four years, effectively eliminating range anxiety as a barrier to mass adoption.</figcaption>
+                </figure>
+
+                <p>To put this in perspective: the United States has roughly 190,000 public charging points. China added nearly seven million in a single year. This isn't a gap—it's a chasm, and it's widening at precisely the moment when Western automakers need infrastructure to support their own EV transitions.</p>
+
+                <figure class="chart">
+                    <img src="images/ev-market-2026/chart-global-charging.png" alt="Chart comparing global EV charging infrastructure by region">
+                    <figcaption>China commands 94% of global EV charging infrastructure—a lead that compounds with every passing quarter.</figcaption>
+                </figure>
+
+                <p>The strategic implication is uncomfortable: Chinese EV manufacturers don't just compete on price and features—they compete backed by an ecosystem their rivals literally cannot match. When <a href="https://www.byd.com">BYD</a> or <a href="https://www.nio.com">NIO</a> enters a new market, the infrastructure question haunts their Western competitors in ways it simply doesn't haunt them at home.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Lucid Factory (Jan 21) -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Lucid's Saudi Bet Gets Real</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.morningstar.com/news/business-wire/20260121005000/rockwell-automation-selected-by-lucid-group">Morningstar / Business Wire</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ev-market-2026/article-03-lucid-factory.jpg" alt="Modern automated EV factory floor with robotic arms">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.lucidmotors.com">Lucid Group</a> has lived on promise and potential for too long. The Air remains the most efficient electric vehicle ever built, but efficiency doesn't pay the bills—volume does. Today's announcement that <a href="https://www.rockwellautomation.com">Rockwell Automation</a> will deploy manufacturing execution systems at Lucid's AMP-2 facility in Saudi Arabia signals something more concrete: the path to survival is being paved in the desert.</p>
+
+                <p>The partnership brings Rockwell's industrial automation expertise to digitize and optimize production for Lucid's upcoming midsize vehicle line. This is the unglamorous work that separates "luxury EV startup" from "actual automaker"—the ability to manufacture at scale, consistently, profitably.</p>
+
+                <p>The Saudi connection, often viewed with skepticism, may prove to be Lucid's lifeline. The kingdom's <a href="https://www.pif.gov.sa">Public Investment Fund</a> isn't just providing capital—it's providing a production base outside the tariff wars reshaping automotive supply chains. If Lucid can crack midsize pricing without sacrificing the engineering edge that defines the brand, the AMP-2 facility could be where the story finally changes from "impressive but niche" to "genuine contender."</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Canada-China Tariff (Jan 20) -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Canada Opens the Back Door to Chinese EVs</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.bnnbloomberg.ca/economics/2026/01/20/canada-china-trade-deal-ev-tariffs/">BNN Bloomberg</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ev-market-2026/article-04-canada-china-trade.jpg" alt="Abstract visualization of Canada-China EV trade flow">
+            </figure>
+            <div class="section-body">
+                <p>The United States maintains 100% tariffs on Chinese EVs. As of yesterday, Canada's just dropped to 6.1%.</p>
+
+                <figure class="chart">
+                    <img src="images/ev-market-2026/chart-tariff-comparison.png" alt="Chart comparing tariffs on Chinese EV imports across regions">
+                    <figcaption>Canada's new tariff rate represents a 94% reduction from its previous policy—and a stark divergence from U.S. strategy.</figcaption>
+                </figure>
+
+                <p>The deal announced today between Ottawa and Beijing creates an initial quota of 49,000 vehicles annually, rising to 70,000 over five years. The stated goal: encourage Chinese manufacturers like <a href="https://www.byd.com">BYD</a> and <a href="https://www.geely.com">Geely</a> to establish local production facilities. The unstated reality: Canadian consumers are about to get access to EVs that undercut Detroit on price by 30-40%.</p>
+
+                <p>This is a significant geopolitical divergence from U.S. policy, and American automakers should be nervous. A $25,000 Chinese EV available an hour's drive from Detroit creates pressure that no tariff wall fully contains. The question isn't whether this changes North American EV dynamics—it's how quickly the ripples reach U.S. showrooms, and whether Washington responds with tougher trade enforcement or a recognition that protectionism has limits.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: AFC Energy Fuel Cell (Jan 20) -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Off-Grid Charging Problem Gets a Solution</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.londonstockexchange.com/news-article/AFC/new-generation-fuel-cell-generator-launch/16289012">London Stock Exchange</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ev-market-2026/article-05-fuel-cell.jpg" alt="Sleek portable hydrogen fuel cell generator in a remote mountain location">
+            </figure>
+            <div class="section-body">
+                <p>Here's a problem that doesn't get enough attention: how do you charge EVs where there's no grid? Construction sites. Remote events. Disaster relief zones. The default answer has been diesel generators—which rather defeats the environmental point.</p>
+
+                <p><a href="https://www.afcenergy.com">AFC Energy</a> unveiled the LC30 today, a 30kW hydrogen fuel cell generator designed specifically for off-grid EV charging. The numbers that matter: 85% reduction in manufacturing costs compared to previous generations, 50% reduction in mass. This shifts portable clean charging from "technically possible but economically absurd" to "commercially viable."</p>
+
+                <p>The immediate applications are obvious—film sets, outdoor festivals, construction zones—but the longer play is more interesting. As EV adoption accelerates faster than grid infrastructure can expand, temporary and portable charging solutions become a critical bridge. AFC's bet is that hydrogen fuel cells, often dismissed as a curiosity in the battery-dominated EV conversation, have a significant role precisely where batteries can't reach.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Tesla FSD Subscription (Jan 14) -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Tesla Kills the FSD Purchase—Hello, Subscription Forever</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://electrek.co/2026/01/14/tesla-killing-fsd-lifetime-purchase-subscription-only/">Electrek</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/ev-market-2026/article-06-tesla-fsd.jpg" alt="Tesla dashboard showing FSD subscription interface">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.tesla.com">Tesla's</a> "Full Self-Driving" package has always occupied an awkward space—a $12,000 one-time purchase for technology that's perpetually "almost ready." Last week, <a href="https://twitter.com/elonmusk">Elon Musk</a> announced the end of that model: after February 14, 2026, FSD will be subscription-only.</p>
+
+                <p>The corporate logic is transparent: recurring revenue is more predictable than one-time purchases, and Wall Street rewards predictability. But the customer implications are thornier. Those who already paid $12,000 get to keep their access—but what about resale value? A used Tesla without "locked-in" FSD is worth significantly less than one with it, and the secondary market will adjust accordingly.</p>
+
+                <div class="callout">
+                    <p><strong>The real question:</strong> Is FSD good enough to justify an ongoing subscription, or has it been sustained by the psychology of a "lifetime purchase" that made the gamble feel more palatable? We're about to find out.</p>
+                </div>
+
+                <p>The shift also signals Tesla's evolving relationship with its own autonomy promises. A subscription model works when the product delivers continuous, improving value. If FSD remains in its current "impressive but requiring supervision" state indefinitely, subscription fatigue could set in fast. Tesla's betting that the technology will improve enough to justify the recurring cost. The February deadline gives current owners one last chance to decide whether they believe it.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Week Ahead</h2>
+            <p class="closing-text">The EV market in 2026 is no longer about whether electric wins—that question is settled. The battles now are about who controls the infrastructure, who can manufacture at scale, and who can navigate the geopolitical currents reshaping global trade. Watch Canada's experiment closely: the answer to "can affordable Chinese EVs reach North American consumers?" may define the decade ahead.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Rib Rub Controversy — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm BBQ */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">2026-01-21</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">BBQ Controversy</span>
+            <h1 class="hero-title">Wet or Dry: The Great Rib Rub Showdown</h1>
+            <p class="hero-subtitle">The most heated debate in American barbecue isn't about wood choice or smoker type. It's about what happens to those ribs before they ever meet the flame&mdash;and whether sauce belongs anywhere near them.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/wet-or-dry-rib-showdown.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-rib-showdown.webp" alt="BBQ rib showdown: dry-rubbed ribs with dark bark on one side, wet-sauced ribs glistening on the other, split lighting with rising smoke">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Community Debate -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Reddit's Pitmasters Draw Their Battle Lines</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.reddit.com/r/smoking/">r/smoking</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-community-debate.webp" alt="Multiple hands reaching toward ribs, some holding rub shakers, others sauce brushes">
+            </figure>
+            <div class="section-body">
+                <p>A particularly fiery thread erupted last week in <a href="https://www.reddit.com/r/smoking/">r/smoking</a> when a user posted their boneless short ribs finished with a "Smoke & Fire" dry rub and asked the eternal question: sauce or no sauce? The community's verdict was decisive, if divided.</p>
+
+                <p>The dry-finish advocates dominated the conversation, arguing that bark texture represents the pinnacle of pitmaster craft. "Dry ribs can sometimes indicate undercooking," one user cautioned, "but a good bark requires that surface dehydration." The subtext was clear: sauce is a crutch for those who can't nail the smoke ring and crust on their own.</p>
+
+                <p>The wet camp fired back with accusations of culinary purism run amok. Their position: a perfectly sauced rib delivers a complexity of flavors&mdash;sweet, tangy, caramelized&mdash;that no amount of paprika and brown sugar can match. The thread's consensus? Serve sauce on the side and let the eater decide. A diplomatic solution, or a cop-out? That's the meta-debate.</p>
+
+                <p><strong>The takeaway:</strong> Grassroots BBQ culture is increasingly favoring texture over sauciness. The bark is no longer optional&mdash;it's the standard by which ribs are judged.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: 2026 Trends -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">2026's Rub Revolution: Coffee, Gochujang, and the Global Spice Shift</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://midtown-bbq.net">Midtown BBQ</a> / <a href="https://bigpoppasmokers.com">Big Poppa Smokers</a></span>
+                <span class="section-date">January 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-bbq-trends.webp" alt="Modern drum smoker surrounded by floating exotic spices: coffee beans, gochujang, ginger, star anise">
+            </figure>
+            <div class="section-body">
+                <p>The 2026 BBQ trend reports are in, and they're painting a picture of dry rubs in evolution&mdash;not retreat. The traditional salt-sugar-paprika trinity is being supplemented (and in some bold pits, replaced) by a global pantry of flavors that would have confused a Memphis pitmaster twenty years ago.</p>
+
+                <p>Espresso-rubbed beef ribs are having a moment. <a href="https://bigpoppasmokers.com">Big Poppa Smokers</a> reports that coffee-based rubs are now their fastest-growing category, prized for the way caffeine's bitter compounds amplify the Maillard reaction's savory notes. The result is a darker, more complex bark that reads as "meaty" rather than "sweet."</p>
+
+                <p><a href="https://www.gochugang.com">Gochujang</a>&mdash;the fermented Korean chili paste&mdash;is crossing over from the trendy restaurant scene to the backyard smoker. Mixed into dry rubs, it adds a fermented depth and slow-building heat that Kansas City's tomato-molasses sweetness can't touch. Ginger and star anise are following close behind.</p>
+
+                <div class="callout">
+                    <p><strong>The efficiency angle:</strong> These new rubs are designed for the "weeknight BBQ" movement&mdash;drum smokers and smaller cuts that don't require all-day tending. They create faster bark on pork belly burnt ends and beef short ribs, moving away from the labor-intensive mop-and-wrap rituals of traditional wet cooking.</p>
+                </div>
+
+                <p><strong>What this means:</strong> Dry rubs aren't just holding ground&mdash;they're absorbing global influences and becoming more sophisticated, while wet-sauce traditions remain largely static in their regional formulas.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Competition Season -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Competition Season Kicks Off&mdash;And "Dry" Is Usually a Lie</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://cbabbq.com">Champions BBQ Alliance</a> / <a href="https://kcbs.us">KCBS</a></span>
+                <span class="section-date">January 9, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-competition.webp" alt="BBQ competition trophies and ribbons on rustic wood table with scoring sheets">
+            </figure>
+            <div class="section-body">
+                <p>The 2026 competition BBQ season launched earlier this month with the <a href="https://cbabbq.com">Champions BBQ Alliance World Championship</a> and the El Campo KC 2490 event. If you want to understand the real state of the wet-vs-dry debate, watch what wins&mdash;not what teams claim to cook.</p>
+
+                <p>Here's the dirty secret of competition "dry" ribs: they're almost never truly dry. Judges reward "clean bite" tenderness&mdash;that perfect pull where the meat separates cleanly from the bone without falling apart. This texture is most reliably achieved through the <a href="https://en.wikipedia.org/wiki/Smoking_(cooking)#Texas_crutch">Texas Crutch</a>: wrapping ribs in foil with liquid (apple juice, butter, honey, or yes, sauce) during the stall phase.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-competition-reality.png" alt="Pie chart showing 65% of competition dry ribs are actually glazed, 25% use light mop, only 10% are truly dry">
+                    <figcaption>Competition "dry" ribs by actual cooking method. Data based on Melissa Cookston's analysis of Memphis-style competition entries.</figcaption>
+                </figure>
+
+                <p>The winning ribs emerge from the wrap looking "dry"&mdash;they're patted down, maybe given a final dusting of rub, then presented with that coveted mahogany sheen. But the sheen itself? That's caramelized sugars from the wrap's liquid, often with sauce or glaze applied and "tacked up" under high heat to appear matte.</p>
+
+                <p><strong>The honest truth:</strong> In professional circles, "wet vs. dry" is largely theater. The winning technique is almost always a hybrid&mdash;wrapped wet, finished dry.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: The Science -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Maillard Truth: Why Bark Demands Dryness</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://amazingribs.com/more-technique-and-science/more-cooking-science/what-is-bark/">AmazingRibs.com</a></span>
+                <span class="section-date">Evergreen Reference</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-bark-science.webp" alt="Cross-section visualization of meat showing bark layers with molecular diagram overlay">
+            </figure>
+            <div class="section-body">
+                <p>If you want to understand why the dry-rub partisans have science on their side, you need to understand what "bark" actually is. It's not burnt spice. It's not char. It's a polymer&mdash;a complex chemical structure created through two interlocking processes: the <a href="https://en.wikipedia.org/wiki/Maillard_reaction">Maillard reaction</a> and smoke polymerization.</p>
+
+                <p>The Maillard reaction occurs when amino acids (proteins) and reducing sugars are heated above 280°F in the presence of dry heat. The key phrase there is "dry heat." If the meat surface is wet&mdash;from a mop, from excessive moisture escaping the meat, from sauce&mdash;the temperature at the surface is capped at 212°F, the boiling point of water. No Maillard. No bark.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-bark-formation.png" alt="Line chart showing surface temperature and bark development over 6 hours, with annotations for Maillard reaction beginning and bark solidification">
+                    <figcaption>Bark formation requires surface temperatures above 280°F, which cannot occur while the surface remains wet. Mopping cools the surface and restarts the drying process.</figcaption>
+                </figure>
+
+                <p><a href="https://amazingribs.com">Meathead Goldwyn</a> at AmazingRibs puts it bluntly: "If you mop, you wash off the rub and cool the meat, slowing the cooking and softening the bark." Every application of liquid resets the clock on bark formation. The pitmaster who mops every 30 minutes is actively sabotaging their own crust.</p>
+
+                <div class="callout">
+                    <p><strong>The rub science:</strong> Salt penetrates the meat (via osmosis and diffusion), drawing out moisture that then evaporates. Sugar sits on the surface, caramelizing at high temperatures. The rub's role isn't just flavor&mdash;it's the raw material for bark construction.</p>
+                </div>
+
+                <p><strong>The verdict:</strong> The scientific argument for "dry" is irrefutable when it comes to texture. "Wet" is purely a flavor and moisture preference that comes at the cost of optimal crust development.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Regional Styles -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Memphis vs. Kansas City: The Original Schism</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.seriouseats.com/guide-to-regional-barbecue-styles">Serious Eats</a></span>
+                <span class="section-date">Evergreen Reference</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-regional.webp" alt="Stylized map of Memphis with dry spices and Kansas City with flowing sauce rivers">
+            </figure>
+            <div class="section-body">
+                <p>The wet-vs-dry debate didn't emerge from nowhere. It has a geography, and that geography runs along Interstate 40 between Memphis, Tennessee and Kansas City, Missouri. These two cities represent the purest expressions of each philosophy&mdash;and they've been arguing about it for a century.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-regional-styles.png" alt="Bar chart comparing rub vs sauce emphasis across Memphis, Kansas City, Texas, and Carolina BBQ styles">
+                    <figcaption>Regional BBQ styles differ dramatically in their balance between dry rub and sauce. Memphis leads the dry tradition; Kansas City defines wet.</figcaption>
+                </figure>
+
+                <p><a href="https://www.seriouseats.com">Serious Eats'</a> regional guide calls Memphis ribs "the priesthood of pork." The defining characteristic is the dry rub: paprika, cayenne, garlic powder, onion powder, black pepper, applied before cooking and often "lanced" (sprinkled again) after. Sauce exists in Memphis&mdash;but it's served on the side, and ordering it on your ribs marks you as a tourist.</p>
+
+                <p>Kansas City took the opposite path. The <a href="https://www.kansascity.com/entertainment/restaurants/article249756278.html">KC sauce tradition</a>&mdash;thick, sweet, tomato-and-molasses based&mdash;defines the style. The rub matters less because it's ultimately a vehicle for that sauce. KC ribs are lacquered, glossy, and unapologetically wet.</p>
+
+                <p>The cultural subtext matters. Memphis dry ribs require a pitmaster who can't hide behind sauce. If the meat is off, you taste it. If the smoke is wrong, you taste it. Kansas City sauce, by contrast, can mask a multitude of sins. That's not a criticism&mdash;it's a different philosophy about what BBQ should be.</p>
+
+                <p><strong>The honest take:</strong> Both traditions produce transcendent ribs when executed well. The "best" style is whichever one you grew up eating.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: The Hybrid Solution -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Mahogany Compromise: Why Modern Pitmasters Are Going Hybrid</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://heygrillhey.com">Hey Grill Hey</a> / <a href="https://www.napoleongrills.com">Napoleon Grills</a></span>
+                <span class="section-date">2026 Trend</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-hybrid-glaze.webp" alt="Ribs being brushed with thin vinegar glaze, mahogany sheen forming, smoke wisps">
+            </figure>
+            <div class="section-body">
+                <p>The smartest move in the wet-vs-dry debate might be refusing to choose. A growing contingent of home cooks and restaurant pitmasters are adopting what <a href="https://heygrillhey.com">Hey Grill Hey's</a> Susie Bulloch calls the "tacky glaze" approach&mdash;and it's a genuine synthesis of both philosophies.</p>
+
+                <p>The technique: Cook with a heavy dry rub, no mop, building that bark for 4-5 hours. Then, in the final 15-20 minutes, brush on a very thin, vinegar-heavy reduction&mdash;something closer to Carolina mop sauce than Kansas City glaze. The vinegar evaporates almost instantly at cooking temperatures, leaving behind a microscopic layer of caramelized sugars that creates sheen without sogginess.</p>
+
+                <p>The result? Ribs that are "dry-looking" but tacky to the touch. They have bark. They have color. They have a complexity of flavor that pure dry ribs sometimes lack. But they don't drip, don't slide, don't coat your hands in red sauce.</p>
+
+                <div class="callout">
+                    <p><strong>The pitmaster's phrase:</strong> "The goal is a mahogany sheen, not a sauce bath." This is now the stated aesthetic for ribs across most of the competition circuit and an increasing number of high-end BBQ restaurants.</p>
+                </div>
+
+                <p><strong>Where this leaves us:</strong> The wet-vs-dry war may be ending not with victory, but with détente. The mahogany hybrid is emerging as the default style&mdash;a testament to the fact that the best BBQ usually comes from pitmasters who refuse to be bound by orthodoxy.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Final Word</h2>
+            <p class="closing-text">There's no wrong way to cook ribs&mdash;only wrong ways to argue about them. Whether you're a dry-rub purist, a sauce enthusiast, or a mahogany-glaze pragmatist, the real measure of your BBQ is whether people come back for seconds. Cook what you love. Eat what tastes good. And maybe keep a little sauce on the side, just in case.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

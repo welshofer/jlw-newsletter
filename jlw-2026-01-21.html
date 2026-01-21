@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Stars Our Destination — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - indigo/violet for space opera */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D70;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #9B8BD0;
+                --accent-soft: rgba(155, 139, 208, 0.15);
+                --accent-hover: #B09EE0;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The Stars Our Destination</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Space Opera</span>
+            <h1 class="hero-title">The Greatest Space Opera Series Ever</h1>
+            <p class="hero-subtitle">From generation ships to desert emperors, from rebel fleets to dark forests—the genre that dared to dream on a galactic scale is having a moment. Here's what's shaping the future of epic sci-fi.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-stars-our-destination.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-space-opera.png" alt="Epic space opera vista with massive spacecraft against swirling nebula">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: BSG Companion Book (Jan 20) -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Ragtag Fugitive Fleet Gets Its Bible</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://youtube.com/watch?v=bsg-companion-2026">Fandom / YouTube</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-bsg-companion.png" alt="Vintage tome floating in space with battlestar blueprints">
+            </figure>
+            <div class="section-body">
+                <p>When <a href="https://www.peacocktv.com">Peacock</a>'s planned <a href="https://en.wikipedia.org/wiki/Battlestar_Galactica">Battlestar Galactica</a> reboot officially died in late 2024, fans faced a grim reality: no new Galactica was coming. But sometimes the best way forward is back.</p>
+
+                <p><em>Battlestar Galactica: A Companion to the Original Series</em> drops January 30th, and it's not the usual licensed cash-grab. The book features never-before-seen production art and fresh interviews with <a href="https://en.wikipedia.org/wiki/Dirk_Benedict">Dirk Benedict</a> (the original Starbuck)—material that's been locked away for 45 years.</p>
+
+                <p>Here's why this matters: The 1978 original and the 2004 reboot represent two radically different approaches to the same premise. The original was Flash Gordon with polytheism; the 2004 version was post-9/11 paranoia translated into spaceships. Both worked. With the franchise in limbo, this companion offers a chance to understand <em>why</em> the core concept—humanity's last survivors fleeing extinction—resonates so deeply across generations.</p>
+
+                <p>The reboot may be dead, but the story of the Twelve Colonies isn't going anywhere. So say we all.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Blake's 7 Reboot (Jan 19) -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Blake's 7 Returns: The Rebels TV Forgot</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://evrimagaci.org/news/blakes-7-reboot-2026">TV News</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-blakes7-reboot.png" alt="Seven silhouetted rebels before a futuristic viewscreen">
+            </figure>
+            <div class="section-body">
+                <p>If you've never heard of <a href="https://en.wikipedia.org/wiki/Blake%27s_7">Blake's 7</a>, you're not alone—and that's exactly why this reboot matters. The 1978-1981 BBC series did something radical: it made space opera <em>bleak</em>. No Federation of planets working toward utopia. No rebels who always win. Just seven criminals fighting a totalitarian regime, often losing, sometimes dying.</p>
+
+                <p>The series ended with one of the most controversial finales in TV history—all the main characters apparently gunned down in a hail of laser fire. Now, Emmy-nominated director <a href="https://en.wikipedia.org/wiki/Peter_Hoar">Peter Hoar</a> (<a href="https://www.hbo.com/the-last-of-us">The Last of Us</a>, <a href="https://www.channel4.com/programmes/its-a-sin">It's a Sin</a>) is bringing the Liberator back to screens.</p>
+
+                <p>The timing is telling. In an era where <a href="https://www.disneyplus.com/series/andor/3xsQKWG00GL5">Andor</a> proved audiences hunger for morally complex sci-fi that doesn't flinch from depicting oppression, Blake's 7 was doing exactly that 45 years ago—on a BBC budget that made Doctor Who look lavish. The core conceit—a ragtag crew with no guarantee of survival, fighting a system that's already won—feels more relevant than ever.</p>
+
+                <p>Hoar's track record suggests this won't be a nostalgia trip. Expect the Federation to feel real, the stakes to be genuinely dire, and the characters to be magnificently flawed. If this succeeds, it could be the Andor of British sci-fi.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Lucasfilm Leadership (Jan 18) -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Filoni Era Begins at Lucasfilm</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://fanthatracks.com/news/lucasfilm-leadership-changes-2026">Fantha Tracks</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-lucasfilm-leadership.png" alt="Boardroom transitioning to mythic temple with lightsabers">
+            </figure>
+            <div class="section-body">
+                <p>The rumors are confirmed: <a href="https://en.wikipedia.org/wiki/Kathleen_Kennedy_(producer)">Kathleen Kennedy</a> is stepping back from day-to-day leadership at <a href="https://www.lucasfilm.com">Lucasfilm</a>, and <a href="https://en.wikipedia.org/wiki/Dave_Filoni">Dave Filoni</a> is ascending to President and Chief Creative Officer. This isn't a shake-up—it's a coronation.</p>
+
+                <p>Filoni's elevation represents a fundamental shift from executive-led to creative-led management. He's the architect of <a href="https://www.disneyplus.com/series/star-wars-the-clone-wars/1wYXzjabXGVZ">The Clone Wars</a>, <a href="https://www.disneyplus.com/series/star-wars-rebels/64MCZgAzY0Zg">Rebels</a>, and <a href="https://www.disneyplus.com/series/ahsoka/pdpjs2TO4zJ4">Ahsoka</a>—the series that proved Star Wars works best as interconnected mythology rather than standalone blockbusters. The hardcore fanbase has wanted this for years.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-space-opera-timeline.png" alt="Timeline of major space opera franchises from 1966 to present">
+                    <figcaption>Star Wars sits at the center of a genre spanning six decades of continuous production.</figcaption>
+                </figure>
+
+                <p>Kennedy will focus on producing specific projects, including <a href="https://www.disneyplus.com/movies/the-mandalorian-and-grogu/placeholder">The Mandalorian & Grogu</a> theatrical film. But the strategic direction now belongs to someone who came up through animation, understands serialized storytelling, and views the saga as a tapestry rather than a franchise to be managed.</p>
+
+                <p>The question isn't whether Filoni will succeed—he already has, repeatedly. The question is whether the theatrical division can match what he's built on streaming. <em>The Mandalorian</em> proved the model works. Now he has to prove it scales.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Dune Messiah (Jan 15) -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Dune: Messiah Will Complete the Tragedy</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://collider.com/dune-part-three-release-date-2026">Collider</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-dune-messiah.png" alt="Emperor on golden throne with visions swirling around him">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/Denis_Villeneuve">Denis Villeneuve</a>'s <em>Dune: Part Three</em> now has a locked release date—December 18, 2026—and principal photography wrapped in November. The film adapts <a href="https://en.wikipedia.org/wiki/Dune_Messiah">Dune Messiah</a>, Frank Herbert's direct sequel, and it will not be what casual audiences expect.</p>
+
+                <p>Here's what you need to understand: Herbert wrote Messiah specifically to dismantle the hero myth he'd constructed. The first two films showed Paul Atreides' rise; this one shows the cost. The Kwisatz Haderach who saved his people becomes the leader responsible for billions of deaths across the universe. It's not a pivot—it's the point.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-2026-releases.png" alt="Major space opera releases scheduled for 2026">
+                    <figcaption>2026 is shaping up to be a landmark year for the genre.</figcaption>
+                </figure>
+
+                <p><a href="https://en.wikipedia.org/wiki/Timoth%C3%A9e_Chalamet">Timothée Chalamet</a> and <a href="https://en.wikipedia.org/wiki/Zendaya">Zendaya</a> return, now 12 years older in the story. Paul is emperor, trapped by his own prescience, watching himself become exactly what he feared. It's the rare blockbuster that asks audiences to reconsider everything they cheered for in the previous films.</p>
+
+                <p>The marketing will be fascinating to watch. How do you sell a $200 million movie where the protagonist you've loved becomes an object lesson in the corruption of absolute power? Villeneuve's gamble is that audiences are smarter than studios assume. December will tell us if he's right.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: The Expanse (Jan 12) -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Expanse Refuses to Die</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://t3.com/news/expanse-osiris-reborn-gameplay">T3</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-expanse-multimedia.png" alt="Industrial asteroid mining station with neon signs">
+            </figure>
+            <div class="section-body">
+                <p>The TV series ended in 2022, leaving three books unadapted. Fans expected the usual: a slow fade into memory. Instead, <a href="https://en.wikipedia.org/wiki/The_Expanse_(novel_series)">The Expanse</a> is aggressively expanding into every medium it can find.</p>
+
+                <p><em>The Expanse: Osiris Reborn</em> just got a fresh details reveal—an action-RPG for PS5, Xbox, and PC set in a new corner of the Belt. Meanwhile, the graphic novel <em>A Little Death</em> (which bridges Books 6 and 7) completed its record-breaking <a href="https://www.kickstarter.com">Kickstarter</a> and will ship to backers later this year.</p>
+
+                <p>This matters because it's proof of concept. A franchise doesn't need an active TV series to thrive if the IP is strong enough and the fanbase is engaged enough. <a href="https://en.wikipedia.org/wiki/James_S._A._Corey">James S.A. Corey</a> (the pen name for authors Daniel Abraham and Ty Franck) built something with unusual durability: hard sci-fi that's actually fun, political complexity that doesn't require a PhD to follow, and characters worth following across a decade of content.</p>
+
+                <p>The final three books—including the truly apocalyptic ending—remain unadapted. Amazon could greenlight a continuation any time. These multimedia expansions keep the universe alive and the audience primed. When the call comes, the Rocinante will be ready.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Star Wars Maul (Jan 10) -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Maul Gets His Due in the Shadows</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://thedirect.com/star-wars-maul-shadow-lord-series">The Direct / IGN</a></span>
+                <span class="section-date">January 10, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-maul-shadow.png" alt="Shadowy crime lord with red and black tattooed face">
+            </figure>
+            <div class="section-body">
+                <p><em>Star Wars: Maul: Shadow Lord</em> is coming in 2026, and it's exactly the series the galaxy's scum and villainy have been waiting for. <a href="https://en.wikipedia.org/wiki/Sam_Witwer">Sam Witwer</a> returns to voice the former Sith—the man who single-handedly made <a href="https://en.wikipedia.org/wiki/Darth_Maul">Darth Maul</a> into a fully realized character across Clone Wars and Rebels.</p>
+
+                <p>The series will explore Maul's rise in the criminal underworld between Clone Wars and his surprise cameo in <a href="https://www.disneyplus.com/movies/solo-a-star-wars-story/7pvkqolZjIZw">Solo</a>. This is the era where he ran Crimson Dawn, controlled death sticks, and orchestrated galaxy-spanning schemes—all while the Empire thought he was dead.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-entry-points.png" alt="Best entry points for major space opera franchises with time commitments">
+                    <figcaption>Where to start each franchise, with estimated time to catch up on core content.</figcaption>
+                </figure>
+
+                <p>What's interesting here isn't just the character—it's the corner of Star Wars this unlocks. The criminal underworld has always been Star Wars' most underexplored territory. We've seen smugglers and bounty hunters as supporting players, but never a series that commits fully to the galaxy's darker economy. Maul's the perfect viewpoint character: once a true believer, now a nihilist who sees the Jedi, Sith, and Empire as equally meaningless.</p>
+
+                <p>Animation is where Star Wars does its best long-form storytelling. Expect this to be a slow burn, likely 20+ episodes across multiple seasons. Witwer's involvement alone guarantees emotional depth.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7: Three Body Problem (Jan 08) -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">The Dark Forest Expands on Netflix</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://techradar.com/news/3-body-problem-season-2-filming">TechRadar</a></span>
+                <span class="section-date">January 8, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-three-body.png" alt="Giant alien probe hovering over film production soundstage">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.netflix.com/title/81024821">Netflix's 3 Body Problem</a> is filming Seasons 2 and 3 back-to-back in Hungary, with production running through 2027. Season 2 targets a late 2026 release. This is Netflix committing to finishing the story—a rare guarantee in the streaming era.</p>
+
+                <p>For the unfamiliar: <a href="https://en.wikipedia.org/wiki/The_Three-Body_Problem_(novel)">Liu Cixin's trilogy</a> is the most ambitious hard sci-fi epic of the 21st century. The first season dealt with first contact and scientific mystery. What's coming next—the Dark Forest theory, the Wallfacer Project, the Swordholder—escalates into cosmic horror and existential philosophy on a scale that makes most space opera look provincial.</p>
+
+                <p>The showrunners (<a href="https://en.wikipedia.org/wiki/David_Benioff">David Benioff</a>, <a href="https://en.wikipedia.org/wiki/D._B._Weiss">D.B. Weiss</a>, and <a href="https://en.wikipedia.org/wiki/Alexander_Woo">Alexander Woo</a>) have a mixed track record—Game of Thrones was brilliant until it wasn't. But the source material here is complete, and Netflix's commitment to filming everything at once removes the "will it get cancelled?" anxiety that poisons so many streaming sci-fi shows.</p>
+
+                <p>The stakes? Nothing less than whether Western audiences can embrace Chinese science fiction's particular brand of cosmic pessimism. The universe is dark, and the forest is full of hunters. Late 2026, we'll see if that message lands.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Genre That Dares to Dream Big</h2>
+            <p class="closing-text">Space opera has always been about scale—of imagination, of stakes, of emotion. What this week's news reveals is a genre in robust health: reboots of classics, completions of trilogies, transitions of power at major studios, and entire universes expanding into new media. The stars are very much our destination.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The Stars Our Destination</span>
+        </div>
+    </footer>
+</body>
+</html>

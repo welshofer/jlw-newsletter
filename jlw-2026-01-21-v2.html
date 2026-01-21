@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>America's Hidden Illiteracy Crisis — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - deep indigo for educational gravitas */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #3D4F7C;
+            --accent-soft: rgba(61, 79, 124, 0.12);
+            --accent-hover: #2D3D5C;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #6B8CC7;
+                --accent-soft: rgba(107, 140, 199, 0.15);
+                --accent-hover: #8AA8DB;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The JLW Newsletter</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Education</span>
+            <h1 class="hero-title">America's Hidden Illiteracy Crisis</h1>
+            <p class="hero-subtitle">We declared victory over illiteracy in 1979. We were measuring the wrong thing. A century of data reveals how we traded one crisis for another—and what the $2.2 trillion cost tells us about the future.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/americas-hidden-illiteracy-crisis.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-literacy-chalkboard.jpg" alt="Vintage classroom chalkboard with fading chalk letters, warm sunlight streaming through tall windows">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: State-by-State Disparities -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Two Americas of Reading</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://worldpopulationreview.com/state-rankings/us-literacy-rates-by-state">World Population Review</a></span>
+                <span class="section-date">November 1, 2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-state-disparities.jpg" alt="Abstract map of United States with glowing regions of varying intensities">
+            </figure>
+            <div class="section-body">
+                <p>If you're reading this in <a href="https://www.nh.gov/">New Hampshire</a>, congratulations: you live in America's most literate state. If you're in <a href="https://www.louisiana.gov/">Louisiana</a> or <a href="https://www.ms.gov/">Mississippi</a>, you're statistically more likely to struggle with the words on this page. The gap between them? Over 15 percentage points in adult literacy rates.</p>
+
+                <p>The data from the <a href="https://www.ed.gov/">Department of Education</a> paints a picture of two parallel nations. New England dominates the top rankings—New Hampshire, Vermont, Massachusetts—where 93%+ of adults read at functional levels. The Deep South clusters at the bottom, with rates dipping below 80%.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-state-literacy-gap.png" alt="Bar chart showing top 5 and bottom 5 states by literacy rate">
+                    <figcaption>The 15+ point gap between highest and lowest states creates a two-tiered workforce.</figcaption>
+                </figure>
+
+                <p><strong>The surprise?</strong> <a href="https://www.ca.gov/">California</a>—one of America's wealthiest states—ranks among the lowest in adult literacy. The culprit isn't poverty alone. It's a complex mix of large non-English speaking populations, socioeconomic stratification, and educational inequality that wealth alone can't fix.</p>
+
+                <p>This isn't just an education problem. It's an economic geography problem. Businesses increasingly factor literacy rates into location decisions. The states that can't read are the states that don't get built.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Science of Reading Legislation -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Reading Wars Are Over. Phonics Won.</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.edweek.org/teaching-learning/reading-legislation">Education Week</a></span>
+                <span class="section-date">October 15, 2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-phonics-legislation.jpg" alt="Vintage phonics cards on wooden desk with legislative gavel">
+            </figure>
+            <div class="section-body">
+                <p>For forty years, American schools waged an ideological war over how children learn to read. On one side: phonics, the explicit teaching of letter-sound relationships. On the other: "whole language" and "balanced literacy," approaches that emphasized context clues and guessing from pictures.</p>
+
+                <p>The war is over. <strong>More than 40 states</strong> have now passed laws mandating the "Science of Reading"—a phonics-first approach backed by decades of cognitive science. The 3-cueing system, which taught children to guess words from pictures and context, has been effectively outlawed in most of America.</p>
+
+                <div class="callout">
+                    <p><strong>The holdouts caved:</strong> New York and California—the nation's two largest school systems and the final bastions of balanced literacy—enacted phonics mandates in late 2024 and early 2025. It's the most aggressive federal and state intervention in classroom pedagogy in decades.</p>
+                </div>
+
+                <p>The research was never ambiguous. <a href="https://www.nichd.nih.gov/">NIH-funded studies</a> in the 1990s showed conclusively that systematic phonics instruction worked better. But ideology, institutional inertia, and a powerful educational publishing industry kept balanced literacy alive for another three decades.</p>
+
+                <p>The question now: how many children were failed by the delay? And can the new generation of phonics-trained readers close the gap before the damage becomes permanent?</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: $2.2 Trillion Cost -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Price Tag of Not Reading: $2.2 Trillion</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.thenationalliteracyinstitute.com/">National Literacy Institute</a></span>
+                <span class="section-date">September 8, 2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-economic-cost.jpg" alt="Abstract visualization of money flowing through hourglass, transforming into letters">
+            </figure>
+            <div class="section-body">
+                <p>Here's a number that should stop policymakers cold: <strong>$2.2 trillion</strong>. That's the estimated annual cost of adult illiteracy to the American economy—larger than the GDP of Italy.</p>
+
+                <p>The <a href="https://www.thenationalliteracyinstitute.com/">National Literacy Institute</a> breaks it down: $1.2 trillion in lost productivity (workers who can't read manuals, can't advance, can't adapt), $480 billion in healthcare costs (patients who can't follow prescriptions, can't navigate the health system), $320 billion in criminal justice (a stunning 70% of inmates can't read above a 4th-grade level), and $200 billion in social welfare programs.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-economic-cost.png" alt="Bar chart showing $2.2 trillion breakdown by category">
+                    <figcaption>Low literacy costs more annually than the entire U.S. defense budget.</figcaption>
+                </figure>
+
+                <p>For context: the United States now ranks <strong>36th globally</strong> in literacy rates. Not 36th among developing nations. 36th overall. Behind Poland, behind Estonia, behind virtually every nation Americans consider a peer.</p>
+
+                <p>The report estimates <strong>130 million American adults</strong>—roughly half the adult population—read below a 6th-grade level. That's not "struggling with Shakespeare." That's struggling with a lease agreement, a medication label, a ballot.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: NAEP Scores Crisis -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Back to 1971: The Generational Collapse</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://nces.ed.gov/nationsreportcard/">NCES / The Nation's Report Card</a></span>
+                <span class="section-date">June 18, 2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-naep-crisis.jpg" alt="Child's hand reaching for book on high shelf, just out of reach">
+            </figure>
+            <div class="section-body">
+                <p>The 2024 <a href="https://nces.ed.gov/nationsreportcard/">NAEP results</a> landed like a bomb in education circles. Reading scores for 4th and 8th graders haven't just declined—they've cratered to levels not seen since Richard Nixon was president.</p>
+
+                <p><strong>40% of 4th graders</strong> now read "below basic"—meaning they can't extract simple information from a grade-level text. For 8th graders, it's 33%. For 13-year-olds tracked over time, scores have dropped to levels last recorded in <strong>1971</strong>.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-naep-reading-scores.png" alt="Line chart showing NAEP reading scores declining sharply after 2019">
+                    <figcaption>The "COVID slide" hasn't reversed—2024 scores show continued decline.</figcaption>
+                </figure>
+
+                <p>The pandemic explains part of it. School closures, remote learning chaos, and the collapse of early literacy instruction created what educators call the "COVID slide." But here's the disturbing part: <strong>the slide hasn't stopped</strong>. Four years after schools reopened, scores are still falling.</p>
+
+                <p>This isn't pandemic learning loss that will naturally recover. This is a generation entering high school without the fundamental skill they need to access every other subject. You can't learn chemistry if you can't read the textbook. You can't learn history if you can't parse a primary source.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: The Historical Journey -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Century of Misdirection</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.census.gov/">U.S. Census Bureau</a> / Historical Analysis</span>
+                <span class="section-date">1900-2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-historical-journey.jpg" alt="Vintage schoolhouse desk morphing into modern digital tablet">
+            </figure>
+            <div class="section-body">
+                <p>In 1900, the <a href="https://www.census.gov/">U.S. Census</a> asked a simple question: "Can you read and write?" The standard was basic—could you sign your own name? By that measure, 10.7% of Americans were illiterate. For Black Americans, denied education by law and terror, the rate was 44.5%.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-illiteracy-century.png" alt="Line chart showing illiteracy rate dropping from 10.7% in 1900 to 0.6% in 1979">
+                    <figcaption>By 1979, "basic" illiteracy was effectively zero—but the definition changed.</figcaption>
+                </figure>
+
+                <p>The next eight decades tell a triumphant story—if you only look at the numbers. Compulsory education spread. The rate dropped: 6% by 1920, 4.3% by 1930, under 1% by 1979. <strong>America had eradicated illiteracy.</strong></p>
+
+                <p>Except it hadn't. It had merely changed the definition. In 1992, the <a href="https://nces.ed.gov/">National Adult Literacy Survey</a> asked a harder question: could Americans actually <em>use</em> reading in daily life? The answer was devastating. 21-23% of adults—roughly the same percentage as a century earlier—performed at the lowest literacy level.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-functional-literacy.png" alt="Bar chart comparing NAAL 2003 and PIAAC 2017 literacy levels">
+                    <figcaption>Functional illiteracy has remained stubbornly high for 30 years.</figcaption>
+                </figure>
+
+                <p>We didn't solve illiteracy. We just changed what we measured. The 10.7% who couldn't sign their names in 1900 became the 21% who can't understand a prescription bottle in 2024. Same problem, different framing.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: The Fourth Grade Cliff -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Fourth-Grade Cliff</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.edreports.org/">EdReports</a> / Educational Research</span>
+                <span class="section-date">Ongoing</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-fourth-grade-cliff.jpg" alt="Surrealist classroom with cliff edge, children learning to read on one side">
+            </figure>
+            <div class="section-body">
+                <p>There's a brutal asymmetry built into how children learn. From kindergarten through third grade, students <strong>learn to read</strong>. From fourth grade onward, they <strong>read to learn</strong>. The transition happens whether they're ready or not.</p>
+
+                <p>Educators call it the "Fourth-Grade Cliff." Students who aren't reading proficiently by the end of third grade are <strong>four times more likely</strong> to drop out of high school. The correlation holds across demographics, across income levels, across school types.</p>
+
+                <div class="callout">
+                    <p><strong>The intergenerational trap:</strong> 43% of adults with the lowest literacy levels live in poverty. Their children are 72% likely to function at the same low literacy levels. The cycle perpetuates itself with mathematical precision.</p>
+                </div>
+
+                <p>But here's what makes the current crisis different: we now have a generation that missed critical early literacy instruction during the pandemic. They hit the fourth-grade cliff without the foundational skills, and they're not catching up. Every year of delay compounds. By middle school, the gap becomes nearly impossible to close.</p>
+
+                <p>Some researchers now argue for a new category: <strong>"deep literacy"</strong>—the ability to sustain attention on long-form text, to read critically, to think through complex arguments. By this measure, the crisis is even worse. Students raised on algorithmic feeds and 15-second videos may be able to decode words while losing the ability to process ideas.</p>
+
+                <p>The question for policymakers isn't just "Can Americans read?" It's "Can Americans read well enough to function as citizens, workers, and thinkers in a complex society?" The data suggests we're failing that test—and have been for longer than we care to admit.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Words We Cannot Afford to Miss</h2>
+            <p class="closing-text">A century ago, we measured literacy by whether you could sign your name. Today, 130 million Americans struggle to read a lease, a ballot, a medical form. The problem didn't go away—we just stopped looking at it clearly. The $2.2 trillion cost isn't just economic. It's democratic. A nation that can't read can't govern itself.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Slop Problem — January 20, 2026</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - violet/cyan for AI/tech */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #7C3AED;
+            --accent-soft: rgba(124, 58, 237, 0.12);
+            --accent-hover: #6D28D9;
+            --cyan: #06B6D4;
+            --amber: #F59E0B;
+            --red: #DC2626;
+            --border: #E2E8F0;
+            --border-strong: #CBD5E1;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F0D14;
+                --bg-alt: #1A1720;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #A78BFA;
+                --accent-soft: rgba(167, 139, 250, 0.15);
+                --accent-hover: #C4B5FD;
+                --border: #2E2A35;
+                --border-strong: #3D3842;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin: 0;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image {
+            max-width: var(--wide-width);
+            margin: var(--space-xl) auto 0;
+            padding: 0 var(--space-md);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+        }
+
+        /* Content */
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md) var(--space-2xl);
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--cyan);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.25;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-meta {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+            display: flex;
+            gap: 1.5em;
+            flex-wrap: wrap;
+        }
+
+        .section-meta a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .section-meta a:hover { text-decoration: underline; }
+
+        p { margin: 0 0 var(--space-md); }
+
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+
+        a:hover { color: var(--accent-hover); }
+
+        /* Code */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+        }
+
+        /* Highlight box */
+        .highlight {
+            background: var(--accent-soft);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .highlight p { margin: 0; font-size: 0.95rem; }
+
+        .highlight.warning {
+            background: rgba(220, 38, 38, 0.1);
+            border-left-color: var(--red);
+        }
+
+        /* Data callout */
+        .data-callout {
+            display: flex;
+            gap: var(--space-md);
+            margin: var(--space-md) 0;
+            flex-wrap: wrap;
+        }
+
+        .data-point {
+            flex: 1;
+            min-width: 120px;
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .data-value {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .data-value.cyan { color: var(--cyan); }
+        .data-value.amber { color: var(--amber); }
+        .data-value.red { color: var(--red); }
+
+        .data-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+        }
+
+        /* Chart figure */
+        figure.chart {
+            margin: var(--space-lg) 0;
+            padding: 0;
+        }
+
+        figure.chart img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        figure.chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            text-align: center;
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: var(--space-md) 0;
+            padding: 0 0 0 var(--space-md);
+            border-left: 2px solid var(--cyan);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { margin: 0; }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: var(--space-xl) var(--space-md);
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-xs);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: var(--space-xl) 0;
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .data-callout { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="newsletter-brand">JLW Weekly</a>
+        <span class="newsletter-date">2026 · 01 · 20</span>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-label">AI Coding Tools</span>
+        <h1 class="hero-title">The Slop Problem</h1>
+        <p class="hero-subtitle">AI can now generate millions of lines of code in a week. The question nobody asked: should it? This week brought security scares, quality concerns, and the uncomfortable realization that "agentic coding" has outpaced our ability to verify what it produces.</p>
+    </div>
+    <div class="hero-image">
+        <img src="images/hero-ai-coding-2026.png" alt="AI Coding Tools 2026 - Editorial illustration showing the tension between code generation and quality">
+    </div>
+</section>
+
+<main class="content">
+
+    <figure class="chart">
+        <img src="images/chart-ai-coding-timeline.png" alt="Timeline of AI Coding events January 10-17, 2026">
+        <figcaption>A week of releases, patches, and controversies in the AI coding tool space</figcaption>
+    </figure>
+
+    <article class="section">
+        <div class="section-number">01</div>
+        <h2 class="section-title">OpenCode Bridges Open Source and Enterprise</h2>
+        <div class="section-meta">
+            <span>Jan 16, 2026</span>
+            <a href="https://medium.com/opencode-copilot-support">Medium / OpenSource</a>
+        </div>
+
+        <p>The popular open-source terminal agent <a href="https://github.com/opencode">OpenCode</a> just added official support for <a href="https://github.com/features/copilot">GitHub Copilot</a> subscriptions. Previously, the tool required users to bring their own API keys—a friction point that limited adoption among developers who wanted CLI-native interfaces but didn't want to manage separate billing relationships.</p>
+
+        <blockquote>
+            <p>"Bridging the gap between open-source flexibility and enterprise-grade model infrastructure."</p>
+        </blockquote>
+
+        <p>This hybrid model—open-source interface, proprietary backend—may be the future of AI tooling. You get the transparency and customizability of open code with the reliability (and budget) of enterprise APIs. It's the best of both worlds, assuming you trust the middleman.</p>
+    </article>
+
+    <article class="section">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Cursor's RCE Vulnerability: A Wake-Up Call</h2>
+        <div class="section-meta">
+            <span>Jan 15, 2026</span>
+            <a href="https://www.scworld.com/news/cursor-ide-rce-vulnerability">SC World</a>
+        </div>
+
+        <div class="highlight warning">
+            <p><strong>CVE-2026-22708:</strong> Critical Remote Code Execution via indirect prompt injection. Patched as of Jan 15.</p>
+        </div>
+
+        <p>A critical vulnerability was disclosed in <a href="https://cursor.com">Cursor IDE</a> this week—and it's exactly the nightmare scenario security researchers have been warning about. The flaw allowed for <strong>Remote Code Execution</strong> via "indirect prompt injection": malicious text hidden in a repository could trick the AI into executing arbitrary terminal commands.</p>
+
+        <p>Think about that. You clone a repo. You ask Cursor to "help you understand the codebase." Somewhere in a README or comment, there's a carefully crafted string that makes the AI run <code>rm -rf</code> or exfiltrate your SSH keys. The AI never questioned it.</p>
+
+        <figure class="chart">
+            <img src="images/chart-ai-security-tradeoff.png" alt="AI Agent Capabilities vs Security Risks">
+            <figcaption>Shell execution remains the highest-value, highest-risk capability for AI coding agents</figcaption>
+        </figure>
+
+        <p><a href="https://cursor.com">Cursor</a> released a hotfix requiring explicit user approval for sensitive actions, but the fundamental tension remains: the most useful thing an AI assistant can do—execute commands—is also the most dangerous.</p>
+
+        <blockquote>
+            <p>"Indirect injection remains the primary attack vector for agentic IDEs."</p>
+        </blockquote>
+    </article>
+
+    <article class="section">
+        <div class="section-number">03</div>
+        <h2 class="section-title">Cursor's "FastRender" and the AI Slop Debate</h2>
+        <div class="section-meta">
+            <span>Jan 14, 2026</span>
+            <a href="https://medium.com/tech-news/cursor-fastrender-controversy">Medium / TechCrunch</a>
+        </div>
+
+        <div class="data-callout">
+            <div class="data-point">
+                <div class="data-value">3M+</div>
+                <div class="data-label">Lines Generated</div>
+            </div>
+            <div class="data-point">
+                <div class="data-value cyan">1 Week</div>
+                <div class="data-label">Development Time</div>
+            </div>
+            <div class="data-point">
+                <div class="data-value red">???</div>
+                <div class="data-label">Lines Compilable</div>
+            </div>
+        </div>
+
+        <p><a href="https://cursor.com">Cursor</a> CEO Michael Truell made a bold announcement: "hundreds of AI agents" powered by <strong>GPT-5.2-Codex</strong> had built a functional web browser from scratch in one week. The project, dubbed "FastRender," generated over 3 million lines of code.</p>
+
+        <blockquote>
+            <p>"We have effectively reduced the cost of software capital to near zero for this project."</p>
+        </blockquote>
+
+        <p>The celebration was short-lived. By January 17th, developers analyzing the repository claimed large sections were uncompilable "hallucinations"—syntactically plausible code that doesn't actually work. The term "AI slop" entered the discourse, and not kindly.</p>
+
+        <p>This is the uncomfortable truth about current AI code generation: it can produce <em>a lot</em> of code, fast. But volume isn't value. If you can't compile it, test it, or maintain it, what have you actually built? A monument to artificial ambition, maybe. Not a browser.</p>
+
+        <div class="highlight">
+            <p><strong>The lesson:</strong> "Near zero cost" only applies to generation. Verification, debugging, and maintenance are still expensive—and they scale with the codebase size, not down.</p>
+        </div>
+    </article>
+
+    <article class="section">
+        <div class="section-number">04</div>
+        <h2 class="section-title">GitHub Copilot CLI Gets Custom Agents</h2>
+        <div class="section-meta">
+            <span>Jan 14, 2026</span>
+            <a href="https://github.blog/2026-01-14-copilot-cli-agents">GitHub Blog</a>
+        </div>
+
+        <p><a href="https://github.com/features/copilot">GitHub</a> released a major update to the Copilot CLI, integrating <strong>GPT-5 mini</strong> for lower-latency responses and introducing built-in "custom agents" for specific workflows:</p>
+
+        <ul style="margin: var(--space-md) 0;">
+            <li><code>Explore</code> — Codebase analysis and understanding</li>
+            <li><code>Plan</code> — Architecture and implementation planning</li>
+            <li><code>Code-review</code> — Automated PR auditing</li>
+        </ul>
+
+        <blockquote>
+            <p>"Developers can now spawn specialized agents directly from the terminal to handle distinct phases of the SDLC."</p>
+        </blockquote>
+
+        <p>The move signals GitHub's strategic direction: fragment "the assistant" into specialized, role-based agents that handle complex tasks autonomously. Instead of one AI that does everything mediocrely, you get multiple AIs that each do one thing well.</p>
+
+        <p>Whether this actually improves outcomes or just adds complexity remains to be seen. But it's a clear bet that specialization beats generalization in the AI tooling space.</p>
+    </article>
+
+    <hr>
+
+    <figure class="chart">
+        <img src="images/chart-ai-tools-landscape.png" alt="AI Coding Tool Feature Comparison">
+        <figcaption>The AI coding tool landscape is fragmenting into specialized niches</figcaption>
+    </figure>
+
+    <article class="section">
+        <div class="section-number">05</div>
+        <h2 class="section-title">GitHub Deprecates Legacy Models</h2>
+        <div class="section-meta">
+            <span>Jan 13, 2026</span>
+            <a href="https://github.blog/2026-01-13-model-deprecation">GitHub Blog</a>
+        </div>
+
+        <p>GitHub announced it will remove support for specific older models from OpenAI, Google, and Anthropic starting <strong>February 17, 2026</strong>. The move is intended to force migration to newer, more efficient models like GPT-5-turbo and Claude 3.7.</p>
+
+        <blockquote>
+            <p>"To maintain the highest standard of code quality, we are sunsetting legacy inference endpoints."</p>
+        </blockquote>
+
+        <p>Some users expressed frustration—they had fine-tuned prompts for specific legacy models that no longer worked with the replacements. The sentiment is understandable, but the underlying message is clear: in AI, nothing is permanent. The model you optimized for today will be deprecated tomorrow.</p>
+
+        <p>This is the new normal. Plan accordingly.</p>
+    </article>
+
+    <article class="section">
+        <div class="section-number">06</div>
+        <h2 class="section-title">Cursor + 1Password: Zero-Trust for AI Agents</h2>
+        <div class="section-meta">
+            <span>Jan 12, 2026</span>
+            <a href="https://devops.com/cursor-1password-partnership">DevOps.com</a>
+        </div>
+
+        <p><a href="https://cursor.com">Cursor</a> and <a href="https://1password.com">1Password</a> announced a deep integration to prevent AI agents from hallucinating or leaking credentials. The tool automatically detects when an agent attempts to generate or read secrets and routes them through 1Password's vault.</p>
+
+        <blockquote>
+            <p>"We are building the first 'zero-trust' environment for AI coding agents."</p>
+        </blockquote>
+
+        <p>This addresses a top enterprise concern: AI assistants accidentally committing hardcoded secrets or exposing API keys in chat logs. The integration supports the new <strong>Model Context Protocol (MCP)</strong> for secure context sharing between tools.</p>
+
+        <p>It's a smart move—and a necessary one. If AI agents are going to operate with increasing autonomy, the guardrails need to be built into the infrastructure, not just the prompts.</p>
+    </article>
+
+    <article class="section">
+        <div class="section-number">07</div>
+        <h2 class="section-title">Google's Free Tier Gambit</h2>
+        <div class="section-meta">
+            <span>Jan 10, 2026</span>
+            <a href="https://zoer.ai/news/google-launches-gemini-code-assist">Google Cloud Blog</a>
+        </div>
+
+        <p><a href="https://cloud.google.com/gemini">Google</a> released <strong>Gemini Code Assist</strong>, a free-tier AI coding tool aimed at individual developers. Features include "full-stack generation" capabilities—scaffolding entire applications from natural language prompts.</p>
+
+        <blockquote>
+            <p>"Our goal is to democratize agentic coding by making the most powerful models available to every developer for free."</p>
+        </blockquote>
+
+        <p>Translation: Google is aggressively undercutting Cursor and GitHub Copilot on price to regain market share. The "free" model has worked before (Chrome, Gmail, Android), and Google is betting it'll work again.</p>
+
+        <p>For developers, this is unambiguously good news. Competition drives prices down and features up. Just remember: when the product is free, you're the product. Your code patterns, preferences, and problems are training the next generation of Google's models.</p>
+    </article>
+
+    <hr>
+
+    <article class="section">
+        <h2 class="section-title">The Week's Takeaway</h2>
+
+        <p>This was a week that revealed the growing pains of AI-assisted coding. We can generate code faster than ever—but we can't verify it. We can execute commands autonomously—but that power can be weaponized. We can specialize agents for different tasks—but that adds complexity to already-complex workflows.</p>
+
+        <p>The "AI slop" controversy around FastRender is a canary in the coal mine. As AI code generation scales, the bottleneck shifts from writing to understanding. The developers who thrive won't be the ones who generate the most code; they'll be the ones who can distinguish good code from plausible-looking garbage.</p>
+
+        <p>Meanwhile, the security researchers are sounding alarms that deserve to be heard. CVE-2026-22708 won't be the last vulnerability of its kind. The attack surface of AI coding tools is vast and largely unexplored. Proceed with caution—and keep your approval dialogs visible.</p>
+
+        <p>The future of coding is agentic. The question is whether we're building tools that augment human judgment or replace it. This week suggested we're still figuring that out.</p>
+    </article>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <p>Sources: <a href="https://github.blog">GitHub Blog</a>, <a href="https://www.scworld.com">SC World</a>, <a href="https://devops.com">DevOps.com</a>, <a href="https://cloud.google.com">Google Cloud</a></p>
+        <p style="margin-top: var(--space-sm);">
+            <a href="index.html">← Archive</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

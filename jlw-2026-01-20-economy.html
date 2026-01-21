@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Landing, Hard Data — January 20, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - forest green/gold for finance */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #1A4D3E;
+            --accent-soft: rgba(26, 77, 62, 0.12);
+            --accent-hover: #0D3A2D;
+            --gold: #C9A227;
+            --border: #D8E2E8;
+            --border-strong: #B8C8D1;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #2A7D5E;
+                --accent-soft: rgba(42, 125, 94, 0.15);
+                --accent-hover: #3A9D7E;
+                --gold: #D4B32E;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header */
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* Hero */
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin: 0;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Hero image */
+        .hero-image {
+            max-width: var(--wide-width);
+            margin: var(--space-xl) auto 0;
+            padding: 0 var(--space-md);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+        }
+
+        /* Content */
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md) var(--space-2xl);
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+            display: flex;
+            gap: 1.5em;
+            flex-wrap: wrap;
+        }
+
+        .section-meta a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .section-meta a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin: 0 0 var(--space-md);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Highlight box */
+        .highlight {
+            background: var(--accent-soft);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .highlight p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Data callout */
+        .data-callout {
+            display: flex;
+            gap: var(--space-md);
+            margin: var(--space-md) 0;
+            flex-wrap: wrap;
+        }
+
+        .data-point {
+            flex: 1;
+            min-width: 120px;
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .data-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .data-value.gold {
+            color: var(--gold);
+        }
+
+        .data-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+        }
+
+        /* Chart figure */
+        figure.chart {
+            margin: var(--space-lg) 0;
+            padding: 0;
+        }
+
+        figure.chart img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        figure.chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            text-align: center;
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: var(--space-md) 0;
+            padding: 0 0 0 var(--space-md);
+            border-left: 2px solid var(--gold);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p {
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: var(--space-xl) var(--space-md);
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-xs);
+        }
+
+        .footer a {
+            color: var(--accent);
+        }
+
+        /* Divider */
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: var(--space-xl) 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .data-callout { flex-direction: column; }
+            .data-point { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="newsletter-brand">JLW Weekly</a>
+        <span class="newsletter-date">2026 · 01 · 20</span>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-label">US Economic Outlook</span>
+        <h1 class="hero-title">Soft Landing, Hard Data</h1>
+        <p class="hero-subtitle">The January numbers are in—and they're telling a consistent story. Consumer spending surged, jobless claims plunged below 200K, and industrial production surprised to the upside. If this is a recession, someone forgot to tell the economy.</p>
+    </div>
+    <div class="hero-image">
+        <img src="images/hero-economy-2026.png" alt="US Economic Outlook 2026 - Editorial illustration showing economic indicators">
+    </div>
+</section>
+
+<main class="content">
+
+    <figure class="chart">
+        <img src="images/chart-economic-snapshot.png" alt="January 2026 Economic Snapshot showing key indicators">
+        <figcaption>Key economic indicators point toward continued expansion as 2026 begins</figcaption>
+    </figure>
+
+    <article class="section">
+        <div class="section-number">01</div>
+        <h2 class="section-title">Industrial Production Beats Expectations</h2>
+        <div class="section-meta">
+            <span>Jan 16, 2026</span>
+            <a href="https://www.federalreserve.gov/releases/g17/current/default.htm">Federal Reserve</a>
+        </div>
+
+        <div class="data-callout">
+            <div class="data-point">
+                <div class="data-value">+0.4%</div>
+                <div class="data-label">Industrial Output</div>
+            </div>
+            <div class="data-point">
+                <div class="data-value">+0.2%</div>
+                <div class="data-label">Manufacturing</div>
+            </div>
+            <div class="data-point">
+                <div class="data-value gold">76.3%</div>
+                <div class="data-label">Capacity Use</div>
+            </div>
+        </div>
+
+        <p>The manufacturing sector—that laggard that everyone had written off—just posted a 0.4% gain in December, handily beating the consensus expectation of 0.1%. Manufacturing output itself rose 0.2%, defying forecasts of a decline.</p>
+
+        <p>Capacity utilization ticked up to 76.3%, still below historical peaks but trending in the right direction. For an economy that was supposedly teetering on the edge of recession just six months ago, these numbers paint a picture of quiet resilience.</p>
+
+        <div class="highlight">
+            <p><strong>The takeaway:</strong> The "manufacturing recession" narrative is losing steam. The sector isn't booming, but it's stabilizing—and that's all the soft-landing bulls needed to hear.</p>
+        </div>
+    </article>
+
+    <article class="section">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Consumer Sentiment Hits 4-Month High</h2>
+        <div class="section-meta">
+            <span>Jan 16, 2026</span>
+            <a href="http://www.sca.isr.umich.edu/">University of Michigan</a>
+        </div>
+
+        <p>The preliminary <a href="http://www.sca.isr.umich.edu/">University of Michigan</a> Consumer Sentiment Index for January jumped to 54.0, up from 52.9 in December—a four-month high. The improvement was driven largely by lower-income households, suggesting that easing inflation is finally reaching the consumers who felt it most acutely.</p>
+
+        <p>There's a catch: long-term inflation expectations edged up to 3.4%, which will raise eyebrows at the <a href="https://www.federalreserve.gov">Federal Reserve</a>. Higher inflation expectations can become self-fulfilling prophecies if consumers start demanding wage increases to compensate.</p>
+
+        <p>Still, sentiment rising alongside sticky inflation expectations is an unusual combination—one that suggests Americans are growing confident they can handle higher prices, rather than expecting them to vanish.</p>
+    </article>
+
+    <article class="section">
+        <div class="section-number">03</div>
+        <h2 class="section-title">JPMorgan Beats Estimates, Sees "Soft Landing"</h2>
+        <div class="section-meta">
+            <span>Jan 16, 2026</span>
+            <a href="https://www.jpmorganchase.com/ir">JPMorgan Chase & Co.</a>
+        </div>
+
+        <div class="data-callout">
+            <div class="data-point">
+                <div class="data-value">$45.8B</div>
+                <div class="data-label">Q4 Revenue</div>
+            </div>
+            <div class="data-point">
+                <div class="data-value gold">+7%</div>
+                <div class="data-label">YoY Growth</div>
+            </div>
+            <div class="data-point">
+                <div class="data-value">$4.63</div>
+                <div class="data-label">EPS</div>
+            </div>
+        </div>
+
+        <p>As the first major bank to report Q4 earnings, <a href="https://www.jpmorganchase.com">JPMorgan Chase</a> set the tone for the sector—and it was cautiously optimistic. Net revenue of $45.8 billion beat estimates, up 7% year-over-year, with EPS of $4.63 clearing the bar despite a profit dip.</p>
+
+        <p>The wrinkle: a $2.2 billion credit reserve build, suggesting management is preparing for potential loan losses. That's prudent risk management, not panic—but it's worth watching as a leading indicator of credit stress.</p>
+
+        <blockquote>
+            <p>"We remain committed to future growth investments."</p>
+        </blockquote>
+
+        <p>Translation: Jamie Dimon isn't battening down the hatches. When the biggest bank in America is still investing for growth, it's hard to make the doom-and-gloom case stick.</p>
+    </article>
+
+    <hr>
+
+    <figure class="chart">
+        <img src="images/chart-retail-jobless.png" alt="Retail sales surge and jobless claims decline">
+        <figcaption>Consumer spending and labor market strength continue to defy recession forecasts</figcaption>
+    </figure>
+
+    <article class="section">
+        <div class="section-number">04</div>
+        <h2 class="section-title">Jobless Claims Drop Below 200K</h2>
+        <div class="section-meta">
+            <span>Jan 15, 2026</span>
+            <a href="https://www.dol.gov/ui/data.pdf">US Department of Labor</a>
+        </div>
+
+        <p>Initial jobless claims fell to <strong>198,000</strong> for the week ending January 10—below the psychologically significant 200K threshold and well under the 215,000 consensus estimate. The four-week moving average declined to 205,000.</p>
+
+        <p>Sub-200K claims numbers are rare. They signal an economy where employers are hoarding labor, reluctant to let go of workers they fought so hard to hire during the post-pandemic scramble. It's the kind of labor market tightness that makes the <a href="https://www.federalreserve.gov">Fed</a> nervous about wage-driven inflation—but also makes recession talk look increasingly disconnected from reality.</p>
+
+        <div class="highlight">
+            <p><strong>Context:</strong> The last time we saw claims this low was late 2022, right before the Fed's most aggressive hiking campaign in decades. Different environment, same message: Americans are employed and staying that way.</p>
+        </div>
+    </article>
+
+    <article class="section">
+        <div class="section-number">05</div>
+        <h2 class="section-title">Retail Sales Surge 1.26% in December</h2>
+        <div class="section-meta">
+            <span>Jan 14, 2026</span>
+            <a href="https://nrf.com/media-center/press-releases">National Retail Federation</a>
+        </div>
+
+        <p>The American consumer finished 2025 with a flourish. Total retail sales (excluding auto and gas) jumped <strong>1.26% month-over-month</strong> in December, capping a holiday season that grew 4.1% compared to 2024.</p>
+
+        <blockquote>
+            <p>"Consumers prioritized value and utilized credit to drive a holiday season that exceeded expectations."</p>
+        </blockquote>
+
+        <p>That "utilized credit" part deserves scrutiny. Credit card debt has been climbing, and delinquencies are ticking up—though from historically low bases. For now, consumers are spending; the question is whether they're borrowing from future consumption or genuinely flush with cash.</p>
+
+        <p>Core retail sales rose 1.6% month-over-month, suggesting the strength wasn't just holiday-driven. This is an economy where people are still willing to open their wallets.</p>
+    </article>
+
+    <article class="section">
+        <div class="section-number">06</div>
+        <h2 class="section-title">Inflation Moderates to 2.7%—But Stays Sticky</h2>
+        <div class="section-meta">
+            <span>Jan 13, 2026</span>
+            <a href="https://www.bls.gov/news.release/cpi.nr0.htm">Bureau of Labor Statistics</a>
+        </div>
+
+        <figure class="chart">
+            <img src="images/chart-cpi-inflation.png" alt="CPI inflation trend showing gradual decline toward 2% target">
+            <figcaption>Inflation continues its slow descent, though the final stretch to 2% may be the hardest</figcaption>
+        </figure>
+
+        <div class="data-callout">
+            <div class="data-point">
+                <div class="data-value">2.7%</div>
+                <div class="data-label">CPI YoY</div>
+            </div>
+            <div class="data-point">
+                <div class="data-value">2.6%</div>
+                <div class="data-label">Core CPI</div>
+            </div>
+            <div class="data-point">
+                <div class="data-value gold">+0.3%</div>
+                <div class="data-label">Monthly</div>
+            </div>
+        </div>
+
+        <p>The Consumer Price Index rose <strong>2.7% year-over-year</strong> in December 2025, with core CPI (excluding food and energy) at 2.6%. Progress, but not victory—the Fed's 2% target remains tantalizingly out of reach.</p>
+
+        <p>The usual suspects are to blame: shelter costs (+3.2%) and food prices (+3.1%) continue to run hotter than headline inflation. Until the housing market cools further and food supply chains fully normalize, that last mile to 2% will be a grind.</p>
+
+        <div class="highlight">
+            <p><strong>What it means for rates:</strong> The Fed has room to cut, but not much urgency. Expect a measured pace of easing in 2026—no dramatic pivots, no emergency moves. This is the "soft landing" everyone hoped for: boring, gradual, and deliberate.</p>
+        </div>
+    </article>
+
+    <hr>
+
+    <article class="section">
+        <h2 class="section-title">The Big Picture</h2>
+
+        <p>Every major data point this week pointed in the same direction: the US economy is slowing, but not breaking. Inflation is sticky, but manageable. The labor market is tight, but not overheating. Manufacturing is stabilizing, not collapsing. Consumers are spending, banks are lending, and businesses are investing.</p>
+
+        <p>This is what a soft landing looks like—not a dramatic rescue, but a long, uneventful glide path. The recession that everyone predicted in 2023, then 2024, then early 2025, keeps getting pushed further out. At some point, the forecasters will either be right or quietly move on to the next prediction.</p>
+
+        <p>For now, the data is clear: the American economy enters 2026 in better shape than almost anyone expected a year ago. That doesn't mean the risks have vanished—credit card debt, geopolitical uncertainty, and inflation expectations all bear watching. But the base case is no longer recession. It's continued growth, however modest.</p>
+
+        <p>Sometimes the most surprising outcome is the boring one.</p>
+    </article>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <p>Data compiled from <a href="https://www.bls.gov">BLS</a>, <a href="https://www.federalreserve.gov">Federal Reserve</a>, <a href="https://www.dol.gov">Dept. of Labor</a>, <a href="http://www.sca.isr.umich.edu/">U. Michigan</a>, and <a href="https://nrf.com">NRF</a>.</p>
+        <p style="margin-top: var(--space-sm);">
+            <a href="index.html">← Archive</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

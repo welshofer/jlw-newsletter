@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pendulum Swings Back — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - sepia/historical theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #8B4513;
+            --accent-soft: rgba(139, 69, 19, 0.12);
+            --accent-hover: #6B3410;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #CD853F;
+                --accent-soft: rgba(205, 133, 63, 0.15);
+                --accent-hover: #DEB887;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The Long View</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">WWI Historiography</span>
+            <h1 class="hero-title">The Pendulum Swings Back</h1>
+            <p class="hero-subtitle">A century after the guns fell silent, historians are still fighting over who started it all. And right now, the "shared tragedy" narrative is losing ground.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-pendulum-swings-back.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-wwi-causes.jpg" alt="Diplomatic table from 1914 with scattered documents, overturned inkwell, and military epaulettes">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The War's "Cause" Keeps Shifting—Even During the War Itself</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://youtube.com">YouTube / Independent</a></span>
+                <span class="section-date">October 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-1917-turning-point.jpg" alt="Abstract visualization of 1917 as a hinge year with Wilson and Lenin as ghostly silhouettes">
+            </figure>
+            <div class="section-body">
+                <p>Here's a question most textbooks dodge: did the war that ended in 1918 have the same "cause" as the one that started in 1914? A new wave of independent video essays—part of a broader shift toward high-quality historiography on <a href="https://youtube.com">YouTube</a>—argues convincingly that it did not.</p>
+
+                <p>The documentary <em>1917: Turning Point of WW1</em> makes the case that this single year fundamentally rewrote the war's meaning. Before 1917, the conflict was recognizable as a 19th-century imperial struggle: Habsburgs versus Romanovs, colonial rivalries, naval arms races. After 1917? <a href="https://en.wikipedia.org/wiki/Woodrow_Wilson">Woodrow Wilson</a> entered with his Fourteen Points and crusade for democracy. <a href="https://en.wikipedia.org/wiki/Vladimir_Lenin">Lenin</a> countered with world revolution. Suddenly the war became ideological—a template for the rest of the 20th century.</p>
+
+                <p>This matters because it suggests that asking "what caused WWI?" may be the wrong question. Perhaps the more honest framing is: which WWI? The one that generals started for reasons of honor and alliance obligations, or the one that ideologues finished for utopian dreams? Younger audiences, raised on video essays rather than cable documentaries, increasingly see causation as something that evolves <em>during</em> events—not a static moment frozen in the summer of 1914.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The "Sleepwalkers" Are Waking Up—And They're Not Happy</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.theguardian.com">Academic Forums</a></span>
+                <span class="section-date">2025 (Ongoing)</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-sleepwalkers-backlash.jpg" alt="A pendulum swinging over a map of Europe casting shifting shadows">
+            </figure>
+            <div class="section-body">
+                <p>For a decade, <a href="https://en.wikipedia.org/wiki/Christopher_Clark_(historian)">Christopher Clark's</a> <em>The Sleepwalkers</em> has been the go-to explanation at dinner parties: the Great Powers stumbled into war like somnambulists, each acting rationally within their own limited vision, none truly wanting the catastrophe that followed. It was seductive because it absolved everyone a little bit. No villains, just tragedy.</p>
+
+                <p>That consensus is cracking. A "new revisionism" solidified in 2025 seminars is pushing back hard against what critics call the "problematic relativization of responsibility." The charge? That by spreading blame so evenly, Clark's framework obscures the deliberate decisions made by specific actors—particularly in Berlin and Vienna.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-2025-consensus.png" alt="Pie chart showing 2025 academic consensus on WWI responsibility">
+                    <figcaption>Current scholarly breakdown: German primary responsibility is regaining ground after a decade of "shared tragedy" narratives. Source: Synthesis of recent academic literature (Stylized).</figcaption>
+                </figure>
+
+                <p>The revisionists point to the Austrian ultimatum to Serbia—designed to be rejected—and Germany's "blank check" that enabled it. They emphasize intent over accident. The pendulum of blame, having swung toward collective tragedy in 2014's centenary mood, is swinging back toward specific national agency. History, it seems, still demands villains.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Germany's "Special Path" Gets a Second Look</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.berghahnbooks.com/title/KockaGermanys">Berghahn Books</a></span>
+                <span class="section-date">April 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-sonderweg-germany.jpg" alt="Branching railroad tracks through German industrial landscape circa 1890">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/J%C3%BCrgen_Kocka">Jürgen Kocka's</a> <em>Germany's Struggle for Modernity, 1789–1918</em> represents something unexpected: a return to structural explanations for the war. For years, the <em>Sonderweg</em> thesis—the idea that Germany's "special path" to modernity was uniquely flawed and war-prone—had fallen out of fashion. Too deterministic, critics said. Too convenient for Cold War politics.</p>
+
+                <p>But Kocka, one of Germany's most respected social historians, is reviving the argument with fresh archival evidence. His focus isn't on diplomatic cables or assassination plots but on the internal pressures of the <em>Kaiserreich</em>: rapid industrialization without corresponding political reform, a feudal aristocracy clinging to power through military prestige, economic interests that saw external expansion as the release valve for domestic tensions.</p>
+
+                <p>The implication is uncomfortable: the war wasn't an accident of diplomacy but an inevitable product of a society that had modernized its economy without modernizing its politics. That's a harder story to tell because it doesn't offer clear decision-makers to blame—just a system grinding toward catastrophe. Yet it may be the more honest one.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">"Sleepwalking" into World War III?</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://thefederal.com/category/international/sleepwalking-into-wwiii-parallels-between-1914-and-2024-116327">The Federal</a></span>
+                <span class="section-date">Late 2024 – Early 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-wwiii-parallels.jpg" alt="Split-screen composition showing 1914 military figures and modern diplomats around identical tables">
+            </figure>
+            <div class="section-body">
+                <p>Here's where the historiography gets genuinely unsettling: it's no longer confined to history departments. Political scientists and defense analysts are aggressively applying Clark's "sleepwalkers" framework to current events—Ukraine, Gaza, Taiwan—and the parallels are too neat for comfort.</p>
+
+                <p>The argument runs like this: "entangling alliances" (NATO's Article 5, mutual defense pacts with Israel) mirror the pre-1914 web of obligations. "Proxy struggles" in the Balkans find their echo in Eastern Europe and the Middle East. Most troubling: the danger of "rational" actors making calculated risks—each move defensible in isolation—that spiral out of control because red lines are opaque until they're crossed.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-historiography-timeline.png" alt="Timeline showing key moments in WWI historiography from 1919 to 2025">
+                    <figcaption>A century of blame: how the interpretation of WWI's causes has shifted through major historiographical moments. Source: Historiographical analysis (2025).</figcaption>
+                </figure>
+
+                <p>This isn't idle academic speculation—it's shaping policy. Memos citing 1914 precedents circulate in foreign ministries. The metaphor of "sleepwalking" has moved from history books to situation rooms. Whether that's wisdom or dangerous analogy-mongering depends on whether you think history rhymes or merely echoes.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Versailles Revisited: The Peace That Failed Because the War's Causes Were Never Settled</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.berghahnbooks.com/title/BadelParis">Berghahn Books</a></span>
+                <span class="section-date">December 2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-paris-1919.jpg" alt="Hall of Mirrors at Versailles with Treaty document on table and trenches reflected in mirrors">
+            </figure>
+            <div class="section-body">
+                <p>The new edited volume <em>The Paris Peace Conference of 1919</em> makes a provocative argument: you can't understand why the peace failed without understanding how the war's causes were contested even at the negotiating table.</p>
+
+                <p>Article 231—the infamous "War Guilt Clause"—wasn't just punitive economics. It was an attempt to settle the causation question by fiat. Germany bore sole responsibility; therefore Germany would pay. But the Germans never accepted that verdict, and the resentment it generated poisoned everything that followed.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-blame-attribution.png" alt="Bar chart showing blame attribution by historiographical era">
+                    <figcaption>Who started WWI? How blame attribution has evolved across four major historiographical eras. Source: Composite of academic surveys (Stylized).</figcaption>
+                </figure>
+
+                <p>The editors argue that the peacemakers of 1919 were also attempting something unprecedented: building a "New World Order" based on collective security and international law. But that project required a shared understanding of what had gone wrong—and no such consensus existed. The inability to agree on the war's causes doomed the peace that followed. That's a lesson worth remembering as we debate how current conflicts should end.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Definitive Map of a Century-Long Argument</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.routledge.com/The-Causes-of-the-First-World-War-The-Long-Blame-Game/Mombauer/p/book/9780367250648">Routledge</a></span>
+                <span class="section-date">Late 2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-blame-game.jpg" alt="Historians' hands reaching across a century pointing at different nations on an antique map">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.open.ac.uk/people/am2924">Annika Mombauer's</a> updated <em>The Causes of the First World War: The Long Blame Game</em> is perhaps the single most useful volume for anyone trying to understand why, 110 years later, we're still arguing about this.</p>
+
+                <p>Mombauer's contribution isn't to take a side—it's to map the entire battlefield. She traces how the "war guilt question" has been weaponized by each generation: by Weimar revisionists seeking to escape reparations, by <a href="https://en.wikipedia.org/wiki/Fritz_Fischer">Fritz Fischer</a> in the 1960s indicting his own nation's militarism, by Cold War historians finding the conflict's roots in German-Russian rivalry, by post-Cold War scholars spreading responsibility more evenly.</p>
+
+                <p>Her conclusion? The debate on WWI causation has been described as "the history of a history," and it remains "as emotive and controversial as ever." That's not a bug—it's a feature. The war was so catastrophic, so foundational to everything that followed, that settling its causes would mean settling the moral ledger of the 20th century. And that, perhaps, is more than historians can be expected to do.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> After a decade of "sleepwalking" and shared tragedy narratives, the pendulum is swinging back toward specific responsibility—particularly for Germany and Austria-Hungary. But the new revisionism isn't simply a return to 1960s Fischer-style accusations; it's more nuanced, acknowledging systemic pressures while insisting that individual decisions still mattered. The war was neither pure accident nor pure design. It was both—which may be the most uncomfortable answer of all.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Question That Won't Die</h2>
+            <p class="closing-text">Every generation refights the first global war—not on battlefields, but in archives and seminar rooms. The answers they reach tell us as much about their own anxieties as about the summer of 1914. Watch what happens when the current parallels get too close for comfort.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The Long View</span>
+        </div>
+    </footer>
+</body>
+</html>

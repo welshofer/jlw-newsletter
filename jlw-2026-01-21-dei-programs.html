@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Unraveling — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - indigo academic theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F3F1F8;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #483A6E;
+            --border: #D8E2E8;
+            --border-strong: #B8C4D0;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1B1826;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7BB8;
+                --accent-soft: rgba(139, 123, 184, 0.15);
+                --accent-hover: #A090D0;
+                --border: #2E2A35;
+                --border-strong: #3D3842;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Weekly</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Higher Education</span>
+            <h1 class="hero-title">The Great Unraveling</h1>
+            <p class="hero-subtitle">University DEI programs are caught in an accelerating vortex: federal courts checking executive overreach, states building surveillance infrastructure, and administrators scrambling to rebrand their way to survival. This week brought moves on every front.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-great-unraveling.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-dei-divide.png" alt="A university campus divided by light and shadow, symbolizing the conflict over DEI programs">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Federal Retreat -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Feds Blink: DOJ Drops Anti-DEI Appeal</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.dailyherald.com/2026/01/21/news/trump-admin-drops-appeal-anti-dei-ruling">Daily Herald / AP</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-federal-retreat.png" alt="A gavel resting on cracked legal documents, symbolizing the federal court victory">
+            </figure>
+            <div class="section-body">
+                <p>In a move that surprised exactly no one who's been watching the judicial tea leaves, the <a href="https://www.ed.gov/">U.S. Department of Education</a> filed a motion yesterday to dismiss its appeal of Judge Stephanie Gallagher's ruling that blocked the administration's campaign to strip federal funding from schools with DEI programs.</p>
+
+                <p>The original ruling was a body blow: Gallagher found the administration's threats violated both the First Amendment and basic procedural rules. Her assessment that "the guidance stifled teachers' free speech" now stands as settled precedent. The administration, reading the room, decided not to double down on a losing hand.</p>
+
+                <p>This matters beyond the immediate legal question. The federal government's primary weapon against university DEI has been the threat of funding cuts. With courts now signaling they'll scrutinize such threats carefully, administrators may feel marginally more confident pushing back. But don't expect a celebration in faculty lounges just yet.</p>
+
+                <div class="callout">
+                    <p><strong>The catch:</strong> States aren't bound by this ruling. And as we'll see below, they're building their own enforcement machinery that doesn't rely on federal funding threats at all.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: VMI Counter-Offensive -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Virginia Democrats Launch VMI Counterattack</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.washingtonpost.com/education/2026/01/21/virginia-democrats-vmi-dei-task-force/">Washington Post</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-vmi-counteroffensive.png" alt="VMI building with chess pieces on steps, symbolizing political strategy">
+            </figure>
+            <div class="section-body">
+                <p>Someone in Richmond decided to play offense. Virginia House Democrats filed a resolution yesterday to establish a task force investigating <a href="https://www.vmi.edu/">Virginia Military Institute</a>, examining whether the school has adequately addressed the damning 2021 report on racism and sexism—and whether it should keep receiving state funding if it hasn't.</p>
+
+                <p>The irony is thick enough to cut with a ceremonial saber. Conservatives have spent years threatening to defund schools <em>with</em> DEI programs. Now pro-DEI lawmakers are threatening to defund schools <em>without</em> them. The weapon works both ways.</p>
+
+                <p>VMI has been a flashpoint since the 2021 investigation revealed a culture that, charitably, hadn't evolved much since the 19th century. The school made some changes. Critics say those changes were cosmetic. Now the General Assembly will decide whether "cosmetic" is good enough for continued public investment.</p>
+
+                <p>Watch this one. If Democrats can successfully tie state funding to <em>maintaining</em> diversity efforts, it creates a template for blue states to counter red state rollbacks. The DEI wars may be entering a new phase of explicit state-versus-state policy competition.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Texas Whistleblower Portal -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Texas Builds Its Surveillance Machine</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.highereddive.com/news/texas-students-first-portal-dei-violations-2026/">Higher Ed Dive</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-texas-portal.png" alt="Digital surveillance portal glowing in darkness, representing the Texas whistleblower system">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://www.highered.texas.gov/">Texas Higher Education Coordinating Board</a> went live yesterday with "Students First," an online portal allowing anyone—students, staff, concerned citizens, anonymous internet users—to report suspected violations of <a href="https://capitol.texas.gov/BillLookup/History.aspx?LegSess=88R&Bill=SB17">Senate Bill 17</a> (the DEI ban) and <a href="https://capitol.texas.gov/BillLookup/History.aspx?LegSess=88R&Bill=SB37">Senate Bill 37</a> (faculty senate restrictions).</p>
+
+                <p>The interface is sleek. The implications are chilling. Anonymous reporting of "unconstitutional race- and sex-conscious programs" creates a system where any professor discussing systemic inequality, any administrator referencing demographic data, any staff member organizing a heritage month event could find themselves under investigation based on a tip from someone they'll never face.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-dei-timeline.png" alt="Timeline showing state DEI legislation from 2023-2026">
+                    <figcaption>The cascade of state-level DEI restrictions has accelerated dramatically since 2023, with Texas consistently at the vanguard.</figcaption>
+                </figure>
+
+                <p>The immediate effect will be self-censorship. Faculty will avoid topics that might generate a report. Administrators will shut down programs preemptively rather than defend them. The portal doesn't need to result in actual punishments to achieve its goals—the mere existence of the surveillance mechanism does the work.</p>
+
+                <p>History has a word for systems that encourage citizens to report their neighbors for ideological offenses. Texas has given it a modern UX makeover.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Cal Poly Rebrand -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Great Rebrand: Cal Poly Drops the D-Word</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://mustangnews.net/cal-poly-renames-dei-office-2026">Mustang News</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-cal-poly-rebrand.png" alt="University office door with letters being rearranged, representing the DEI rebrand">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.calpoly.edu/">Cal Poly San Luis Obispo</a> officially renamed its "Office of University Diversity and Inclusion" to the "Office of Culture and Institutional Excellence" this week. The acronym shifts from OUDI to CIX. The programs inside—including the BEACoN Mentorship Program—remain intact.</p>
+
+                <p>This is strategic compliance at its most transparent. University administrators have decided that the political fight over the <em>word</em> "diversity" isn't worth the programs themselves. By scrubbing the terminology while preserving the substance, they're betting they can thread a needle that's getting narrower by the month.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-university-responses.png" alt="Bar chart showing how universities are responding to DEI pressure">
+                    <figcaption>Universities are taking varied approaches to DEI pressure, with "strategic rebranding" emerging as the most common response among public institutions surveyed.</figcaption>
+                </figure>
+
+                <p>The gamble is whether opponents will be satisfied with symbolic victories or will eventually demand substantive elimination. Early evidence suggests the latter. Missouri's new bills (see below) target not just DEI offices but any program that considers demographic factors—regardless of what you call it.</p>
+
+                <p>Still, the rebrand buys time. And in higher education, where institutional change moves at glacial pace, sometimes time is the only currency that matters.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Missouri Accreditation -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Missouri Opens a New Front: Targeting Accreditors</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://kcbeacon.org/stories/2026/01/15/missouri-education-bills-dei-accreditation/">Kansas City Beacon</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-missouri-accreditation.png" alt="Accreditation certificate being torn between two hands, representing the battle over standards">
+            </figure>
+            <div class="section-body">
+                <p>Missouri legislators aren't just going after universities. They're going after the people who evaluate universities. <a href="https://www.senate.mo.gov/26info/BTS_Web/Bill.aspx?SessionType=R&BillID=78129">Senate Bill 1192</a>, filed last week, would prohibit accreditation agencies from considering a school's DEI metrics when granting accreditation status.</p>
+
+                <p>This is clever. Universities have long defended diversity efforts by pointing to accreditation requirements—"We have to do this to maintain our standing." By severing that connection, legislators eliminate a key justification. Schools can no longer hide behind external mandates.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-state-landscape.png" alt="Horizontal bar chart showing state DEI policy landscape">
+                    <figcaption>The DEI policy landscape varies dramatically by state, with 8 states now enforcing full bans and 15 more considering legislation.</figcaption>
+                </figure>
+
+                <p>A companion bill, <a href="https://www.senate.mo.gov/26info/BTS_Web/Bill.aspx?SessionType=R&BillID=78254">SB 1276</a>, would mandate public disclosure of all DEI practices and ban "proxy discrimination"—a term vague enough to encompass virtually any demographic-conscious policy. Meanwhile, a Democrat-led bill proposes an official "HBCU DEI Week," highlighting just how partisan this debate has become.</p>
+
+                <p>The accreditation angle matters because it closes a loophole. If states can't control what private accreditors require, they can control whether state schools must comply with those requirements. It's a federalist workaround for a national system.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: GW Postponement -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">GW Puts Diversity Summit on Ice</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://gwhatchet.com/2026/01/15/diversity-summit-postponed-federal-review/">GW Hatchet</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-gw-postponed.png" alt="Empty conference room with postponed sign, representing the chilling effect">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.gwu.edu/">George Washington University</a> quietly announced it's postponing its annual Diversity Summit from February to "spring 2026"—administrative code for "we'll let you know." The timing isn't coincidental: the school is currently under a Title VI compliance review by the DOJ examining its admissions practices.</p>
+
+                <p>It gets worse. The State Department has recommended suspending GW from the "Diplomacy Lab" program over concerns about the school's DEI hiring practices. That's a direct hit to a university whose proximity to federal power is its primary selling point.</p>
+
+                <p>The official explanation invokes the need to "reimagine a new opportunity for the community." Translation: holding a high-profile diversity event while under federal investigation for diversity-related practices would be spectacularly bad optics.</p>
+
+                <p>This is the chilling effect in action. Not a ban, not a mandate—just enough pressure to make administrators decide that discretion is the better part of valor. The summit isn't cancelled, just indefinitely delayed. Programs aren't eliminated, just put on pause. Rights aren't revoked, just exercised more quietly.</p>
+
+                <p>The cumulative effect is the same as prohibition, achieved without the messiness of actually prohibiting anything.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Board Is Set</h2>
+            <p class="closing-text">What we're witnessing isn't the end of DEI in higher education. It's something more complex: a transformation. The explicit frameworks are being dismantled or driven underground. The surveillance infrastructure is being built. The terminology is shifting. And on both sides, the tactics are evolving. Federal courts have checked one form of overreach, but states are innovating around those limitations. Universities are learning to speak in code. The question isn't whether diversity efforts will survive—it's what form they'll take when they emerge from this pressure cooker.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Weekly</span>
+        </div>
+    </footer>
+</body>
+</html>

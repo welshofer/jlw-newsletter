@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ivory Tower Under Siege — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - indigo and amber for this edition */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #3A2D5C;
+            --accent-soft: rgba(58, 45, 92, 0.12);
+            --accent-hover: #2D2347;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --highlight: #D4A84B;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7DB8;
+                --accent-soft: rgba(139, 125, 184, 0.15);
+                --accent-hover: #A496C8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --highlight: #E8BE6A;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--highlight);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        blockquote {
+            margin: var(--space-md) 0;
+            padding-left: var(--space-md);
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Higher Education</span>
+            <h1 class="hero-title">The Ivory Tower Under Siege</h1>
+            <p class="hero-subtitle">ICE raids reshaping campus life, AI anxiety gripping faculty, and ideological sorting accelerating. This week's Chronicle of Higher Education reveals an academy in crisis—and fighting back.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/ivory-tower-under-siege.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-campus-under-pressure.png" alt="Editorial illustration of a university campus under gathering storm clouds with digital circuitry in the sky">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: ICE Enforcement -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Walking Underground to Avoid ICE</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/article/the-perception-of-danger-everywhere-navigating-campus-life-amid-ice-enforcement">The Chronicle</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>When thousands of <a href="https://www.ice.gov/">ICE</a> officers descended on Minnesota last month for "Operation Metro Surge," students at <a href="https://www.augsburg.edu/">Augsburg University</a> and the <a href="https://twin-cities.umn.edu/">University of Minnesota-Twin Cities</a> didn't just feel fear—they changed how they physically move through their world. Scott Carlson's reporting reveals students now stick to skyways and underground tunnels between buildings, avoiding the open air where enforcement visibility is highest.</p>
+
+                <p>This isn't paranoia. It's adaptation to a new reality where ICE has made clear that college campuses are no longer treated as sensitive locations deserving special consideration. The psychological toll extends far beyond undocumented students—even those with legal status describe a "perception of danger everywhere."</p>
+
+                <div class="callout">
+                    <p><strong>The real question:</strong> What happens to the educational mission when students are too afraid to walk across their own quad? When the simple act of going to class becomes a calculated risk assessment?</p>
+                </div>
+
+                <p>Universities face an impossible position: they can't promise protection they can't deliver, yet their silence feels like abandonment. Some are posting "know your rights" resources. Others are training staff on what to do if ICE arrives. None of it addresses the fundamental shift: for many students, campus no longer feels like sanctuary. It feels like territory.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Janet Kraynak AI Essay -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The University's AI Capitulation</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/article/lured-by-ai-colleges-are-sleepwalking-into-irrelevance">The Chronicle Review</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.columbia.edu/">Columbia</a> art historian Janet Kraynak doesn't mince words: universities are "sleepwalking into irrelevance" by uncritically embracing AI. Her essay is a provocation—and a necessary one.</p>
+
+                <p>The core argument cuts deep: the "inevitability" narrative around AI adoption isn't inevitable at all. It's manufactured. Tech companies have successfully convinced higher education that resistance is futile, so institutions scramble to integrate rather than question. Sound familiar? Kraynak draws a direct line to social media's campus invasion a decade ago.</p>
+
+                <blockquote>"We are witnessing the spectacular failure of the university to heed the hard lessons of social media."</blockquote>
+
+                <p>Universities, she argues, should be the institutions asking the hard questions: What does AI dependence do to critical thinking? What happens when students outsource judgment to algorithms? Instead, they're racing to become "AI-ready" without defining what that means or who it serves.</p>
+
+                <p>The essay won't make administrators comfortable. That's precisely the point. If universities won't serve as skeptics of technological determinism, who will? Certainly not the companies selling the tools.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: James Hankins -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Great Academic Sorting</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/article/what-james-hankins-saw-at-harvard">The Chronicle Review</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>After four decades at <a href="https://www.harvard.edu/">Harvard</a>, historian James Hankins is leaving for the <a href="https://www.ufl.edu/">University of Florida</a>'s new Hamilton School for Classical and Civic Education. It's the highest-profile example yet of what might be called ideological sorting in American academia.</p>
+
+                <p>Hankins, interviewed by Evan Goldstein and Len Gutkin, frames his departure around curricular decay—the "eclipse of Western history by global history" has left students in "moral and intellectual disorientation," he argues. But there's more: he cites what he perceives as systematic discrimination against white men in hiring and admissions.</p>
+
+                <p>Whether you find this analysis compelling or misguided, the phenomenon it represents is real. Florida's aggressive moves to reshape higher education—eliminating DEI offices, creating new "classical" programs—are successfully attracting scholars who feel marginalized at elite private universities. A parallel academic ecosystem is emerging.</p>
+
+                <p>The implications are profound. If conservative scholars increasingly cluster in certain states while liberal scholars dominate others, what happens to the intellectual diversity that universities claim to value? We may be watching the balkanization of American higher education in real time.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Morris Brown -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The HBCU President Whiplash</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/article/morris-brown-reverses-course-reinstates-embattled-turnaround-president">The Chronicle</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.morrisbrown.edu/">Morris Brown College</a> fired President Kevin James. Then, one week later, they reinstated him. The reversal happened so fast it gave observers whiplash—and raised hard questions about governance at historically Black colleges.</p>
+
+                <p>Context matters here: James is widely credited with Morris Brown's miraculous turnaround. The Atlanta HBCU had lost accreditation for twenty years—two decades in the wilderness. James led them back in 2022, a feat many thought impossible.</p>
+
+                <p>So why the firing? The board hasn't been fully transparent, but the reinstatement came with a notable caveat: a statement warning that "retaliation against whistleblowers would not be tolerated." That suggests internal conflicts the public hasn't fully seen.</p>
+
+                <p>The rapid reversal likely reflects the power of alumni and public outcry. HBCUs operate under enormous pressure—financial, political, cultural—and James had built real goodwill. His removal sparked immediate backlash. The question now: can he actually govern with a board that just tried to fire him?</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Faculty AI Survey -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Faculty AI Anxiety by the Numbers</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/newsletter/teaching/2026-01-22">Teaching Newsletter</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>If Kraynak's essay is the philosophical critique of AI adoption, Beth McMurtrie's survey data is the empirical confirmation. The numbers are stark:</p>
+
+                <p><strong>95%</strong> of faculty worry students will become overly dependent on AI tools. <strong>90%</strong> believe it will erode critical thinking skills. <strong>60%</strong> say their institutions have failed to prepare them or their students for an AI-integrated future. And <strong>one-third</strong> report dealing with significant academic integrity violations related to AI.</p>
+
+                <p>That last number deserves attention. A third of instructors saying they've dealt with "a lot" of AI-related integrity violations suggests the cheating problem isn't a fringe concern—it's pervasive. Yet most institutions have been slow to develop clear policies, leaving individual faculty to improvise.</p>
+
+                <div class="callout">
+                    <p><strong>The gap is growing:</strong> Students adopt AI tools instantly. Institutions develop policies over semesters or years. Faculty are caught in the middle, expected to enforce standards that don't yet exist.</p>
+                </div>
+
+                <p>What's remarkable is that faculty anxiety persists despite—or perhaps because of—AI's genuine usefulness. Most professors recognize the technology has legitimate applications. They just don't trust students to use it appropriately, and they don't trust their institutions to help them navigate the complexity.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Penn vs Trump -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Penn Refuses to Compile "Lists of Jews"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/blogs/the-trump-agenda/penn-slams-trump-administrations-demand-for-personal-information-of-jewish-employees">Trump Agenda Tracker</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.upenn.edu/">University of Pennsylvania</a> is fighting a subpoena from the Trump administration's EEOC demanding a list of all Jewish employees. The university's response was unequivocal: compiling such lists sets "a dangerous historical precedent."</p>
+
+                <p>The administration frames this as an antisemitism investigation—using civil rights tools to probe potential discrimination against Jewish faculty and staff. Penn calls it overreach that "infringes on privacy and First Amendment rights."</p>
+
+                <p>Both sides have chosen their rhetorical ground carefully. The administration can claim it's fighting antisemitism. Penn can invoke historical memory of what happens when governments compile religious identity lists. Neither characterization is entirely wrong, which is what makes this legally and politically explosive.</p>
+
+                <p>The case matters beyond Penn. If the administration prevails, it establishes a template for demanding demographic data from universities under civil rights authority—data that could be used in ways the original request doesn't specify. Elite institutions have already faced intense pressure over campus protests and DEI programs. This opens a new front.</p>
+
+                <p>Watch this one. The legal battle will likely take months, but the precedent it sets could reshape the federal government's relationship with higher education for years.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Common Thread</h2>
+            <p class="closing-text">Every story this week shares an underlying tension: external forces—whether political, technological, or enforcement—pressing against institutions built for deliberation and dissent. The academy's traditional response has been to adapt, accommodate, absorb. But adaptation has limits. At some point, institutions must decide what they're willing to defend.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

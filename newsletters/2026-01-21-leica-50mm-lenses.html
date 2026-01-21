@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 50mm Question: Leica vs Everyone Else — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="newsletter-brand">The Welshofer Weekly</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Leica M-Mount</span>
+            <h1 class="hero-title">The 50mm Question: Six Decades of Excellence</h1>
+            <p class="hero-subtitle">The M-mount 50mm market is heating up with new releases, special editions, and a rumored update to the sharpest lens ever made. Here's what matters this week.</p>
+
+            <div class="hero-image">
+                <img src="../images/hero-leica-50mm.png" alt="Leica 50mm lens in dramatic studio lighting">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Noctilux 35mm Launch -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Leica Drops a Bombshell: Noctilux 35mm f/1.2 Returns</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://leicarumors.com">Leica Rumors</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Here's the thing about owning fast glass: you're always one announcement away from reconsidering your entire kit. Leica just scheduled a January 29 launch event for the re-issue of the Noctilux-M 35mm f/1.2, bringing another classic double-aspherical design back from the archives.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-01-noctilux-launch.png" alt="Leica Noctilux 35mm f/1.2 lens at launch event">
+                </div>
+
+                <p>This matters for 50mm shooters because the M-mount market doesn't exist in isolation. When Leica releases a fast 35, users start asking whether they really need a fast 50 or vice versa. The original Noctilux 35mm f/1.2 from the 1970s now trades for collector's prices, and if this re-issue follows the "1966" playbook, expect significant demand pressure on the used market for fast 50s.</p>
+
+                <div class="callout">
+                    <p><strong>The real question:</strong> If you're deciding between a Noctilux 50/0.95 at $13,095 and whatever this 35mm ends up costing, how do you choose? Most M photographers pick one fast lens and live with it. This announcement forces that decision.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Summilux Special Editions -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Summilux Gets the Safari Treatment (And Glossy Black)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://leicarumors.com">Leica Rumors</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Leica's doing what Leica does: releasing the same optically excellent lens in limited finishes that will hold value better than the standard version. The Summilux-M 50mm f/1.4 ASPH is now available in Safari olive green and glossy black paint, with limited quantities reaching dealers this week.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-02-special-editions.png" alt="Leica Summilux special editions in Safari green and glossy black">
+                </div>
+
+                <p>Let's be direct: if you need a 50mm f/1.4 and want the standard black version, buy it. These special editions are collector plays. The 11-blade aperture, 0.45m close focus, and optical formula are identical. But if you're the type who agonizes over whether your camera "matches"? The Safari green pairs beautifully with olive M bodies, and the glossy black paint will develop a brass patina that the standard black chrome never will.</p>
+
+                <figure class="chart">
+                    <img src="../images/chart-50mm-prices.png" alt="50mm M-mount lens price comparison chart">
+                    <figcaption>Price comparison across Leica and third-party 50mm M-mount options. The Summilux sits in the middle of Leica's lineup at $5,095.</figcaption>
+                </figure>
+
+                <p>Historical data suggests these editions appreciate 15-25% over five years while standard versions barely hold inflation-adjusted value. That's not investment advice—it's a reason to buy the finish you actually want without guilt.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Light Lens Lab 1966 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The $30,000 Lens You Can Buy for $3,000</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://lightlenslab.com">Light Lens Lab</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The Light Lens Lab 50mm f/1.2 ASPH "1966" has started shipping to November pre-orders, and this is the lens that's going to spawn a thousand forum arguments. It's a recreation of the legendary 1966 Leica Noctilux 50mm f/1.2 AA—the first production aspherical lens—which currently trades for $25,000-35,000 when you can find one.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-03-light-lens-lab.png" alt="Light Lens Lab 50mm f/1.2 1966 replica lens">
+                </div>
+
+                <p>Light Lens Lab isn't promising identical performance. They're promising the same <em>character</em>: hand-ground aspherical elements, high-refractive-index glass, and that distinctive rendering wide open that made the original a cult object. Available in Black Paint, Chrome, and Titanium finishes, it's priced at $2,999—roughly one-tenth of a good-condition original.</p>
+
+                <figure class="chart">
+                    <img src="../images/chart-50mm-timeline.png" alt="Timeline of M-mount 50mm lens releases from 1966-2026">
+                    <figcaption>Six decades of M-mount 50mm evolution. The 1966 Noctilux was the starting point; the "1966" replica closes the loop.</figcaption>
+                </figure>
+
+                <p>The judgment call here is whether you want clinical sharpness (buy the APO-Summicron) or <em>feeling</em> (buy this). The original Noctilux wasn't sharp by modern standards. It was magical. Early reports suggest Light Lens Lab captured that magic. If true, this is the most interesting lens release of the year.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: APO-Summicron Rumor -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Sharpest 50mm Ever Made Might Finally Focus Close</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://leicarumors.com">Leica Rumors</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Persistent rumors this week point to a refresh of the APO-Summicron-M 50mm f/2—the lens that optical engineers use as a reference standard. The primary upgrade: close focusing to 0.45 meters, matching the recently updated Summilux and 35mm APO lenses.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-04-apo-rumor.png" alt="Close-up of APO-Summicron lens showing distance scale">
+                </div>
+
+                <p>I've used the current APO-Summicron extensively, and its only real limitation is the 0.7m minimum focus distance. When you're shooting street and want to fill the frame with a detail—a hand gesture, a product, a face—you back up or you switch lenses. A 0.45m version eliminates that compromise.</p>
+
+                <figure class="chart">
+                    <img src="../images/chart-50mm-size-performance.png" alt="Scatter plot showing 50mm lens weight versus optical performance">
+                    <figcaption>The APO-Summicron leads in optical performance, but third-party options like the Voigtlander APO-Lanthar offer compelling alternatives at lower weight and cost.</figcaption>
+                </figure>
+
+                <p>Announcement expected Q1 2026. If you're holding off on a 50mm purchase, this is why. At $8,995, the current APO-Summicron is already the reference; a close-focusing version removes the asterisk.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Voigtlander APO-Lanthar -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Best 50mm You've Never Considered</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cameraquest.com">CameraQuest</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The Voigtlander APO-Lanthar 50mm f/3.5 Type II is now widely in stock, and if you're not paying attention to this lens, you're making a mistake. At 162 grams—lighter than your phone—it delivers resolution that rivals Leica's $8,995 APO-Summicron at 98% of the sharpness score for $699.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-05-voigtlander.png" alt="Voigtlander APO-Lanthar 50mm mounted on Leica M camera">
+                </div>
+
+                <p>The tradeoff is obvious: f/3.5 maximum aperture means this isn't your low-light lens. But for daylight street photography, landscape, and travel where every gram matters, the APO-Lanthar delivers "zero aberration" performance in a package that disappears on the camera. It's smaller than vintage Elmar lenses from the 1950s while optically destroying them.</p>
+
+                <div class="callout">
+                    <p><strong>The value proposition:</strong> You could buy 12 APO-Lanthars for the price of one APO-Summicron. If sharpness-per-dollar is your metric, nothing else comes close. Reviewers are calling it "the highest-performance compact 50mm on the market," and they're right.</p>
+                </div>
+
+                <p>For hikers, travel photographers, and anyone who's felt the shoulder fatigue of an M10 with a Noctilux hanging off it, the APO-Lanthar Type II deserves serious consideration. Sometimes the best lens is the one you actually carry.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Bottom Line</h2>
+            <p class="closing-text">The 50mm M-mount market has never offered more compelling choices. Whether you're spending $699 on a Voigtlander or $13,095 on a Noctilux, the question isn't which lens is "best"—it's which lens matches how you actually shoot. This week's developments just made that decision harder. And more interesting.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The Welshofer Weekly</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dirt, Dollars, and Defiance — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Off-Road SUVs</span>
+            <h1 class="hero-title">Dirt, Dollars, and Defiance</h1>
+            <p class="hero-subtitle">From a $35K Toyota that fits in your garage to a $155K Land Rover that scares wildlife, this week's off-road news proves one thing: America still wants to go where the pavement ends.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/dirt-dollars-defiance.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-offroad-suvs.png" alt="Off-road SUVs conquering mountain terrain at golden hour">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Defender OCTA Is a 626-HP Middle Finger to Physics</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.caranddriver.com/reviews">Car and Driver</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-defender-octa.png" alt="Land Rover Defender OCTA charging through water crossing">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.landrover.com/">Land Rover</a> has taken the already-capable <a href="https://www.landrover.com/vehicles/defender/">Defender</a> and strapped a BMW-sourced 4.4-liter twin-turbo V8 to it. The result? 626 horsepower, a 3.8-second sprint to 60 mph, and a wading depth of 3.3 feet. Yes, you can now ford a river faster than most sports cars can exit a parking garage.</p>
+
+                <p>The real party trick is the "6D Dynamics" air suspension, which Land Rover claims eliminates body roll on-road while maximizing articulation off-road. Car and Driver's first drive confirms what the spec sheet promises: "The OCTA defies physics on the pavement and dominates mud with a soundtrack that scares away wildlife."</p>
+
+                <p><strong>The so what:</strong> At an eye-watering $155,000, the OCTA isn't competing with Wranglers. It's Land Rover's answer to the <a href="https://www.mercedes-benz.com/en/vehicles/passenger-cars/g-class/">Mercedes-AMG G 63</a> and the incoming electric G-Class. The luxury off-road arms race is officially absurd—and we're here for it.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-horsepower.png" alt="Horsepower comparison chart showing Defender OCTA's 626 hp leading the pack">
+                    <figcaption>Power output comparison: The OCTA's V8 nearly doubles the output of hybrid competitors</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Ford Finally Gives the Bronco Stroppe a Back Seat</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.roadandtrack.com/news">Road & Track</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-bronco-stroppe.png" alt="Ford Bronco Stroppe Edition in heritage coral and white livery">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://www.ford.com/suvs/bronco/">Ford Bronco</a> Stroppe Edition—named after Baja legend <a href="https://en.wikipedia.org/wiki/Bill_Stroppe">Bill Stroppe</a>—has been a two-door exclusive since its 2024 debut. That changes for 2026. Ford listened to the families who wanted the heritage Baja look without sacrificing the practicality of a four-door layout.</p>
+
+                <p>The visual package remains unchanged: Calypso Coral over Wimbledon White livery, unique suspension tuning, and "Code Orange" interior accents that scream vintage motorsport. It's less a truck and more a rolling museum piece that happens to be genuinely capable off-road.</p>
+
+                <p><strong>The so what:</strong> Ford is mining Bronco nostalgia like it's a renewable resource, and frankly, it's working. The Stroppe sits near the top of a trim hierarchy that now includes Heritage, Heritage Limited, Raptor, and the upcoming RTR. If you're confused, Ford is counting on you to just pick the prettiest one.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Toyota's $35K "Land Hopper" Makes Adventure Accessible</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.motortrend.com/news">MotorTrend</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-land-cruiser-fj.png" alt="Compact Toyota Land Cruiser FJ at scenic forest overlook">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.toyota.com/">Toyota</a> has officially confirmed the U.S. specs for what enthusiasts have been calling the "Land Hopper"—a compact <a href="https://www.toyota.com/landcruiser/">Land Cruiser</a> FJ built on a shortened version of the ladder-frame GA-F platform shared with the <a href="https://www.toyota.com/4runner/">4Runner</a> and <a href="https://www.toyota.com/tacoma/">Tacoma</a>.</p>
+
+                <p>The numbers matter here: a starting price around $35,000 and a standard hybrid powertrain estimated at 28 combined mpg. MotorTrend puts it best: "It's not just a baby Land Cruiser; it's a spiritual successor to the FJ Cruiser that fits in your garage and your budget."</p>
+
+                <p><strong>The so what:</strong> This is Toyota's direct shot at the <a href="https://www.ford.com/suvs/bronco-sport/">Ford Bronco Sport</a> and <a href="https://www.subaru.com/vehicles/outback/wilderness.html">Subaru Outback Wilderness</a>—except with true 4WD capability and the Land Cruiser badge's legendary reliability. At $35K, it's the most accessible off-roader with genuine credentials since the original Jeep Cherokee XJ.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-price-comparison.png" alt="Bar chart comparing 2026 off-road SUV starting prices">
+                    <figcaption>The Land Cruiser FJ undercuts every competitor except crossover-based alternatives</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The 4Runner and Wrangler Still Can't Decide Who Wins</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.edmunds.com/car-reviews">Edmunds</a></span>
+                <span class="section-date">January 17, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-comparison.png" alt="Toyota 4Runner TRD Pro and Jeep Wrangler Rubicon X facing off on rocky trail">
+            </figure>
+            <div class="section-body">
+                <p>Edmunds' latest comparison pits the all-new <a href="https://www.toyota.com/4runner/">2026 Toyota 4Runner TRD Pro</a> against the <a href="https://www.jeep.com/wrangler.html">Jeep Wrangler Rubicon X</a>, and the verdict is... complicated. Toyota's "ISO-DYNAMIC" seats and hybrid torque win praise for high-speed desert running. The Wrangler's solid front axle and superior approach angles keep it king for low-speed rock crawling.</p>
+
+                <p>The verdict, such as it is: "Toyota has refined the 4Runner into a modern overland rig, but the Wrangler still feels like the only tool for the toughest jobs."</p>
+
+                <p><strong>The so what:</strong> These two have been trading blows for decades, and 2026 is no different. The 4Runner is now the better daily driver and long-distance overlander. The Wrangler remains the one you want when the trail gets stupid. Neither is wrong. Both are excellent. Pick your adventure style and buy accordingly.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Rivian's $45K R2 Could Change Everything</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.kbb.com/car-news">Kelley Blue Book</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-rivian-r2.png" alt="Rivian R2 electric SUV at charging station with mountain backdrop">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://rivian.com/">Rivian</a> has finalized pricing for the <a href="https://rivian.com/r2">R2</a> compact SUV, and it's aggressive: just under $45,000 for the base model. All 2026 models come with a native NACS (Tesla) charging port, and the off-road trims deliver 9.8 inches of ground clearance with a sub-3-second 0-60 time for the tri-motor variant.</p>
+
+                <p>KBB's take is bullish: "At $45k, the R2 is poised to do for adventure EVs what the Model Y did for the electric commuter."</p>
+
+                <p><strong>The so what:</strong> The R2 undercuts the <a href="https://www.ford.com/suvs/bronco/">Bronco</a>, <a href="https://www.toyota.com/4runner/">4Runner TRD Pro</a>, and every premium off-road SUV except Toyota's new Land Cruiser FJ. If range anxiety (about 260 miles estimated) doesn't kill the deal, this could be the tipping point where "adventure vehicle" starts meaning "electric" by default.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ev-vs-ice.png" alt="Comparison chart showing trade-offs between EV and traditional 4WD SUVs">
+                    <figcaption>The EV trade-off: instant torque and acceleration vs. range and charging infrastructure</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Bronco RTR Turns Ford's SUV Into a Desert Weapon</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.thedrive.com/news">The Drive</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-bronco-rtr.png" alt="Ford Bronco RTR mid-jump over sand dune with dust cloud">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://rfracing.com/">RTR Vehicles</a>—the tuning house founded by Formula Drift champion <a href="https://twitter.com/vaughngittinjr">Vaughn Gittin Jr.</a>—has partnered with <a href="https://www.ford.com/">Ford</a> for a factory-backed Bronco package that turns the SUV into a turnkey desert runner. The 2027 Bronco RTR comes standard with 33-inch all-terrain tires, high-clearance suspension, and a wider track. The optional Sasquatch package bumps the rubber to 35 inches.</p>
+
+                <p>Power comes from either the 300-hp 2.3L EcoBoost or the 330-hp 2.7L V6. Order books open Fall 2026. The Drive's assessment: "RTR Vehicles has finally turned the Bronco into the turnkey desert runner enthusiasts have been asking for since day one."</p>
+
+                <p><strong>The so what:</strong> Ford is doing what GM couldn't figure out with the Hummer: leveraging aftermarket credibility to keep a nameplate fresh. The RTR joins the Raptor in Ford's strategy of offering factory-backed performance variants that command premium prices while keeping the base Bronco accessible. Smart business, great trucks.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Where the Pavement Ends</h2>
+            <p class="closing-text">The 2026 off-road landscape offers something for everyone: hybrid efficiency from Toyota, electric audacity from Rivian, heritage drama from Ford, and unhinged luxury from Land Rover. The best part? Competition this fierce means buyers win. Now go find some dirt.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

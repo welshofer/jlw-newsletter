@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems of Power: Communism, Fascism, and Capitalism Compared — January 20, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - deep indigo for political/philosophical gravitas */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D70;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* System colors */
+            --communist-red: #B85C38;
+            --fascist-dark: #2A2520;
+            --capitalist-gold: #C9A227;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7BB4;
+                --accent-soft: rgba(139, 123, 180, 0.15);
+                --accent-hover: #9B8BC4;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .callout.communist { border-left-color: var(--communist-red); }
+        .callout.fascist { border-left-color: var(--fascist-dark); }
+        .callout.capitalist { border-left-color: var(--capitalist-gold); }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 20, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Political Economy</span>
+            <h1 class="hero-title">Systems of Power: Communism, Fascism, and Capitalism Compared</h1>
+            <p class="hero-subtitle">In an era of renewed ideological friction, understanding the foundational mechanics of the 20th century's dominant systems has never been more critical. A deep dive into the economic machinery, human toll, and modern relevance of three world-shaping ideologies.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/systems-of-power.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-three-systems.jpg" alt="Three towering monoliths representing communism, fascism, and capitalism against a stormy indigo sky">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: The Theoretical Divide -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Theoretical Divide: What Each System Promises</h2>
+            <div class="section-meta">
+                <span class="section-source">Foundational Analysis</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-ps-01-marx-theory.jpg" alt="Karl Marx writing with factory smokestacks in the background">
+            </figure>
+            <div class="section-body">
+                <p>Every political system begins as an answer to a question: <em>Who should own what, and who decides?</em> The answers diverge radically.</p>
+
+                <p><a href="https://en.wikipedia.org/wiki/Karl_Marx">Karl Marx</a> and <a href="https://en.wikipedia.org/wiki/Friedrich_Engels">Friedrich Engels</a> saw history as class struggle. Their solution: abolish private property entirely. The means of production belong to everyone; the state exists only temporarily as a "dictatorship of the proletariat," eventually withering away into a classless utopia. <em>"From each according to his ability, to each according to his needs."</em></p>
+
+                <p><a href="https://en.wikipedia.org/wiki/Benito_Mussolini">Benito Mussolini</a> offered a different answer: the State is everything. Fascism rejects both liberal individualism and Marxist class conflict, replacing them with ultranationalist unity. Property exists, but serves national power. <em>"Everything within the State, nothing outside the State, nothing against the State."</em></p>
+
+                <p><a href="https://en.wikipedia.org/wiki/Adam_Smith">Adam Smith's</a> capitalism starts from the individual. Private ownership, voluntary exchange, and price mechanisms allocate resources. The butcher and baker serve you not from benevolence, but from self-interest—and that's the point. The state's role varies from minimal (laissez-faire) to substantial (social democracy), but private property remains sacrosanct.</p>
+
+                <div class="callout">
+                    <p><strong>The core tension:</strong> Communism prioritizes equality over freedom. Fascism prioritizes the nation over both. Capitalism prioritizes freedom over equality—betting that markets will eventually lift all boats.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: The Soviet Experiment -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Soviet Experiment: When Theory Met Reality</h2>
+            <div class="section-meta">
+                <span class="section-source">1922–1991</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-ps-02-soviet-communism.jpg" alt="Constructivist Soviet-style artwork with brutalist architecture">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://en.wikipedia.org/wiki/Soviet_Union">Soviet Union</a> was history's largest-scale attempt to implement Marx's vision. A peasant society became a nuclear superpower in decades. The 1950s saw GDP growth of ~5.7% annually—impressive by any measure.</p>
+
+                <p>But central planning has a fatal flaw: without price signals, no planner can know what 280 million people actually need. By the 1980s, growth had collapsed to ~2.0%. Factories produced goods nobody wanted while citizens queued for bread.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ps-gdp-growth.png" alt="Bar chart comparing GDP growth rates across economic systems">
+                    <figcaption>Peak GDP growth rates: Nazi Germany's explosive growth was built on unsustainable rearmament.</figcaption>
+                </figure>
+
+                <p>The human cost remains staggering. The <a href="https://en.wikipedia.org/wiki/Holodomor">Holodomor</a> (1932–33) killed 3.5–5 million Ukrainians. The <a href="https://en.wikipedia.org/wiki/Gulag">Gulag</a> system imprisoned millions. Academic estimates of total excess mortality under Soviet communism range from 10–20 million, depending on methodology.</p>
+
+                <div class="callout communist">
+                    <p><strong>Paradox of equality:</strong> The Soviet Union achieved remarkably low inequality (Gini ~0.26)—but at the cost of political freedom and economic dynamism.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: The Fascist Twelve Years -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Twelve Years That Changed Everything: The Third Reich</h2>
+            <div class="section-meta">
+                <span class="section-source">1933–1945</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-ps-03-fascism.jpg" alt="Dark monumental architecture with imposing columns and dramatic shadows">
+            </figure>
+            <div class="section-body">
+                <p>Nazi Germany remains the test case for what happens when fascist ideology takes total power. <a href="https://en.wikipedia.org/wiki/Adolf_Hitler">Hitler's</a> economic miracle—10.8% annual GDP growth from 1933–36—looked impressive on paper. The <a href="https://en.wikipedia.org/wiki/Autobahn">Autobahn</a>, public works, rapid rearmament: Germany rose from Depression ruin.</p>
+
+                <p>But the economy was a house of cards built on looted gold, slave labor, and war preparation. It could only sustain itself by conquest. When conquest failed, it collapsed.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ps-human-cost.png" alt="Horizontal bar chart showing human cost by system in millions of deaths">
+                    <figcaption>Estimated human cost by system. WWII, triggered by Axis aggression, resulted in 70–85 million deaths globally.</figcaption>
+                </figure>
+
+                <p>The <a href="https://en.wikipedia.org/wiki/The_Holocaust">Holocaust</a> murdered 6 million Jews and millions of others—Romani, disabled people, political opponents. <a href="https://en.wikipedia.org/wiki/World_War_II">World War II</a>, instigated by Axis powers, killed 70–85 million people worldwide. Fascism's 12-year experiment ended in total defeat and moral bankruptcy.</p>
+
+                <div class="callout fascist">
+                    <p><strong>The lesson:</strong> Rapid economic growth means nothing when built on war, genocide, and looting. Fascism failed catastrophically—not despite its methods, but because of them.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4: American Capitalism -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The American Model: Capitalism's Longest Run</h2>
+            <div class="section-meta">
+                <span class="section-source">20th Century to Present</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-ps-04-capitalism.jpg" alt="Wall Street and Main Street intersection conceptual artwork">
+            </figure>
+            <div class="section-body">
+                <p>The United States represents capitalism's longest uninterrupted experiment. From industrial robber barons to the post-WWII mixed economy, America evolved a system that combines private enterprise with varying degrees of regulation.</p>
+
+                <p>The results: sustained ~3.15% average GDP growth (1948–2025), the world's largest consumer economy, and unparalleled innovation in technology, medicine, and culture. <a href="https://en.wikipedia.org/wiki/Silicon_Valley">Silicon Valley</a>, <a href="https://en.wikipedia.org/wiki/Wall_Street">Wall Street</a>, <a href="https://en.wikipedia.org/wiki/Hollywood">Hollywood</a>—American capitalism's cultural exports dominate globally.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ps-gini-inequality.png" alt="Bar chart comparing Gini coefficients across different countries and systems">
+                    <figcaption>Income inequality varies dramatically by system. Sweden achieves Soviet-level equality while maintaining market freedoms.</figcaption>
+                </figure>
+
+                <p>But the costs are real. Inequality has surged: the U.S. Gini coefficient (~0.41) rivals developing nations. The legacy of slavery, periodic financial crises, and foreign interventions (Vietnam, Latin America) each carry their own body counts—millions over centuries. <a href="https://en.wikipedia.org/wiki/Thomas_Piketty">Thomas Piketty</a> and <a href="https://en.wikipedia.org/wiki/Joseph_Stiglitz">Joseph Stiglitz</a> argue wealth concentration now threatens democratic institutions themselves.</p>
+
+                <div class="callout capitalist">
+                    <p><strong>The trade-off:</strong> Capitalism generates growth and innovation but tolerates inequality. Whether that's a feature or a bug depends on your values—and your position in the hierarchy.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5: The China Model -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The China Question: A New Hybrid Emerges</h2>
+            <div class="section-meta">
+                <span class="section-source">Contemporary Analysis</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-ps-05-china-hybrid.jpg" alt="Chinese dragon intertwined with circuit boards and skyscrapers">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://en.wikipedia.org/wiki/Chinese_Communist_Party">Chinese Communist Party's</a> "Socialism with Chinese Characteristics" defies easy categorization. Is it communist? State capitalist? Something entirely new?</p>
+
+                <p>Since <a href="https://en.wikipedia.org/wiki/Deng_Xiaoping">Deng Xiaoping's</a> 1978 reforms, China has lifted 800 million people out of poverty while maintaining Leninist political control. The economy runs on hyper-capitalist principles: private enterprise, global trade, market pricing. But the Party retains veto power over everything—including which billionaires survive.</p>
+
+                <p>Scholars like <a href="https://en.wikipedia.org/wiki/Francis_Fukuyama">Francis Fukuyama</a> once declared liberal democracy's inevitable triumph. China's rise challenges that thesis. A Leninist political structure managing a capitalist economic engine might represent a durable new model—or a contradiction waiting to explode.</p>
+
+                <div class="callout">
+                    <p><strong>The 2024–25 debate:</strong> Can authoritarian capitalism sustain itself? China's model has admirers across the developing world, but critics point to <a href="https://en.wikipedia.org/wiki/Xinjiang">Xinjiang</a>, <a href="https://en.wikipedia.org/wiki/Hong_Kong_national_security_law">Hong Kong</a>, and demographic collapse as evidence of inherent fragility.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Modern Convergence -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Strange Convergence: Where All Roads Lead</h2>
+            <div class="section-meta">
+                <span class="section-source">Looking Forward</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-ps-06-convergence.jpg" alt="Three paths converging at a misty crossroads with dawn breaking">
+            </figure>
+            <div class="section-body">
+                <p>Here's the paradox of 2026: left and right are converging on economic nationalism. Tariffs, industrial subsidies, "reshoring"—policies that echo the early 20th century are suddenly bipartisan in America, embraced from <a href="https://en.wikipedia.org/wiki/Donald_Trump">Trump</a> to <a href="https://en.wikipedia.org/wiki/Bernie_Sanders">Bernie Sanders</a>.</p>
+
+                <p>Meanwhile, <a href="https://en.wikipedia.org/wiki/Yanis_Varoufakis">Yanis Varoufakis</a> and others argue we've moved beyond capitalism entirely into "techno-feudalism." Big Tech platforms operate like digital fiefdoms: <a href="https://www.amazon.com">Amazon</a>, <a href="https://about.meta.com">Meta</a>, and <a href="https://www.google.com">Google</a> extract rent from users who create value on their "land." It's not socialism, not quite capitalism—something stranger.</p>
+
+                <p>The critical distinction for progressives remains democratic socialism (replacing capitalism via democratic means) versus social democracy (capitalism with a robust safety net). The <a href="https://en.wikipedia.org/wiki/Nordic_model">Nordic model</a>—Sweden, Denmark, Norway—achieves Soviet-level equality (Gini ~0.27) while maintaining market dynamism. It remains the dominant progressive blueprint in the West.</p>
+
+                <div class="callout">
+                    <p><strong>The question for our era:</strong> Can democratic societies reconcile freedom, equality, and sustainability? Or will the 21st century produce its own monstrous ideologies—born from climate crisis, AI displacement, and fracturing consensus?</p>
+                </div>
+
+                <p>History suggests ideologies never die cleanly. They mutate, merge, and return in new forms. Understanding their origins isn't academic exercise—it's armor against their worst manifestations.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Contest Continues</h2>
+            <p class="closing-text">Communism, fascism, and capitalism aren't just historical artifacts—they're templates that shape how we imagine alternatives. Understanding their mechanics, their promises, and their body counts is essential equipment for navigating what comes next.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

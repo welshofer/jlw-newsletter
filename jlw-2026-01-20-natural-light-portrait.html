@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Light You Already Have | JLW Newsletter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #D4A574;
+            --accent-soft: rgba(212, 165, 116, 0.15);
+            --bg: #FDFBF7;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --border: #E5E0D8;
+            --warm: #E8A87C;
+            --cool: #7CA5B8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .hero-image {
+            width: 100%;
+            margin: 2rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .intro {
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: var(--accent-soft);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-soft), transparent);
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: normal;
+        }
+
+        figure {
+            margin: 2rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        figcaption {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .source-link {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .gear-highlight {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .gear-highlight .icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .gear-highlight .details h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .gear-highlight .details p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: var(--accent-soft);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .closing {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--accent-soft), transparent);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .gear-highlight {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="date">January 20, 2026</div>
+            <h1>The Light You Already Have</h1>
+            <div class="subtitle">Natural light portraiture hits a decade high as photographers embrace imperfection</div>
+        </header>
+
+        <div class="hero-image">
+            <img src="images/hero-natural-light-portrait.png" alt="Woman in soft window light, editorial portrait style">
+        </div>
+
+        <div class="intro">
+            The most expensive lighting setup in the world is free. Window light. Golden hour. The sun slanting through clouds. In January 2026, search interest for "natural light portrait photography" hit its highest point in a decade—and it's not because photographers suddenly lost their studio keys. It's because clients finally learned what photographers always knew: authenticity requires imperfection.
+        </div>
+
+        <section>
+            <div class="section-label">01 · The Big Picture</div>
+            <h2>The Authenticity Imperative</h2>
+
+            <p>According to <a href="https://www.digitalcameraworld.com/news/natural-light-portrait-photography-trends-2026">Digital Camera World</a>, search interest for natural light portraiture peaked this month, driven by a seismic shift in commercial and social media aesthetics. Brands are abandoning polished studio looks for what they're calling "relatable, sun-drenched aesthetics."</p>
+
+            <blockquote>
+                "Photographers are increasingly embracing imperfections such as subtle grain... and raw, emotional moments."
+                <cite>— Digital Camera World, January 19, 2026</cite>
+            </blockquote>
+
+            <p>This isn't nostalgia. It's market response. The Instagram generation grew up on filters and facetune—and now they can spot synthetic perfection from a mile away. They're craving the opposite: skin texture you can almost feel, light that tells you what time of day it was, shadows that hint at stories beyond the frame.</p>
+
+            <figure>
+                <img src="images/chart-portrait-trends.png" alt="Bar chart showing 2026 portrait photography trends">
+                <figcaption>The "Authentic Imperfection" trend dominates 2026 portrait photography, followed by natural-light-only approaches.</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <div class="section-label">02 · The Format Revolution</div>
+            <h2>Vertical or Bust</h2>
+
+            <p><a href="https://photocontestinsider.com/trends/2026-portrait-photography-trends">Photo Contest Insider</a> drops a number that should reshape how every portrait photographer thinks about composition: 9:16 vertical is now the primary frame for professional portrait work. Not an option. The default.</p>
+
+            <figure>
+                <img src="images/chart-format-shift.png" alt="Chart comparing vertical vs horizontal format usage">
+                <figcaption>The vertical revolution: 9:16 jumped from 35% to 55% of professional portrait usage in just two years.</figcaption>
+            </figure>
+
+            <p>This isn't capitulation to TikTok—it's adaptation to reality. Your client's portrait will be viewed on phones. Shot horizontally, it becomes a postage stamp in a vertical scroll. Shot vertically, with tight crops and environmental details stacked above and below the subject, it dominates the screen.</p>
+
+            <blockquote>
+                "Composing shots with vertical formats (9:16) in mind is crucial."
+                <cite>— Photo Contest Insider, January 17, 2026</cite>
+            </blockquote>
+        </section>
+
+        <section>
+            <div class="section-label">03 · New Glass</div>
+            <h2>Lenses Built for Natural Light</h2>
+
+            <p>When you're not plugging into a power strip, every stop of aperture counts. Two lens announcements this week speak directly to that need.</p>
+
+            <div class="gear-highlight">
+                <div class="icon">📷</div>
+                <div class="details">
+                    <h3>Voigtlander Portrait Heliar 75mm f/1.8</h3>
+                    <p>Manual focus for Canon RF and Nikon Z with a unique "spherical aberration control ring" that lets you dial in bokeh character on the fly. Classic optical design optimized for flattering skin tones. <span class="price-tag">~$799</span></p>
+                </div>
+            </div>
+
+            <p>The spherical aberration ring is the interesting bit. Voigtlander is essentially giving you three lenses in one: sharp and clinical, soft and dreamy, or somewhere in between. Turn the ring, change the look. No post-processing required.</p>
+
+            <div class="gear-highlight">
+                <div class="icon">📷</div>
+                <div class="details">
+                    <h3>SG-Image 75mm f/1.2 for Medium Format</h3>
+                    <p>Ultra-fast manual focus for Fujifilm GFX and Hasselblad XCD. All-metal construction, 9 aperture blades. The kicker? <span class="price-tag">Under $500</span></p>
+                </div>
+            </div>
+
+            <p>According to <a href="https://petapixel.com/2026/01/16/sg-image-75mm-f1-2-medium-format-lens">PetaPixel</a>, this breaks the price barrier for "impossible" bokeh on medium format. An f/1.2 aperture on a sensor that large creates subject separation you literally cannot achieve on full-frame at any aperture.</p>
+
+            <figure>
+                <img src="images/chart-portrait-lenses.png" alt="Comparison of new portrait lenses by aperture and price">
+                <figcaption>The SG-Image f/1.2 delivers the widest aperture at the lowest price—if you're already in the medium format ecosystem.</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <div class="section-label">04 · The Master's Voice</div>
+            <h2>Martin Parr at Jeu de Paume</h2>
+
+            <p><a href="https://en.wikipedia.org/wiki/Martin_Parr">Martin Parr</a>'s retrospective "Global Warning" opens January 30 at <a href="https://www.jeudepaume.org/">Jeu de Paume</a> in Paris—and if you're serious about understanding what natural light can do when weaponized for social commentary, this is required viewing.</p>
+
+            <p>Parr is famous for using "bad" light deliberately: harsh midday sun, on-camera flash in broad daylight, colors so saturated they border on nausea. The result is hyper-real, uncomfortable, and utterly distinctive.</p>
+
+            <blockquote>
+                "Explores themes of consumerism... which often feature portraits within these contexts."
+                <cite>— PHMuseum, January 14, 2026</cite>
+            </blockquote>
+
+            <p>The exhibition is a masterclass in rule-breaking. Parr doesn't use natural light because it's flattering. He uses it because it's true—sometimes uncomfortably so.</p>
+        </section>
+
+        <section>
+            <div class="section-label">05 · The "Perfectly Imperfect" Manifesto</div>
+            <h2>Mistakes Are Now Features</h2>
+
+            <p><a href="https://www.pixpa.com/blog/photography-trends-2026">Pixpa's 2026 trend report</a> identifies a major shift: photographers are deliberately embracing motion blur, missed focus, and harsh shadows that would have been deleted a decade ago.</p>
+
+            <p>The influence is cinematic. Think <a href="https://en.wikipedia.org/wiki/Roger_Deakins">Roger Deakins</a>' dramatic rim lighting or <a href="https://en.wikipedia.org/wiki/Emmanuel_Lubezki">Lubezki's</a> window-lit magic hours. Photographers are bringing that language to stills—not by recreating it artificially, but by waiting for the right moment in available light.</p>
+
+            <blockquote>
+                "A strong movement towards capturing genuine experiences... moving away from overly polished images."
+                <cite>— Pixpa, January 18, 2026</cite>
+            </blockquote>
+
+            <p>This validates something working photographers have always known: the "mistake" often holds more truth than the technically perfect shot. A face half in shadow tells you something about the space. A slight motion blur tells you someone was alive.</p>
+        </section>
+
+        <section>
+            <div class="section-label">06 · Learn This Week</div>
+            <h2>Essentials Masterclass: January 22</h2>
+
+            <p>If you're looking to upskill without buying gear, <a href="https://www.eventbrite.com/">Eventbrite</a> is listing a comprehensive online workshop this Wednesday focused specifically on maximizing available light for beginners. Topics include lens selection, aperture strategies, and—critically—how to interact with subjects when you don't have assistants holding reflectors.</p>
+
+            <p>It's accessible education for photographers looking to upskill in the new year without dropping money on strobes they'll never fully use.</p>
+        </section>
+
+        <div class="closing">
+            <p>The best camera is the one you have. The best light is the one shining through your window. The best portrait is the one that looks like a human took it—because increasingly, that's the rarest thing of all.</p>
+        </div>
+
+        <footer>
+            <p><strong>JLW Newsletter</strong> · The Light You Already Have</p>
+            <p>January 20, 2026</p>
+            <p><a href="index.html">← Archive</a></p>
+        </footer>
+    </div>
+</body>
+</html>

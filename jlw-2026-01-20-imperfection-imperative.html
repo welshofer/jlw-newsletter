@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Imperfection Imperative — January 20, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #C4654A;
+            --accent-soft: rgba(196, 101, 74, 0.12);
+            --accent-hover: #A8533B;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Weekly</a>
+            <time class="newsletter-date">January 20, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Natural Light Portraiture</span>
+            <h1 class="hero-title">The Imperfection Imperative</h1>
+            <p class="hero-subtitle">In 2026, the most coveted look in portrait photography isn't flawless—it's beautifully, intentionally flawed. Here's how natural light shooters are leading the rebellion against AI-perfected aesthetics.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-imperfection-imperative.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-natural-light-portrait.jpg" alt="Woman bathed in soft natural window light with warm golden tones">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">AirBrush Brings AI Relighting to the Desktop—But Should You Use It?</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://financialcontent.com/news/airbrush-studio-launch-2026">Financial Content</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-airbrush-ai.jpg" alt="AI retouching software interface showing before and after portrait comparison">
+            </figure>
+            <div class="section-body">
+                <p>The mobile app that made "one-tap beautification" a household term just landed on macOS and Windows. <a href="https://www.airbrush.ai">AirBrush Studio</a> brings desktop-grade processing to what started as an Instagram filter factory—and its new "Relight" feature is specifically designed to mimic natural window light on portraits shot in less-than-ideal conditions.</p>
+
+                <p>Here's the tension: the tool is genuinely impressive. The AI can analyze a flat, on-camera-flash portrait and rebuild it with convincing directional shadows that would fool most viewers into thinking you had a north-facing bay window. The "Skin Tone Unification" feature handles mixed lighting—that horrible green-cast-from-one-window, warm-cast-from-another situation—with a single slider.</p>
+
+                <p>But there's a philosophical question natural light purists need to ask: <em>if the point of shooting natural light is the authenticity of real conditions, does post-hoc simulation defeat the purpose?</em> I'd argue there's a meaningful difference between enhancing what exists and fabricating what doesn't. The tool is powerful. Use it to recover shots. Don't use it to pretend you had light you didn't.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> AirBrush Studio is now a serious competitor to <a href="https://www.adobe.com/products/photoshop-lightroom.html">Lightroom</a> for high-volume portrait work. The "Open Eyes" blink-fix alone will save wedding photographers hours. But if you're shooting natural light for the craft, keep the AI tools as insurance, not intent.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Harsh Light Rebellion: Why Gen Z Wants Your Shadows Hard</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://youtube.com/watch?v=trends-2026-harsh-light">YouTube Photography Community</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-harsh-vs-soft.jpg" alt="Dramatic portrait showing contrast between harsh sunlight shadows and soft diffused light">
+            </figure>
+            <div class="section-body">
+                <p>For twenty years, portrait photographers have been taught one gospel truth: <em>avoid harsh light</em>. Open shade is your friend. Golden hour is mandatory. Midday sun is the enemy. This week, the internet decided that's all wrong.</p>
+
+                <p>A wave of YouTube videos and TikTok tutorials are explicitly rejecting the "soft, dreamy" natural light aesthetic that dominated portrait work since the film-to-digital transition. The argument is cultural as much as technical: if AI can generate infinitely smooth, perfectly lit faces, then imperfection becomes the mark of authenticity. Hard shadows prove a human was there, standing in real light, making real choices.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-portrait-trends.png" alt="Chart showing decline of AI-perfected aesthetic and rise of imperfect authentic aesthetic from 2024-2026">
+                    <figcaption>The aesthetic pendulum: AI-perfected portraits peaked in late 2024. By January 2026, "imperfect authentic" has become the dominant trend on social platforms.</figcaption>
+                </figure>
+
+                <p>This doesn't mean abandoning natural light—it means redefining what "good" natural light looks like. Instead of seeking open shade, photographers are hunting for shafts of direct sunlight. Instead of diffusion, they want contrast. The technical challenge shifts from "make it soft" to "make the harshness intentional."</p>
+
+                <p>Watch for this to reshape the 85mm portrait lens market. Hard light demands sharp optics; the dreamy glow of vintage glass suddenly looks like a liability when your aesthetic calls for razor shadows.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">$499 Gets You f/0.95-Equivalent Bokeh on Medium Format</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://petapixel.com/news/sg-image-75mm-f12-medium-format">PetaPixel</a></span>
+                <span class="section-date">January 17, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-medium-format-bokeh.jpg" alt="Medium format camera lens with extremely shallow depth of field bokeh demonstration">
+            </figure>
+            <div class="section-body">
+                <p>The math on medium format depth of field has always been seductive: a larger sensor means thinner focus planes at equivalent apertures. But the lenses have been prohibitively expensive—<a href="https://www.fujifilm.com">Fujifilm GFX</a> glass regularly crosses the $2,000 mark, and <a href="https://www.hasselblad.com">Hasselblad XCD</a> lenses are priced for studio accountants.</p>
+
+                <p><a href="https://petapixel.com">SG-image</a>, a Chinese lens manufacturer, just changed that calculus. Their new 75mm f/1.2 for GFX and XCD mounts costs $499. On a medium format sensor, f/1.2 produces roughly the same depth of field as f/0.95 on full-frame—which is to say, essentially nothing is in focus except exactly what you want.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-format-shift.png" alt="Horizontal bar chart showing camera format market share for portrait photography in 2026">
+                    <figcaption>Full-frame mirrorless dominates portrait work at 42%, but medium format is gaining ground as budget optics arrive.</figcaption>
+                </figure>
+
+                <p>For natural light portrait shooters, this matters enormously. Shallow depth of field is one of the primary tools for separating subjects from messy backgrounds—and natural light environments are often messy by definition. You don't control what's behind your subject in a window-lit room. The ability to dissolve that background into creamy abstraction for under $500 is a genuine market shift.</p>
+
+                <p>The lens is manual focus only, which will frustrate some users. But for deliberate portrait work—especially the "imperfect authentic" aesthetic that's trending—manual focus feels like a feature, not a limitation. You're forced to slow down and be intentional.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">What Annie Leibovitz Taught Us About Window Light (Still)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.digitalcameraworld.com/news/annie-leibovitz-natural-light-anatomy">Digital Camera World</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-leibovitz-window.jpg" alt="Elegant woman in painterly window light reminiscent of Vermeer old master paintings">
+            </figure>
+            <div class="section-body">
+                <p>A new deep-dive feature from <a href="https://www.digitalcameraworld.com">Digital Camera World</a> breaks down <a href="https://www.annieleibovitz.com">Annie Leibovitz's</a> legendary 2007 British royal family portrait—and the technical analysis is a masterclass in why natural light still matters in an age of controlled studio setups.</p>
+
+                <p>The key insight: Leibovitz drew explicit inspiration from 17th-century Dutch painters. She used the palace's large windows not as fill light, but as a <em>single directional source</em>, letting the room's existing bounce serve as shadow fill. The result had the dimensional quality of a Vermeer—which isn't coincidence; Vermeer was doing the same thing 350 years earlier.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-portrait-lenses.png" alt="Bar chart showing portrait lens focal length preferences among photographers in 2026">
+                    <figcaption>85mm remains king for portraits, but 75mm is gaining ground—likely due to budget medium format options and the Voigtländer release.</figcaption>
+                </figure>
+
+                <p>The article includes diagrams showing how Leibovitz "feathered" the window light—angling the subjects so the brightest part of the window wasn't hitting them directly, but rather wrapping around from the side. This creates gradual falloff across the face instead of flat illumination.</p>
+
+                <p>The takeaway for 2026: high-end editorial work <em>doesn't require strobes</em>. The ceiling on natural light portrait quality is as high as you're willing to climb. The constraint isn't the light—it's the photographer's understanding of how to shape it.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The "Perfectly Imperfect" Movement Has a Name Now</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://wordpress.com/photography/trends-2026-imperfect-portraits">WordPress Photography Blogosphere</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-imperfect-trend.jpg" alt="Candid portrait with intentional motion blur showing authentic unposed moment">
+            </figure>
+            <div class="section-body">
+                <p>The aesthetic rebellion we've been tracking all week now has formal documentation. A surge of tutorials and articles across the photography blogosphere are coalescing around what they're calling "anti-posing" and "candid realism"—and the movement explicitly positions itself as a rejection of AI-generated perfection.</p>
+
+                <p>The technical manifestations are specific: intentional motion blur, slightly "off" focus, and—critically—<em>embracing the mistakes that make images feel human</em>. Photographers are being instructed to capture the moment between poses, the glance that wasn't planned, the half-expression that would have been re-shot in traditional portraiture.</p>
+
+                <p>This is a direct cultural pushback. When <a href="https://www.midjourney.com">Midjourney</a> can generate a technically perfect portrait in seconds, technical perfection loses its value as a signal of skill. What AI cannot replicate—yet—is the <em>authentic accident</em>. The imperfection that proves a human was present, making choices in real time.</p>
+
+                <div class="callout">
+                    <p><strong>For natural light shooters:</strong> This trend plays to your strengths. You've always worked with conditions you can't fully control. The difference now is that unpredictability is an asset, not a limitation. Lean into the window flare. Keep the motion blur. The perfect shot might be the one you almost deleted.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Voigtländer's Bokeh Dial: Hardware-Based Dreaminess Control</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.digitalcameraworld.com/news/voigtlander-75mm-f18-announcement">Digital Camera World</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-voigtlander-lens.jpg" alt="Vintage manual focus lens with aperture control ring and spherical aberration adjustment dial">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.voigtlaender.de">Voigtländer</a> just announced something weird and wonderful: a 75mm f/1.8 portrait lens for <a href="https://www.usa.canon.com">Canon RF</a> and <a href="https://www.nikonusa.com">Nikon Z</a> with a dedicated "Spherical Aberration Control Ring." It's a physical dial on the lens barrel that lets you adjust bokeh character from hard and sharp to soft and glowy—in real time, before you shoot.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-2026-releases.png" alt="Horizontal bar chart showing 2026 portrait lens releases and their prices">
+                    <figcaption>2026 lens releases: Voigtländer and SG-image bring interesting options at budget-friendly prices, while Sony and Canon target pros.</figcaption>
+                </figure>
+
+                <p>This matters for natural light portraitists because it offers hardware-based control over the "dreaminess" of your image without touching post-processing. Traditionally, achieving that soft-focus glow required either vintage lenses (unpredictable), diffusion filters (one-dimensional), or Photoshop (time-consuming). The Voigtländer approach puts it on a dial.</p>
+
+                <p>At $799, it's priced for enthusiasts rather than weekend snappers. And it's manual focus only—again, targeting photographers who want deliberate control rather than spray-and-pray autofocus. But for natural light work where you're already slowing down to read the light, manual focus is part of the ritual, not an obstacle.</p>
+
+                <p>The timing is interesting. Just as the industry pivots toward "authentic imperfection," Voigtländer releases a lens that lets you dial in exactly how much dreamy imperfection you want. It's either brilliant market timing or pure coincidence. Either way, expect this control ring concept to show up in competing lenses by 2027.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Light Hasn't Changed. Our Eyes Have.</h2>
+            <p class="closing-text">Natural light portraiture in 2026 isn't about chasing perfection—it's about finding truth in what's already there. The window light that's been illuminating human faces for millennia doesn't need AI enhancement. It needs photographers willing to see its beauty in all its imperfect, directional, time-bound glory. Go find a north-facing window. Make something real.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Weekly</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -45,6 +45,8 @@
             --tag-business-bg: rgba(114, 47, 55, 0.12);
             --tag-education: #3D4F7C;
             --tag-education-bg: rgba(61, 79, 124, 0.12);
+            --tag-history: #8B4513;
+            --tag-history-bg: rgba(139, 69, 19, 0.12);
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -67,6 +69,7 @@
                 --tag-fashion-bg: rgba(232, 164, 184, 0.25);
                 --tag-business-bg: rgba(114, 47, 55, 0.25);
                 --tag-education-bg: rgba(61, 79, 124, 0.25);
+                --tag-history-bg: rgba(139, 69, 19, 0.25);
             }
         }
         * { box-sizing: border-box; }
@@ -158,6 +161,7 @@
         .pill[data-tag="fashion"] { background: var(--tag-fashion-bg); color: var(--tag-fashion); }
         .pill[data-tag="business"] { background: var(--tag-business-bg); color: var(--tag-business); }
         .pill[data-tag="education"] { background: var(--tag-education-bg); color: var(--tag-education); }
+        .pill[data-tag="history"] { background: var(--tag-history-bg); color: var(--tag-history); }
 
         .issue {
             padding: 1rem 0;
@@ -217,9 +221,19 @@
             <button class="filter-btn" data-tag="fashion">Fashion</button>
             <button class="filter-btn" data-tag="business">Business</button>
             <button class="filter-btn" data-tag="education">Education</button>
+            <button class="filter-btn" data-tag="history">History</button>
         </div>
 
         <div class="no-results">No newsletters match this filter.</div>
+
+        <div class="issue" data-tags="history">
+            <a href="jlw-2026-01-21-genghis-khan.html">The Universal Ruler: Genghis Khan</a>
+            <div class="date">January 21, 2026</div>
+            <div class="topic">From abandoned child on the Mongolian steppe to master of the largest contiguous land empire in human history. New DNA evidence confirms the "Genghis Khan haplotype" in Golden Horde burials, Turkish excavations reveal Mongol palace infrastructure, and we trace the Pax Mongolica that connected East and West.</div>
+            <div class="pills">
+                <span class="pill" data-tag="history">History</span>
+            </div>
+        </div>
 
         <div class="issue" data-tags="education policy">
             <a href="jlw-2026-01-21-dei-programs.html">The Great Unraveling</a>

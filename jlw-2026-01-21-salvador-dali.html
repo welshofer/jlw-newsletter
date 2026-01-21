@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Persistence of Dalí — January 21, 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; font-family: var(--font-body); font-weight: 400; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+        .header { padding: var(--space-lg) var(--space-md); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
+        .newsletter-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .newsletter-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+        .hero { padding: var(--space-xl) var(--space-md) var(--space-2xl); text-align: center; }
+        .hero-inner { max-width: var(--content-width); margin: 0 auto; }
+        .hero-label { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); background: var(--accent-soft); padding: 0.4em 1em; border-radius: 2px; margin-bottom: var(--space-md); }
+        .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 var(--space-md); color: var(--text); }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+        .audio-player { display: flex; align-items: center; gap: var(--space-sm); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-sm) var(--space-md); margin-top: var(--space-md); max-width: 400px; margin-left: auto; margin-right: auto; }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+        .hero-image { margin-top: var(--space-xl); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .content { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-md); }
+        .section { padding: var(--space-xl) 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+        .section:last-child { border-bottom: none; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .section-number { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; color: var(--accent); letter-spacing: 0.1em; margin-bottom: var(--space-xs); }
+        .section-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.015em; margin: 0 0 var(--space-sm); color: var(--text); }
+        .section-meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-md); flex-wrap: wrap; }
+        .section-source { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .section-source a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s ease; }
+        .section-source a:hover { border-color: var(--accent); }
+        .section-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .section-date::before { content: "•"; margin: 0 0.5em; }
+        .section-body p { margin: 0 0 var(--space-sm); }
+        .section-body p:last-child { margin-bottom: 0; }
+        .section-body a { color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent-soft); text-underline-offset: 2px; transition: text-decoration-color 0.2s ease; }
+        .section-body a:hover { text-decoration-color: var(--accent); }
+        .article-image { margin: 0 0 var(--space-md) 0; border-radius: 8px; overflow: hidden; }
+        .article-image img { width: 100%; height: auto; display: block; }
+        .callout { background: var(--bg-alt); border-left: 3px solid var(--accent); padding: var(--space-md); margin: var(--space-md) 0; border-radius: 0 4px 4px 0; }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .chart { margin: var(--space-md) 0; padding: 0; }
+        .chart img { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .chart figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); margin-top: var(--space-xs); padding: 0 var(--space-xs); line-height: 1.5; }
+        .closing { padding: var(--space-2xl) var(--space-md); text-align: center; background: var(--bg-alt); }
+        .closing-inner { max-width: var(--content-width); margin: 0 auto; }
+        .closing-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin: 0 0 var(--space-sm); }
+        .closing-text { color: var(--text-secondary); margin: 0; }
+        .footer { padding: var(--space-lg) var(--space-md); border-top: 1px solid var(--border); }
+        .footer-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .footer-brand { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--text); }
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .section { padding: var(--space-lg) 0; }
+            .section-title { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The Melting Watch</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Art & Legacy</span>
+            <h1 class="hero-title">The Persistence of Dalí</h1>
+            <p class="hero-subtitle">Thirty-seven years after his death, the master surrealist refuses to stay buried. From Roman palazzos to California galleries, from charity shop discoveries to digital resurrections, Dalí's melting clocks keep ticking.</p>
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/persistence-of-dali.wav" type="audio/wav">
+                </audio>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-dali-surrealist.jpg" alt="Salvador Dalí portrait dissolving into surrealist imagery">
+            </div>
+        </div>
+    </section>
+    <main class="content">
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-memorial.jpg" alt="Memorial candle and hourglass in surrealist style">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">Thirty-Seven Years Gone, Still Impossible to Ignore</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://thedali.org/calendar">The Dalí Museum</a></span>
+                <span class="section-date">January 23, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>On January 23, 1989, Salvador Dalí died in <a href="https://en.wikipedia.org/wiki/Figueres">Figueres</a>, the same Catalan town where he was born 84 years earlier. This Thursday marks 37 years since the world lost its most flamboyantly mustached provocateur—and the anniversary has become less a memorial and more a springboard for institutional innovation.</p>
+                <p>At <a href="https://thedali.org">The Dalí Museum</a> in St. Petersburg, Florida, the commemoration takes an unexpected turn. Their "Innovation Labs: Creativity Canvas" workshop isn't about teaching people to paint limp watches. Instead, it applies Dalí's <a href="https://en.wikipedia.org/wiki/Paranoiac-critical_method">Paranoiac-Critical Method</a>—his systematic approach to inducing hallucinatory states for creative insight—to modern corporate problem-solving. Picture management consultants learning to weaponize their subconscious.</p>
+                <p>The "Starry Nights in The Dalí Dome" offers a more traditional tribute: immersive visualizations that wrap visitors in his imagery. But it's the methodology workshops that signal where Dalí's legacy is headed. He always insisted he wasn't just making art but demonstrating a technology of consciousness. Thirty-seven years on, someone's finally taking him at his word.</p>
+                <figure class="chart">
+                    <img src="images/chart-life-timeline.png" alt="Timeline of Dalí's life showing major periods and events">
+                    <figcaption>Dalí's 85-year life spanned six distinct creative periods, from his academic formation through his Surrealist peak to his late decline.</figcaption>
+                </figure>
+            </div>
+        </article>
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-muckenthaler.jpg" alt="Sensual surrealist art in gallery setting">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">California Gets the Dalí They Don't Show at the Gift Shop</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://themuck.org/program/2026-dali">The Muckenthaler Cultural Center</a></span>
+                <span class="section-date">January 17, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>While most Dalí exhibitions traffic in the safely iconic—melting clocks, elephants on stilts, the occasional burning giraffe—the <a href="https://themuck.org">Muckenthaler Cultural Center</a> in Fullerton has decided to go where family-friendly retrospectives fear to tread. Their new show focuses specifically on Dalí's eroticism and sensuality, featuring rare prints and sketches that typically stay in storage.</p>
+                <p>The exhibition runs for just four weeks, January 17 through February 14—ending, one notes, on Valentine's Day. Coincidence? With Dalí, nothing was coincidental. The man who painted <a href="https://www.moma.org/collection/works/79018">The Great Masturbator</a> and illustrated the <em>Marquis de Sade</em> understood provocation as a precise instrument.</p>
+                <p>What makes this show notable isn't just its content but its location. Fullerton isn't exactly a global art capital. Yet here's a mid-sized cultural center mounting a thematically daring exhibition that major metropolitan museums might sidestep. It suggests an appetite for Dalí's full range that extends well beyond the coastal elite institutions. The master of shock would appreciate the irony of Orange County hosting his most transgressive work.</p>
+            </div>
+        </article>
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-auction.jpg" alt="Auction gavel and surrealist lithograph">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Market for Melting Clocks Refuses to Soften</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.dorotheum.com/en/">Dorotheum</a></span>
+                <span class="section-date">January 7, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The art market often stumbles in January, recovering from December's auction hangovers. Not so for Dalí. The first week of 2026 saw brisk trading across multiple houses, with <a href="https://www.dorotheum.com">Dorotheum's</a> New Year's Auction successfully moving several lithographs including "Gateway to the New World," while <a href="https://lamodern.com">Los Angeles Modern Auctions</a> cleared "The Immaculate Conception" and "Ace of Spades" from their Prints & Multiples sale.</p>
+                <p>The significance isn't in any individual hammer price but in the aggregate pattern. Dalí's prints and multiples maintain robust liquidity in what auction specialists call the "mid-market range"—accessible enough for serious collectors who aren't billionaires, blue-chip enough to feel like a safe harbor.</p>
+                <figure class="chart">
+                    <img src="images/chart-auction-market.png" alt="Chart showing Dalí auction volume growth from 2020-2026">
+                    <figcaption>Annual auction volume for Dalí works has grown steadily, from $45M in 2020 to an estimated $98M in 2026, reflecting sustained collector appetite.</figcaption>
+                </figure>
+                <p>Dalí understood this about his own work. He mass-produced prints deliberately, signing thousands of blank sheets that could later be lithographed—a practice that horrified purists but democratized ownership of his imagery. Nearly four decades after his death, that democratic instinct keeps paying dividends. You can own a genuine Dalí for the price of a decent used car. Try that with <a href="https://www.thebroad.org/art/jean-michel-basquiat">Basquiat</a>.</p>
+            </div>
+        </article>
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-platform.jpg" alt="Digital streams transforming into scientific diagrams">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Foundation Goes Digital, Stays Obsessive</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.salvador-dali.org/en/foundation/press/">Gala-Salvador Dalí Foundation</a></span>
+                <span class="section-date">January 1, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The new year brought a strategic pivot from the <a href="https://www.salvador-dali.org">Gala-Salvador Dalí Foundation</a>. They've launched "Platform Dalí," an international program fostering dialogue between artists and scientists, alongside a digital magazine called <em>Dalí News</em> that mines the artist's diaries to address contemporary issues.</p>
+                <p>This isn't the usual institutional archive-polishing. The Foundation is positioning Dalí not as a historical figure to be preserved but as an ongoing intellectual project. The annual fellowships and residencies specifically target researchers exploring Dalí's intersections with science—his collaborations with <a href="https://en.wikipedia.org/wiki/Walt_Disney">Walt Disney</a>, his correspondence with <a href="https://en.wikipedia.org/wiki/Sigmund_Freud">Freud</a>, his obsession with DNA and quantum physics.</p>
+                <p>Dalí always claimed to be more than an artist. He fancied himself a kind of scientific thinker working in paint, someone whose melting clocks anticipated <a href="https://en.wikipedia.org/wiki/Theory_of_relativity">Einstein's relativity</a> and whose soft forms intuited cellular biology. The Foundation is betting that this self-assessment wasn't pure ego.</p>
+            </div>
+        </article>
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-giacometti.jpg" alt="Two sculptural figures in conversation">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">Two Giants Walk Into a Museum (Finally, in America)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://thedali.org/exhibit/alberto-giacometti-salvador-dali">The Dalí Museum</a></span>
+                <span class="section-date">November 15, 2025</span>
+            </div>
+            <div class="section-body">
+                <p>It's almost embarrassing that it took this long. <a href="https://www.fondation-giacometti.fr/en">Alberto Giacometti</a> and Salvador Dalí were friends and collaborators in the Surrealist movement, co-creating the unrealized "Project for a Square" meant for a Barcelona park. Yet until this past November, no American exhibition had dedicated itself to exploring their relationship.</p>
+                <p>The Dalí Museum rectified this oversight with works borrowed from the <a href="https://www.fondation-giacometti.fr">Fondation Giacometti</a> in Paris alongside their own collection. The exhibition runs through April 2026, focusing on their intellectual exchange rather than simple side-by-side comparison.</p>
+                <figure class="chart">
+                    <img src="images/chart-exhibitions.png" alt="Timeline of current and upcoming Dalí exhibitions">
+                    <figcaption>Three major Dalí exhibitions currently running, with the Rome retrospective closing February 1 and the Giacometti pairing continuing through April.</figcaption>
+                </figure>
+                <p>What makes this pairing illuminating rather than obvious is the divergent paths they took from shared premises. Giacometti stripped his figures to skeletal essences; Dalí bloated his with proliferating detail. One pursued authenticity through reduction, the other through excess. Seeing them together clarifies that both strategies were responses to the same crisis of representation that defined modernism.</p>
+            </div>
+        </article>
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-sultan.jpg" alt="Weathered watercolor discovered in charity shop">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">From Charity Shop to £45,000: The Dalí Lottery Continues</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.theguardian.com/artanddesign/2025/oct/24/lost-dali-illustration-bought-for-150-sells-for-45000">The Guardian</a></span>
+                <span class="section-date">October 24, 2025</span>
+            </div>
+            <div class="section-body">
+                <p>Here's the collector's dream that won't die: someone buys a watercolor at a charity shop for £150, has it authenticated as a genuine Dalí, and flips it at <a href="https://www.cheffins.co.uk">Cheffins auction house</a> in Cambridge for £45,700. The work, depicting an "old sultan" in felt-tip and watercolor, was likely a casual sketch from Dalí's later years—the kind of thing he'd dash off as a gift or for quick cash.</p>
+                <p>The story captures something essential about Dalí's legacy: the sheer volume of work he produced means undiscovered pieces keep surfacing. He was legendarily prolific, signing thousands of prints, creating designs for everything from <a href="https://en.wikipedia.org/wiki/Chupa_Chups">Chupa Chups lollipops</a> to perfume bottles, scattering drawings across decades of social engagements.</p>
+                <p>The authentication process for such finds is notoriously tricky. Dalí's commercial promiscuity means plenty of fakes circulate, but it also means plenty of genuine odds and ends exist outside any catalogue raisonné. For every charity shop sultan, there are probably a dozen forgeries. But the occasional authenticated discovery keeps the dream alive that your grandmother's attic might contain retirement funds. It's the surrealist lottery, and Dalí keeps drawing winners.</p>
+            </div>
+        </article>
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-07-rome.jpg" alt="Roman palazzo interior with surrealist paintings">
+            </figure>
+            <span class="section-number">07</span>
+            <h2 class="section-title">In Rome, Dalí Finally Gets to Fight Picasso Again</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.museodelcorso.com/exhibitions/dali-revolution-and-tradition">Museo del Corso</a></span>
+                <span class="section-date">October 17, 2025</span>
+            </div>
+            <div class="section-body">
+                <p>The blockbuster retrospective "Revolution and Tradition" at <a href="https://www.museodelcorso.com">Palazzo Cipolla</a> in Rome closes February 1, giving you eleven days to catch what may be the most intellectually ambitious Dalí show in years. With over 60 works spanning paintings, drawings, and multimedia documents, the exhibition frames Dalí not as the wild surrealist rebel but as a deeply traditional artist engaged in constant dialogue with the Old Masters.</p>
+                <p>More provocatively, it centers his lifelong rivalry with <a href="https://en.wikipedia.org/wiki/Pablo_Picasso">Pablo Picasso</a>. Both Spaniards, both living in Paris, both competing for the title of century's greatest provocateur. Picasso won the critical consensus; Dalí won the popular imagination. This show argues the competition was more substantive than mere ego: two opposing visions of what art could do in modernity.</p>
+                <p>Dalí's classicism—his meticulous technique, his reverence for <a href="https://en.wikipedia.org/wiki/Diego_Vel%C3%A1zquez">Velázquez</a> and <a href="https://en.wikipedia.org/wiki/Raphael">Raphael</a>, his insistence on drawing skills—positioned him against Picasso's systematic destruction of pictorial convention. The Rome show makes visible how much discipline underlies Dalí's apparent madness. Behind every melting clock was an artist who could have been an academic painter if he'd wanted. He chose surrealism as a strategy, not a limitation.</p>
+                <div class="callout">
+                    <p><strong>If you go:</strong> "Dalí: Revolution and Tradition" runs through February 1, 2026 at Palazzo Cipolla / Museo del Corso, Via del Corso 320, Rome. Timed entry recommended.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Dream Continues</h2>
+            <p class="closing-text">Dalí once said, "I do not understand why, when I ask for a grilled lobster in a restaurant, I am never served a cooked telephone." Thirty-seven years after his death, we're still trying to figure out what he meant—and still finding his sketches in charity shops. The persistence of memory, indeed.</p>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The Melting Watch</span>
+        </div>
+    </footer>
+</body>
+</html>

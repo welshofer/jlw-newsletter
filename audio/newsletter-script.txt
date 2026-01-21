@@ -1,0 +1,71 @@
+Public University Dispatch. January 21st, 2026.
+
+This week: 155 million dollars in gifts, a physics breakthrough, and 12 billion radio signals.
+
+---
+
+Story one. New York bets 55 million dollars on the first independent AI research center at a public university.
+
+When Governor Kathy Hochul announced Binghamton University would house the nation's first independent AI research center at a public institution, she wasn't just cutting a ribbon. She was placing a stake in the ground about who should shape AI's future.
+
+The 55 million dollar backing—30 million philanthropic, 25 million from the state—funds something deliberately different from the corporate-adjacent labs at Stanford or MIT.
+
+The key word is "independent." While Google, Meta, and OpenAI dominate AI research with agendas tied to product roadmaps and shareholder returns, Binghamton's center promises research driven by public interest.
+
+For students considering graduate programs in AI ethics, policy, or safety research, Binghamton just became a destination worth monitoring.
+
+---
+
+Story two. UCLA discovers a metal that conducts heat three times better than copper—and shouldn't exist.
+
+Physics has rules. One of the most reliable is the Wiedemann-Franz law, which says metals that conduct electricity well also conduct heat well, in a predictable ratio. For 150 years, this relationship held. Until a UCLA-led team found a material that breaks it.
+
+Theta-phase tantalum nitride conducts heat nearly three times better than copper while maintaining different electrical properties than the law predicts. This isn't a marginal improvement—it's a category violation that demands new theoretical frameworks.
+
+The practical implications cascade immediately. Data centers burn through electricity managing heat. Advanced chips throttle performance because they can't dissipate thermal energy fast enough. A material that moves heat this efficiently could address bottlenecks across multiple industries.
+
+---
+
+Story three. SETI at home's final answer: 100 signals worth a second look from 12 billion candidates.
+
+For over two decades, SETI at home turned millions of personal computers into a distributed supercomputer, crunching through radio telescope data in humanity's most ambitious citizen science project. Now UC Berkeley has released the final tally: 12 billion signals in, 100 promising candidates out.
+
+Those 100 signals—now being re-observed by China's FAST telescope, the world's largest single-dish radio telescope—represent something beyond their extraterrestrial potential. They prove distributed computing works for real science.
+
+The 100 candidates probably aren't aliens. Natural phenomena mimic artificial signals in frustrating ways. But the infrastructure to identify them—and the public engagement model that made analysis possible—represents a genuine legacy.
+
+---
+
+Story four. UT Austin's 100 million dollar medical center gift signals a regional healthcare power shift.
+
+Tench and Simone Coxe's 100 million dollar gift to UT Austin's new medical center isn't just philanthropy—it's a bet on Austin's transformation. Central Texas has grown explosively without corresponding growth in academic medical infrastructure.
+
+Houston has MD Anderson and the Texas Medical Center. Dallas has UT Southwestern. Austin has been the gap in Texas's healthcare map.
+
+The timing matters. Austin's population exceeds 2.4 million in the metro area, with continued growth from tech migration. A world-class medical center changes the patient flow calculus entirely.
+
+---
+
+Story five. UNC Chapel Hill faculty report self-censorship amid surveillance investigation.
+
+UNC Chapel Hill is facing questions about something most universities don't discuss publicly: how they monitor their own people. Reports of a surveillance investigation have surfaced, with faculty members describing an environment where they've begun to self-censor out of uncertainty about what's being watched and why.
+
+Academic freedom doesn't just mean formal protection from punishment; it requires an environment where scholars feel genuinely free to pursue controversial ideas. When that perception erodes, the damage happens before any actual punishment occurs.
+
+---
+
+Story six. UF researchers find gut bacteria molecule that makes lung cancer treatment work better.
+
+University of Florida researchers have identified something oncologists have suspected but couldn't prove: a specific molecular mechanism connecting gut bacteria to cancer treatment response. Their work isolated a molecule produced by certain gut bacteria that enhances how the body responds to lung cancer immunotherapy.
+
+This matters because immunotherapy works brilliantly in some patients and fails entirely in others. If gut microbiome composition partly explains that variance—and if that composition can be modified—treatment outcomes become more controllable.
+
+---
+
+The through line.
+
+This week showed public universities doing what they do at their best: creating infrastructure private markets won't build, pursuing fundamental research without product deadlines, and operating at scales that require public coordination.
+
+The 155 million dollars in donations to UT Austin, Binghamton, and UCLA demonstrates that philanthropists still see flagship public institutions as serious bets.
+
+That's all for this edition of Public University Dispatch. Until next time.

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Reckoning We Never Finished — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Economic History</span>
+            <h1 class="hero-title">The Reckoning We Never Finished</h1>
+            <p class="hero-subtitle">New scholarship is rewriting the Great Depression—revealing it didn't start when we thought, wasn't caused by what we assumed, and may not have ended at all.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-reckoning-we-never-finished.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-great-depression.jpg" alt="Art Deco stock ticker dissolving into ash, representing the structural decay beneath 1920s prosperity">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Bank of England Deglobalization -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Central Bankers Are Using 1930s Trade Data to Model 2026</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.bankofengland.co.uk/speech/2026/january/driving-over-the-peak-or-a-false-summit">Bank of England</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-deglobalization.jpg" alt="Global trade network fragmenting, glowing shipping routes fading to darkness">
+            </figure>
+            <div class="section-body">
+                <p>In a speech last week that should have received far more attention, <a href="https://www.bankofengland.co.uk">Bank of England</a> Monetary Policy Committee member <a href="https://en.wikipedia.org/wiki/Alan_Taylor_(economist)">Alan Taylor</a> delivered a stark historical comparison. The 1930s, he argued, represented "the first era of deglobalisation"—a period when trade collapsed not because moving goods became harder, but because governments chose to make it so.</p>
+
+                <p>The parallel to 2025-2026 is intentional and uncomfortable. Taylor explicitly invoked "geoeconomic fragmentation"—the diplomatic term for the tariff escalations, sanctions regimes, and supply chain reshoring now reshaping the global economy. His thesis: these are "man-made, not technological" barriers, just as Smoot-Hawley and its retaliatory cascade were in 1930.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-trade-collapse.png" alt="World trade volume collapsed 59% between 1929 and 1933">
+                    <figcaption>World trade collapsed nearly 60% in just four years—a speed and scale of deglobalization that policymakers are explicitly studying as a model for current risks.</figcaption>
+                </figure>
+
+                <p>What makes this notable isn't the historical analogy itself—plenty of op-eds draw that line. It's that a sitting central banker is publicly using Depression-era trade data as an input to current monetary policy modeling. The message to markets: the institutional memory of the 1930s is no longer academic. It's operational.</p>
+
+                <div class="callout">
+                    <p><strong>The quote:</strong> "The Great Depression was the first era of deglobalisation... where trade levels fell significantly not due to cost, but policy."</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Steve Keen Debt Thesis -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Heretic's Case: Debt Was the Driver, Not the Passenger</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://stevekeen.substack.com/p/what-caused-the-great-depression">Steve Keen / Substack</a></span>
+                <span class="section-date">November 9, 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-debt-spiral.jpg" alt="Tower of vintage debt certificates forming precarious structure">
+            </figure>
+            <div class="section-body">
+                <p>For decades, the consensus explanation for the Great Depression has centered on the <a href="https://en.wikipedia.org/wiki/A_Monetary_History_of_the_United_States,_1867%E2%80%931960">Friedman-Schwartz thesis</a>: the Federal Reserve catastrophically contracted the money supply, turning a recession into a decade-long catastrophe. It's elegant, it's monetarist, and according to economist <a href="https://profstevekeen.substack.com/">Steve Keen</a>, it's looking at the wrong variable.</p>
+
+                <p>In a November analysis that synthesizes his decades of work on debt-deflation dynamics, Keen argues the <a href="https://en.wikipedia.org/wiki/Hyman_Minsky#Financial_instability_hypothesis">Minsky-Fisher framework</a> better explains the data. The key insight: credit-based demand collapsed <em>before</em> the money supply did. Private debt levels, not central bank policy, were the primary driver.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-debt-vs-money.png" alt="Private debt collapsed before money supply, supporting Keen's thesis">
+                    <figcaption>Keen's analysis suggests debt led the collapse—watch the terracotta line fall before the purple. Central bankers focused on money supply may be staring at the wrong gauge.</figcaption>
+                </figure>
+
+                <p>This isn't just academic score-settling. If Keen is right, the policy implications are severe. Central banks obsessing over money supply and interest rates are—to borrow his framing—"looking at the dashboard while the engine is on fire." The real danger signal is the private debt-to-GDP ratio, which in many developed economies today exceeds 1929 levels.</p>
+
+                <p>Heterodox? Certainly. But "heterodox" described every major advance in Depression scholarship before it became orthodox.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Regime Uncertainty -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Paralysis Playbook: When Uncertainty Becomes the Crisis</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://medium.com/@bradbutcher/are-we-headed-for-a-1930s-style-slowdown">Medium / Brad Butcher</a></span>
+                <span class="section-date">April 3, 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-regime-uncertainty.jpg" alt="Businessman frozen at crossroads with conflicting directions">
+            </figure>
+            <div class="section-body">
+                <p>Why did the Depression last so long? Economic historian <a href="https://en.wikipedia.org/wiki/Robert_Higgs">Robert Higgs</a> proposed an answer that's regaining currency: "regime uncertainty." When businesses can't predict the rules of the game—tax policy, regulatory framework, property rights—they don't invest. They hoard cash. They wait. And waiting is its own form of economic damage.</p>
+
+                <p>In a synthesis of recent revisionist fears, economic commentator Brad Butcher argues this behavioral mechanism is the "most dangerous echo" of the 1930s in today's policy environment. The specific policies matter less than the unpredictability. When tariff schedules change quarterly, when regulatory agencies announce conflicting guidance, when the legal status of entire industries becomes a political football—businesses respond by freezing.</p>
+
+                <p>The historical parallel here isn't Smoot-Hawley specifically. It's the <em>pattern</em> of erratic intervention that characterized the Hoover-to-Roosevelt transition. Each administration's "bold action" created new uncertainties faster than it resolved old ones. Capital didn't flee to safety; it fled to inaction.</p>
+
+                <div class="callout">
+                    <p><strong>The insight:</strong> "The parallels in 'regime uncertainty'—where businesses hoard cash because policy changes are too erratic—are the most dangerous echo of 1931."</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Cliometrics 2.0 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">AI Archaeology: Machine Learning Excavates Depression-Era Data</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://alexisvlund.com/project/great-depression-data">Alexis V. Lund</a></span>
+                <span class="section-date">February 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-cliometrics.jpg" alt="Neural network diagram overlaid on vintage economic data">
+            </figure>
+            <div class="section-body">
+                <p>The 1930s left behind a wealth of economic data—and a frustrating amount of it is fragmentary, inconsistent, or simply missing. Regional bank failure records, county-level unemployment figures, agricultural price indices: the raw material exists, but it's been largely intractable for traditional econometric analysis.</p>
+
+                <p>Enter what independent researcher <a href="https://alexisvlund.com/">Alexis Lund</a> calls "Cliometrics 2.0"—the application of modern machine learning techniques to historical economic reconstruction. Lund's ongoing project uses neural networks to identify non-linear correlations in fragmented datasets, essentially teaching algorithms to find patterns that regression analysis couldn't surface.</p>
+
+                <p>Early results suggest the standard geographic narrative of the Depression—Wall Street contagion spreading outward—may be incomplete. Certain regional bank failure clusters appear to precede the stock market crash, not follow it. If confirmed, this would support the "structural rot" thesis: the Depression's causes were already embedded in the American economy before October 1929 made them visible.</p>
+
+                <p>The methodology is still being refined, but the approach represents a genuine frontier. We're about to know more about the 1930s economy than the people who lived through it did.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: NBER 500-Year Analysis -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The 500-Year Rupture: How the Depression Broke Economic Physics</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nber.org/papers/w33202">NBER Working Paper 33202</a></span>
+                <span class="section-date">November 1, 2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-rg-break.jpg" alt="500-year timeline showing structural break in the 1930s">
+            </figure>
+            <div class="section-body">
+                <p>What if the Great Depression wasn't a temporary cyclical event, but a permanent rupture in how economies work? That's the implication of an extraordinary <a href="https://www.nber.org">NBER</a> working paper that analyzes 500 years of data on the relationship between interest rates (r) and economic growth rates (g).</p>
+
+                <p>The <em>r-g</em> differential matters because it determines the sustainability of debt. When interest rates consistently exceed growth rates, debt becomes a trap; when growth exceeds interest, debt becomes a manageable tool. For five centuries, the data shows a steady downward trend in r-g—the Industrial Revolution slowly making debt more sustainable.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-rg-500-years.png" alt="500 years of r-g data showing the 1930s as a permanent structural break">
+                    <figcaption>Five centuries of data reveal the 1930s not as a cyclical downturn but as a fundamental regime change. The rules of government debt changed permanently.</figcaption>
+                </figure>
+
+                <p>Then came the 1930s. The NBER team identifies this period as a "major structural break"—the first clear deceleration in that centuries-long trend. And unlike previous disruptions, this one didn't reverse. The authors link it to the rise of the modern welfare state and permanent expansion of government's economic role.</p>
+
+                <p>The implication is quietly radical: we don't live in a post-Depression economy. We live <em>in</em> the Depression's economic regime—a world where the pre-1930s rules about growth, debt, and government no longer apply. The event that began in 1929 may have technically ended in the late 1930s, but its structural consequences became the new normal.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Hoover/UCLA 1920s Thesis -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Roaring Twenties Were Rotting From the Start</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.hoover.org/research/great-depression-may-have-started-much-earlier-we-thought">Hoover Institution / UCLA Economics</a></span>
+                <span class="section-date">October 31, 2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-roaring-twenties.jpg" alt="Jazz age party with visible cracks in the foundation">
+            </figure>
+            <div class="section-body">
+                <p>When did the Great Depression actually begin? The standard answer—October 29, 1929—may be off by nearly a decade.</p>
+
+                <p>New research from the <a href="https://www.hoover.org">Hoover Institution</a> and <a href="https://www.econ.ucla.edu">UCLA Economics</a> uses a three-sector general equilibrium model to analyze 1920s data with a precision previous studies couldn't achieve. The finding: labor, investment, and output during the "Roaring Twenties" were already significantly depressed relative to what standard economic theory would predict.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-gdp-structural-rot.png" alt="GDP data showing the 1920s already underperforming theoretical predictions">
+                    <figcaption>The celebrated prosperity of the 1920s may have been a mirage. New modeling suggests the economy was structurally weaker than contemporary observers—or subsequent historians—recognized.</figcaption>
+                </figure>
+
+                <p>The researchers identify a "major structural break" in the early 1920s, likely related to substantial changes in business organization that reduced demand for labor. The implication: the 1929 crash didn't cause the Depression; it revealed an economy that was already operating well below its potential. The jazz age prosperity was real for some, but it was masking structural rot that made collapse inevitable.</p>
+
+                <p>This reframing matters because it shifts the causal story. The question isn't "what happened in October 1929?" It's "what changed in American capitalism around 1920 that made the entire decade a slow-motion crisis masked by asset bubbles and credit expansion?" The Roaring Twenties may have been roaring all the way into the abyss.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7: Global South/India -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">The Colonies Didn't Just Suffer the Depression—They Deepened It</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://academic.oup.com/ej/article/134/657/23/7283210">The Economic Journal</a></span>
+                <span class="section-date">January 1, 2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-global-south.jpg" alt="Colonial textile factory surrounded by rising tariff walls">
+            </figure>
+            <div class="section-body">
+                <p>Most Depression historiography focuses on the United States and Western Europe. A new study in <a href="https://academic.oup.com/ej">The Economic Journal</a> shifts attention to the "Global South"—specifically interwar India—and finds the trade collapse story looks very different from the periphery.</p>
+
+                <p>Using newly assembled data on steel and cotton industries, economists led by <a href="https://www.socsci.uci.edu/~varthi/">Vellore Arthi</a> at UC Irvine show how protectionist policies within the British Empire created a vicious cycle. These weren't just "beggar-thy-neighbor" tariffs designed to steal trade from competitors. They were often "beggar-thyself" measures that devastated colonial economies without benefiting the metropole.</p>
+
+                <p>The research challenges the Euro-centric framing that treats the Depression as a Western phenomenon that subsequently spread to developing regions. India's experience suggests the mechanisms of trade collapse operated differently—and often more destructively—in colonial contexts. The protective tariffs that were supposed to nurture infant industries instead severed the global supply chains those industries depended on.</p>
+
+                <div class="callout">
+                    <p><strong>The corrective:</strong> "Protectionist policies... were often a 'deliberate surrender' of economic sovereignty that exacerbated the Depression's impact on the periphery."</p>
+                </div>
+
+                <p>The relevance to 2026 is uncomfortable. As major economies pursue reshoring and "friend-shoring" strategies, the emerging market economies caught between blocs face conditions eerily similar to interwar India: disrupted trade relationships, competing demands from economic patrons, and protective policies designed elsewhere but imposed on them.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Depression That Never Ended</h2>
+            <p class="closing-text">What these seven threads share is a refusal to treat the Great Depression as a closed case. The revisionism isn't about assigning blame to different villains—monetary policy, debt dynamics, trade barriers, regime uncertainty. It's about recognizing that the event we thought we understood may have started earlier, lasted longer, and left deeper marks than the textbook narrative allows. The "lessons of the Depression" we thought we learned may be lessons from the wrong crisis. And the crisis we're actually living through may be the one that began in 1930 and never quite stopped.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

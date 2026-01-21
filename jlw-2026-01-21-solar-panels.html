@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rooftop Revolution — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">2026-01-21</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Home Solar Technology</span>
+            <h1 class="hero-title">The Rooftop Revolution</h1>
+            <p class="hero-subtitle">From record-breaking efficiency breakthroughs to shifting global markets, the home solar landscape is transforming faster than anyone predicted. Here's what matters this week.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-rooftop-revolution.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-solar-neighborhood.png" alt="Aerial view of modern suburban neighborhood with solar panels on every rooftop during golden hour">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Enphase IQ9 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Enphase Breaks into Commercial Territory with IQ9 Microinverters</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://pv-tech.org">PV Tech</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-enphase-microinverter.png" alt="Close-up of microinverter circuit board with LED indicators">
+            </figure>
+            <div class="section-body">
+                <p>For years, <a href="https://enphase.com">Enphase Energy</a> dominated residential solar with a simple value proposition: module-level power optimization that makes rooftop systems more resilient and easier to expand. But residential margins have been under pressure, and the commercial rooftop market—historically the domain of string inverters—represents a $3 billion opportunity they couldn't ignore.</p>
+
+                <p>The new IQ9N-3P microinverter, now shipping in volume, handles high-power modules up to 600W at 97.5% efficiency. That's not just spec-sheet posturing—it puts them in striking distance of commercial string inverter performance while maintaining the per-panel monitoring and redundancy that made their name.</p>
+
+                <p><a href="https://www.goldmansachs.com">Goldman Sachs</a> noticed, upgrading ENPH to "Buy" on January 20th. The thesis: if <a href="https://twitter.com/Enphase">Badri Kothandaraman</a> and his team can capture even 10% of small-to-medium commercial rooftops, the stock is significantly undervalued. The question isn't whether the technology works—it's whether commercial installers, trained on string inverters for a decade, will change their habits.</p>
+
+                <p><strong>What to watch:</strong> Q1 2026 commercial installation numbers. If major regional installers start stocking IQ9N-3P units, we'll know the strategy is working.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: UNSW Antimony -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Australian Scientists Crack the "Cheap Solar" Code with Antimony</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://unsw.edu.au/news">UNSW News</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-unsw-antimony.png" alt="Abstract visualization of antimony sulfide molecular structure">
+            </figure>
+            <div class="section-body">
+                <p>Forget the incremental improvements. Researchers at <a href="https://www.unsw.edu.au">UNSW Sydney</a> just added an entirely new material class to the solar efficiency tables—and it could eventually upend the economics of terawatt-scale deployment.</p>
+
+                <p>Antimony chalcogenide solar cells hit 10.7% certified efficiency (11.02% in the lab). That sounds modest compared to silicon's 25%+, but here's what matters: antimony is earth-abundant, non-toxic, and dramatically cheaper to process than current thin-film alternatives like cadmium telluride. The breakthrough came from using sodium sulfide to reduce defects at grain boundaries—a relatively simple fix that had eluded researchers for years.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-efficiency-evolution.png" alt="Chart showing solar cell efficiency evolution from 2015-2026">
+                    <figcaption>Silicon efficiency gains have plateaued, while perovskite tandems and new materials like antimony chalcogenide are creating new pathways to high-efficiency, low-cost solar.</figcaption>
+                </figure>
+
+                <p>This isn't going on your roof next year—or probably the year after. But as <a href="https://www.unsw.edu.au/staff/martin-green">Professor Martin Green</a>'s team noted, scaling solar to the terawatts humanity needs means we can't rely on materials that are rare or expensive. Antimony chalcogenide just became a serious contender for that future.</p>
+
+                <p><strong>The bigger picture:</strong> Every major solar breakthrough of the past decade has come from labs outside China, but Chinese manufacturers have dominated scale-up. Whether that pattern holds for antimony will depend as much on trade policy as on science.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Tesla TSP-420 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Tesla's All-Black Panels Target the "Curb Appeal" Market</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://pv-magazine-usa.com">PV Magazine</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-tesla-panels.png" alt="Sleek all-black solar panels on contemporary home at sunset">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://tesla.com/solarpanels">Tesla</a> has always understood that solar isn't just about kilowatt-hours—it's about what your roof says about you. The new Series 4 TSP-420 modules, now shipping from Gigafactory New York, deliver 415-420W of output wrapped in an all-black aesthetic that blends with modern rooflines instead of announcing itself from three blocks away.</p>
+
+                <p>The timing is calculated. Tesla's bundling the new panels with <a href="https://tesla.com/powerwall">Powerwall 3</a> under fixed monthly lease pricing—a direct response to homeowners who want the technology without the upfront sticker shock. It's also a play for domestic content credits under the Inflation Reduction Act, positioning Tesla-manufactured panels for maximum incentive capture.</p>
+
+                <p>Whether this matters depends on your market. In coastal California and the Northeast, where HOA restrictions and neighbor expectations shape buying decisions, curb appeal can be the difference between a signed contract and a "maybe later." Tesla is betting that a meaningful segment of American homeowners will pay a premium for panels that look like they belong.</p>
+
+                <p><strong>The trade-off:</strong> All-black panels run slightly hotter, which costs a few percentage points of efficiency in peak summer. Whether that matters more than aesthetics is a question only your particular rooftop can answer.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: SunPower Acquisition -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">SunPower Buys Its Way to the Customer's Front Door</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://solarquarter.com">SolarQuarter</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-sunpower-acquisition.png" alt="Business handshake silhouette with solar panel warehouse in background">
+            </figure>
+            <div class="section-body">
+                <p>When <a href="https://sunpower.com">SunPower</a> announced its letter of intent to acquire <a href="https://cobaltpower.com">Cobalt Power Systems</a>, a $35M-revenue California installer, it confirmed what industry observers have suspected: the vertical integration era is accelerating.</p>
+
+                <p>The math is straightforward. A homeowner paying $25,000 for a residential system might be contributing $5,000+ in margin to their installer—margin that SunPower, as a panel manufacturer, never sees. By acquiring successful local installers and operating them as standalone subsidiaries, SunPower captures that margin while leveraging local expertise and customer relationships.</p>
+
+                <p>It's also a defensive move. As Chinese manufacturers continue to undercut panel prices (more on that below), pure manufacturing becomes a race to the bottom. Owning the customer relationship—and the installation experience—creates differentiation that can't be replicated by shipping cheaper panels from Shenzhen.</p>
+
+                <p><strong>For homeowners:</strong> This consolidation means fewer independent installers to choose from, but potentially more consistent service quality as major manufacturers bring standardized training and practices to their acquired subsidiaries. The question is whether that consistency comes with higher prices or better value.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Pricing Forecast -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Era of Ultra-Cheap Panels Is Ending</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://strategicenergy.eu">Strategic Energy Europe</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-pricing-trade.png" alt="Shipping containers at port with solar panel crates">
+            </figure>
+            <div class="section-body">
+                <p>If you've been waiting for panel prices to drop further before going solar, you might want to reconsider that strategy. China's removal of VAT rebates on solar exports—effective April 2026—is already sending shockwaves through international markets.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-price-forecast.png" alt="Chart showing solar panel price forecast with China VAT impact">
+                    <figcaption>Spot prices have spiked as buyers rush to secure inventory before April. Contract prices are expected to follow with a sustained 10-15% increase through mid-2026.</figcaption>
+                </figure>
+
+                <p>Analysts at Strategic Energy Europe are forecasting a sustained 10-15% price increase for international buyers through mid-2026. That might not sound dramatic, but for a market accustomed to annual price declines, it represents a fundamental shift. The artificially ultra-cheap panels that drove global adoption are giving way to pricing that reflects true manufacturing costs.</p>
+
+                <p><strong>What this means for your project:</strong> If you're planning a residential installation for Q2 2026 or later, expect higher hardware costs. The smart money is signing contracts now or accelerating project timelines where possible. The installation labor shortage isn't going away, and now panel costs are rising too.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: EIA Forecast -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Solar Will Dominate New U.S. Power Capacity in 2026</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://renewablesnow.com">Renewables Now</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-eia-solar-farm.png" alt="Vast utility-scale solar farm stretching to horizon at golden hour">
+            </figure>
+            <div class="section-body">
+                <p>For all the policy uncertainty and trade friction, here's the number that matters: the U.S. Energy Information Administration's Short-Term Energy Outlook predicts solar will account for the <em>majority</em> of all new generation capacity added to the American grid in 2026.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-us-solar-generation.png" alt="Chart showing U.S. solar generation surge from 2022-2026">
+                    <figcaption>Solar generation is expected to reach 375 TWh in 2026, representing 71% of all new capacity additions—a dominance that seemed unthinkable a decade ago.</figcaption>
+                </figure>
+
+                <p>This isn't a projection based on optimistic assumptions about future policy. It's the result of a massive backlog of utility-scale projects that are finally connecting to the grid after years of interconnection delays. The economics are simply too compelling to ignore, regardless of which party controls the White House or which tariffs get imposed.</p>
+
+                <p>For residential solar, this utility-scale expansion actually creates headwinds in some markets—more cheap utility power means less compelling economics for rooftop systems in certain rate structures. But it also means the grid is getting cleaner, batteries are getting cheaper from scale, and the infrastructure to support distributed solar keeps improving.</p>
+
+                <p><strong>The bottom line:</strong> Solar has achieved economic escape velocity. The question isn't whether it will dominate new power generation—that's already decided. The question is how fast the rest of the energy system can adapt.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Looking Ahead</h2>
+            <p class="closing-text">The home solar market in 2026 is a study in contradictions: record efficiency breakthroughs alongside rising prices, vertical consolidation alongside technological diversification. For homeowners considering solar, the calculus has never been more nuanced—or the stakes higher. The rooftop revolution continues, but it's entering a new phase where timing and strategy matter as much as technology.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -412,6 +412,21 @@
                 break-inside: avoid;
             }
         }
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            max-width: 320px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
     </style>
 </head>
 <body>
@@ -427,6 +442,14 @@
             <span class="hero-label">Leica M-Mount</span>
             <h1 class="hero-title">The 50mm Question: Six Decades of Excellence</h1>
             <p class="hero-subtitle">The M-mount 50mm market is heating up with new releases, special editions, and a rumored update to the sharpest lens ever made. Here's what matters this week.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="../audio/the-50mm-question.wav" type="audio/wav">
+                </audio>
+            </div>
 
             <div class="hero-image">
                 <img src="../images/hero-leica-50mm.png" alt="Leica 50mm lens in dramatic studio lighting">

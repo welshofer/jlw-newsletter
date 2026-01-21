@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Machine in the Mirror — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for tech topics */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #095A70;
+            --border: #D8E2E8;
+            --border-strong: #C1D0D8;
+            --warning: #B85C38;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A0B0B8;
+                --accent: #2CAFA4;
+                --accent-soft: rgba(44, 175, 164, 0.15);
+                --accent-hover: #3CC4B8;
+                --border: #2A3035;
+                --border-strong: #3A4045;
+                --warning: #E07B52;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout.warning {
+            border-left-color: var(--warning);
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Weekly</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">AI & Creativity</span>
+            <h1 class="hero-title">The Machine in the Mirror</h1>
+            <p class="hero-subtitle">This week's research suggests our brains process language just like AI does. Which raises an uncomfortable question: when you look at AI-generated art, are you looking at the future—or at yourself?</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-machine-in-the-mirror.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-ai-creativity.png" alt="A human brain with neural pathways merging into digital circuit patterns, symbolizing the fusion of human creativity and artificial intelligence">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Your Brain Already Thinks Like an AI</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.sciencedaily.com/releases/2026/01/260121112233.htm">ScienceDaily</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-language-streams.png" alt="Abstract visualization of language as flowing streams of light converging">
+            </figure>
+            <div class="section-body">
+                <p>Here's a finding that should make you uncomfortable: researchers at <a href="https://new.huji.ac.il/">The Hebrew University of Jerusalem</a> discovered this week that your brain processes spoken language using essentially the same "next-word prediction" mechanism that powers ChatGPT and Claude.</p>
+
+                <p>The study challenges a comforting assumption we've held onto—that human cognition is fundamentally different from algorithmic processing. It isn't. When you're listening to someone speak, your brain is building meaning step-by-step, predicting what comes next, exactly like an LLM generates text.</p>
+
+                <p>The implications are significant for the creativity debate. If the foundational architecture of human thought overlaps this much with AI, the "soul" argument for why human creativity is special starts looking shaky. It suggests that AI models may be closer to replicating human-like creative processes than we assumed—not because they've become more human, but because we've always been more algorithmic than we realized.</p>
+
+                <div class="callout">
+                    <p><strong>The uncomfortable question:</strong> If AI creativity isn't "fake" because it mimics our own processes, what exactly makes human creativity special? The answer may not be in the mechanism, but in the stakes.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Eros Innovation's Play: Training Ethical AI Artists</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.medianews4u.com/eros-innovation-launches-aividya-to-empower-creative-talent-with-ethical-ai/">MediaNews4U</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-ethical-education.png" alt="Graduation cap above artist palette and film reel connected by AI circuits">
+            </figure>
+            <div class="section-body">
+                <p>While everyone argues about whether AI will replace artists, <a href="https://www.erosstx.com/">Eros Innovation</a> is quietly building the workforce that will work <em>with</em> it. Their new platform, AIVidya, launched today with a curriculum designed specifically to re-skill filmmakers, writers, and musicians for an AI-augmented future.</p>
+
+                <p>The differentiator isn't technical proficiency—it's ethics. AIVidya focuses exclusively on teaching creatives how to use AI tools that respect copyright and consent. The goal: a certified workforce of "AI-augmented" artists who can navigate the legal and moral complexities of this new landscape without ending up in court.</p>
+
+                <p>This matters because the skills gap is real. 83% of creative professionals now use generative AI in their workflows, but most learned through trial and error—often not understanding the legal implications of training data or output ownership. Eros is betting that companies will increasingly require ethical AI certification before hiring, the same way cybersecurity certifications became table stakes in tech.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ai-adoption-creatives.png" alt="Chart showing AI tool adoption rates among creative professionals">
+                    <figcaption>AI adoption has exploded across creative fields, but ethical training hasn't kept pace.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Adobe's New AI Removes Hours of Grunt Work—And That's the Point</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.adobe.com/news/2026/01/premiere-pro-after-effects-updates">Adobe Newsroom</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-adobe-masks.png" alt="Video editing timeline with AI-powered masks wrapping around figures">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.adobe.com/">Adobe</a> dropped significant updates to Premiere Pro and After Effects yesterday, and they tell you everything about where this industry is heading. The headline feature: "Object Mask"—AI-powered automatic tracking and masking of moving subjects that eliminates hours of manual rotoscoping work.</p>
+
+                <p>Here's the thing: rotoscoping is the definition of creative grunt work. Frame by frame, pixel by pixel. No one became a video editor because they love manually tracing the outline of a dancing figure across 900 frames. Removing that tedium isn't killing creativity—it's freeing editors to focus on actual storytelling decisions.</p>
+
+                <p>But Adobe also launched "Firefly Boards"—a storyboarding tool that generates visual sequences from script text directly in the editor. This is different. This isn't removing grunt work; this is AI having opinions about how your story should look before you've made those choices yourself. The line between "AI assistant" and "AI creative director" keeps blurring.</p>
+
+                <div class="callout">
+                    <p><strong>The shift:</strong> AI is moving from handling technical execution to influencing creative direction. The question isn't whether you'll use AI—it's whether you'll use it as a tool or let it become a collaborator you didn't ask for.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Old Laws, New Ghosts: Why the Resistance Is Failing</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.artsjournal.com/2026/01/old-laws-new-ghosts-why-the-creative-resistance-to-ai-is-failing.html">ArtsJournal</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-legal-ghosts.png" alt="Ghostly artist figure before a wall of code they cannot touch">
+            </figure>
+            <div class="section-body">
+                <p>A scathing analysis piece from ArtsJournal crystallizes what many artists sense but haven't articulated: the legal resistance to AI training data scraping is struggling to find footing, and it's not because the concerns aren't valid. It's because existing copyright law wasn't built for this.</p>
+
+                <p>The core problem: copyright protects specific expressions, not styles. When an AI learns to paint "like" you without copying any specific painting, current law offers little recourse. You can't copyright a brushstroke technique or a color palette. Artists are fighting what the piece calls "new ghosts"—algorithmic style mimicry—with "old weapons" designed for photocopiers and bootleg prints.</p>
+
+                <p>The article identifies a growing divide: artists who view AI as outright theft and are willing to fight (often losing), versus those resignedly adopting an "adapt or die" mentality. Neither camp is particularly happy. What's missing is a legal framework that acknowledges that style itself has value—a concept copyright law has historically rejected.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-transparency-divide.png" alt="Donut chart showing freelancer AI disclosure rates">
+                    <figcaption>Half of freelancers using AI in client work don't disclose it—fear of backlash meets legal ambiguity.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Stagwell Bets Big: AI Isn't Just a Tool Anymore</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.gurufocus.com/news/2619482/stagwell-inc-launches-quarter-creek-ventures">GuruFocus</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-investment.png" alt="Money tree with AI chips as leaves, growing from marketing icons">
+            </figure>
+            <div class="section-body">
+                <p>Follow the money. Marketing giant <a href="https://www.stagwellglobal.com/">Stagwell Inc.</a> just launched "Quarter Creek Ventures," a dedicated incubator fund for AI-powered marketing and creative startups. This isn't a side bet—it's a strategic pivot that tells you where the holding companies see the future.</p>
+
+                <p>What's notable is the fund's focus: "AI implementation" and "adtech innovation." Not AI-as-efficiency-tool. Not AI-for-automation. <em>Implementation</em>—as in, building the infrastructure that makes AI the default operating system for creative work. This follows Stagwell's earlier launch of "The Machine," an agentic AI system for marketing that makes strategic recommendations rather than just executing tasks.</p>
+
+                <p>The writing is on the wall: major agencies aren't just adopting AI tools; they're funding the infrastructure that will make AI-first creative workflows the industry standard. If you're building a creative career on the assumption that "AI is just a phase," you're building on sand.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-role-transformation.png" alt="Chart showing creative role transformation expectations">
+                    <figcaption>1 in 3 visual creatives expect their job title to fundamentally change by year's end.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Quiet Shift: AI as Decision-Maker</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.campaignasia.com/article/omnicom-media-group-apac-releases-2026-trends-report/493782">Campaign Asia</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-decision-maker.png" alt="Robotic and human hands reaching toward a glowing chess piece">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.omnicommediagroup.com/">Omnicom Media Group</a> Asia Pacific released its 2026 Trends Report last week, and buried in the marketing jargon is a significant admission: AI is evolving "from a tool we use to a partner that decides."</p>
+
+                <p>Read that again. Not assists. <em>Decides.</em></p>
+
+                <p>The report predicts that AI will increasingly take charge of strategic choices in media planning and creative optimization. That means the AI isn't just generating thumbnail options for you to pick from—it's selecting the winning creative based on predicted performance before you've even seen the alternatives. Human judgment becomes the appeal process, not the default.</p>
+
+                <p>The report warns that treating AI merely as an "efficiency hack" will lead to "average" creative work. The competitive advantage, they argue, lies in human-AI <em>hybrid strategy</em>—knowing when to override the machine's recommendations and when to trust them. That's a very different skill than most creatives have developed.</p>
+
+                <div class="callout warning">
+                    <p><strong>The new creative skill:</strong> Not "how to use AI tools" but "when to disagree with AI recommendations." The creatives who thrive won't be those who resist AI or blindly accept it—they'll be the ones who develop judgment about when the machine is wrong.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Mirror Reflects Both Ways</h2>
+            <p class="closing-text">This week's research suggests we've been asking the wrong question. It's not "will AI replace human creativity?"—it's "what makes human creativity worth preserving if the process itself isn't unique?" The answer might be stakes: AI doesn't risk anything by creating. We do. That vulnerability might be what we're really afraid to lose.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Weekly</span>
+        </div>
+    </footer>
+</body>
+</html>

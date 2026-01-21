@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California Grid Weekly — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal for California grid energy theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F0F5F4;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #095A72;
+            --border: #D8E2E8;
+            --border-strong: #B8CDD6;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F1416;
+                --bg-alt: #172024;
+                --text: #F0F5F4;
+                --text-secondary: #8BA3B0;
+                --accent: #2DB8D8;
+                --accent-soft: rgba(45, 184, 216, 0.15);
+                --accent-hover: #4DC8E8;
+                --border: #243338;
+                --border-strong: #344550;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           AUDIO PLAYER
+           ======================================== */
+
+        .audio-player {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-md) 0;
+        }
+
+        .audio-player-inner {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-sm) var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .audio-player-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .audio-player audio {
+            flex: 1;
+            height: 36px;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+
+            .audio-player-inner {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .audio-player-label {
+                text-align: center;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer,
+            .audio-player {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="newsletter-brand">California Grid Weekly</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <div class="audio-player">
+        <div class="audio-player-inner">
+            <span class="audio-player-label">Listen to this issue</span>
+            <audio controls preload="metadata">
+                <source src="audio/jlw-2026-01-21-california-grid.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Energy Infrastructure</span>
+            <h1 class="hero-title">California's Grid Gets Smarter While the World Gets Pricier</h1>
+            <p class="hero-subtitle">Farm pumps become grid batteries. Microinverters go commercial. And China's policy shift is about to hit your solar quote. Here's what moved California energy this week.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-california-grid.png" alt="Aerial view of California's electrical grid infrastructure at golden hour, with solar arrays and transmission lines converging toward urban centers">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Yield Edge -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Your Irrigation Pump Is Now a Grid Asset</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.pv-tech.org">PV Tech</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <div class="section-image">
+                <img src="images/article-01-yield-edge.png" alt="Agricultural solar installation with smart grid integration">
+            </div>
+            <div class="section-body">
+                <p>When CAISO calls for load shedding, you hope the lights stay on. But what if the answer isn't shutting things off—it's asking a thousand farm pumps to take a coffee break?</p>
+
+                <p><a href="https://yieldenergy.com">Yield Energy</a> just launched "Yield Edge," a distributed energy resource management system backed by the California Energy Commission. The platform targets agricultural loads—irrigation pumps, refrigeration units, processing equipment—and turns them into flexible grid resources.</p>
+
+                <p>The math matters here. California agriculture uses roughly 8% of the state's electricity, much of it during peak summer hours when solar output is crashing and AC demand is spiking. If Yield Edge can shave even 500 MW during critical windows, that's a medium-sized peaker plant worth of capacity that never needs to be built.</p>
+
+                <div class="callout">
+                    <p><strong>The shift:</strong> We've spent years talking about batteries and demand response from commercial buildings. Yield Edge signals a new frontier—unlocking flexibility from sectors that weren't even on the grid integration roadmap five years ago.</p>
+                </div>
+
+                <p>Watch for: Expansion beyond agriculture. If this model works for pumps, it works for cold storage, water treatment, and a dozen other industries with interruptible loads.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Enphase IQ9 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Commercial Rooftop Finally Gets Microinverter Respect</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://pv-tech.org">PV Tech</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-image">
+                <img src="images/article-02-enphase-iq9.png" alt="Enphase IQ9 microinverter installation on commercial rooftop">
+            </div>
+            <div class="section-body">
+                <p>Microinverters have dominated residential solar for a decade. Commercial rooftops? String inverters ruled, because the economics didn't pencil for smaller DC/AC ratios at scale. That calculus just changed.</p>
+
+                <p>Fremont-based <a href="https://enphase.com">Enphase Energy</a> started volume shipments of its IQ9N-3P commercial microinverters this week. The numbers: 600W panel support, 97.5% efficiency, and three-phase output designed for the small-to-medium commercial market that string inverters have served by default.</p>
+
+                <p>Goldman Sachs upgraded Enphase's stock on the news, citing "strong adoption metrics." The real story is about installation flexibility. Commercial roofs are messy—HVAC units, vents, skylights creating partial shading nightmares that punish string-based systems. Module-level power electronics solve that.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-energy-mix.png" alt="California energy generation mix 2020-2026 showing solar growth">
+                    <figcaption>California's generation mix has shifted dramatically. Solar's share has nearly doubled since 2020, but the integration challenge grows with every new panel.</figcaption>
+                </figure>
+
+                <p>The implication for California's grid: More commercial buildings will now add solar that would have been uneconomical before. That's more midday generation, more duck curve pressure, and more urgency to solve the storage and flexibility problems downstream.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: SunPower/Cobalt -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">SunPower Buys Its Way Closer to the Roof</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://solarquarter.com">SolarQuarter</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-image">
+                <img src="images/article-03-sunpower-merger.png" alt="SunPower and Cobalt Power Systems merger visualization">
+            </div>
+            <div class="section-body">
+                <p>Vertical integration is eating California's solar market. If you make the panels, why share margin with an installer? If you do the installs, why not control the supply chain?</p>
+
+                <p><a href="https://sunpower.com">SunPower</a> signed a letter of intent to acquire <a href="https://cobaltpowersystems.com">Cobalt Power Systems</a>, one of California's leading residential installers. Cobalt will operate as a standalone subsidiary—keeping the local brand while plugging into SunPower's technology stack and supply agreements.</p>
+
+                <p>This deal is about two things: margin capture and quality control. SunPower can now guarantee that its premium panels get premium installations, reducing warranty claims and protecting brand reputation. Cobalt gets supply certainty in a market where panel availability has whipsawed installers for two years.</p>
+
+                <div class="callout">
+                    <p><strong>What's at stake:</strong> Grid interconnection quality. Manufacturer-controlled installers have stronger incentives to do it right the first time. Fewer botched installs means fewer grid integration headaches, fewer inspection failures, and faster time-to-operation for new capacity.</p>
+                </div>
+
+                <p>The flip side: market concentration. If every major manufacturer buys their installer network, independent installers get squeezed on both supply and demand. Consumer choice narrows.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: UCLA Thermal Material -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">A Material That Breaks Physics Textbooks</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://newsroom.ucla.edu">UCLA Newsroom</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-image">
+                <img src="images/article-04-ucla-thermal.png" alt="Crystalline structure of theta-phase tantalum nitride">
+            </div>
+            <div class="section-body">
+                <p>The Wiedemann-Franz law has governed our understanding of heat transport in metals since 1853. Materials that conduct electricity well also conduct heat well, and the ratio between them is roughly constant. Except now there's an exception.</p>
+
+                <p><a href="https://ucla.edu">UCLA</a> researchers identified theta-phase tantalum nitride, a metallic material with thermal conductivity three times higher than copper while maintaining more moderate electrical conductivity. This breaks the textbook relationship.</p>
+
+                <p>Why does California's grid care about a materials science paper? Thermal management is the silent killer of power electronics. Every inverter, every transformer, every high-voltage transmission component generates waste heat. The ability to dissipate that heat determines how much power you can push through a given piece of equipment—and how long it lasts.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-interconnection-queue.png" alt="California grid interconnection queue showing delays and backlog">
+                    <figcaption>The interconnection queue has become California's binding constraint. Nearly 150 GW of projects wait for connection—over 3x the state's peak demand. Better thermal management could help clear this backlog by enabling denser substation equipment.</figcaption>
+                </figure>
+
+                <p>Near-term applications: more compact, more reliable grid-tie inverters. Substations that handle more throughput in smaller footprints. The research is early-stage, but the commercial interest from grid equipment manufacturers will be immediate.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Tesla Series 4 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Tesla Bundles Its Way Into Virtual Power Plants</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://pv-magazine-usa.com">PV Magazine</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-image">
+                <img src="images/article-05-tesla-series4.png" alt="Tesla Series 4 solar panels with Powerwall 3 battery storage">
+            </div>
+            <div class="section-body">
+                <p>When you're <a href="https://tesla.com">Tesla</a>, you don't just sell solar panels. You sell a grid participation story.</p>
+
+                <p>The company began shipping its new TSP-420 "Series 4" modules from Gigafactory New York this week. The specs are solid—415-420W output, all-black aesthetic—but unremarkable compared to tier-one competitors. What matters is the bundle: Series 4 panels ship with Powerwall 3, and the whole system is designed for Tesla's virtual power plant programs.</p>
+
+                <p>Tesla's California VPP has already demonstrated what happens when thousands of Powerwalls coordinate: during grid stress events in 2025, enrolled batteries discharged 50+ MW at critical moments. With Series 4 pushing solar-plus-storage as a single purchase decision, Tesla is betting that VPP-ready capacity will scale faster than utility-scale projects stuck in interconnection limbo.</p>
+
+                <div class="callout">
+                    <p><strong>The IRA angle:</strong> Series 4 modules are manufactured in New York specifically to qualify for domestic content bonuses under the Inflation Reduction Act. Tesla is betting that "Made in USA" commands a premium worth the manufacturing cost differential.</p>
+                </div>
+
+                <p>The strategic question: Can distributed solar-plus-storage behind the meter solve California's reliability problems faster than the utility-scale buildout? Tesla's clearly betting yes.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Market Outlook -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Price of Panels Is Going Up. Here's Why.</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://renewablesnow.com">Renewables Now</a> & <a href="https://strategicenergy.eu">Strategic Energy Europe</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-image">
+                <img src="images/article-06-solar-surge-prices.png" alt="Solar panel price trends and market analysis">
+            </div>
+            <div class="section-body">
+                <p>Two stories from last week connect in an uncomfortable way.</p>
+
+                <p>First, the good news: The EIA's latest Short-Term Energy Outlook predicts solar will account for the majority of new U.S. generation capacity in 2026. California remains the primary driver. The bottleneck has officially shifted from "can we build enough panels?" to "can we connect them fast enough?"</p>
+
+                <p>Now the complication: China removed VAT rebates on solar exports, and panel prices are rising 10-15% as buyers rush to secure inventory before the full policy impact hits in April. The era of artificially cheap panels is ending.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-panel-prices.png" alt="Solar panel price trajectory showing recent increases">
+                    <figcaption>After years of falling prices, solar modules are experiencing their first sustained price increase since 2021. The Q1 spike reflects pre-buying ahead of China's policy change.</figcaption>
+                </figure>
+
+                <p>For California utilities and developers, this is a timing problem. Projects scheduled for Q2/Q3 2026 that assumed stable or declining panel costs now face higher capital expenditure. Some will pencil anyway. Others will delay, rebid, or restructure financing.</p>
+
+                <p>The implication: California's 2026 solar buildout may still break records, but the cost per installed watt will be higher than anyone budgeted six months ago. Ratepayers or shareholders will absorb the difference.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">That's the grid this week.</h2>
+            <p class="closing-text">California's energy transition isn't slowing down—but it's getting more expensive and more complicated. The wins (smarter demand response, better inverters, breakthrough materials) are real. So are the headwinds (panel prices, interconnection queues, market consolidation). Stay tuned.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">California Grid Weekly</span>
+            <span class="footer-links">
+                <a href="#">Built with Claude Code</a>
+            </span>
+        </div>
+    </footer>
+</body>
+</html>

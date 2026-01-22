@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Curious Character — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm terracotta for Feynman */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The JLW Newsletter</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Science & Legacy</span>
+            <h1 class="hero-title">The Curious Character</h1>
+            <p class="hero-subtitle">Richard Feynman played bongos, cracked safes, won the Nobel Prize, and taught us that the pleasure of finding things out is the only honest currency in science. Nearly four decades after his death, his lessons hit harder than ever.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-curious-character.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-feynman.webp" alt="A 1960s physics laboratory with chalkboard covered in Feynman diagrams, bongo drums in the corner, warm golden light">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Challenger Investigation -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Ice Water That Changed Everything</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nasa.gov/history/rogersrep/genindex.htm">NASA Rogers Commission Report</a></span>
+                <span class="section-date">January 28, 1986</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-challenger.webp" alt="O-ring in a glass of ice water, dramatic demonstration moment">
+            </figure>
+            <div class="section-body">
+                <p>Forty years ago next week, seven astronauts died when the Space Shuttle <em>Challenger</em> broke apart 73 seconds after launch. The world watched in horror. And then they watched <a href="https://en.wikipedia.org/wiki/Richard_Feynman">Richard Feynman</a> do something nobody at <a href="https://www.nasa.gov">NASA</a> expected: he found the truth with a glass of ice water and a C-clamp.</p>
+
+                <p>Appointed to the Rogers Commission investigating the disaster, Feynman quickly grew frustrated with the bureaucratic theater. While officials shuffled papers and protected reputations, he went directly to engineers. They told him what management didn't want to hear: the O-rings that sealed the solid rocket boosters lost their resilience in cold weather. The launch had proceeded at 36°F—well below safe limits.</p>
+
+                <p>During a televised hearing, Feynman produced a sample O-ring, dunked it in ice water, and squeezed it with a clamp. When he released it, the rubber stayed compressed instead of springing back. "I believe that has some significance for our problem," he said dryly. The room understood immediately. The engineers had been right. Management had been warned. The astronauts had died for a schedule.</p>
+
+                <div class="callout">
+                    <p>"For a successful technology, reality must take precedence over public relations, for Nature cannot be fooled."</p>
+                </div>
+
+                <p>That line, from Feynman's appendix to the commission report, remains the most quoted sentence about engineering ethics ever written. As we approach the 40th anniversary of the disaster, it's worth asking: have we learned anything? The answer, looking at recent Boeing incidents and tech company "move fast and break things" culture, is uncomfortably uncertain.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: The Feynman Lectures -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Physics Course That Became Gospel</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.feynmanlectures.caltech.edu/">Caltech</a></span>
+                <span class="section-date">1961–1963</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-lectures.webp" alt="Red physics textbook volumes on a wooden desk with dramatic lighting">
+            </figure>
+            <div class="section-body">
+                <p>In 1961, <a href="https://www.caltech.edu">Caltech</a> asked Feynman to redesign their introductory physics course. They got more than they bargained for. Over two years, he delivered 111 lectures that would become <em>The Feynman Lectures on Physics</em>—three red volumes that have sold over 1.5 million copies and fundamentally changed how physics is taught worldwide.</p>
+
+                <p>The lectures were a pedagogical experiment born from frustration. Feynman believed most physics textbooks were deadly boring, focused on memorization rather than understanding. He wanted students to feel the joy of discovery, to understand not just the "what" but the "why" of physical laws.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-lectures-impact.png" alt="Bar chart showing annual accesses of The Feynman Lectures Online from 2013-2025, with notable spike during 2020">
+                    <figcaption>Since Caltech made the lectures freely available online in 2013, annual accesses have grown from 500,000 to over 20 million, with a notable spike during the COVID-19 pandemic when remote learning surged.</figcaption>
+                </figure>
+
+                <p>What made Feynman different? He started from first principles and built up. He used analogies that made quantum mechanics feel intuitive. He admitted when he didn't understand something. And he never, ever talked down to students.</p>
+
+                <p>"I don't know what's the matter with people: they don't learn by understanding; they learn by some other way—by rote or something," he once complained. "Their knowledge is so fragile!" His lectures were his answer: make knowledge robust by making it meaningful.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: QED and Feynman Diagrams -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Drawing the Invisible Universe</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nobelprize.org/prizes/physics/1965/feynman/facts/">Nobel Prize</a></span>
+                <span class="section-date">1965</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-qed.webp" alt="Abstract visualization of Feynman diagrams with elegant particle interaction lines">
+            </figure>
+            <div class="section-body">
+                <p>Before Feynman, calculating how particles interact was a nightmare of intractable mathematics. Physicists could barely compute even simple interactions between electrons and photons. Then Feynman drew a picture, and everything changed.</p>
+
+                <p><a href="https://en.wikipedia.org/wiki/Feynman_diagram">Feynman diagrams</a> are deceptively simple: lines representing particles, vertices representing interactions, time flowing from left to right. But they encode an entire mathematical framework for calculating quantum behavior. What once took pages of algebra became something you could sketch on a napkin.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-contributions.png" alt="Horizontal bar chart showing Feynman's scientific contributions rated by lasting impact">
+                    <figcaption>Feynman diagrams remain his most widely-used contribution, employed daily by thousands of physicists worldwide to calculate particle interactions.</figcaption>
+                </figure>
+
+                <p>For this work on quantum electrodynamics (QED), Feynman shared the 1965 Nobel Prize with <a href="https://en.wikipedia.org/wiki/Julian_Schwinger">Julian Schwinger</a> and <a href="https://en.wikipedia.org/wiki/Shin%27ichir%C5%8D_Tomonaga">Sin-Itiro Tomonaga</a>. All three had independently solved the same problem—but only Feynman's approach gave physicists a practical visual tool they still use every day.</p>
+
+                <p>QED is the most precisely tested theory in all of science. Its predictions match experiments to more than 10 decimal places—like measuring the distance from New York to Los Angeles to within a hair's width. And every time a physicist checks those calculations, they're using Feynman diagrams.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Manhattan Project -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Young Genius at Los Alamos</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.atomicheritage.org/profile/richard-feynman">Atomic Heritage Foundation</a></span>
+                <span class="section-date">1943–1945</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-manhattan.webp" alt="1940s Los Alamos desert landscape at sunset with silhouettes of wooden buildings">
+            </figure>
+            <div class="section-body">
+                <p>At 24, Richard Feynman arrived at <a href="https://www.lanl.gov">Los Alamos</a> to help build the atomic bomb. He was one of the youngest physicists on the <a href="https://en.wikipedia.org/wiki/Manhattan_Project">Manhattan Project</a>—and one of the most restless. While his colleagues focused solely on the bomb, Feynman found time to become the camp's most notorious safe-cracker.</p>
+
+                <p>It started as a practical concern: classified documents were stored in combination-lock filing cabinets, and Feynman worried about security. So he taught himself to crack safes—first by exploiting manufacturers' defaults, then by sheer persistence, and finally by studying the psychology of the people who set combinations. (Hint: physicists often used mathematical constants like e = 2.71828.)</p>
+
+                <p>But the pranks masked darker realities. Feynman's first wife, Arline, was dying of tuberculosis in an Albuquerque sanatorium while he worked on weapons of mass destruction 100 miles away. She died in June 1945, weeks before the Trinity test. He wrote her letters for years afterward, including a famous one that ended: "P.S. Please excuse my not mailing this—but I don't know your new address."</p>
+
+                <figure class="chart">
+                    <img src="images/chart-feynman-timeline.png" alt="Timeline of Richard Feynman's life showing key events from 1918 to 1988">
+                    <figcaption>Feynman's 70-year life spanned from the end of World War I through the dawn of the quantum computing era, touching nearly every major development in 20th-century physics.</figcaption>
+                </figure>
+
+                <p>The war left scars. For years after Hiroshima, Feynman saw bridges and buildings and instinctively calculated their destruction radii. "I would see people building a bridge, and I would think: they're crazy, they don't understand," he recalled. It took time—and the pure joy of physics itself—to pull him back from despair.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Personal Character -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Bongos, Brazil, and the Art of Not Fooling Yourself</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.amazon.com/Surely-Youre-Joking-Mr-Feynman/dp/0393355624">"Surely You're Joking, Mr. Feynman!"</a></span>
+                <span class="section-date">1985</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-bongos.webp" alt="Vintage bongo drums with a combination lock and sketch pad nearby">
+            </figure>
+            <div class="section-body">
+                <p>Richard Feynman played bongo drums in a strip club. He drew nude models under the pseudonym "Ofey." He taught himself Portuguese to spend a sabbatical in Brazil, where he joined a samba school and marched in Carnival. He was, by his own admission, "a curious character."</p>
+
+                <p>These weren't distractions from physics—they were expressions of the same restless curiosity that drove his science. Feynman believed deeply that the boundaries between "serious" and "playful" were false. "I don't believe I can really do without teaching," he once explained. "The reason is that I have to have something so that when I don't have any ideas and I'm not getting anywhere I can say to myself, 'At least I'm living; at least I'm doing something.'"</p>
+
+                <p>His 1985 memoir <em>Surely You're Joking, Mr. Feynman!</em> became an unlikely bestseller—a Nobel laureate telling stories about picking up women, playing pranks on colleagues, and cracking safes. But threaded through the adventures was a philosophy: stay curious, distrust authority, never fool yourself.</p>
+
+                <div class="callout">
+                    <p>"The first principle is that you must not fool yourself—and you are the easiest person to fool."</p>
+                </div>
+
+                <p>That principle, delivered in his 1974 Caltech commencement address, became the intellectual backbone of the scientific method for a generation. It's the reason Feynman matters beyond physics: he gave us a framework for honest thinking in a world full of motivated reasoning.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Legacy -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">What Remains When the Bongos Stop</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Richard_Feynman">Legacy</a></span>
+                <span class="section-date">February 15, 1988</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-legacy.webp" alt="Quote written in chalk on vintage blackboard about not fooling yourself">
+            </figure>
+            <div class="section-body">
+                <p>Richard Feynman died of cancer on February 15, 1988, in Los Angeles. He was 69. His last recorded words were: "I'd hate to die twice. It's so boring."</p>
+
+                <p>In the decades since, his influence has only grown. His 1981 lecture proposing quantum computers laid the groundwork for an industry now valued at billions. His diagrams remain the standard visual language of particle physics. His lectures are read by more students than ever, thanks to <a href="https://www.feynmanlectures.caltech.edu/">Caltech's free online edition</a>. And his approach to thinking—rigorous, playful, honest—has become a model for scientists and non-scientists alike.</p>
+
+                <p>But perhaps his greatest legacy is harder to quantify: he made physics cool. In an era when scientists were often portrayed as cold or detached, Feynman showed that the pursuit of knowledge could be joyful, mischievous, and deeply human. He proved you could be brilliant and goofy, rigorous and playful, serious about truth and unserious about status.</p>
+
+                <p>"I can live with doubt, and uncertainty, and not knowing," he said in a 1981 BBC interview. "I think it's much more interesting to live not knowing than to have answers which might be wrong." That intellectual humility—the willingness to say "I don't know" while never stopping the search—is the real Feynman legacy.</p>
+
+                <p>Nearly forty years after his death, we could use more of it.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Pleasure of Finding Things Out</h2>
+            <p class="closing-text">Feynman's life reminds us that curiosity isn't a luxury—it's a discipline. The questions we refuse to ask are the ones that fool us most.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Evaluation Arms Race — January 22, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - indigo/violet for technical/scientific */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D73;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7BA8;
+                --accent-soft: rgba(139, 123, 168, 0.15);
+                --accent-hover: #A595C0;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html { font-size: 18px; scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child { border-bottom: none; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover { border-color: var(--accent); }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p { margin: 0 0 var(--space-sm); }
+        .section-body p:last-child { margin-bottom: 0; }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover { text-decoration-color: var(--accent); }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p { margin: 0; font-size: 0.95rem; }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        .chart { margin: var(--space-md) 0; padding: 0; }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .section { padding: var(--space-lg) 0; }
+            .section-title { font-size: 1.35rem; }
+        }
+
+        @media print {
+            .header, .footer { display: none; }
+            .section { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 22, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">AI Evaluation</span>
+            <h1 class="hero-title">The Evaluation Arms Race</h1>
+            <p class="hero-subtitle">Static benchmarks are dying. This week brought a flood of new evaluation frameworks—from crowd-sourced community tests to government mandates—and a stark reminder that we're still not testing for the attacks that matter most.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-evaluation-arms-race.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-ai-evals.webp" alt="Abstract visualization of AI evaluation systems with measurement instruments and neural network nodes">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: DSAEval -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-dsaeval.webp" alt="Data science agent analyzing charts and code">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">Data Science Agents Get Their Own Benchmark</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://arxiv.org/">arXiv</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Here's the uncomfortable truth about most AI benchmarks: they test whether a model can <em>answer questions about</em> data science, not whether it can actually <em>do</em> data science. <a href="https://arxiv.org/">DSAEval</a> finally addresses this gap.</p>
+
+                <p>The new benchmark from arXiv researchers throws real-world data science problems at AI agents—messy datasets, ambiguous requirements, the need to write code, execute it, interpret results, and iterate. The kind of work that junior analysts spend their first two years learning.</p>
+
+                <p>What makes DSAEval interesting isn't just the tasks—it's the evaluation criteria. Rather than checking if the agent produces "correct" code, it measures whether the agent's analysis would actually help a decision-maker. This is the maturation of agentic evaluation: testing functional capabilities in professional domains, not just text generation.</p>
+
+                <div class="callout">
+                    <p><strong>The so-what:</strong> If your organization is considering deploying AI for data analysis, DSAEval provides the first credible benchmark for comparing options. Expect vendors to start citing DSAEval scores within weeks.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: DoD AI-First -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-dod-strategy.webp" alt="Pentagon command center with AI evaluation dashboards">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Pentagon Wants Models Deployed in 30 Days—With "Objectivity" Tests</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.defense.gov/">US Department of Defense</a></span>
+                <span class="section-date">January 19, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The Department of Defense just made AI evaluation a matter of national security. Their new "AI-First" strategy mandates that new AI models be deployable within <strong>30 days</strong> of public release—and establishes entirely new evaluation criteria that vendors must meet.</p>
+
+                <p>The most provocative requirement: benchmarks for "model objectivity." The <a href="https://www.cdo.mil/">Chief Digital and AI Office</a> (CDAO) has been tasked with defining what "objective truthfulness" means for AI systems, and explicitly banning models with "ideological tuning" that interferes with this standard.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-eval-evolution.png" alt="Evolution of AI evaluation approaches from 2022 to 2026">
+                    <figcaption>The shift from static benchmarks to dynamic verification accelerates in 2026</figcaption>
+                </figure>
+
+                <p>The quote that should make AI labs nervous: "The risks of not moving fast enough outweigh the risks of imperfect alignment." This is the government effectively saying speed matters more than perfect safety—a position that will force vendors to rethink their release cadences.</p>
+
+                <p>For AI companies, this creates a new high-stakes evaluation market. Meet the DoD's objectivity and speed standards, and you're eligible for defense contracts. Fail them, and you're locked out of one of the largest AI procurement budgets on Earth.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Patronus Lynx -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-patronus-lynx.webp" alt="Neural network lynx hunting for hallucinations in digital space">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">Patronus Deploys a Hallucination Hunter</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.patronus.ai/">Patronus AI</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.patronus.ai/">Patronus AI</a>'s new "Lynx" model represents a shift in how we think about AI reliability. Rather than evaluating models once before deployment, Lynx provides <em>real-time</em> hallucination detection—a verification layer that runs continuously during production.</p>
+
+                <p>The technical approach is compelling: Lynx is itself a specialized model trained specifically to identify when another model is making things up. It's evaluation-as-a-service, running alongside your production AI to catch confabulations before they reach users.</p>
+
+                <p>Patronus also announced "Generative Simulators" with something they call "Open Recursive Self-Improvement" (ORSI) for training agents in dynamic environments. The combination suggests a future where evaluation isn't a gate you pass once, but an ongoing process woven into the AI stack.</p>
+
+                <div class="callout">
+                    <p><strong>Why this matters for enterprise:</strong> If you're deploying AI in production, the liability question just changed. "We tested before launch" is no longer a sufficient answer when continuous verification tools exist.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Kaggle Benchmarks -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-kaggle-benchmarks.webp" alt="Community collaboration building benchmark frameworks">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Kaggle Crowdsources the Future of AI Testing</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.kaggle.com/">Kaggle</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.kaggle.com/">Kaggle</a>'s new Community Benchmarks platform is the most significant decentralization of AI evaluation we've seen. Instead of a handful of academic institutions defining what "good" looks like, now anyone can create, run, and share custom benchmarks.</p>
+
+                <p>The <code>kaggle-benchmarks</code> SDK supports code execution, tool use, and multi-turn conversations—the kinds of dynamic evaluations that static academic datasets never could. Users create "tasks" that test specific, real-world use cases, and models compete on leaderboards generated from these community-created challenges.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-benchmark-comparison.png" alt="Comparison of new benchmark capabilities">
+                    <figcaption>New benchmarks emphasize agent capabilities and dynamic evaluation</figcaption>
+                </figure>
+
+                <p>This is Google's bet that the best evaluations will come from the crowd, not from research labs. It's also a clever strategy: by becoming the platform where benchmarks are created, <a href="https://deepmind.google/">Google DeepMind</a> gains visibility into exactly what users care about testing.</p>
+
+                <p>The risk? Benchmark gaming becomes easier when anyone can create tests. But the flip side is that gaming becomes harder when there are thousands of tests to game, not just a handful of canonical ones.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Anthropic Cowork Vuln -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-cowork-vuln.webp" alt="Digital trojan horse made of documents with hidden malicious code">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Evaluation Gap: When Safety Tests Miss the Real Attacks</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://promptarmor.com/">PromptArmor</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Two days after <a href="https://www.anthropic.com/">Anthropic</a> launched its "Cowork" productivity agent, security researchers at <a href="https://promptarmor.com/">PromptArmor</a> demonstrated a prompt injection attack that could exfiltrate user files without approval. The attack vector? A shared document.</p>
+
+                <p>This isn't just another vulnerability disclosure. It's a stark demonstration of the gap between current AI safety evaluations—which focus heavily on text generation and harmlessness—and the complex security surface area of autonomous agents with file access.</p>
+
+                <p>The most damning detail: Anthropic was reportedly aware of this class of vulnerability before launch. Their mitigation strategy? Advising users to "monitor for suspicious actions." PromptArmor's response was blunt: "Expecting non-technical users to detect such attacks is unreasonable."</p>
+
+                <figure class="chart">
+                    <img src="images/chart-timeline-evals.png" alt="Timeline of AI evaluation developments in January 2026">
+                    <figcaption>A week of rapid developments across benchmarks, standards, and security research</figcaption>
+                </figure>
+
+                <p>The lesson for the entire industry: as AI systems gain agency—the ability to read files, browse the web, execute code—our evaluation frameworks need to expand beyond "does it say bad things" to "can it be weaponized through normal-looking inputs."</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: A³-Bench -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-a3bench.webp" alt="Scientific reasoning flowing through neural network structures">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">A New Metric for Scientific Reasoning: The Anchor-Attractor Index</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://arxiv.org/abs/2601.09274">arXiv</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Most benchmarks test whether models can solve problems. A³-Bench asks a different question: <em>how</em> do they solve them?</p>
+
+                <p>The new benchmark from <a href="https://arxiv.org/abs/2601.09274">arXiv researchers</a> contains 2,198 annotated problems across math, physics, and chemistry. But the innovation is in the evaluation metric: the "Anchor-Attractor Utilization Index" (AAUI), which measures how well models use foundational concepts—the "anchors"—to reason through problems.</p>
+
+                <p>This matters because it distinguishes between models that have genuinely learned scientific reasoning patterns and those that have simply memorized solution templates. A model might get the right answer while using flawed reasoning; AAUI catches that.</p>
+
+                <p>For AI researchers building systems meant to assist scientists, A³-Bench provides the first rigorous test of whether models actually think like scientists—or just produce scientist-sounding outputs.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Week Ahead</h2>
+            <p class="closing-text">The Musk vs. OpenAI lawsuit proceeds to trial. Legal discovery may force disclosure of OpenAI's internal AGI evaluation criteria—documents that could reshape the industry's understanding of how frontier labs define and measure artificial general intelligence. Watch that courtroom.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

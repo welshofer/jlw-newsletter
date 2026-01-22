@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built for Steve — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - indigo/violet for creative tech history */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D72;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #9B8BD0;
+                --accent-soft: rgba(155, 139, 208, 0.15);
+                --accent-hover: #B0A2E0;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Software History</span>
+            <h1 class="hero-title">Built for Steve</h1>
+            <p class="hero-subtitle">How a single user's frustration with PowerPoint birthed the most influential presentation software in history—and changed how the world tells stories.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/built-for-steve.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-keynote-stage.jpg" alt="Dramatic stage with spotlight illuminating Apple logo, the iconic setting for legendary product reveals">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Origins -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Presentation Software That Wasn't Supposed to Exist</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.apple.com/keynote/">Apple</a></span>
+                <span class="section-date">January 7, 2003</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-origins.jpg" alt="Steve Jobs silhouette presenting at Macworld 2003">
+            </figure>
+            <div class="section-body">
+                <p>Before there was Keynote, there was a problem: <a href="https://en.wikipedia.org/wiki/Steve_Jobs">Steve Jobs</a> hated PowerPoint. Not in the casual way most people dislike presentation software—with the visceral intensity of someone who saw slides as canvases and transitions as cinema. Following his return to <a href="https://www.apple.com">Apple</a> in 1997, Jobs commissioned a small internal team to build something better, based on <strong>Concurrence</strong>, a NeXTSTEP presentation app from <a href="https://en.wikipedia.org/wiki/Lighthouse_Design">Lighthouse Design</a>.</p>
+
+                <p>For nearly a year, this tool was Apple's secret weapon—used exclusively by Jobs himself to introduce the iPod and iMac to the world. Nobody outside Cupertino knew it existed.</p>
+
+                <div class="callout">
+                    <p><strong>"I wanted a presentation program that didn't just help me make slides, but helped me tell a story."</strong> — Steve Jobs, Macworld 2003</p>
+                </div>
+
+                <p>At Macworld San Francisco on January 7, 2003, Jobs revealed the secret: the software he'd been using all along was now available to everyone. For $99, you could have the same tool that had introduced the world to the digital music revolution. The keynote that announced Keynote was, fittingly, the greatest advertisement for Keynote ever made.</p>
+
+                <p>The technical foundation was equally revolutionary. While <a href="https://www.microsoft.com/powerpoint">PowerPoint</a> rendered text as pixelated bitmaps, Keynote leveraged Apple's new Quartz graphics engine for anti-aliased everything. The famous Cube transition—a 3D spin that felt like technology from the future—became an instant calling card. Within weeks, designers and creatives began abandoning Microsoft's offering in droves.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Early Development -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The iWork Era: When Apple Declared War on Office</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.apple.com/iwork/">Apple iWork</a></span>
+                <span class="section-date">January 2005</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-iwork-era.jpg" alt="3D cube transition frozen mid-rotation with iWork suite icons">
+            </figure>
+            <div class="section-body">
+                <p>In January 2005, Apple made its intentions clear: Keynote wasn't just a presentation app—it was the opening salvo in a productivity suite war. Bundled with a new word processor called <a href="https://www.apple.com/pages/">Pages</a>, the <strong>iWork</strong> suite positioned Apple as a direct competitor to <a href="https://www.microsoft.com/microsoft-365">Microsoft Office</a>. (Numbers, the spreadsheet app, would arrive in 2007 to complete the trilogy.)</p>
+
+                <p>This era defined Keynote's visual identity. The software leaned hard into <strong>skeuomorphism</strong>—Apple's design philosophy of making digital objects look like their physical counterparts. Themes featured realistic leather textures, linen backgrounds, and brushed metal surfaces. The interface itself looked like a physical presentation booth you might find at a trade show.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-keynote-timeline.png" alt="Timeline of Keynote major versions from 2003 to 2026">
+                    <figcaption>Key milestones in Keynote's 23-year evolution, from Jobs-era cinema to AI-powered creation.</figcaption>
+                </figure>
+
+                <p>Keynote 3.0 in January 2006 introduced <strong>HD support</strong>—a prescient move as the industry shifted toward widescreen monitors and projectors. New 3D charts and reflection effects became hallmarks of the "Aqua" design era. For creative professionals who'd suffered through PowerPoint's utilitarian aesthetic, Keynote felt like the future had arrived five years early.</p>
+
+                <p>The pricing remained premium: $79 for iWork, compared to hundreds for Microsoft Office. Apple was betting that creative professionals would pay for software that didn't make their work look like everyone else's.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Magic Move & iPad -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Magic Move: The Feature That Changed Everything</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.apple.com/newsroom/">Apple Newsroom</a></span>
+                <span class="section-date">January 2009</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-magic-move.jpg" alt="Abstract visualization of objects morphing between states with motion blur trails">
+            </figure>
+            <div class="section-body">
+                <p>Every software product has a "killer feature"—the one capability that makes users say, "I can't believe I lived without this." For Keynote, that feature arrived in January 2009: <strong>Magic Move</strong>.</p>
+
+                <p>The concept was deceptively simple: place an object on one slide, move or resize it on the next, and Keynote would automatically animate the transformation. No keyframes. No After Effects expertise. Just... magic. Suddenly, non-animators could create sophisticated motion graphics that would have taken professionals hours to produce manually.</p>
+
+                <p>Magic Move transformed how people thought about presentations. Instead of static slides connected by basic transitions, you could create flowing visual narratives where text danced, charts built themselves, and images swooped across the screen with cinematic grace. YouTube filled with "Keynote animation tutorial" videos. Conference speakers everywhere suddenly had access to Steve Jobs-level production values.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-keynote-features.png" alt="Stacked area chart showing feature growth from 2003 to 2024">
+                    <figcaption>Feature accumulation across categories shows Keynote's evolution from slideshow tool to multimedia production studio.</figcaption>
+                </figure>
+
+                <p>A year later came the iPad moment. When Jobs unveiled Apple's tablet in January 2010, he used Keynote for iPad as the flagship demonstration of "real work" on a touch device. The app had been completely rebuilt for multitouch—pinch to zoom, drag to reposition, tap to edit. It proved that presentation design could be tactile, immediate, personal.</p>
+
+                <p>The iPhone Keynote Remote app followed, letting presenters control their decks via Wi-Fi—a novelty that would become standard practice across the industry.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: The Great Rewrite -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Great Rewrite: Free, Controversial, and Cross-Platform</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.apple.com/newsroom/">Apple Newsroom</a></span>
+                <span class="section-date">October 2013</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-great-rewrite.jpg" alt="Mac, iPad, and iPhone showing same presentation with iCloud connection">
+            </figure>
+            <div class="section-body">
+                <p>October 2013 marked the most controversial moment in Keynote's history. Apple made two announcements that sent shockwaves through the user community: Keynote would become <strong>free</strong> for anyone purchasing a new Mac or iOS device, and it would be completely rewritten from scratch.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-keynote-pricing.png" alt="Bar chart showing Keynote pricing from $99 in 2003 to free in 2013">
+                    <figcaption>Keynote's journey from premium software to free bundled app reflects Apple's strategic shift toward ecosystem lock-in.</figcaption>
+                </figure>
+
+                <p>The free part was strategic genius. By bundling productivity software with hardware, Apple strengthened its ecosystem moat. Why switch to Windows when your presentations live in iCloud?</p>
+
+                <p>The rewrite part was painful. Keynote 6.0 unified the file format across Mac, iOS, and the new <strong>Keynote for iCloud</strong> (a web version accessible from any browser, including Windows PCs). But to achieve this cross-platform parity, Apple had to gut many "pro" features that power users relied on. Customizable toolbars vanished. Advanced animation controls disappeared. Forums erupted with complaints.</p>
+
+                <div class="callout">
+                    <p>The backlash was so severe that Apple spent the next two years publicly committing to re-add features they'd removed—an unusual admission for a company that rarely acknowledges user criticism.</p>
+                </div>
+
+                <p>Visually, Keynote 6.0 also marked the death of skeuomorphism. Following iOS 7's flat design revolution, the interface abandoned leather and linen for clean whites, subtle gradients, and geometric simplicity. The Keynote that emerged looked nothing like its predecessor—and sparked a design language that would influence presentation software industry-wide.</p>
+
+                <p>Real-time collaboration arrived alongside the rewrite. For the first time, multiple users could edit the same deck simultaneously from different devices and different continents. <a href="https://www.google.com/slides/about/">Google Slides</a> had pioneered this, but Apple's implementation was smoother, and Keynote finally had an answer to the "how do we work together remotely?" question that would become critical seven years later.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Modern Features -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Pandemic Pivot: Presenting in an Empty Room</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://support.apple.com/keynote">Apple Support</a></span>
+                <span class="section-date">2020-2023</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-modern-era.jpg" alt="Presenter embedded in their own slide with Apple Pencil annotations">
+            </figure>
+            <div class="section-body">
+                <p>Nobody predicted that 2020 would transform Keynote from "presentation software" into "broadcast production tool." When the world went remote, Apple pivoted hard to support the new reality of presenting to laptop cameras instead of conference rooms.</p>
+
+                <p><strong>Apple Pencil integration</strong> (introduced in 2018) suddenly became essential. Teachers could annotate slides in real-time during remote classes. Business presenters could sketch diagrams on the fly. The "Scribble" feature converted handwriting to text instantly—useful for anyone who thought better with a stylus than a keyboard.</p>
+
+                <p>The biggest pandemic-era innovation arrived in 2021: <strong>Live Video</strong>. Presenters could now insert a real-time camera feed of themselves directly into a slide, effectively becoming part of their presentation. Think weatherperson standing in front of a map—but for quarterly earnings calls and product demos. The "talking head in the corner" Zoom aesthetic suddenly felt amateur by comparison.</p>
+
+                <p><strong>Multi-presenter support</strong> followed, allowing two people in different locations to control the same deck remotely. Remote workshops and co-presented webinars became seamless. Keynote had evolved from solo performance tool to collaborative broadcast platform.</p>
+
+                <p>Behind the scenes, Apple migrated Keynote to the <strong>Metal</strong> graphics API, replacing aging OpenGL infrastructure. The result: buttery-smooth 60fps playback of 4K video and complex 3D transitions, even on modest hardware. Competitors struggled to match this performance, and Keynote's reputation for "just works" presentation playback solidified.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: AI Era -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The AI Era: When Siri Learned to Make Slides</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.apple.com/apple-intelligence/">Apple Intelligence</a></span>
+                <span class="section-date">2024-2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-ai-era.jpg" alt="Futuristic Liquid Glass interface with AI-generated slide layouts">
+            </figure>
+            <div class="section-body">
+                <p>When Apple announced <strong>Apple Intelligence</strong> at WWDC 2024, Keynote was a centerpiece of the demonstration. The integration went far deeper than expected: generative AI could now auto-generate slide layouts from text descriptions, create images that matched your presentation's visual style, and even rewrite your bullet points to be more "impactful" (whatever that means to a neural network).</p>
+
+                <p>"Siri, make this slide look punchier" became a viable command. You could describe a concept, and Keynote would generate multiple visual interpretations. The feature drew equal parts excitement (finally, I don't have to design!) and concern (is my job as a presentation designer over?).</p>
+
+                <p>2025 brought the <strong>Liquid Glass</strong> design language of macOS Tahoe to Keynote. The interface now featured deeply layered translucent elements—panels that seemed to float above your content, toolbars that blurred the presentation behind them. It was Apple's most ambitious visual redesign since the flat revolution of 2013.</p>
+
+                <div class="callout">
+                    <p><strong>As of January 2026</strong>, Keynote 16.0 is part of the new "Apple Creator Studio" bundle. The latest features include AI-generated presenter notes that analyze your slides and write speaking scripts, and "Dynamic Data" linking charts to live web sources that update in real-time during presentations.</p>
+                </div>
+
+                <p>Twenty-three years after Steve Jobs stood on a stage and wished for "a presentation program that tells stories," Keynote has become exactly that—and then some. From secret internal tool to AI-powered creative studio, it remains the presentation software that defines what presentation software should be.</p>
+
+                <p>PowerPoint, meanwhile, is still PowerPoint. Some things never change.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">One More Thing</h2>
+            <p class="closing-text">Perhaps the greatest tribute to Keynote is this: "keynote" has become a verb. We don't say "I'm giving a presentation"—we say "I'm keynoting." The software didn't just change how we make slides. It changed how we think about communicating ideas. That's the Steve Jobs effect, preserved in code.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

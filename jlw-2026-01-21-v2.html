@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>America's Hidden Illiteracy Crisis — January 21, 2026</title>
+    <title>Stay Hungry. Stay Foolish. — January 21, 2026</title>
 
     <!-- Fonts: Editorial elegance meets technical clarity -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,14 +12,14 @@
 
     <style>
         :root {
-            /* Core palette - deep indigo for educational gravitas */
+            /* Core palette - warm, sophisticated */
             --bg: #FDFBF7;
             --bg-alt: #F5F1EA;
             --text: #1A1815;
             --text-secondary: #5C564D;
-            --accent: #3D4F7C;
-            --accent-soft: rgba(61, 79, 124, 0.12);
-            --accent-hover: #2D3D5C;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
             --border: #E5E0D8;
             --border-strong: #D1C9BC;
 
@@ -48,9 +48,9 @@
                 --bg-alt: #1E1B18;
                 --text: #F5F1EA;
                 --text-secondary: #A69E93;
-                --accent: #6B8CC7;
-                --accent-soft: rgba(107, 140, 199, 0.15);
-                --accent-hover: #8AA8DB;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
                 --border: #2E2A25;
                 --border-strong: #3D3832;
             }
@@ -76,10 +76,6 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
-        /* ========================================
-           HEADER
-           ======================================== */
 
         .header {
             padding: var(--space-lg) var(--space-md);
@@ -109,10 +105,6 @@
             color: var(--text-secondary);
             letter-spacing: 0.03em;
         }
-
-        /* ========================================
-           HERO
-           ======================================== */
 
         .hero {
             padding: var(--space-xl) var(--space-md) var(--space-2xl);
@@ -156,7 +148,6 @@
             line-height: 1.6;
         }
 
-        /* Audio Player */
         .audio-player {
             display: flex;
             align-items: center;
@@ -165,8 +156,10 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: var(--space-sm) var(--space-md);
-            margin: var(--space-md) auto 0;
+            margin-top: var(--space-md);
             max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .audio-player svg { flex-shrink: 0; color: var(--accent); }
         .audio-player audio { flex: 1; height: 36px; min-width: 0; }
@@ -186,10 +179,6 @@
             height: auto;
             display: block;
         }
-
-        /* ========================================
-           CONTENT SECTIONS
-           ======================================== */
 
         .content {
             max-width: var(--content-width);
@@ -301,7 +290,7 @@
         }
 
         .article-image {
-            margin: 0 0 var(--space-md) 0;
+            margin: 0 0 1.5rem 0;
             border-radius: 8px;
             overflow: hidden;
         }
@@ -311,19 +300,6 @@
             display: block;
         }
 
-        .section-image {
-            margin: var(--space-md) 0;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-
-        .section-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Callout boxes */
         .callout {
             background: var(--bg-alt);
             border-left: 3px solid var(--accent);
@@ -337,7 +313,6 @@
             font-size: 0.95rem;
         }
 
-        /* Charts and data visualizations */
         .chart {
             margin: var(--space-md) 0;
             padding: 0;
@@ -359,10 +334,6 @@
             padding: 0 var(--space-xs);
             line-height: 1.5;
         }
-
-        /* ========================================
-           CLOSING / FOOTER
-           ======================================== */
 
         .closing {
             padding: var(--space-2xl) var(--space-md);
@@ -409,10 +380,6 @@
             color: var(--text);
         }
 
-        /* ========================================
-           RESPONSIVE
-           ======================================== */
-
         @media (max-width: 600px) {
             html {
                 font-size: 16px;
@@ -441,215 +408,212 @@
                 font-size: 1.35rem;
             }
         }
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-inner">
-            <a href="index.html" class="newsletter-brand">The JLW Newsletter</a>
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
             <time class="newsletter-date">January 21, 2026</time>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-inner">
-            <span class="hero-label">Education</span>
-            <h1 class="hero-title">America's Hidden Illiteracy Crisis</h1>
-            <p class="hero-subtitle">We declared victory over illiteracy in 1979. We were measuring the wrong thing. A century of data reveals how we traded one crisis for another—and what the $2.2 trillion cost tells us about the future.</p>
+            <span class="hero-label">The Life and Times</span>
+            <h1 class="hero-title">Stay Hungry. Stay Foolish.</h1>
+            <p class="hero-subtitle">Steve Jobs didn't invent the personal computer, the smartphone, or the animated film. He invented the <em>expectation</em> that technology should be beautiful, intuitive, and worth caring about. Fifty years after Apple's founding, his shadow looms larger than ever.</p>
 
             <div class="audio-player">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                 <span class="audio-player-label">Listen</span>
                 <audio controls preload="metadata">
-                    <source src="audio/americas-hidden-illiteracy-crisis.wav" type="audio/wav">
+                    <source src="audio/stay-hungry-stay-foolish.wav" type="audio/wav">
                 </audio>
             </div>
 
             <div class="hero-image">
-                <img src="images/hero-literacy-chalkboard.jpg" alt="Vintage classroom chalkboard with fading chalk letters, warm sunlight streaming through tall windows">
+                <img src="images/hero-steve-jobs-constellation.jpg" alt="Steve Jobs portrait emerging from a constellation of Apple products floating in cosmic space">
             </div>
         </div>
     </section>
 
     <main class="content">
-        <!-- SECTION 1: State-by-State Disparities -->
         <article class="section">
             <span class="section-number">01</span>
-            <h2 class="section-title">The Two Americas of Reading</h2>
+            <h2 class="section-title">The Face That Launched a Trillion Dollars—Now on a Dollar</h2>
             <div class="section-meta">
-                <span class="section-source">via <a href="https://worldpopulationreview.com/state-rankings/us-literacy-rates-by-state">World Population Review</a></span>
-                <span class="section-date">November 1, 2024</span>
+                <span class="section-source">via <a href="https://www.usmint.gov/news/press-releases">United States Mint</a></span>
+                <span class="section-date">2026</span>
             </div>
             <figure class="article-image">
-                <img src="images/article-01-state-disparities.jpg" alt="Abstract map of United States with glowing regions of varying intensities">
+                <img src="images/article-01-commemorative-coin.jpg" alt="Gleaming US commemorative coin emerging from mint press">
             </figure>
             <div class="section-body">
-                <p>If you're reading this in <a href="https://www.nh.gov/">New Hampshire</a>, congratulations: you live in America's most literate state. If you're in <a href="https://www.louisiana.gov/">Louisiana</a> or <a href="https://www.ms.gov/">Mississippi</a>, you're statistically more likely to struggle with the words on this page. The gap between them? Over 15 percentage points in adult literacy rates.</p>
+                <p>When the <a href="https://www.usmint.gov">U.S. Mint</a> announced Steve Jobs would appear on a $1 coin as part of the American Innovation series, the reaction was predictably split: canonization or commercialization? The coin features a young Jobs—turtleneck, round glasses, the whole mythology—with the inscription "Make Something Wonderful."</p>
 
-                <p>The data from the <a href="https://www.ed.gov/">Department of Education</a> paints a picture of two parallel nations. New England dominates the top rankings—New Hampshire, Vermont, Massachusetts—where 93%+ of adults read at functional levels. The Deep South clusters at the bottom, with rates dipping below 80%.</p>
+                <p>Here's what's remarkable: Jobs is the California representative for 2026, edging out everyone from <a href="https://en.wikipedia.org/wiki/Walt_Disney">Walt Disney</a> to the founders of <a href="https://www.google.com">Google</a>. That the Mint chose a Buddhist who dropped acid, abandoned his daughter, and famously didn't believe in philanthropy says something about how America measures greatness. We don't put saints on our money. We put people who <em>changed</em> things.</p>
 
-                <figure class="chart">
-                    <img src="images/chart-state-literacy-gap.png" alt="Bar chart showing top 5 and bottom 5 states by literacy rate">
-                    <figcaption>The 15+ point gap between highest and lowest states creates a two-tiered workforce.</figcaption>
-                </figure>
+                <p>The deeper irony: Jobs spent his career eliminating cash. Apple Pay, the digital wallet that made credit cards feel quaint—that was his vision made manifest. Now his face will end up in tip jars and parking meters, a physical relic from a man who worshipped the digital future.</p>
 
-                <p><strong>The surprise?</strong> <a href="https://www.ca.gov/">California</a>—one of America's wealthiest states—ranks among the lowest in adult literacy. The culprit isn't poverty alone. It's a complex mix of large non-English speaking populations, socioeconomic stratification, and educational inequality that wealth alone can't fix.</p>
-
-                <p>This isn't just an education problem. It's an economic geography problem. Businesses increasingly factor literacy rates into location decisions. The states that can't read are the states that don't get built.</p>
+                <div class="callout">
+                    <p><strong>The "Make Something Wonderful" inscription</strong> comes from a posthumous collection of Jobs' writings and speeches, curated by his wife <a href="https://en.wikipedia.org/wiki/Laurene_Powell_Jobs">Laurene Powell Jobs</a> and the Steve Jobs Archive. It's become the closest thing to an official motto for his legacy.</p>
+                </div>
             </div>
         </article>
 
-        <!-- SECTION 2: Science of Reading Legislation -->
         <article class="section">
             <span class="section-number">02</span>
-            <h2 class="section-title">The Reading Wars Are Over. Phonics Won.</h2>
+            <h2 class="section-title">What $500 Bought in 1976—and What It's Worth Now</h2>
             <div class="section-meta">
-                <span class="section-source">via <a href="https://www.edweek.org/teaching-learning/reading-legislation">Education Week</a></span>
-                <span class="section-date">October 15, 2024</span>
+                <span class="section-source">via <a href="https://www.rrauction.com">RR Auction / CBS News</a></span>
+                <span class="section-date">January 2026</span>
             </div>
             <figure class="article-image">
-                <img src="images/article-02-phonics-legislation.jpg" alt="Vintage phonics cards on wooden desk with legislative gavel">
+                <img src="images/article-02-auction-relics.jpg" alt="Vintage auction display with Apple Check No. 1 and garage workshop artifacts">
             </figure>
             <div class="section-body">
-                <p>For forty years, American schools waged an ideological war over how children learn to read. On one side: phonics, the explicit teaching of letter-sound relationships. On the other: "whole language" and "balanced literacy," approaches that emphasized context clues and guessing from pictures.</p>
+                <p>The first check ever written on behalf of <a href="https://www.apple.com">Apple Computer</a>—Check No. 1, for exactly $500, signed by both <a href="https://en.wikipedia.org/wiki/Steve_Jobs">Steve Jobs</a> and <a href="https://en.wikipedia.org/wiki/Steve_Wozniak">Steve Wozniak</a> in 1976—is crossing the auction block this month. <a href="https://www.rrauction.com">RR Auction</a> is calling the sale "Steve Jobs & the Computer Revolution," timed to Apple's 50th anniversary on April 1.</p>
 
-                <p>The war is over. <strong>More than 40 states</strong> have now passed laws mandating the "Science of Reading"—a phonics-first approach backed by decades of cognitive science. The 3-cueing system, which taught children to guess words from pictures and context, has been effectively outlawed in most of America.</p>
+                <p>That $500 check was written to buy parts for Apple I circuit boards, assembled by hand in the Jobs family garage in Los Altos. Today, Apple's market capitalization hovers around $3 trillion. The return on that original investment, if you could somehow track it, would be approximately 6,000,000,000%.</p>
 
-                <div class="callout">
-                    <p><strong>The holdouts caved:</strong> New York and California—the nation's two largest school systems and the final bastions of balanced literacy—enacted phonics mandates in late 2024 and early 2025. It's the most aggressive federal and state intervention in classroom pedagogy in decades.</p>
-                </div>
+                <figure class="chart">
+                    <img src="images/chart-apple-market-cap.png" alt="Apple market cap growth from 1980 to 2011 showing the impact of Jobs' return">
+                    <figcaption>Apple's market cap trajectory: The "wilderness years" (1985-1997) when Jobs was exiled show how much the company's fate was tied to his presence.</figcaption>
+                </figure>
 
-                <p>The research was never ambiguous. <a href="https://www.nichd.nih.gov/">NIH-funded studies</a> in the 1990s showed conclusively that systematic phonics instruction worked better. But ideology, institutional inertia, and a powerful educational publishing industry kept balanced literacy alive for another three decades.</p>
+                <p>The auction also includes Jobs' iconic bomber jacket, bowties from his pre-turtleneck era, and—tellingly—his collection of <a href="https://en.wikipedia.org/wiki/Bob_Dylan">Bob Dylan</a> tapes. Dylan mattered to Jobs the way few cultural figures did. Both were artists who refused to give audiences what they expected, who reinvented themselves relentlessly, who understood that staying relevant meant staying dangerous.</p>
 
-                <p>The question now: how many children were failed by the delay? And can the new generation of phonics-trained readers close the gap before the damage becomes permanent?</p>
+                <p>The collector market for Apple memorabilia has exploded in the past decade. A working Apple I sold for $905,000 in 2014. The message is clear: we've decided these artifacts are historically significant—not just for tech history, but for <em>American</em> history.</p>
             </div>
         </article>
 
-        <!-- SECTION 3: $2.2 Trillion Cost -->
         <article class="section">
             <span class="section-number">03</span>
-            <h2 class="section-title">The Price Tag of Not Reading: $2.2 Trillion</h2>
+            <h2 class="section-title">The Daughter He Denied, the Story She Finally Told</h2>
             <div class="section-meta">
-                <span class="section-source">via <a href="https://www.thenationalliteracyinstitute.com/">National Literacy Institute</a></span>
-                <span class="section-date">September 8, 2024</span>
+                <span class="section-source">via <a href="https://www.nytimes.com/2018/08/23/books/review/lisa-brennan-jobs-small-fry.html">The New York Times</a></span>
+                <span class="section-date">September 2018</span>
             </div>
             <figure class="article-image">
-                <img src="images/article-03-economic-cost.jpg" alt="Abstract visualization of money flowing through hourglass, transforming into letters">
+                <img src="images/article-03-small-fry.jpg" alt="Open memoir book with pressed wildflowers and childhood drawing casting shadows">
             </figure>
             <div class="section-body">
-                <p>Here's a number that should stop policymakers cold: <strong>$2.2 trillion</strong>. That's the estimated annual cost of adult illiteracy to the American economy—larger than the GDP of Italy.</p>
+                <p><a href="https://en.wikipedia.org/wiki/Lisa_Brennan-Jobs">Lisa Brennan-Jobs</a>' memoir <em>Small Fry</em> is the book the hagiographers didn't want written. It's not an exposé or a takedown—it's something more uncomfortable: a daughter trying to understand why the man who could envision products millions would love couldn't figure out how to love her.</p>
 
-                <p>The <a href="https://www.thenationalliteracyinstitute.com/">National Literacy Institute</a> breaks it down: $1.2 trillion in lost productivity (workers who can't read manuals, can't advance, can't adapt), $480 billion in healthcare costs (patients who can't follow prescriptions, can't navigate the health system), $320 billion in criminal justice (a stunning 70% of inmates can't read above a 4th-grade level), and $200 billion in social welfare programs.</p>
+                <p>The facts are damning enough. Jobs initially denied paternity despite DNA evidence, claiming he was "sterile." He named a computer after her—the Lisa—then publicly insisted for years it was an acronym (Local Integrated Software Architecture). When she asked him about it directly, he said, "Nope. Sorry, kid."</p>
 
-                <figure class="chart">
-                    <img src="images/chart-economic-cost.png" alt="Bar chart showing $2.2 trillion breakdown by category">
-                    <figcaption>Low literacy costs more annually than the entire U.S. defense budget.</figcaption>
-                </figure>
-
-                <p>For context: the United States now ranks <strong>36th globally</strong> in literacy rates. Not 36th among developing nations. 36th overall. Behind Poland, behind Estonia, behind virtually every nation Americans consider a peer.</p>
-
-                <p>The report estimates <strong>130 million American adults</strong>—roughly half the adult population—read below a 6th-grade level. That's not "struggling with Shakespeare." That's struggling with a lease agreement, a medication label, a ballot.</p>
-            </div>
-        </article>
-
-        <!-- SECTION 4: NAEP Scores Crisis -->
-        <article class="section">
-            <span class="section-number">04</span>
-            <h2 class="section-title">Back to 1971: The Generational Collapse</h2>
-            <div class="section-meta">
-                <span class="section-source">via <a href="https://nces.ed.gov/nationsreportcard/">NCES / The Nation's Report Card</a></span>
-                <span class="section-date">June 18, 2024</span>
-            </div>
-            <figure class="article-image">
-                <img src="images/article-04-naep-crisis.jpg" alt="Child's hand reaching for book on high shelf, just out of reach">
-            </figure>
-            <div class="section-body">
-                <p>The 2024 <a href="https://nces.ed.gov/nationsreportcard/">NAEP results</a> landed like a bomb in education circles. Reading scores for 4th and 8th graders haven't just declined—they've cratered to levels not seen since Richard Nixon was president.</p>
-
-                <p><strong>40% of 4th graders</strong> now read "below basic"—meaning they can't extract simple information from a grade-level text. For 8th graders, it's 33%. For 13-year-olds tracked over time, scores have dropped to levels last recorded in <strong>1971</strong>.</p>
-
-                <figure class="chart">
-                    <img src="images/chart-naep-reading-scores.png" alt="Line chart showing NAEP reading scores declining sharply after 2019">
-                    <figcaption>The "COVID slide" hasn't reversed—2024 scores show continued decline.</figcaption>
-                </figure>
-
-                <p>The pandemic explains part of it. School closures, remote learning chaos, and the collapse of early literacy instruction created what educators call the "COVID slide." But here's the disturbing part: <strong>the slide hasn't stopped</strong>. Four years after schools reopened, scores are still falling.</p>
-
-                <p>This isn't pandemic learning loss that will naturally recover. This is a generation entering high school without the fundamental skill they need to access every other subject. You can't learn chemistry if you can't read the textbook. You can't learn history if you can't parse a primary source.</p>
-            </div>
-        </article>
-
-        <!-- SECTION 5: The Historical Journey -->
-        <article class="section">
-            <span class="section-number">05</span>
-            <h2 class="section-title">The Century of Misdirection</h2>
-            <div class="section-meta">
-                <span class="section-source">via <a href="https://www.census.gov/">U.S. Census Bureau</a> / Historical Analysis</span>
-                <span class="section-date">1900-2024</span>
-            </div>
-            <figure class="article-image">
-                <img src="images/article-05-historical-journey.jpg" alt="Vintage schoolhouse desk morphing into modern digital tablet">
-            </figure>
-            <div class="section-body">
-                <p>In 1900, the <a href="https://www.census.gov/">U.S. Census</a> asked a simple question: "Can you read and write?" The standard was basic—could you sign your own name? By that measure, 10.7% of Americans were illiterate. For Black Americans, denied education by law and terror, the rate was 44.5%.</p>
-
-                <figure class="chart">
-                    <img src="images/chart-illiteracy-century.png" alt="Line chart showing illiteracy rate dropping from 10.7% in 1900 to 0.6% in 1979">
-                    <figcaption>By 1979, "basic" illiteracy was effectively zero—but the definition changed.</figcaption>
-                </figure>
-
-                <p>The next eight decades tell a triumphant story—if you only look at the numbers. Compulsory education spread. The rate dropped: 6% by 1920, 4.3% by 1930, under 1% by 1979. <strong>America had eradicated illiteracy.</strong></p>
-
-                <p>Except it hadn't. It had merely changed the definition. In 1992, the <a href="https://nces.ed.gov/">National Adult Literacy Survey</a> asked a harder question: could Americans actually <em>use</em> reading in daily life? The answer was devastating. 21-23% of adults—roughly the same percentage as a century earlier—performed at the lowest literacy level.</p>
-
-                <figure class="chart">
-                    <img src="images/chart-functional-literacy.png" alt="Bar chart comparing NAAL 2003 and PIAAC 2017 literacy levels">
-                    <figcaption>Functional illiteracy has remained stubbornly high for 30 years.</figcaption>
-                </figure>
-
-                <p>We didn't solve illiteracy. We just changed what we measured. The 10.7% who couldn't sign their names in 1900 became the 21% who can't understand a prescription bottle in 2024. Same problem, different framing.</p>
-            </div>
-        </article>
-
-        <!-- SECTION 6: The Fourth Grade Cliff -->
-        <article class="section">
-            <span class="section-number">06</span>
-            <h2 class="section-title">The Fourth-Grade Cliff</h2>
-            <div class="section-meta">
-                <span class="section-source">via <a href="https://www.edreports.org/">EdReports</a> / Educational Research</span>
-                <span class="section-date">Ongoing</span>
-            </div>
-            <figure class="article-image">
-                <img src="images/article-06-fourth-grade-cliff.jpg" alt="Surrealist classroom with cliff edge, children learning to read on one side">
-            </figure>
-            <div class="section-body">
-                <p>There's a brutal asymmetry built into how children learn. From kindergarten through third grade, students <strong>learn to read</strong>. From fourth grade onward, they <strong>read to learn</strong>. The transition happens whether they're ready or not.</p>
-
-                <p>Educators call it the "Fourth-Grade Cliff." Students who aren't reading proficiently by the end of third grade are <strong>four times more likely</strong> to drop out of high school. The correlation holds across demographics, across income levels, across school types.</p>
+                <p>What's fascinating is that Brennan-Jobs doesn't let herself off the hook either. She wanted his approval desperately, even when he withheld it cruelly. She moved in with him as a teenager, hoping proximity would create connection. Sometimes it did. More often, it didn't.</p>
 
                 <div class="callout">
-                    <p><strong>The intergenerational trap:</strong> 43% of adults with the lowest literacy levels live in poverty. Their children are 72% likely to function at the same low literacy levels. The cycle perpetuates itself with mathematical precision.</p>
+                    <p><strong>"He said I was a blot on his spectacular ascent."</strong> This line from the book has become the defining quote about Jobs' personal failures. The juxtaposition with his professional perfectionism is the whole tragedy.</p>
                 </div>
 
-                <p>But here's what makes the current crisis different: we now have a generation that missed critical early literacy instruction during the pandemic. They hit the fourth-grade cliff without the foundational skills, and they're not catching up. Every year of delay compounds. By middle school, the gap becomes nearly impossible to close.</p>
+                <p>The book matters because it complicates the myth without destroying it. Jobs could be terrible <em>and</em> transformative. The reality distortion field that made impossible deadlines possible also made him unable to acknowledge his own daughter. Same superpower, deployed destructively. Great men leave wreckage.</p>
+            </div>
+        </article>
 
-                <p>Some researchers now argue for a new category: <strong>"deep literacy"</strong>—the ability to sustain attention on long-form text, to read critically, to think through complex arguments. By this measure, the crisis is even worse. Students raised on algorithmic feeds and 15-second videos may be able to decode words while losing the ability to process ideas.</p>
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Day Mobile Computing Really Began</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/">Apple Newsroom</a></span>
+                <span class="section-date">January 9, 2007</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-iphone-keynote.jpg" alt="Silhouette of presenter on dark stage with three floating devices merging into one">
+            </figure>
+            <div class="section-body">
+                <p>Watch the 2007 iPhone keynote today and you'll still feel it—the precise moment the audience realizes what's happening. Jobs announces three products: a widescreen iPod with touch controls, a revolutionary mobile phone, and a breakthrough internet device. He repeats it. "An iPod, a phone, and an internet communicator." The crowd starts to catch on. They're laughing, then cheering.</p>
 
-                <p>The question for policymakers isn't just "Can Americans read?" It's "Can Americans read well enough to function as citizens, workers, and thinkers in a complex society?" The data suggests we're failing that test—and have been for longer than we care to admit.</p>
+                <p>"These are not three separate devices. This is one device."</p>
+
+                <figure class="chart">
+                    <img src="images/chart-product-impact.png" alt="Horizontal bar chart showing industry impact scores of Jobs' major product launches">
+                    <figcaption>Jobs' product launches rated by industry transformation impact. The iPhone scores highest, but note that both NeXT and Pixar—products from his exile years—also achieved significant impact.</figcaption>
+                </figure>
+
+                <p><a href="https://en.wikipedia.org/wiki/Macworld_Conference_%26_Expo">Macworld</a> 2007 is widely considered the greatest product launch in business history. Not because of the product specs—the original iPhone was underpowered by many measures—but because of the <em>comprehension</em> Jobs created. He didn't just show people a phone with a touchscreen. He showed them their future.</p>
+
+                <p>The Multi-Touch interface eliminated physical keyboards forever. <a href="https://en.wikipedia.org/wiki/BlackBerry">BlackBerry</a> executives reportedly watched the keynote in disbelief, then denial. "We'll see if consumers want that," one told colleagues. Within five years, BlackBerry's market share collapsed from 20% to under 1%.</p>
+
+                <p>What's underappreciated: the iPhone almost didn't work that day. Engineers had a specific sequence of actions that avoided crashes—Jobs called it "the golden path." Deviate from it, and the demo phone would freeze. He walked the golden path flawlessly. The reality distortion field extended to the hardware itself.</p>
+            </div>
+        </article>
+
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Three Stories, One Philosophy, 15 Minutes That Defined a Generation</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.stanford.edu/2005/06/14/jobs-061505/">Stanford News</a></span>
+                <span class="section-date">June 12, 2005</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-stanford-commencement.jpg" alt="Stanford Memorial Church archway with graduation caps suspended like birds in golden light">
+            </figure>
+            <div class="section-body">
+                <p>Steve Jobs' <a href="https://news.stanford.edu/2005/06/14/jobs-061505/">2005 Stanford commencement address</a> has been viewed hundreds of millions of times. It's become the secular scripture of Silicon Valley—three parables about connecting dots, losing and finding love, and confronting death. "Stay hungry. Stay foolish."</p>
+
+                <p>The speech works because Jobs wasn't performing wisdom—he was processing his own mortality. He'd been diagnosed with pancreatic cancer the year before. The initial prognosis was three to six months. A biopsy revealed a rare, treatable form. He got lucky. But he'd stared into the void, and the void had stared back.</p>
+
+                <p>The first story, about dropping out of <a href="https://www.reed.edu">Reed College</a> and auditing calligraphy classes, contains a genuinely useful insight: you can only connect the dots looking backward. Jobs couldn't have known that learning about serif and sans-serif typefaces would matter until a decade later, when he was designing the Macintosh. Trust that the dots will connect. Do the interesting thing.</p>
+
+                <div class="callout">
+                    <p><strong>"Remembering that I'll be dead soon is the most important tool I've ever encountered to help me make the big choices in life."</strong> Jobs delivered this line six years before his death. He knew what was coming.</p>
+                </div>
+
+                <p>The speech also contains Jobs at his most self-mythologizing. The story of getting fired from Apple is framed as liberation—"the heaviness of being successful was replaced by the lightness of being a beginner again." This is true and also convenient. Jobs was humiliated by his ouster. The wound never fully healed. But he made the wound into a weapon.</p>
+            </div>
+        </article>
+
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Exile That Made Him a Billionaire</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.pixar.com/our-story-pixar">Pixar History</a></span>
+                <span class="section-date">1986–1995</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-pixar-toy-story.jpg" alt="Woody doll on animation desk with storyboards and Pixar building visible through window">
+            </figure>
+            <div class="section-body">
+                <p>When Jobs bought the Graphics Group from <a href="https://www.lucasfilm.com">Lucasfilm</a> in 1986 for $10 million, he wasn't trying to make movies. He thought he was buying a computer hardware company. The team—<a href="https://en.wikipedia.org/wiki/Ed_Catmull">Ed Catmull</a>, <a href="https://en.wikipedia.org/wiki/John_Lasseter">John Lasseter</a>, and a handful of graphics pioneers—had other ideas.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-wealth-sources.png" alt="Stacked bar chart showing Jobs' wealth sources over time, with Pixar dominating">
+                    <figcaption>The Pixar Paradox: Jobs' Disney stock from the Pixar acquisition made him a billionaire. His Apple holdings at the time were comparatively modest.</figcaption>
+                </figure>
+
+                <p>Jobs funded <a href="https://www.pixar.com">Pixar</a> at a loss for nearly a decade. He put in another $50 million beyond the purchase price, essentially keeping the company alive through sheer stubbornness. When <em>Toy Story</em> premiered in 1995 and the company went public, Jobs' stake was suddenly worth $1.5 billion. It was Pixar, not Apple, that first made him a billionaire.</p>
+
+                <p>The Pixar story reveals something essential about Jobs' genius: he could recognize greatness in other people even when he couldn't articulate what they were building. He didn't understand animation. He couldn't draw. But he understood that Lasseter was an artist of rare ability, and he protected that ability ferociously. <a href="https://www.disney.com">Disney</a> eventually bought Pixar for $7.4 billion. Jobs became Disney's largest individual shareholder.</p>
+
+                <p>There's a through-line from Pixar back to Apple: both companies succeeded by refusing to separate technology from art. The Pixar motto—"Art challenges technology, technology inspires art"—could have hung on the wall in Cupertino. Jobs didn't invent this philosophy, but he embodied it so completely that it became inseparable from his identity.</p>
             </div>
         </article>
     </main>
 
     <section class="closing">
         <div class="closing-inner">
-            <h2 class="closing-title">The Words We Cannot Afford to Miss</h2>
-            <p class="closing-text">A century ago, we measured literacy by whether you could sign your name. Today, 130 million Americans struggle to read a lease, a ballot, a medical form. The problem didn't go away—we just stopped looking at it clearly. The $2.2 trillion cost isn't just economic. It's democratic. A nation that can't read can't govern itself.</p>
+            <h2 class="closing-title">The Dent in the Universe</h2>
+            <p class="closing-text">Jobs famously wanted to "put a dent in the universe." Mission accomplished. But dents aren't always pretty—they're the marks left by impact, by collision, by force meeting resistance. The devices in our pockets, the expectations we carry about how technology should feel, the very idea that consumer products can be objects of beauty: these are his dents. So is the daughter he denied, the employees he berated, the partners he betrayed. Stay hungry. Stay foolish. Stay complicated.</p>
         </div>
     </section>
 
     <footer class="footer">
         <div class="footer-inner">
-            <span class="footer-brand">The JLW Newsletter</span>
+            <span class="footer-brand">JLW Newsletter</span>
         </div>
     </footer>
 </body>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Camera That Changed Everything — January 22, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .section { padding: var(--space-lg) 0; }
+            .section-title { font-size: 1.35rem; }
+        }
+
+        @media print {
+            .header, .footer { display: none; }
+            .section { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 22, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Photography History</span>
+            <h1 class="hero-title">The Camera That Changed Everything</h1>
+            <p class="hero-subtitle">How an asthmatic German engineer's quest for a lighter camera invented modern photography and shaped the visual language of the twentieth century.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-camera-that-changed-everything.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-leica-history.png" alt="Vintage Leica M3 rangefinder camera on worn leather, bathed in warm morning light">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Origins -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">An Asthmatic's Invention Changes Photography Forever</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://leica-camera.com/en-US/world-of-leica/history">Leica Camera AG</a></span>
+                <span class="section-date">1913-1925</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-origins.png" alt="Early 20th century German optical workshop with precision instruments">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/Oskar_Barnack">Oskar Barnack</a> had a problem. As an engineer at the <a href="https://leica-camera.com">Ernst Leitz</a> optical works in Wetzlar, Germany, he was passionate about photography. But his asthma made carrying the heavy plate cameras of the era nearly impossible. So in 1913, he did what engineers do: he built something better.</p>
+
+                <p>Barnack's insight was radical. Instead of shrinking the camera, he shrank the film. He took standard 35mm cinema film, turned it sideways, and created a format that exposed frames at 24x36mm—a decision that would define photography for a century. The "Ur-Leica" prototype was rough, barely functional, but it proved the concept.</p>
+
+                <p>Then came the war, then hyperinflation, then depression. The prototype sat. It wasn't until 1924 that <a href="https://en.wikipedia.org/wiki/Ernst_Leitz_II">Ernst Leitz II</a> made his famous gamble. With Germany in economic freefall, mass-producing an untested camera seemed insane. His response: "I hereby decide: It will be risked."</p>
+
+                <p>The Leica I debuted at the 1925 Leipzig Spring Fair. Within a decade, it would transform how humans document reality.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-timeline.png" alt="Timeline of Leica camera milestones from 1913 to 2022">
+                    <figcaption>Key milestones in Leica's 110+ year history, from the Ur-Leica prototype to the 60MP M11.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 2: The M3 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The M3: When Perfection Became Standard</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.l-camera-forum.com">L-Camera Forum</a></span>
+                <span class="section-date">1954</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-m3.png" alt="Leica M3 camera showing detailed rangefinder mechanism">
+            </figure>
+            <div class="section-body">
+                <p>In 1954, Leica introduced what many still consider the finest mechanical camera ever manufactured. The M3 wasn't an evolution—it was a revelation.</p>
+
+                <p>The specifications alone were staggering: a combined rangefinder/viewfinder with 0.91x magnification so clear you could shoot with both eyes open. Automatic parallax correction. Bright-line framelines that appeared instantly when you mounted a 50mm, 90mm, or 135mm lens. A bayonet mount so precise that lenses snapped on with satisfying authority. Every component was machined to tolerances that bordered on obsessive.</p>
+
+                <p>But the real innovation was invisible: the <a href="https://www.kenrockwell.com/leica/m-mount.htm">M-mount</a>. Unlike the fiddly screw mount of earlier Leicas, the M-mount bayonet allowed lens changes in under two seconds. More importantly, Leica designed it with such foresight that an M-mount lens from 1954 works perfectly on an M11 today. Seventy years of compatibility. No adapter needed.</p>
+
+                <div class="callout">
+                    <p><strong>The "Leica Glow":</strong> Engineers designed the M3's viewfinder with a slight warm tint. Critics called it a flaw. Photographers called it magic—it made scenes feel alive, inviting you to press the shutter.</p>
+                </div>
+
+                <p>The M3 became the camera of choice for the most demanding professionals. Its success spawned imitators (notably Canon and Nikon's early rangefinders), but none matched its build quality. Production continued until 1966, with over 220,000 units made. Today, a well-maintained M3 still sells for more than many new digital cameras.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: The Photographers -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Masters Who Made It Famous</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.magnumphotos.com">Magnum Photos</a></span>
+                <span class="section-date">1930s-Present</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-photographers.png" alt="Street photographer in 1950s Paris capturing the decisive moment">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/Henri_Cartier-Bresson">Henri Cartier-Bresson</a> taped over the chrome on his Leica to make it less conspicuous. He called it becoming "invisible." The camera's near-silent shutter and compact size let him capture what he termed "the decisive moment"—that fraction of a second when composition and meaning align perfectly. His images of 20th-century Paris, India, and China became the foundation of modern photojournalism.</p>
+
+                <p><a href="https://en.wikipedia.org/wiki/Robert_Capa">Robert Capa</a>'s motto was blunt: "If your pictures aren't good enough, you're not close enough." Leica's portability made that possible. He carried his cameras into the Spanish Civil War, climbed out of landing craft on D-Day, and died stepping on a landmine in Indochina. His blurred, urgent images from Normandy—salvaged after a darkroom accident destroyed most of his D-Day negatives—remain among the most visceral war photographs ever made.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-photographers.png" alt="Bar chart showing notable Leica photographers by era">
+                    <figcaption>The photographers who defined each era of Leica's history, from war correspondents to digital masters.</figcaption>
+                </figure>
+
+                <p>The list extends through decades: <a href="https://en.wikipedia.org/wiki/Elliott_Erwitt">Elliott Erwitt</a>'s wry observations of human nature. <a href="https://en.wikipedia.org/wiki/Nick_Ut">Nick Ut</a>'s Pulitzer-winning "Napalm Girl," shot with an M2 in Vietnam. <a href="https://en.wikipedia.org/wiki/Sebastião_Salgado">Sebastião Salgado</a>'s epic documentation of labor and migration. These photographers didn't just use Leicas—they proved that the camera's constraints (manual focus, fixed focal lengths, no autofocus) could become creative advantages, forcing a more deliberate, intimate approach to image-making.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: The M6 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The M6: The Film Era's Perfect Workhorse</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.35mmc.com">35mmc</a></span>
+                <span class="section-date">1984-2002</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-m6.png" alt="Well-worn Leica M6 with brass showing through black paint">
+            </figure>
+            <div class="section-body">
+                <p>For purists, adding a light meter to the sacred M-series body was heresy. For working photographers, it was liberation.</p>
+
+                <p>The M6, introduced in 1984, finally integrated TTL (through-the-lens) metering into the classic rangefinder form. Two tiny LEDs in the viewfinder—red arrows pointing up, down, or a neutral dot—gave exposure guidance without cluttering the frame. The meter consumed so little power that a single battery lasted years. Everything else remained unchanged: the brass-topped body, the mechanical shutter, the sublime rangefinder patch.</p>
+
+                <p>This was the Leica that launched a thousand careers. Photojournalists loved its reliability in conflict zones where battery-dependent cameras failed. Street photographers appreciated the "brassing"—the way years of use wore through the black paint to reveal the brass underneath, creating a unique patina that marked each camera as distinctly its owner's. Wedding photographers trusted its near-silent operation during ceremonies.</p>
+
+                <p>When Leica discontinued the M6 in 2002, the film era was ending. But demand never stopped. In 2022, Leica re-released the M6 as the "M6 Classic"—proof that mechanical perfection doesn't age. It sold out immediately.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Digital Transition -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Near Death and Digital Resurrection</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://leicarumors.com">Leica Rumors</a></span>
+                <span class="section-date">2006-2017</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-digital.png" alt="Digital sensor being installed in precision camera body">
+            </figure>
+            <div class="section-body">
+                <p>By the early 2000s, Leica was dying. The digital revolution had arrived, and the company was years behind. Canon and Nikon dominated the professional market with autofocus DSLRs. Leica's handmade, manual-focus cameras seemed like beautiful anachronisms headed for extinction.</p>
+
+                <p>The 2006 M8 was Leica's first digital rangefinder—and a troubled debut. Its sensor was cropped (1.33x factor), its infrared sensitivity caused color issues, and early units suffered from sensor corrosion. Professionals who'd trusted Leica for decades felt betrayed.</p>
+
+                <p>But the M9, released in 2009, changed everything. It was the world's first full-frame digital rangefinder—the complete 24x36mm sensor that matched the film format Oskar Barnack had invented a century earlier. Suddenly, decades of M-mount lenses worked exactly as designed, with no crop factor, no compromise.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-resolution.png" alt="Bar chart showing Leica M digital sensor resolution evolution">
+                    <figcaption>From 10.3 megapixels in the M8 to 60 megapixels in the M11—Leica's digital sensor evolution.</figcaption>
+                </figure>
+
+                <p>The M10 (2017) finally achieved what fans had wanted since 2006: a digital M as slim as a film M. The bloated bodies of the M8 and M9 gave way to classic proportions. Leica had found its digital voice.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Monochrom -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Monochrom: Madness or Genius?</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.dpreview.com">DPReview</a></span>
+                <span class="section-date">2012</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-monochrom.png" alt="Abstract study in pure black and white with dramatic tonal gradients">
+            </figure>
+            <div class="section-body">
+                <p>In 2012, Leica did something nobody expected: they released an $8,000 digital camera that couldn't shoot color.</p>
+
+                <p>The <a href="https://leica-camera.com/en-US/photography/cameras/m/m-monochrom">M Monochrom</a> removed the Bayer color filter array from its sensor. Without that mosaic of red, green, and blue filters, every pixel captured pure luminance. The results were images with resolution, sharpness, and tonal gradation that color-converted files couldn't match.</p>
+
+                <p>Critics called it a vanity project. A marketing stunt. An insult to practical photographers who wanted flexibility. But the photographers who bought the Monochrom discovered something unexpected: the limitation was liberating. When you can't default to color, you see differently. Light, shadow, texture, and form become everything. The constraint forced intentionality.</p>
+
+                <p>The Monochrom didn't just survive—it became a cult object. Leica has updated it with each new M generation. The current Monochrom delivers images that pure black-and-white devotees describe in almost religious terms: "You're seeing what the sensor sees, without interpretation."</p>
+
+                <figure class="chart">
+                    <img src="images/chart-lens-mount.png" alt="Chart showing M-mount 70+ years of lens compatibility">
+                    <figcaption>The world's longest-serving lens mount: M-mount lenses from 1954 work on today's M11.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 7: Modern Era -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">More Than a Camera: The Red Dot as Status Symbol</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://leica-camera.com">Leica Camera AG</a></span>
+                <span class="section-date">2022-Present</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-modern.png" alt="Modern Leica M11 camera with iconic red dot logo">
+            </figure>
+            <div class="section-body">
+                <p>The M11, released in 2022, packed a 60-megapixel sensor into the classic M body—a specification that would have seemed science fiction when the M3 debuted. Its "Triple Resolution" feature lets photographers choose 60, 36, or 18 megapixels using the full sensor area. The baseplate that had defined M cameras since 1954 disappeared, replaced by a bottom-loading battery.</p>
+
+                <p>But the M11's technical specs matter less than what Leica has become: a luxury brand that happens to make cameras. The red dot logo now shares cultural real estate with Rolex crowns and Hermès scarves. Leica stores in major cities feel more like galleries than camera shops. Collaborations with <a href="https://www.mi.com">Xiaomi</a> put "Leica imaging" in millions of smartphones, creating a marketing pipeline for physical cameras.</p>
+
+                <p>The Q series—fixed-lens, autofocus cameras that run counter to M tradition—became surprise bestsellers, introducing new audiences to the brand. The SL system offers professional autofocus mirrorless bodies. The <a href="https://www.leica-lux.com">Leica LUX app</a> turns iPhones into "Leica-lite" devices.</p>
+
+                <p>Whether this evolution represents survival or surrender depends on whom you ask. The romantics mourn the loss of exclusivity. The pragmatists note that Leica, alone among traditional camera makers, is thriving in an age when smartphones have destroyed the mass camera market. Perhaps both are right.</p>
+
+                <p>What's certain is that when you hold a Leica—any Leica—you feel the weight of history. The same bayonet mount. The same focusing patch. The same near-silent shutter. Over a century of decisions, all leading to this moment when you raise the camera to your eye, find your frame, and press the shutter.</p>
+
+                <p>Oskar Barnack would recognize it instantly.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Decisive Moment Continues</h2>
+            <p class="closing-text">From a prototype built by an asthmatic engineer to the smartphones in our pockets, Leica's influence on how we see and capture the world remains unbroken. The 35mm format Barnack invented is now called "full-frame"—the gold standard for digital sensors. The M-mount he couldn't have imagined still clicks into place on today's cameras. Some revolutions never end.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

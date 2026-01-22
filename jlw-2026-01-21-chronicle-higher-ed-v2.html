@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Defiant Campus — January 21, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - indigo and amber for this edition */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #3A2D5C;
+            --accent-soft: rgba(58, 45, 92, 0.12);
+            --accent-hover: #2D2347;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --highlight: #D4A84B;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7DB8;
+                --accent-soft: rgba(139, 125, 184, 0.15);
+                --accent-hover: #A496C8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --highlight: #E8BE6A;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article Images */
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts */
+        .chart {
+            margin: var(--space-md) 0;
+            text-align: center;
+        }
+        .chart img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .chart figcaption {
+            margin-top: var(--space-xs);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--highlight);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        blockquote {
+            margin: var(--space-md) 0;
+            padding-left: var(--space-md);
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 21, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Higher Education</span>
+            <h1 class="hero-title">The Defiant Campus</h1>
+            <p class="hero-subtitle">Universities are drawing lines in the sand this week—refusing federal demands, fighting funding redirections, and watching faculty pay the price for speech. The academy isn't just under pressure. It's fighting back.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-defiant-campus.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-universities-vs-power.png" alt="Editorial illustration of a university building caught between warm amber light and cold bureaucratic shadows with documents swirling">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Penn Defiance -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-penn-defiance.png" alt="Editorial illustration of an administrator's desk with official documents being pushed away in refusal">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">Penn Refuses to Compile "Lists of Jews"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/blogs/the-trump-agenda/penn-slams-trump-administrations-demand-for-personal-information-of-jewish-employees">The Chronicle</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.upenn.edu/">University of Pennsylvania</a> is doing something increasingly rare in American higher education: telling the federal government "no."</p>
+
+                <p>The Trump administration's EEOC demanded Penn hand over a list of all Jewish employees—ostensibly as part of an antisemitism investigation. Penn's response was blunt: this is "disturbing and unconstitutional." Compiling lists of employees by religious identity, the university argued, invades privacy and sets a "dangerous precedent."</p>
+
+                <blockquote>"Singling out individuals based on religious affiliation sets a dangerous precedent."</blockquote>
+
+                <p>The historical echoes are impossible to ignore. Penn is essentially saying: we will not create lists that could be used to target people by their identity, regardless of the stated justification. This isn't just lawyerly caution—it's a moral line in the sand.</p>
+
+                <div class="callout">
+                    <p><strong>The stakes:</strong> If Penn caves, every university becomes a potential compliance node for federal identity tracking. If Penn wins, it establishes that there are demands institutions can refuse on principle.</p>
+                </div>
+
+                <p>The administration claims it's fighting antisemitism. But using civil rights tools to demand religious employee lists feels more like overreach than protection. Penn is betting that courts—and the public—will agree.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: NEH Funding -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-neh-funding.png" alt="Editorial illustration of gold coins flowing from a government building toward a single illuminated path while others fade to shadow">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">$75 Million for "Patriotic Education"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.neh.gov/">National Endowment for the Humanities</a> just announced $75 million in new grants. But this isn't broad humanities funding—it's laser-targeted at "patriotic education," civics, and Western civilization programs.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-neh-funding.png" alt="Bar chart showing NEH grant allocation: $60M to general patriotic programs, $10M to Foundation for Excellence in Higher Education, $5M to Ohio State Center for Civics">
+                    <figcaption>NEH grant distribution under new Trump-appointed leadership</figcaption>
+                </figure>
+
+                <p>The largest single recipient? The <a href="https://www.excellenceineducation.org/">Foundation for Excellence in Higher Education</a>—$10 million. Another $5 million goes to <a href="https://www.osu.edu/">Ohio State</a>'s Center for Civics. The message is clear: federal humanities funding now flows toward specific ideological projects.</p>
+
+                <p>This follows the dismissal of several National Council on the Humanities members last October. The NEH, once a bastion of diverse scholarly support, is being rapidly reshaped into a tool for curricular direction from Washington.</p>
+
+                <div class="callout">
+                    <p><strong>What it means:</strong> Scholars in disciplines not aligned with "patriotic education"—which is to say, most of the humanities—will find federal support increasingly scarce. The academy's relationship with government funding is being fundamentally renegotiated.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Viewpoint Diversity -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-viewpoint-diversity.png" alt="Editorial illustration of a prism with rainbow light entering but only a single narrow beam exiting">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">When "Diversity" Means Conformity</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle Review</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Len Gutkin's essay asks an uncomfortable question: what happened to "viewpoint diversity"?</p>
+
+                <p>The concept emerged as a rallying cry for academic freedom—the idea that universities should welcome a range of perspectives, including conservative ones. Reasonable enough. But Gutkin traces how the phrase has been weaponized, transformed from a call for intellectual pluralism into a cudgel for ideological enforcement.</p>
+
+                <p>In states like Florida and Texas, "viewpoint diversity" mandates now pressure faculty to include specific perspectives regardless of scholarly merit. The result isn't more intellectual variety—it's a different kind of conformity, enforced from a different direction.</p>
+
+                <blockquote>"Viewpoint diversity was supposed to protect dissent. Now it's being used to manufacture it."</blockquote>
+
+                <p>The irony cuts deep. A principle designed to prevent ideological gatekeeping is being used as... ideological gatekeeping. Faculty navigating these waters face an impossible task: demonstrate "balance" as defined by political actors who have never taught a seminar.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Texas Tech -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-texas-tech-censorship.png" alt="Editorial illustration of a syllabus being erased, revealing void beneath, with an approval stamp hovering nearby">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">The "Relevance" Test That Chills Speech</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.ttu.edu/">Texas Tech</a> is asking faculty a simple question: Is your course content "relevant" and "necessary"?</p>
+
+                <p>Simple, but devastating. As Jasper Smith reports, this new systemwide administrative review is producing exactly the self-censorship it was designed to create. Faculty across the Texas Tech system are scrutinizing their own syllabi, cutting discussions of race, gender, and even passages from classic literature like <em>The Great Gatsby</em> to avoid administrative reprisal.</p>
+
+                <p>The policy doesn't ban anything explicitly. It doesn't have to. The vagueness is the point. When every teaching decision might trigger a relevance review, faculty learn to avoid anything that might attract scrutiny. Soft censorship through bureaucratic friction.</p>
+
+                <div class="callout">
+                    <p><strong>The mechanism:</strong> No book is banned. No topic is forbidden. But thousands of faculty members, independently, decide it's safer not to teach that text, not to discuss that issue, not to take that risk. The chilling effect spreads without anyone giving a direct order.</p>
+                </div>
+
+                <p>Texas Tech joins a growing list of public university systems where academic freedom exists in principle but dissolves in practice. The question isn't whether content is scholarly valuable—it's whether it might attract political attention.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Faculty Kirk Fallout -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-faculty-targeting.png" alt="Editorial illustration of professor silhouettes in a grid pattern with some crossed out and a cursor hovering over the display">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">26 Faculty Targeted. Half Lost Their Jobs.</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>When conservative activist Charlie Kirk died, some faculty members posted negative comments on social media. A Chronicle investigation tracked what happened next.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-faculty-kirk-outcomes.png" alt="Pie chart showing outcomes for 26 targeted faculty: 50% fired or non-renewed, 31% investigated with no action, 19% cleared or ongoing">
+                    <figcaption>Employment outcomes for faculty targeted over Kirk comments</figcaption>
+                </figure>
+
+                <p>At least 26 faculty members faced formal scrutiny. Roughly half—50%—suffered employment consequences: fired, non-renewed, or forced out. External activist campaigns pressured institutions relentlessly, generating phone calls, emails, and donor threats until administrations buckled.</p>
+
+                <p>Tenure, in theory, protects faculty from termination over controversial speech. In practice, these cases show how that protection erodes under sustained external pressure. Institutions facing political campaigns often find reasons to act—investigation findings, "community standards," contract technicalities.</p>
+
+                <div class="callout">
+                    <p><strong>The pattern:</strong> Activist networks identify offensive faculty speech. Campaigns pressure institutions. Administrations launch investigations. Faculty face consequences. Tenure provides less protection than promised.</p>
+                </div>
+
+                <p>The chilling effect extends far beyond these 26. Every faculty member watching these cases learns the same lesson: your online speech can cost you your career, even if you have tenure, even if you never said anything in a classroom.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Mary Baldwin -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-mary-baldwin.png" alt="Editorial illustration of an empty ornate presidential chair being reclaimed by growing vines and flowers, with warm light streaming through windows">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Six-Month President</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://marybaldwin.edu/">Mary Baldwin University</a>'s President Todd Telemeco arrived in August 2025. By January 2026, he was resigning. Six months. That's how long it took for community opposition to academic cuts to force him out.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-presidential-tenure.png" alt="Bar chart comparing presidential tenure: Mary Baldwin 6 months, average short tenure 18 months, national average 48 months">
+                    <figcaption>Presidential tenure instability in American higher education</figcaption>
+                </figure>
+
+                <p>Telemeco proposed eliminating several academic minors as part of cost-cutting measures. Students and faculty organized. Protests followed. The board ultimately reversed course on the cuts and accepted Telemeco's resignation.</p>
+
+                <p>It's a rare win for campus governance in an era of administrative consolidation. Faculty and students are often told they lack power to influence institutional decisions. This case suggests otherwise—organized resistance can still move boards.</p>
+
+                <div class="callout">
+                    <p><strong>The lesson:</strong> Presidential authority isn't absolute. When communities push back hard enough, long enough, boards listen. Telemeco's six-month tenure becomes a cautionary tale for administrators who assume they can cut programs without consequence.</p>
+                </div>
+
+                <p>The deeper question: why are so many university presidencies so short? The average tenure at public universities is around four years—down from seven a generation ago. Institutions are cycling through leaders faster than they can implement long-term strategies. Telemeco is an extreme case, but he's part of a pattern.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Week Ahead</h2>
+            <p class="closing-text">What connects Penn's defiance, NEH's redirection, and Texas Tech's soft censorship? A fundamental renegotiation of the relationship between universities and state power. Higher education built its modern identity on autonomy—the idea that scholars, not politicians, should determine what's taught and researched. That autonomy is being challenged from multiple directions simultaneously. Some institutions are fighting. Others are capitulating. The sorting is just beginning.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+            <span class="newsletter-date">Chronicle of Higher Education Edition • January 21, 2026</span>
+        </div>
+    </footer>
+</body>
+</html>

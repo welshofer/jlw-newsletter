@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Agents Are Here — January 23, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan tech theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #095A72;
+            --border: #D8E2E8;
+            --border-strong: #C1D1DC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #4AB8D8;
+                --accent-soft: rgba(74, 184, 216, 0.15);
+                --accent-hover: #6CC8E8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 23, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">AI-Driven Coding</span>
+            <h1 class="hero-title">The Agents Are Here</h1>
+            <p class="hero-subtitle">This week, AI coding tools crossed a threshold: from assistants that help you type, to agents that work in parallel while you sleep. But as the industry sprints toward autonomous code generation, security researchers are asking an uncomfortable question.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-agents-are-here.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-ai-coding.png" alt="A dramatic visualization of human hands on a keyboard with streams of luminescent code flowing into an AI neural network">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Cursor Subagents -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Cursor Spawns a Swarm: Subagents Change the Game</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://cursor.com/changelog">Cursor Changelog</a></span>
+                <span class="section-date">January 22, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-cursor-subagents.jpg" alt="Multiple robotic arms emerging from a central AI core, each handling different coding tools in parallel">
+            </figure>
+            <div class="section-body">
+                <p>Forget autocomplete. <a href="https://cursor.com">Cursor</a> v2.4 doesn't just help you write code—it delegates. The new <strong>Subagents</strong> feature lets the main AI spin up independent, task-specific agents that handle parts of a larger objective in parallel. One agent refactors your authentication module while another writes tests and a third updates the documentation. You watch the diff roll in.</p>
+
+                <p>This isn't incremental improvement; it's a categorical shift. For years, AI coding tools operated as souped-up typeahead: you write, they predict, you accept or reject. Subagents invert the model. You describe the goal, the AI decomposes it, and multiple workers execute simultaneously. The developer's role shifts from author to orchestrator.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-agent-evolution.png" alt="Chart showing the evolution from autocomplete to autonomous agents from 2022-2026">
+                    <figcaption>The capability curve has gone exponential. Parallel subagents represent the steepest jump since multi-file editing arrived in 2024.</figcaption>
+                </figure>
+
+                <p>Two other features in this release tell us where <a href="https://twitter.com/amanrsanger">Aman Sanger</a>'s team thinks this is heading. <strong>Image Generation</strong> is now built directly into the editor—powered by models like <a href="https://ai.google.dev/">Google's Nano Banana Pro</a>—collapsing the barrier between code and creative assets. And <strong>Cursor Blame</strong>, available to Enterprise users, distinguishes AI-generated code from human-written code in git history. That last one sounds like a feature. It's actually an admission: we're going to need to know who (or what) wrote this.</p>
+
+                <p>The question isn't whether you'll use autonomous agents for coding. It's whether you'll trust them without a human checkpoint—and whether your organization's security posture is ready for code that writes itself.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: GitHub Copilot Studio -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">GitHub Brings Custom Agents to the Enterprise</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://visualstudiomagazine.com/articles/2026/01/22/copilot-studio-ga.aspx">Visual Studio Magazine</a></span>
+                <span class="section-date">January 22, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-copilot-studio.jpg" alt="A sophisticated control room with holographic screens showing custom AI agents being assembled">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://github.com">GitHub</a>'s Copilot Studio extension has reached general availability in VS Code, and it represents something significant: the industrialization of AI agent development. You can now build, manage, and test custom <a href="https://github.com/features/copilot">Copilot</a> agents directly within your IDE, with full support for standard software development lifecycle practices—source control, pull requests, code review, the works.</p>
+
+                <p>Why does this matter? Because "custom AI agent" has been a research artifact or a startup demo until now. Copilot Studio makes agent development a repeatable, governed process that enterprise engineering orgs can actually adopt. Your company can build an agent that understands your proprietary codebase, your API conventions, your deployment patterns—and manage it the same way you manage any other piece of code.</p>
+
+                <p>The framing here is deliberate. <a href="https://www.microsoft.com">Microsoft</a> isn't selling you a chatbot; they're selling you the ability to create "custom AI employees." Agents that know your systems. Agents that can be version-controlled and audited. Agents that, presumably, will never quit to work at a competitor.</p>
+
+                <p>This is the beginning of a new software category: agent infrastructure. Expect to see CI/CD pipelines for agents, A/B testing frameworks for agent behavior, and—inevitably—agent-to-agent communication protocols. The IDE is becoming an agent factory.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Security Pushback -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Security Reckoning: "Vibe Coding" Meets Reality</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://natlawreview.com/article/snyk-research-readiness-gap-2026">The National Law Review</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-security-reckoning.png" alt="A crumbling digital fortress with security warning symbols seeping through cracks">
+            </figure>
+            <div class="section-body">
+                <p>While the AI coding industry celebrates its new autonomous powers, security researchers are sounding alarms. A new report from <a href="https://snyk.io">Snyk</a> reveals that only <strong>29% of organizations</strong> have implemented AI-aware security checks in their development pipelines. The rest are flying blind—accepting AI-generated code with the same review processes designed for human developers.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-security-readiness.png" alt="Chart showing only 29% of organizations have AI-aware security checks">
+                    <figcaption>The AI Security Readiness Gap: Most organizations haven't updated their security posture for AI-generated code.</figcaption>
+                </figure>
+
+                <p>The report coincides with a wave of warnings about "vibe coding"—the practice of accepting AI output based on whether it "feels right" rather than rigorous verification. It's seductive: the AI produces plausible-looking code, it compiles, maybe it even passes existing tests. Ship it. But <a href="https://snyk.io">Snyk</a> found an <strong>11% vulnerability exposure rate</strong> in independently-built applications that relied heavily on AI-generated code with minimal human oversight.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-quality-gap.png" alt="Chart comparing code quality metrics between traditional development and vibe coding">
+                    <figcaption>When speed trumps verification, security metrics suffer. Traditional development still beats "vibe coding" on every quality measure except velocity.</figcaption>
+                </figure>
+
+                <p>The security industry's response is predictable but necessary: "AI verification" will become as standard as linting in 2026 workflows. Expect new tool categories to emerge—static analysis tuned for AI code patterns, anomaly detection for AI-introduced vulnerabilities, provenance tracking for generated snippets. The arms race between AI speed and security thoroughness has begun.</p>
+
+                <p>The uncomfortable truth: we've already shipped a lot of code that no human fully understood before it hit production. The question now is how much of it is sitting in your systems, waiting to be exploited.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Claude Cowork -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Claude Steps Outside the IDE</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://releasebot.io/updates/anthropic-claude-cowork">ReleaseBot</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-claude-cowork.jpg" alt="An AI assistant stepping out of a code editor into a wider digital workspace">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://anthropic.com">Anthropic</a> expanded the "Claude Cowork" desktop preview to Pro plan users this week, and the positioning tells you everything about where AI coding assistants are heading: out of the IDE and into the operating system.</p>
+
+                <p>Cowork isn't just <a href="https://claude.ai/code">Claude Code</a> with a GUI. It's an OS-level agent capable of file management, document creation, research tasks, and general knowledge work. The AI that helped you write a Python script can now organize your project folders, draft your design docs, and summarize your meeting notes—all within the same interface.</p>
+
+                <p>This expansion coincides with Anthropic's release of a new <a href="https://www.anthropic.com/research/claude-model-spec-spec">Claude Constitution</a> on January 21st, which defines the AI's values and behavioral boundaries. It's a telling conjunction: as Claude gains more power to act autonomously in your digital environment, Anthropic is publicly codifying the constraints on that autonomy. Trust, it seems, requires transparency about limits.</p>
+
+                <p>The implication for developers is significant. Your AI pair programmer is becoming your AI colleague—one that can handle the non-coding parts of software development that consume so much of our time. Whether that's liberating or concerning probably depends on how comfortable you are with an AI that can read your filesystem.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: OpenCode SDK -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Copilot Breaks Out of the Chatbox</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://github.blog/changelog">GitHub Blog</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-opencode-sdk.jpg" alt="An AI chatbot breaking out of a chat bubble into a network of API endpoints and SDK pipelines">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://github.com/features/copilot">GitHub Copilot</a> now officially supports <strong>OpenCode</strong>, a standard for open developer tools, and has released a technical preview of the Copilot SDK. Translation: you can now integrate Copilot's capabilities programmatically into your own applications, pipelines, and services.</p>
+
+                <p>The SDK supports Node.js, Python, Go, and .NET—covering the vast majority of backend development. This isn't about using Copilot in your editor anymore; it's about embedding Copilot in your CI/CD pipeline, your internal developer portal, your custom tooling. The AI assistant becomes an API.</p>
+
+                <p>The OpenCode standard is particularly interesting. It's an attempt to create interoperability between AI coding tools—a world where your agent infrastructure isn't locked to a single vendor. Whether the major players actually embrace this remains to be seen (open standards have a way of getting "embraced and extended" by dominant platforms), but the intent is promising.</p>
+
+                <p>For engineering teams, this opens up a new design space. What if your deployment pipeline could automatically generate documentation for changes it detects? What if your monitoring system could suggest fixes for the errors it catches? The conversation shifts from "how do we use AI tools" to "how do we build AI into our tools."</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Cursor CLI -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Terminal Renaissance Continues</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://cursor.com/changelog">Cursor Changelog</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-cursor-cli.jpg" alt="A retro-futuristic terminal interface with Plan and Ask modes displayed">
+            </figure>
+            <div class="section-body">
+                <p>Lost in the subagent hype, Cursor also shipped significant updates to its CLI this week. The new <strong>Plan</strong> and <strong>Ask</strong> modes acknowledge a truth that GUI-first AI tools often ignore: many developers still live in the terminal, and they're not leaving.</p>
+
+                <p>Plan mode is designed for architectural thinking—you describe what you want to build, and the CLI helps you think through the structure before you write any code. Ask mode is for quick queries: "what does this function do," "where is this variable defined," "why is this test failing." The separation is smart; different cognitive modes deserve different interaction patterns.</p>
+
+                <p>Perhaps more interesting is <strong>Cloud Handoff</strong>, which lets you start a conversation in your terminal and seamlessly transfer it to Cursor's cloud-based IDE agent. Start debugging on your laptop's command line, realize you need the full IDE, and pick up exactly where you left off. Context preservation across interfaces—that's the kind of polish that separates tools you tolerate from tools you rely on.</p>
+
+                <p>Word-level inline diffs in the terminal round out the release. It sounds minor, but anyone who's squinted at a unified diff in a terminal window knows the cognitive load involved. Small UX improvements compound.</p>
+
+                <p>The takeaway: AI coding isn't going to kill the terminal. It's going to make it more powerful than ever.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Speed-Safety Trade-off Defined a Week</h2>
+            <p class="closing-text">Every story this week—subagents, Copilot Studio, security warnings, expanded agent capabilities, SDK releases, CLI improvements—orbits the same tension: AI is making software development dramatically faster, and our verification systems haven't caught up. The organizations that figure out how to move fast <em>and</em> verify rigorously will define the next era of software. The ones that choose speed alone will become case studies in the next generation of security research reports.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

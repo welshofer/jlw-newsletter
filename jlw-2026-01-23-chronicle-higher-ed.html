@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dismantling — January 23, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - indigo and amber for this edition */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #3A2D5C;
+            --accent-soft: rgba(58, 45, 92, 0.12);
+            --accent-hover: #2D2347;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --highlight: #D4A84B;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7DB8;
+                --accent-soft: rgba(139, 125, 184, 0.15);
+                --accent-hover: #A496C8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --highlight: #E8BE6A;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article Images */
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts */
+        .chart {
+            margin: var(--space-md) 0;
+            text-align: center;
+        }
+        .chart img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .chart figcaption {
+            margin-top: var(--space-xs);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--highlight);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        blockquote {
+            margin: var(--space-md) 0;
+            padding-left: var(--space-md);
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 23, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Higher Education</span>
+            <h1 class="hero-title">The Dismantling</h1>
+            <p class="hero-subtitle">This week, the federal government halted fetal tissue research, UT-Austin closed three academic support offices, and Northwestern agreed to ideological training for international students. The pieces aren't falling—they're being pulled.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-dismantling.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-institutional-dismantling.png" alt="Editorial illustration of a university building with sections fragmenting into geometric shards drifting upward">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Fetal Tissue Research Halt -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-fetal-research-halt.png" alt="Editorial illustration of a laboratory with scientific equipment in shadow and a large DENIED stamp overlay">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">NIH Research Funding: Halted</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle</a></span>
+                <span class="section-date">January 22, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The Trump administration has announced a complete halt to <a href="https://www.nih.gov/">NIH</a>-funded research using human fetal tissue derived from elective abortions. The policy expands upon restrictions from Trump's first term—and this time, there are no exceptions.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-nih-grant-review.png" alt="Bar chart showing NIH grant categories under federal review: Fetal tissue research 100% halted, DEI programs 85% under review, Climate change 75%, Gender studies 60%, Critical Race Theory 45%">
+                    <figcaption>Categories of NIH-funded research now under federal review or termination</figcaption>
+                </figure>
+
+                <p>Fetal tissue research isn't obscure or marginal. It's foundational to work on HIV, Parkinson's disease, diabetes, and developmental disorders. Researchers have spent decades building expertise and infrastructure around these methods. That work is now frozen.</p>
+
+                <div class="callout">
+                    <p><strong>The pattern:</strong> Fetal tissue research is the headline, but the chart tells a bigger story. DEI programs, climate science, gender studies—entire categories of inquiry are now subject to ideological review. The administration isn't just cutting funding. It's reshaping what science can study.</p>
+                </div>
+
+                <p>Some labs will pivot to alternative methods. Others will watch years of work become stranded assets. The chilling effect extends beyond terminated grants: who starts a five-year research program when the ground can shift at any moment?</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: UT-Austin Closures -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-ut-austin-closures.png" alt="Editorial illustration of three doors in a university hallway being closed, light spilling from behind them as the corridor darkens">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">UT-Austin Closes Three Offices. Faculty Ask: Why?</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle</a></span>
+                <span class="section-date">January 22, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.utexas.edu/">The University of Texas at Austin</a> is closing its Center for Teaching and Learning, the Office of Community Engagement, and the Office of Undergraduate Research. Provost William Inboden calls it "optimization." Faculty call it abandonment.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ut-austin-closures.png" alt="Bar chart showing years of operation before closure: Center for Teaching & Learning 25 years, Community Engagement 18 years, Undergraduate Research 12 years">
+                    <figcaption>Combined decades of institutional support, eliminated in a single announcement</figcaption>
+                </figure>
+
+                <p>The Center for Teaching and Learning, in particular, was no bureaucratic backwater. It helped faculty redesign courses, adopt new pedagogies, and navigate the shift to online instruction during COVID. Its staff knew how teaching actually works—rare institutional knowledge that takes years to build.</p>
+
+                <blockquote>"We've spent years building faculty development infrastructure. Now we're told it's overhead."</blockquote>
+
+                <p>The timing raises questions. UT-Austin has been under intense political pressure since Texas banned DEI programs last year. These offices weren't DEI programs—but they were soft targets, places where "streamlining" wouldn't trigger obvious political backlash.</p>
+
+                <p>As a flagship public university, UT-Austin's moves ripple outward. If Austin can close its teaching center, so can El Paso. So can Lubbock. The permission structure is being established.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: ICE Enforcement -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-ice-minnesota.png" alt="Editorial illustration showing a snowy campus quad from above with footprints avoiding the center, tracing paths along building edges">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">Walking the Edges in Minnesota</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Students at <a href="https://www.augsburg.edu/">Augsburg University</a> and the <a href="https://twin-cities.umn.edu/">University of Minnesota</a> are learning new routes to class. Not shortcuts—but shadow routes, paths that keep them close to buildings, inside skyways, underground in tunnels. Routes that avoid the open quad where ICE officers have been spotted.</p>
+
+                <p>Thousands of immigration enforcement officers flooded Minnesota last month as part of a regional crackdown. The administration has made clear that college campuses are no longer "sensitive locations" deserving special consideration. The result is a geography of fear.</p>
+
+                <div class="callout">
+                    <p><strong>Adaptation as survival:</strong> Colleges are responding with what tools they have. Augsburg increased online course options. Some institutions offer emergency housing. These are patches on a wound that keeps bleeding.</p>
+                </div>
+
+                <p>The psychological cost extends beyond undocumented students. International students with valid visas report constant anxiety. U.S. citizens who "look foreign" modify their behavior. The perception of danger, as one administrator put it, is everywhere.</p>
+
+                <p>What happens to a university when its students are afraid to walk outside?</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Morris Brown -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-morris-brown-reinstated.png" alt="Editorial illustration of a historic HBCU building with a revolving door at its entrance, warm amber light glowing from within">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">The President Returns</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.morrisbrown.edu/">Morris Brown College</a> fired President Kevin James. Then, days later, the board voted to reinstate him. The reversal came with an acknowledgment that his termination hadn't followed proper contractual procedures—and a warning that "retaliation against whistleblowers would not be tolerated."</p>
+
+                <p>That last clause hints at drama the public hasn't fully seen. But whatever internal conflicts erupted, one thing is clear: alumni and stakeholders pushed back, hard, and the board blinked.</p>
+
+                <p>James's credentials are extraordinary. He led Morris Brown back from a twenty-year loss of accreditation—a feat many considered impossible. That accreditation, regained in 2022, represents everything: federal financial aid eligibility, enrollment stability, institutional legitimacy.</p>
+
+                <blockquote>"You don't fire the person who brought you back from the dead without consequences."</blockquote>
+
+                <p>The episode highlights a recurring tension at HBCUs: boards under external pressure, presidents with precarious mandates, and communities with very long memories. James is back. Whether he can govern effectively with a board that just tried to fire him remains to be seen.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Northwestern Open Debate -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-northwestern-debate.png" alt="Editorial illustration of a globe with 120 points of light representing countries, all connected by lines to a single American location">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Price of Admission: Ideological Training</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">The Chronicle</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.northwestern.edu/">Northwestern University</a> has agreed to a deal with the Trump administration requiring "Open Debate" training—specifically for international students. The agreement also includes providing the government with applicant disciplinary records and their stated motivations for studying in the United States.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-northwestern-international.png" alt="Pie chart showing Northwestern's international student body: 45% from Asia, 25% from Europe, 15% from Middle East & Africa, 10% from Latin America, 5% from other regions">
+                    <figcaption>Northwestern's international students come from 120 countries—all now subject to "Open Debate" requirements</figcaption>
+                </figure>
+
+                <p>The implications are staggering. International students—and only international students—must now undergo ideological orientation as a condition of enrollment. The training content remains vague, but the targeting is explicit.</p>
+
+                <div class="callout">
+                    <p><strong>The precedent:</strong> Northwestern isn't a random test case. It's a top-tier research university. If Northwestern agrees to these terms, the administration has established that elite institutions will comply. The pressure on other universities intensifies.</p>
+                </div>
+
+                <p>One hundred twenty countries send students to Northwestern. Each of those students must now weigh whether studying in America requires submitting to a program that treats their presence as a problem to be managed.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: AI Era Report -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-ai-era-strategy.png" alt="Editorial illustration of a university library with an architectural blueprint showing AI circuitry patterns, glowing with amber light">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">The AI Strategy Imperative</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.chronicle.com/">Chronicle Intelligence</a></span>
+                <span class="section-date">January 16, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The Chronicle's new intelligence report on AI in higher education arrives with a shift in framing. The conversation has moved past "will students cheat?" to "how do institutions adapt?"</p>
+
+                <p>The report argues that 2026 is the year universities must formalize AI strategies—not as reactive policies, but as institutional frameworks. This means deciding what AI tools faculty can use, what students should learn, and how academic integrity definitions must evolve.</p>
+
+                <blockquote>"Institutions still debating whether to engage with AI are already behind."</blockquote>
+
+                <p>The timing is notable. As other stories this week show, universities are under assault from multiple directions—research funding cuts, office closures, immigration enforcement. AI strategy might seem like a luxury when survival is at stake.</p>
+
+                <p>But the report suggests the opposite: institutions that get AI integration right may be the ones with the resilience to weather everything else. Those that don't may find themselves optimizing processes that no longer exist.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Week Ahead</h2>
+            <p class="closing-text">This week's stories share a common thread: things that took decades to build are being dismantled in days. Research programs. Teaching centers. The assumption that campuses are places of sanctuary. The idea that international students are welcomed, not monitored. Some of this is policy. Some is budget. Some is political pressure institutions lack the will to resist. The academy's response will determine whether these dismantlings are temporary setbacks or permanent losses. Right now, the direction is clear. The question is whether anyone can change it.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+            <span class="newsletter-date">Chronicle of Higher Education Edition • January 23, 2026</span>
+        </div>
+    </footer>
+</body>
+</html>

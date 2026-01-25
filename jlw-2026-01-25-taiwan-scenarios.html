@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Strait Truth: Six Scenarios for Taiwan's Future</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - military/geopolitical theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #C41E3A;
+            --accent-soft: rgba(196, 30, 58, 0.12);
+            --accent-hover: #A01830;
+            --border: #D8E2E8;
+            --border-strong: #1B3A4B;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E05069;
+                --accent-soft: rgba(224, 80, 105, 0.15);
+                --accent-hover: #F06079;
+                --border: #2E2A25;
+                --border-strong: #3D5A80;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "\2022";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 25, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Geopolitics</span>
+            <h1 class="hero-title">The Strait Truth: Six Scenarios for Taiwan's Future</h1>
+            <p class="hero-subtitle">From economic strangulation to full-scale invasion, the world's leading analysts have war-gamed every path Beijing might take. The conclusions are sobering—and the timeline is shorter than you think.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-strait-truth.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-taiwan-strait.jpg" alt="Taiwan Strait at dusk with military vessels silhouetted against a dramatic sky">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Economic Impact -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-economic-shock.jpg" alt="Abstract visualization of global economic shockwaves from semiconductor supply chain disruption">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">The $10 Trillion Shock: Why Your Portfolio Should Care</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.bloomberg.com/news/articles/2024-01-10/the-10-trillion-cost-of-a-taiwan-war-will-hit-global-gdp-by-10">Bloomberg Economics</a></span>
+                <span class="section-date">January 2024</span>
+            </div>
+            <div class="section-body">
+                <p>Forget Ukraine. Forget COVID. If China moves on Taiwan, you're looking at an economic crater five times deeper than the 2008 financial crisis. <a href="https://www.bloomberg.com">Bloomberg's</a> economists put a number on it: <strong>$10 trillion</strong>, or roughly 10% of global GDP, vaporized.</p>
+
+                <p>The math is brutal. <a href="https://www.tsmc.com">TSMC</a> produces over 90% of the world's most advanced semiconductors. Every iPhone, every Nvidia GPU, every modern car—all of it flows through a single island 100 miles from the Chinese coast. A blockade alone would cut global GDP by 5%. A shooting war doubles that.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-economic-impact.png" alt="Chart comparing GDP impact of historical crises versus projected Taiwan scenarios">
+                    <figcaption>Projected impact of Taiwan scenarios compared to recent global economic shocks. A full conflict would dwarf previous crises.</figcaption>
+                </figure>
+
+                <p>The report models two scenarios: a quarantine that chokes off trade, and a kinetic conflict that destroys production capacity outright. Neither is good for anyone—including China, whose economy would contract by up to 16.7% in the war scenario. This isn't just geopolitics; it's mutually assured economic destruction.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> The semiconductor supply chain isn't just a business risk—it's a global systemic vulnerability. Every week that passes without meaningful chip diversification is another week of Russian roulette.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Blockade Scenario -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-blockade.jpg" alt="Satellite view of naval vessels forming a cordon around Taiwan">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Blockade Option: Beijing's Most Likely First Move</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.csis.org/analysis/dangerous-straits-wargaming-chinese-blockade-taiwan">CSIS</a></span>
+                <span class="section-date">April 2024</span>
+            </div>
+            <div class="section-body">
+                <p>Here's what keeps Pentagon planners up at night: what if China doesn't invade? What if they just... wait?</p>
+
+                <p>The <a href="https://www.csis.org">Center for Strategic and International Studies</a> ran this scenario, and the results were grim. A Chinese "quarantine"—not quite a blockade, but close enough—could isolate Taiwan without firing a shot that unambiguously triggers U.S. treaty obligations. Coast guard vessels. "Safety inspections." Endless paperwork for ships trying to reach Taiwanese ports.</p>
+
+                <p>The genius of this approach is its ambiguity. Does inspecting ships count as an act of war? International law says maybe. But launching Tomahawks in response to customs delays? That's a harder sell to Congress—and Beijing knows it. The wargame found the U.S. and Taiwan are "not prepared for this scenario," with no clear playbook for a slow strangulation that never quite crosses the red line.</p>
+
+                <p>Taiwan imports 98% of its energy. The island has roughly 11 days of natural gas reserves, 39 days of coal, and 146 days of oil. A determined quarantine doesn't need to last forever—just long enough to bring Taipei to the negotiating table.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> The most dangerous scenario may not be the dramatic one. China's strategists have studied Sun Tzu: "The supreme art of war is to subdue the enemy without fighting."</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Invasion Wargame -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-wargame.jpg" alt="Military wargaming room with holographic tactical displays">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">24 War Games, One Verdict: Nobody Wins</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.csis.org/analysis/first-battle-next-war-wargaming-chinese-invasion-taiwan">CSIS</a></span>
+                <span class="section-date">January 2023</span>
+            </div>
+            <div class="section-body">
+                <p>CSIS ran the numbers. Actually, they ran them 24 times, modeling a full Chinese amphibious invasion of Taiwan under different assumptions. The headline: in most scenarios, the U.S., Japan, and Taiwan successfully repel the invasion.</p>
+
+                <p>The fine print is where it gets dark.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-wargame-losses.png" alt="Bar chart showing projected military losses for US/Japan, China, and Taiwan">
+                    <figcaption>Median projected losses across CSIS wargame iterations. All parties suffer catastrophic damage.</figcaption>
+                </figure>
+
+                <p>"Success" means losing two U.S. aircraft carriers. Hundreds of aircraft. Tens of thousands of American and Japanese service members. Taiwan's military effectively ceases to exist as a fighting force. The island's economy—those semiconductor fabs everyone's worried about—lies in ruins. And China? They lose their invasion fleet, potentially destabilizing Communist Party rule.</p>
+
+                <p>The critical variables: whether Japan allows the U.S. to use its bases (essential), whether Taiwan's ground forces hold long enough for reinforcements (likely), and whether the U.S. has enough long-range anti-ship missiles stockpiled (currently insufficient). The report's authors were explicit: this isn't a victory. It's a catastrophe that happens to preserve Taiwan's autonomy.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> The question isn't "Can we win?" It's "Are we willing to pay the price?" The wargames suggest the answer should inform a lot more urgency than we're currently seeing.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Escalation Paths -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-escalation.jpg" alt="Branching decision tree showing escalation pathways">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Nine Roads to Hell: RAND Maps the Escalation Spiral</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.rand.org/pubs/research_reports/RRA2128-1.html">RAND Corporation</a></span>
+                <span class="section-date">January 2025</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.rand.org">RAND's</a> latest report asks the question everyone avoids: what happens after the first week? Nine scenarios. Nine ways a "limited" conflict spirals into something much worse.</p>
+
+                <p>The paths vary: an accidental shoot-down that triggers retaliation. Economic sanctions that China treats as acts of war. A "demonstration" strike on Guam that demands a response. But the through-line is consistent—once shooting starts, the forces pushing toward escalation dwarf those counseling restraint.</p>
+
+                <p>The most chilling insight: even if both sides want to de-escalate, the fog of war makes it nearly impossible. Chinese doctrine emphasizes striking decisively before the enemy can respond. American doctrine demands overwhelming force to minimize friendly casualties. Both approaches reward going bigger, faster—and punish hesitation.</p>
+
+                <p>Nuclear use isn't assumed in most scenarios, but it's not excluded either. The report notes that China has explicitly abandoned its "no first use" pledge in the context of territorial integrity. Taiwan, in Beijing's view, isn't foreign territory—it's a domestic matter. The rules may not apply.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> Every scenario model reveals the same truth: war termination is harder than war initiation. The off-ramps everyone assumes will exist may not materialize when they're needed most.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Taiwan's Defense -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-porcupine.jpg" alt="Conceptual illustration of Taiwan's porcupine defense strategy">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Porcupine Doctrine: Taiwan Bets on Being Indigestible</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.reuters.com/world/asia-pacific/taiwans-porcupine-strategy-get-us-boost-with-new-arms-package-2023-07-28/">Reuters</a></span>
+                <span class="section-date">Recent analysis</span>
+            </div>
+            <div class="section-body">
+                <p>Taiwan can't outspend China. It can't match the <a href="http://eng.chinamil.com.cn">PLA</a> ship for ship or plane for plane. So it's trying something different: becoming so painful to swallow that Beijing chokes.</p>
+
+                <p>The "porcupine strategy" focuses on asymmetric capabilities—weapons that are cheap, mobile, and lethal. Thousands of anti-ship missiles hidden in shipping containers. Coastal defense systems that can relocate before satellites spot them. Drones. Mines. Shoulder-fired missiles that turn every hillside into a potential ambush. The goal isn't to defeat the PLA in open battle; it's to make an invasion so costly in blood and time that China's leaders decide it isn't worth it.</p>
+
+                <p>Taiwan has also extended mandatory military service from four months to one year—still short by historical standards, but a significant shift. The message to Beijing: this won't be over in a week. Every block of Taipei becomes Fallujah.</p>
+
+                <p>The strategy has critics. Big-ticket items like submarines and F-16s still dominate the defense budget, partly for political reasons (they're more visible) and partly because Taiwan's military brass remains skeptical of guerrilla thinking. But the trend line is clear, and U.S. arms packages increasingly emphasize porcupine-compatible systems.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> Deterrence isn't about winning. It's about making victory too expensive to pursue. Taiwan's best hope may be convincing Beijing that the first week is just the beginning of a decade-long insurgency.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Timeline -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-timeline.jpg" alt="2027 calendar with countdown aesthetic representing Xi's deadline">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">The 2027 Question: Xi's Deadline, or Just a Planning Milestone?</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://armedservices.house.gov/hearings">House Armed Services Committee Testimony</a></span>
+                <span class="section-date">Recent analysis</span>
+            </div>
+            <div class="section-body">
+                <p>In 2021, Admiral Philip Davidson told Congress that China could attempt to take Taiwan "in the next six years." The "Davidson Window" became instant doctrine—a countdown clock ticking toward 2027.</p>
+
+                <p>But what does 2027 actually mean? U.S. intelligence assesses that <a href="https://en.wikipedia.org/wiki/Xi_Jinping">Xi Jinping</a> has ordered the PLA to be <em>capable</em> of taking Taiwan by that date—not that he's decided to do it. The distinction matters. Military readiness is a prerequisite for action, not a guarantee of it.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-timeline.png" alt="Timeline showing key milestones and risk windows through 2035">
+                    <figcaption>Key milestones and projected risk windows. The 2025-2030 period represents heightened uncertainty.</figcaption>
+                </figure>
+
+                <p>Several factors could accelerate or delay the timeline. Taiwan's 2024 election brought the <a href="https://en.wikipedia.org/wiki/Democratic_Progressive_Party">DPP</a> back to power, maintaining the status quo Beijing despises. China's economic troubles—property crisis, demographic decline, youth unemployment—could either distract Xi or tempt him toward nationalist distraction. And TSMC's Arizona fabs won't reach full capacity until 2030, meaning the semiconductor leverage diminishes with every passing year.</p>
+
+                <p>The consensus among analysts: 2027 isn't a deadline, but the window between now and 2030 represents peak risk. After that, chip diversification, Taiwan's improved defenses, and China's aging population all shift the calculus. If Beijing is going to act, the logic favors sooner rather than later.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> Don't fixate on 2027. Focus on the trend: every year that passes without conflict is a year of preparation gained. But we're not out of the woods yet—not even close.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Only Certainty Is Uncertainty</h2>
+            <p class="closing-text">These scenarios aren't predictions—they're possibilities. What happens next depends on decisions not yet made by leaders in Beijing, Washington, Taipei, and Tokyo. The wargames and economic models can only illuminate the stakes. The rest is politics, psychology, and chance. Keep watching the Strait.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

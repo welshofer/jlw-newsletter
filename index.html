@@ -47,6 +47,8 @@
             --tag-education-bg: rgba(61, 79, 124, 0.12);
             --tag-history: #8B4513;
             --tag-history-bg: rgba(139, 69, 19, 0.12);
+            --tag-geopolitics: #C41E3A;
+            --tag-geopolitics-bg: rgba(196, 30, 58, 0.12);
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -70,6 +72,7 @@
                 --tag-business-bg: rgba(114, 47, 55, 0.25);
                 --tag-education-bg: rgba(61, 79, 124, 0.25);
                 --tag-history-bg: rgba(139, 69, 19, 0.25);
+                --tag-geopolitics-bg: rgba(196, 30, 58, 0.25);
             }
         }
         * { box-sizing: border-box; }
@@ -162,6 +165,7 @@
         .pill[data-tag="business"] { background: var(--tag-business-bg); color: var(--tag-business); }
         .pill[data-tag="education"] { background: var(--tag-education-bg); color: var(--tag-education); }
         .pill[data-tag="history"] { background: var(--tag-history-bg); color: var(--tag-history); }
+        .pill[data-tag="geopolitics"] { background: var(--tag-geopolitics-bg); color: var(--tag-geopolitics); }
 
         .issue {
             padding: 1rem 0;
@@ -222,9 +226,21 @@
             <button class="filter-btn" data-tag="business">Business</button>
             <button class="filter-btn" data-tag="education">Education</button>
             <button class="filter-btn" data-tag="history">History</button>
+            <button class="filter-btn" data-tag="geopolitics">Geopolitics</button>
         </div>
 
         <div class="no-results">No newsletters match this filter.</div>
+
+        <div class="issue" data-tags="geopolitics policy economy">
+            <a href="jlw-2026-01-25-taiwan-scenarios.html">The Strait Truth: Six Scenarios for Taiwan's Future</a>
+            <div class="date">January 25, 2026</div>
+            <div class="topic">From economic strangulation to full-scale invasion, the world's leading analysts have war-gamed every path Beijing might take. Bloomberg's $10 trillion GDP shock, CSIS blockade wargames, the 24-iteration invasion simulation where nobody wins, RAND's nine escalation paths, Taiwan's porcupine doctrine, and why 2027 may be more deadline than milestone.</div>
+            <div class="pills">
+                <span class="pill" data-tag="geopolitics">Geopolitics</span>
+                <span class="pill" data-tag="policy">Policy</span>
+                <span class="pill" data-tag="economy">Economy</span>
+            </div>
+        </div>
 
         <div class="issue" data-tags="policy culture">
             <a href="jlw-2026-01-25-europe-demographics.html">The Demographic Reckoning</a>

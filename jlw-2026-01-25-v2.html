@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Word That Houses Nothing — January 25, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - sophisticated violet/indigo for philosophical topic */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D72;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #9B8BC6;
+                --accent-soft: rgba(155, 139, 198, 0.15);
+                --accent-hover: #B9ABD8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 25, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Language & Society</span>
+            <h1 class="hero-title">The Word That Houses Nothing</h1>
+            <p class="hero-subtitle">Why we started saying "unhoused" instead of "homeless"—and whether the euphemism treadmill is carrying us anywhere useful.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-word-that-houses-nothing.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-unhoused-dignity.jpg" alt="Two people sitting on an urban sidewalk, viewed from behind, soft morning light filtering through buildings">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Cambridge Academic Analysis -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Etymology of Empathy: What "House" vs. "Home" Actually Means</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cambridge.org/core/journals/modern-american-history/article/words-matter-so-does-the-context-of-history-on-the-homeless-and-the-unhoused/7DE970E084C2FE460229D77474F3EBBF">Modern American History (Cambridge)</a></span>
+                <span class="section-date">2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-cambridge-etymology.jpg" alt="Academic journal pages with magnifying glass examining etymology">
+            </figure>
+            <div class="section-body">
+                <p>The shift from "homeless" to "unhoused" didn't happen in a <a href="https://twitter.com">Twitter</a> boardroom or a city council chamber. It emerged from social service providers in Seattle during the 2000s who noticed something linguistically interesting: "home" and "house" aren't synonyms, and the distinction matters.</p>
+
+                <p>A peer-reviewed analysis in <a href="https://www.cambridge.org/core/journals/modern-american-history">Cambridge's Modern American History</a> traces the semantic shift. The argument goes like this: a person sleeping in a tent in their city of 20 years might be "unhoused" but not "homeless"—they have a community, a sense of place, roots. The term emphasizes that what's missing is a structure, not belonging.</p>
+
+                <p>But here's where the academic analysis gets uncomfortable for advocates: the author argues that framing homelessness as purely a housing problem misses the deeper issue. "The term stressed the structural vulnerability of cities such that cities produced homelessness, and it is cities that needed to be fixed," the paper notes. Yet housing alone won't solve what is fundamentally a community development crisis for the extremely poor. The word change may have shifted blame—from individuals to systems—while still missing the actual target.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-terminology-timeline.png" alt="Timeline showing evolution from bum/hobo to homeless to unhoused over 100 years">
+                    <figcaption>The euphemism treadmill: each generation's neutral term becomes the next generation's stigmatized label.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 2: UK Comparison -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">"Rough Sleepers": Why the UK Never Caught the Unhoused Bug</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.crisis.org.uk/ending-homelessness/homelessness-knowledge-hub/types-of-homelessness/">Crisis UK / House of Commons Library</a></span>
+                <span class="section-date">2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-uk-comparison.jpg" alt="Split view of London and American city skylines with tents beneath">
+            </figure>
+            <div class="section-body">
+                <p>Cross the Atlantic and the linguistic landscape shifts entirely. In the UK, the primary term is "rough sleepers"—functional, descriptive, bureaucratic. There's been no significant push for "unhoused" or its equivalents. Why?</p>
+
+                <p>Part of it is institutional: the <a href="https://www.crisis.org.uk">Crisis charity</a> and <a href="https://www.gov.uk">government bodies</a> distinguish carefully between rough sleeping (on the streets), hidden homelessness (couch surfing), and statutory homelessness (legally recognized by councils). The specificity serves policy purposes. When you're counting 4,667 rough sleepers on a single autumn night in England—up 91% since 2021—the term's clinical precision has advocacy value.</p>
+
+                <p>The American "unhoused" shift is revealing by contrast: it's a response to perceived stigma rather than policy precision. UK advocates focus on the scandal of the numbers; American advocates focus on the dignity of the language. Both approaches have merit, but they reflect different theories of change. Does calling someone "unhoused" actually make voters more likely to fund housing? Or does it make the problem sound less urgent—more like a temporary inconvenience than a crisis?</p>
+
+                <figure class="chart">
+                    <img src="images/chart-uk-vs-us.png" alt="Bar chart comparing UK rough sleeper counts and US homeless counts">
+                    <figcaption>Same crisis, different terminology: both countries show sharp increases, but linguistic approaches diverge.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Supreme Court / Political Dimension -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Supreme Court Doesn't Care What You Call Them</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.thenation.com/article/society/unhoused-right-rhetoric-homelessness/">The Nation</a></span>
+                <span class="section-date">2023-2024</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-supreme-court.jpg" alt="Supreme Court columns at dusk with sleeping bag at base">
+            </figure>
+            <div class="section-body">
+                <p>While progressives debated "homeless" versus "unhoused," the <a href="https://www.supremecourt.gov">Supreme Court</a> was debating something more consequential: whether cities can criminalize sleeping outside. The 2024 <em>Grants Pass</em> decision gave municipalities the green light to issue fines and arrests for camping in public spaces—regardless of shelter availability.</p>
+
+                <p>This is the uncomfortable political reality: terminology debates happen in the cultural foreground while policy fights happen in the legal background. The person swept from an encampment at 4 AM doesn't care whether the officer's report says "homeless individual" or "unhoused person." They care whether they'll be cited, arrested, or have their belongings destroyed.</p>
+
+                <p>Critics argue that terms like "unhoused" increase the social gulf between those who use progressive vocabulary and those who don't—making coalition-building harder. "Those who do not inhabit the elite circles where new terms develop come to feel disdained by those who use this language," notes <a href="https://www.thenation.com">The Nation</a>. The word signals tribal membership, not actual compassion. Meanwhile, right-wing rhetoric increasingly frames homeless people as threats to public safety, and that framing is winning in state legislatures and city councils across the country.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: LA Policy Adoption -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Los Angeles Made It Official. Did It Matter?</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.lahsa.org">LA Homeless Services Authority</a></span>
+                <span class="section-date">2022-2023</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-la-policy.jpg" alt="Los Angeles City Hall at golden hour with palm trees">
+            </figure>
+            <div class="section-body">
+                <p>Los Angeles—home to the largest unsheltered population in America—became the most prominent city to officially embrace "unhoused." Mayor <a href="https://en.wikipedia.org/wiki/Eric_Garcetti">Eric Garcetti</a> and the <a href="https://www.lahsa.org">LA Homeless Services Authority</a> pushed for "people who are unhoused" and "unhoused neighbors" over "the homeless."</p>
+
+                <p>The rationale was explicit: "Our unhoused neighbors are human, and the language we use should reflect that. Abandon outdated, othering and dehumanizing terminology." Seattle government went further, adopting "person experiencing homelessness"—a construction so careful it requires eight syllables to describe what "homeless" does in two.</p>
+
+                <p>But here's the empirical question nobody can answer: Has LA's terminology shift corresponded with better outcomes? The city's homeless count hit 75,000 in 2023, up from 66,000 in 2022. Billions in <a href="https://www.lamayor.org">Proposition HHH</a> funding have produced permanent supportive housing units, but not fast enough to match the inflow. The words changed. The tents remained. At some point, observers are entitled to ask whether linguistic energy might have been better spent on zoning reform, mental health services, or addiction treatment funding.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-framing-gap.png" alt="Horizontal bar chart showing gap between public and advocacy framing of homelessness causes">
+                    <figcaption>The framing gap: advocates emphasize systemic causes while the public still leans toward individual explanations.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Euphemism Treadmill Critique -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Treadmill Never Stops: Freddie deBoer's Progressive Critique</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://freddiedeboer.substack.com/p/how-we-got-to-unhoused">Freddie deBoer (Substack)</a></span>
+                <span class="section-date">December 2022</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-euphemism-treadmill.jpg" alt="Escalator ascending with words fading as they rise">
+            </figure>
+            <div class="section-body">
+                <p>The sharpest critique of "unhoused" comes not from conservatives but from the socialist left. Writer <a href="https://freddiedeboer.substack.com">Freddie deBoer</a> calls it "pointless self-aggrandizing liberal language games" that substitute for substantive policy. His argument cuts deep.</p>
+
+                <p>"Everyone knows what homelessness is," deBoer writes. "We all understand the implications." The word "homeless" already conveys everything needed—deprivation, vulnerability, crisis. And here's his provocative turn: "Homelessness should be stigmatized"—not the people, but the condition. Softening the language softens the urgency. When you call it "experiencing houselessness," it sounds almost like a gap year.</p>
+
+                <p>DeBoer invokes the euphemism treadmill, coined by linguist Steven Pinker. "Retarded" was originally a softer alternative to "moron" and "idiot"—medical terms adopted precisely because they weren't slurs. Within decades, "retarded" itself became the slur. "Unhoused" will follow the same path. Give it twenty years and advocates will be scrambling for a replacement, because the stigma attaches to the underlying reality, not the phonemes. "The solution," deBoer concludes, "is to end homelessness, not to avoid talking about it in stark terms."</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: AP Stylebook -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The AP Split the Difference—And That Might Be Wisdom</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cjr.org/language_corner/2020-ap-stylebook-changes.php">Columbia Journalism Review / AP Stylebook</a></span>
+                <span class="section-date">May 2020</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-ap-stylebook.jpg" alt="AP Stylebook open on newsroom desk with highlighted text">
+            </figure>
+            <div class="section-body">
+                <p>When the <a href="https://www.apstylebook.com">Associated Press Stylebook</a> updated its guidance in May 2020, journalists worldwide paid attention. The AP sets the standard for most American news organizations, from local papers to wire services. Their position was notably nuanced.</p>
+
+                <p>"Homeless is generally acceptable as an adjective," the guidance reads. But—and this is the crucial distinction—avoid "the homeless" as a collective noun. "We no longer use 'the homeless,' just like we don't use 'the elderly' or 'the disabled.'" The shift is toward person-first language, not terminology replacement. A person can be homeless; they should not be reduced to "a homeless."</p>
+
+                <p>Editor <a href="https://twitter.com/paulafroke">Paula Froke</a> explained that the AP found most alternative terms "jargony" and warned about "good intentions but bad outcomes." When the stylebook tried to provide a specific definition for homelessness, they discovered that government agencies don't even agree on what counts. HUD uses one definition; the Department of Education uses another. The word "unhoused" appears in the AP guidance only as something to use in direct quotations—not as recommended style. Sometimes the establishment position is the wisest one: keep the clear word, drop the dehumanizing grammar.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7: Indigenous Perspectives -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">Neither Word Works: Indigenous Communities Redefine the Question</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.homelesshub.ca/sites/default/files/COHIndigenousHomelessnessDefinition.pdf">Canadian Observatory on Homelessness / Jesse Thistle</a></span>
+                <span class="section-date">2017-present</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-indigenous.jpg" alt="Indigenous medicine wheel overlaid on urban cityscape">
+            </figure>
+            <div class="section-body">
+                <p>While settlers argue about "homeless" versus "unhoused," Indigenous scholars have been quietly pointing out that both terms miss the point entirely. Researcher <a href="https://twitter.com/jessethistle">Jesse Thistle</a>, working with the <a href="https://www.homelesshub.ca">Canadian Observatory on Homelessness</a>, developed a 12-dimension Indigenous definition of homelessness that makes Western frameworks look like crayon drawings.</p>
+
+                <p>Indigenous homelessness "is not defined as lacking a structure of habitation," Thistle writes. It includes disconnection from land, water, place, family, kin, community, language, identity, animals, and traditional teachings. "For many Indigenous people, home might be characterized as a relationship with land and its various cultural meanings." The <a href="https://www.chiefseattleclub.org">Chief Seattle Club</a> puts it more directly: "Native people were never homeless before 1492."</p>
+
+                <p>This reframing exposes the limits of both sides of the terminology debate. "Homeless" implies a temporary lack; "unhoused" implies a fixable housing shortage. Neither captures the colonial displacement, forced relocation, residential school trauma, and cultural erasure that produce Indigenous houselessness at rates 30%+ higher than the general population. When 31% of homeless people in Canada come from Indigenous communities that represent 5% of the population, the problem isn't what we call them. It's what was done to them—and whether we're prepared to reckon with that history rather than hiding behind softer words.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-indigenous-dimensions.png" alt="Radar chart showing 12 dimensions of Indigenous homelessness definition">
+                    <figcaption>Jesse Thistle's 12-dimension framework reveals how much Western definitions miss: spiritual disconnection, cultural dissonance, and relocation trauma aren't captured by "unhoused."</figcaption>
+                </figure>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Word That Changes Nothing</h2>
+            <p class="closing-text">In the end, whether you say "homeless" or "unhoused" matters far less than whether you fund housing, mental health services, and addiction treatment. The vocabulary shift reflects genuine good intentions—a desire to see people rather than problems, to emphasize systems rather than individual failure. But good intentions running on the euphemism treadmill will always be outpaced by the underlying reality they're trying to soften. Someone sleeping under an overpass tonight doesn't need a better adjective. They need a bed, a case worker, and a path forward. The rest is just semantics—which is another way of saying it's just words.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

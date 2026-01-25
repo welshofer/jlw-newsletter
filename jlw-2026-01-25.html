@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Right to Bear Arms in 2026 — January 25, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - constitutional gravitas */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #8B1538;
+            --accent-soft: rgba(139, 21, 56, 0.12);
+            --accent-hover: #6B1029;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --navy: #1E3A5F;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #D14A6B;
+                --accent-soft: rgba(209, 74, 107, 0.15);
+                --accent-hover: #E05A7B;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --navy: #4A7BAA;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 25, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Constitutional Law</span>
+            <h1 class="hero-title">The Right to Bear Arms in 2026</h1>
+            <p class="hero-subtitle">From SCOTUS chambers to state capitols, the legal battlefield over the Second Amendment is more active than it's been in a generation. Here's what happened this week.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-right-to-bear-arms-2026.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-second-amendment.jpg" alt="Abstract composition symbolizing constitutional rights with parchment texture, scales of justice, and dramatic lighting">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Virginia Legislature -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Virginia's Purple Battleground Heats Up</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nraila.org/articles/20260123/virginia-legislative-update">NRA-ILA</a></span>
+                <span class="section-date">January 23, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-virginia-capitol.jpg" alt="Virginia State Capitol at dusk with warm golden lights glowing through windows">
+            </figure>
+            <div class="section-body">
+                <p>The 2026 legislative session in Richmond isn't even a month old, and the <a href="https://virginiageneralassembly.gov/">Virginia General Assembly</a> has already become a referendum on post-<em>Bruen</em> gun policy. This week, the House Public Safety Subcommittee held hearings on a slate of bills that would make your head spin if you tried to track them all—but two matter most.</p>
+
+                <p><a href="https://lis.virginia.gov/">HB 217</a> would impose new restrictions on "assault firearms" and large-capacity magazines, essentially importing California's regulatory framework to the Commonwealth. Meanwhile, pro-gun bills seeking to reduce waiting periods are advancing from the opposite flank. The subcommittee is the first filter, and nothing's passed yet—but the fact that both extremes are getting hearings tells you Virginia is genuinely in play.</p>
+
+                <p>Why does this matter beyond state lines? Virginia has historically been a bellwether. It flipped blue in 2019, passed red flag laws in 2020, and then saw Republicans retake the House of Delegates in 2021. If gun control legislation passes here in 2026, it signals momentum. If it stalls, gun rights advocates can claim the post-<em>Bruen</em> constitutional awakening has teeth even in purple states.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: ATF Rule -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The ATF Quietly Rewrites "Unlawful User"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.federalregister.gov/documents/2026/01/22/2026-00001/definition-of-unlawful-user-of-or-addicted-to-any-controlled-substance">Federal Register</a></span>
+                <span class="section-date">January 22, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-atf-rule.jpg" alt="Legal documents scattered across a desk with highlighted sections and federal agency seal">
+            </figure>
+            <div class="section-body">
+                <p>If you've ever wondered why the <a href="https://www.atf.gov/">Bureau of Alcohol, Tobacco, Firearms and Explosives</a> seems to write rules that get struck down, Wednesday's Interim Final Rule might actually surprise you. For once, the ATF narrowed its authority rather than expanding it.</p>
+
+                <p>The new rule clarifies who qualifies as an "unlawful user of or addicted to any controlled substance"—a category that bars you from purchasing firearms under 18 U.S.C. § 922(g)(3). Previously, a single drug arrest or a failed drug test within the past year could trigger an inference of unlawful use. Under the new framework, "evidence of a pattern of regular use over an extended period" is required. Isolated incidents no longer count.</p>
+
+                <div class="callout">
+                    <p><strong>Key change:</strong> The ATF removed regulatory text that allowed an inference of unlawful use from a single arrest or drug test. Now, a "pattern of use" is explicitly required—raising the evidentiary bar significantly.</p>
+                </div>
+
+                <p>This matters for two reasons. First, it reduces erroneous <a href="https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/nics">NICS</a> background check denials—the so-called "false positives" that have frustrated lawful buyers for years. Second, it preemptively aligns ATF regulations with emerging circuit court opinions that have found <em>Bruen</em> requires a historical analogue for any firearms restriction, and historical drug prohibitions were far more targeted than the old rule suggested.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Fifth Circuit + Baltimore -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Two Courts, Two Defeats for Gun Control</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.news2a.com/legal/fifth-circuit-denies-doj-delay-post-office">News2A</a> / <a href="https://thereload.com/court-dismisses-baltimore-trace-data-suit/">The Reload</a></span>
+                <span class="section-date">January 22, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-federal-courts.jpg" alt="Federal courthouse corridor with marble columns and natural light streaming through tall windows">
+            </figure>
+            <div class="section-body">
+                <p>Wednesday was a bad day for the Department of Justice and gun control advocates in federal court. Two separate rulings—one procedural, one substantive—both went against them.</p>
+
+                <p>In the <a href="https://www.ca5.uscourts.gov/">Fifth Circuit</a>, a three-judge panel denied the DOJ's request to pause proceedings in a case challenging the federal ban on carrying firearms in U.S. Post Offices and their parking lots. The government wanted to wait for other Supreme Court outcomes before proceeding, but the court wasn't having it: "Motion to hold in abeyance DENIED." This accelerates a potential ruling that could strike down one of the most common "sensitive place" restrictions in the country.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-circuit-cases.png" alt="Bar chart showing Second Amendment cases pending in federal circuit courts">
+                    <figcaption>The Fifth Circuit leads in both pending 2A cases and pro-gun rulings since Bruen.</figcaption>
+                </figure>
+
+                <p>Meanwhile, in Maryland, a U.S. District Court judge dismissed a lawsuit filed by the City of <a href="https://www.baltimorecity.gov/">Baltimore</a>, backed by <a href="https://www.everytown.org/">Everytown for Gun Safety</a>. The suit sought to force the ATF to release aggressive trace data for use in litigation against gun manufacturers. The court ruled that the <a href="https://www.congress.gov/bill/108th-congress/house-bill/2673">Tiahrt Amendment</a> explicitly prohibits such disclosures for civil lawsuits. "Congress has spoken clearly on this issue," the judge wrote.</p>
+
+                <p>The Baltimore ruling is particularly significant because it represents a defeat for the "lawfare" strategy—using civil litigation to achieve regulatory goals that legislatures won't pass. If you can't sue manufacturers using trace data, one of the key weapons in the gun control legal arsenal just got blunted.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Post Office Carry -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Can You Carry in a Post Office Parking Lot?</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.firearmspolicy.org/">Firearms Policy Coalition</a></span>
+                <span class="section-date">January 22, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-post-office.jpg" alt="Brass post office mail slot in weathered oak paneling with morning light">
+            </figure>
+            <div class="section-body">
+                <p>It sounds like a trivia question, but it's actually a constitutional one: Is the parking lot of a United States Post Office a "sensitive place" where the Second Amendment doesn't apply?</p>
+
+                <p>The <a href="https://www.firearmspolicy.org/">Firearms Policy Coalition</a> says no, and with the Fifth Circuit denying the government's delay tactics, they're about to get their day in court. The case challenges 18 U.S.C. § 930 and 39 C.F.R. § 232.1—federal statutes that make it a crime to bring a firearm onto postal property, including parking lots.</p>
+
+                <p>Under <em>Bruen</em>'s historical test, the government must show that post offices were historically off-limits to armed citizens. Good luck with that. In the founding era, mail was carried by armed riders, and post offices were often general stores where merchants kept firearms for protection. The historical analogue simply doesn't exist.</p>
+
+                <p>If the Fifth Circuit strikes down the post office ban, it opens the door to challenges against dozens of other federal "gun-free zones"—from VA hospitals to federal courthouses to Army Corps of Engineers land. The dominoes are lined up.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: NFA Challenge -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Tax Is Gone. Is the Registry Next?</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.saf.org/saf-files-response-brief-in-nfa-challenge/">Second Amendment Foundation</a></span>
+                <span class="section-date">January 21, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-nfa-briefs.jpg" alt="Legal briefs fanned out on a law firm desk with brass lamp and leather-bound volumes">
+            </figure>
+            <div class="section-body">
+                <p>Here's a legal theory so clever it might actually work: If Congress eliminated the tax on certain NFA items, does the government still have constitutional authority to require registration?</p>
+
+                <p>The <a href="https://www.saf.org/">Second Amendment Foundation</a> and <a href="https://www.firearmspolicy.org/">Firearms Policy Coalition</a> filed response briefs this week in <em>Brown v. ATF</em> and <em>Jensen v. ATF</em>, arguing the answer is no. Their reasoning: The <a href="https://en.wikipedia.org/wiki/National_Firearms_Act">National Firearms Act of 1934</a> justified registration requirements under Congress's taxing power. But when the "One Big Beautiful Bill Act" eliminated taxes on certain NFA items effective January 1, 2026, that constitutional hook evaporated.</p>
+
+                <p>"With the tax gone, the registration requirement is nothing more than an unconstitutional registry of law-abiding gun owners," the briefs argue. It's a novel attack—and given <em>Bruen</em>'s emphasis on text and history, it may find traction with judges who are already skeptical of federal gun regulations.</p>
+
+                <p>If successful, this theory could dismantle registration mandates for suppressors, short-barreled rifles, and other items that remain legal but heavily regulated. The NFA has survived for 92 years; this might be its first real constitutional stress test.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: SCOTUS Wolford -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">SCOTUS Takes on "Vampire Rules"</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.scotusblog.com/case-files/cases/wolford-v-lopez/">SCOTUSblog</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-scotus.jpg" alt="Supreme Court building facade at golden hour with dramatic clouds and American flag">
+            </figure>
+            <div class="section-body">
+                <p>On Monday, the <a href="https://www.supremecourt.gov/">Supreme Court</a> heard oral arguments in <em>Wolford v. Lopez</em>, a case that could reshape how Second Amendment rights work on private property. At issue: Hawaii's law that bans carrying firearms on all private property open to the public—unless the owner explicitly posts a sign <em>allowing</em> it.</p>
+
+                <p>Gun rights advocates call these "vampire rules": You can't enter unless you're invited. The default is prohibition, not permission. Hawaii, California, New York, and New Jersey all have similar provisions.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-scotus-timeline.png" alt="Timeline of major Supreme Court Second Amendment decisions from 2008 to 2026">
+                    <figcaption>The post-Bruen era has seen an acceleration of Second Amendment litigation at the Supreme Court.</figcaption>
+                </figure>
+
+                <p>Justice <a href="https://en.wikipedia.org/wiki/Brett_Kavanaugh">Kavanaugh</a> was characteristically direct: "If you have a right to carry, and you can't carry anywhere, that's a problem." The state's attorney struggled to articulate a limiting principle—if businesses can be presumptively off-limits, what about sidewalks? Parks? The logical endpoint of Hawaii's rule is that the right to carry exists only in your home and your car.</p>
+
+                <div class="callout">
+                    <p><strong>Watch for:</strong> A decision is expected by June. If the Court rules against Hawaii, states will have to flip their default rules—allowing carry unless explicitly prohibited.</p>
+                </div>
+
+                <p>The implications extend beyond concealed carry. A ruling against Hawaii would signal that <em>Bruen</em> means what it says: The Second Amendment protects the right to carry in public, not just the right to keep arms at home. That's a fundamental shift in how lower courts have been interpreting the decision.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7: SCOTUS Cert Denials -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">76 Cases Denied, But Two Still Live</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.scotusblog.com/2026/01/court-declines-to-hear-challenges-to-felon-in-possession-ban/">SCOTUSblog</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-cert-denials.jpg" alt="Stack of case folders with numbered tabs and DENIED stamps, dramatic lighting">
+            </figure>
+            <div class="section-body">
+                <p>The same day the Court heard <em>Wolford</em>, it declined to grant certiorari in 76 pending petitions challenging the federal felon-in-possession ban (18 U.S.C. § 922(g)(1)). At first glance, that looks like a massive win for gun control: The Court won't hear challenges to one of the most expansive firearms restrictions in federal law.</p>
+
+                <p>But look closer. The Court explicitly kept two cases on its docket: <em>Vincent v. Bondi</em> and <em>Thompson v. United States</em>. <em>Vincent</em> involves a defendant whose sole disqualifying offense was a non-violent check fraud conviction from decades ago. <em>Thompson</em> presents similar facts.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-state-trends.png" alt="Bar chart comparing state gun policy landscape in 2022 versus 2026">
+                    <figcaption>The number of states with constitutional carry has grown from 25 to 29 since Bruen was decided.</figcaption>
+                </figure>
+
+                <p>This is classic Supreme Court strategy: Reject the messy cases, keep the clean ones. By holding <em>Vincent</em> and <em>Thompson</em>, the justices are signaling they want to address whether <em>all</em> felonies—including ancient, non-violent ones—can constitutionally strip someone of their Second Amendment rights. The answer, under <em>Bruen</em>'s historical test, may well be no.</p>
+
+                <p>If the Court eventually rules that non-violent felonies don't justify permanent disarmament, millions of Americans could have their gun rights restored. That's not hyperbole—according to the <a href="https://www.sentencingproject.org/">Sentencing Project</a>, over 19 million Americans have felony convictions, the majority for non-violent offenses.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Constitution in Motion</h2>
+            <p class="closing-text">Four years after <em>Bruen</em> rewrote the rules, the Second Amendment is still being litigated at a pace not seen since the Bill of Rights was ratified. Courts are divided, legislatures are scrambling, and the fundamental question—what does "the right to keep and bear arms" actually mean in 2026?—remains genuinely unsettled. We'll keep watching.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

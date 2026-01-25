@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When "Impeding" Became a Felony — January 25, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Deep slate blue palette - authoritative, legal */
+            --bg: #FDFBF7;
+            --bg-alt: #F0F4F7;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #3D5A73;
+            --accent-soft: rgba(61, 90, 115, 0.12);
+            --accent-hover: #2D4A63;
+            --border: #D8E2E8;
+            --border-strong: #B8C8D4;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F1216;
+                --bg-alt: #1A1E24;
+                --text: #F0F4F7;
+                --text-secondary: #8A9AA8;
+                --accent: #6A8FB3;
+                --accent-soft: rgba(106, 143, 179, 0.15);
+                --accent-hover: #8AB0D3;
+                --border: #2A3440;
+                --border-strong: #3A4850;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 25, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Constitutional Law</span>
+            <h1 class="hero-title">When "Impeding" Became a Felony</h1>
+            <p class="hero-subtitle">Five days in Minneapolis just redrew the legal boundary between protest and obstruction. The federal government is using Reconstruction-era laws against modern protesters—and two people are dead.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/when-impeding-became-felony.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/impeding-protest/hero-protest-standoff.jpg" alt="Dramatic editorial illustration of protesters and federal officers in a tense standoff">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- Overview Chart -->
+        <article class="section">
+            <figure class="chart">
+                <img src="images/impeding-protest/chart-timeline.png" alt="Timeline showing escalation of events from January 20-24, 2026">
+                <figcaption>Five days of escalation in Minneapolis—from judicial restraint to fatal shootings to Reconstruction-era charges.</figcaption>
+            </figure>
+        </article>
+
+        <!-- SECTION 1: KKK Act Charges -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The DOJ Just Charged Protesters Under the KKK Act</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.motherjones.com/politics/2026/01/minnesota-protest-kkk-act-charges/">Mother Jones</a></span>
+                <span class="section-date">January 24, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/impeding-protest/article-01-kkk-act.jpg" alt="Gavel casting shadow over 1871 Reconstruction document with protest sign silhouette">
+            </figure>
+            <div class="section-body">
+                <p>Here's what happened: Three protest organizers—<a href="https://twitter.com/chauntyllallen">Chauntyll Allen</a>, <a href="https://www.nekimalevyarmstrong.com">Nekima Levy Armstrong</a>, and William Kelly—entered a St. Paul church during an anti-ICE demonstration on January 22nd. They disrupted the service. In any other era, this would be trespassing or disorderly conduct—misdemeanors handled by the county.</p>
+
+                <p>Instead, the <a href="https://www.justice.gov">Department of Justice</a> charged them with felony conspiracy under Section 241 of the Enforcement Act of 1871. You might know it better as the <strong>Ku Klux Klan Act</strong>—a statute created 155 years ago to prosecute nightriders terrorizing freedmen in the Reconstruction South.</p>
+
+                <p>Two organizers also face charges under the <a href="https://www.law.cornell.edu/uscode/text/18/248">FACE Act</a> (Freedom of Access to Clinic Entrances) for "interfering with religious worship." This law was written to protect abortion clinics from blockades. Now it's being used against protesters at a church they entered voluntarily.</p>
+
+                <div class="callout">
+                    <p>"We are seeing a federal civil rights statute designed to prevent terrorization... being used against protesters." — <a href="https://hsjmc.umn.edu/people/jane-e-kirtley">Jane Kirtley</a>, University of Minnesota Law</p>
+                </div>
+
+                <p>The legal innovation here matters: the DOJ has federalized what would normally be a state offense. That's not about getting harsher sentences—it's about sending a message. Disrupt a federal operation, and you're not facing the local DA anymore. You're facing the full weight of federal prosecutors who can charge you under laws that predate the light bulb.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Fatal Shooting -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Two Protesters Dead. The Government Says They "Impeded."</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cbsnews.com/minnesota/news/federal-agents-shooting-minneapolis-protest-january-2026/">CBS Minnesota</a></span>
+                <span class="section-date">January 24, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/impeding-protest/article-02-fatal-shooting.jpg" alt="Somber Minneapolis street scene with memorial candles and federal vehicle lights">
+            </figure>
+            <div class="section-body">
+                <p>Alex Jeffrey Pretti is dead. Federal agents shot him during a protest against immigration enforcement in Minneapolis on January 24th. The city confirmed a second death: Renee Good, shot the previous day during a related demonstration.</p>
+
+                <p>The official response was immediate and framed in legal terms. Homeland Security Secretary <a href="https://en.wikipedia.org/wiki/Kristi_Noem">Kristi Noem</a> alleged that protesters "impeded and assaulted" officers, citing an incident where an officer's finger was allegedly bitten off. Attorney General <a href="https://en.wikipedia.org/wiki/Pam_Bondi">Pam Bondi</a> promised charges: "Protesters obstructed and assaulted law enforcement officers... charges will be filed."</p>
+
+                <p>The word "impeded" is doing heavy lifting here. It's the bridge between "they were in our way" and "we were justified in using lethal force." When the government claims someone impeded federal officers, it invokes a specific legal framework—<a href="https://www.law.cornell.edu/uscode/text/18/111">18 U.S.C. § 111</a>—that criminalizes "forcibly" assaulting, resisting, opposing, or <em>impeding</em> federal officers.</p>
+
+                <p>The question no one has answered yet: What, exactly, did Pretti and Good do that constituted "impeding"? Were they blocking a vehicle? Refusing to disperse? Simply being present? The legal definition matters because it determines whether lethal force was justified self-defense—or something else entirely.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: DOJ Investigating Officials -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Now the DOJ Is Investigating Whether State Officials "Impeded" ICE</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.mprnews.org/story/2026/01/23/doj-investigates-minnesota-officials-impeding-ice/">MPR News</a></span>
+                <span class="section-date">January 23, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/impeding-protest/article-03-doj-officials.jpg" alt="Abstract visualization of federal and state seals colliding with subpoena documents">
+            </figure>
+            <div class="section-body">
+                <p>The definition of "impeding" is expanding. The DOJ has opened an investigation into Minnesota Governor <a href="https://en.wikipedia.org/wiki/Tim_Walz">Tim Walz</a> and Minneapolis Mayor <a href="https://en.wikipedia.org/wiki/Jacob_Frey">Jacob Frey</a>—not for physically blocking anything, but for their <em>words</em> and <em>policies</em>.</p>
+
+                <p>Grand jury subpoenas have been issued to the Mayor's office and Hennepin County. The investigation centers on whether their public statements about immigration enforcement—and Minneapolis's sanctuary policies—constitute "impeding" federal law enforcement.</p>
+
+                <p>This is new territory. Previously, "impeding" meant physical obstruction: standing in a doorway, blocking a vehicle, refusing to move when ordered. Now the DOJ is testing whether administrative decisions and political speech can qualify. If a governor tells residents they don't have to cooperate with ICE, is that "impeding"? If a mayor tweets support for protesters, is that "conspiracy"?</p>
+
+                <p>The federalism implications are profound. Sanctuary policies have been litigated for years on Tenth Amendment grounds—states can't be commandeered to enforce federal law. But the DOJ isn't arguing Minneapolis must help; they're arguing Minneapolis can't <em>hinder</em>. The line between "declining to assist" and "actively impeding" is about to be tested in court.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: TRO / Judicial Pushback -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">A Judge Tried to Define the Line. The DOJ Rejected It.</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.startribune.com/federal-judge-limits-agents-minneapolis-protest/">Star Tribune</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/impeding-protest/article-04-tro-judicial.jpg" alt="Judge's robed arm holding back riot shields with courthouse pillars">
+            </figure>
+            <div class="section-body">
+                <p>On January 20th, U.S. District Judge <a href="https://www.mnd.uscourts.gov/judges/katherine-m-menendez">Katherine Menendez</a> did something unusual: she issued a temporary restraining order that attempted to judicially define where "observation" ends and "obstruction" begins.</p>
+
+                <p>Her ruling stated: "Safely following agents at an appropriate distance does not, by itself, create reasonable suspicion to justify a vehicle stop." She barred federal agents from arresting peaceful protesters or using non-lethal munitions without probable cause.</p>
+
+                <p>The DOJ's response was immediate: appeal to the 8th Circuit. Their argument? This TRO "dangerously restricted law enforcement operations" and amounted to judicial micromanagement of field tactics. They want the restraining order lifted and any judicially-imposed definition of "impeding" thrown out.</p>
+
+                <div class="callout">
+                    <p>"Safely following agents at an appropriate distance does not, by itself, create reasonable suspicion to justify a vehicle stop." — Judge Katherine Menendez</p>
+                </div>
+
+                <p>The appeal is telling. Judge Menendez tried to give protesters a bright line: stay this far back, don't physically interfere, and you're not "impeding." The government doesn't want that bright line. A vague standard means more prosecutorial discretion. It means the definition of "impeding" can expand to fit whatever the situation requires.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Legal Definitions -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">What "Impeding" Actually Means Under Federal Law</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.law.cornell.edu/uscode/text/18/111">Cornell Law / LII</a></span>
+                <span class="section-date">Legal Analysis</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/impeding-protest/article-05-statutes.jpg" alt="Close-up of annotated U.S. Code pages with highlighted sections">
+            </figure>
+            <div class="section-body">
+                <p>Three federal statutes matter here, and they're not interchangeable.</p>
+
+                <figure class="chart">
+                    <img src="images/impeding-protest/chart-statutes.png" alt="Horizontal bar chart comparing federal obstruction statutes and their maximum penalties">
+                    <figcaption>Maximum imprisonment varies from 1 to 10 years depending on statute and circumstances.</figcaption>
+                </figure>
+
+                <p><strong><a href="https://www.law.cornell.edu/uscode/text/18/111">18 U.S.C. § 111</a></strong> criminalizes "forcibly" assaulting, resisting, opposing, impeding, intimidating, or interfering with federal officers. The key word is "forcible"—mere passive refusal to move may not always qualify. But courts interpret "force" broadly. Struggling against handcuffs counts. Pulling away from an officer counts. The threshold is lower than you'd think.</p>
+
+                <p><strong><a href="https://www.law.cornell.edu/uscode/text/18/231">18 U.S.C. § 231</a></strong> (Civil Disorders) is broader and more dangerous for protesters. It makes it a felony to commit <em>any act</em> to obstruct, impede, or interfere with law enforcement during a "civil disorder"—defined as any public disturbance involving three or more people. You don't need to touch an officer. Any act that "obstructs" during a disorder qualifies.</p>
+
+                <p><strong><a href="https://www.law.cornell.edu/uscode/text/18/241">18 U.S.C. § 241</a></strong> (the KKK Act) prohibits conspiracy to "injure, oppress, threaten, or intimidate" any person in the exercise of their civil rights. It was written to prosecute Klansmen who terrorized Black voters. Now it's being applied to protesters who disrupted a church service—the theory being that they conspired to deprive congregants of their right to worship.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Historical Precedent -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Why "I Was Protesting" Isn't a Defense</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://supreme.justia.com/cases/federal/us/390/611/">SCOTUS / Justia</a></span>
+                <span class="section-date">Historical Context</span>
+            </div>
+            <div class="section-body">
+                <p>The legal foundation was laid in 1968—the same year MLK was assassinated and cities burned. Two Supreme Court cases that year established boundaries that still govern today.</p>
+
+                <figure class="chart">
+                    <img src="images/impeding-protest/chart-precedent.png" alt="Timeline showing key Supreme Court cases from 1968 to 2026">
+                    <figcaption>Nearly 60 years of precedent establish that "impeding" access to government facilities is not protected speech.</figcaption>
+                </figure>
+
+                <p><strong><a href="https://supreme.justia.com/cases/federal/us/390/611/">Cameron v. Johnson</a></strong> (1968) upheld a Mississippi statute prohibiting "picketing or mass demonstrations in such a manner as to obstruct or unreasonably interfere with free ingress or egress to and from any public premises." The Court ruled that while picketing is expressive conduct, blocking access to courthouses and public buildings is not protected speech.</p>
+
+                <p><strong><a href="https://www.oyez.org/cases/1967/232">United States v. O'Brien</a></strong> (1968) created the test that still governs. David O'Brien burned his draft card as symbolic protest. The Supreme Court convicted him anyway, establishing that government can regulate expressive conduct if: (1) it's within constitutional power, (2) it furthers an important government interest, (3) that interest is unrelated to suppressing speech, and (4) the restriction is no greater than necessary.</p>
+
+                <div class="callout">
+                    <p>"We cannot accept the view that an apparently limitless variety of conduct can be labeled 'speech' whenever the person engaging in the conduct intends thereby to express an idea." — Chief Justice Earl Warren, <em>O'Brien</em></p>
+                </div>
+
+                <p>This is why "I was protesting" doesn't work. If the government can show its obstruction laws are about ensuring operational efficiency (not silencing viewpoints), the conviction stands even if the conduct was politically motivated. The law doesn't care <em>why</em> you blocked the entrance. It only cares <em>that</em> you did.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Line Is Moving</h2>
+            <p class="closing-text">What happened in Minneapolis this week isn't just about immigration enforcement or protest tactics. It's about where the legal boundary sits between dissent and obstruction—and that boundary is being redrawn in real-time. The ACLU has filed lawsuits (<em>Hussen v. Noem</em>, <em>Tincher v. Noem</em>). The 8th Circuit will rule on Judge Menendez's TRO. And somewhere, federal prosecutors are deciding which century-old statute best fits a modern political protest. Watch this space.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

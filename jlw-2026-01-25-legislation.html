@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Laws That Shaped 2025 — January 25, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - government/legislative theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #1E3A5F;
+            --accent-soft: rgba(30, 58, 95, 0.12);
+            --accent-hover: #152B47;
+            --border: #D8E2E8;
+            --border-strong: #C1CDD6;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F1419;
+                --bg-alt: #1A2332;
+                --text: #F5F1EA;
+                --text-secondary: #9EAAB8;
+                --accent: #4A7DB8;
+                --accent-soft: rgba(74, 125, 184, 0.15);
+                --accent-hover: #5A8DC8;
+                --border: #2A3847;
+                --border-strong: #3A4857;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Infographic styling */
+        .infographic {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .infographic img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .infographic figcaption {
+            background: var(--bg-alt);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: var(--space-sm) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 25, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Federal Legislation</span>
+            <h1 class="hero-title">The Laws That Shaped 2025</h1>
+            <p class="hero-subtitle">From the partisan "One Big Beautiful Bill" to bipartisan wins on veterans and transparency, Congress made its mark. Here's what actually passed—and what it means for you.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/laws-that-shaped-2025.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-capitol-legislation.jpg" alt="U.S. Capitol dome at dusk with American flag">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Appropriations -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Government Gets Its Checkbook: FY2026 Appropriations Finally Pass</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">Congress.gov</a></span>
+                <span class="section-date">January 23, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-appropriations.jpg" alt="Abstract visualization of budget documents flowing to government agencies">
+            </figure>
+            <div class="section-body">
+                <p>After months of continuing resolutions and shutdown threats, Congress finally delivered <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a>—a minibus appropriations package covering Commerce, Justice, Science, Energy, Water, Interior, and Environment for fiscal year 2026. The House passed it 397-28; the Senate followed with an 82-15 vote. That's the kind of bipartisan margin that makes you do a double-take in 2026.</p>
+
+                <p>The bill funds <a href="https://www.nasa.gov">NASA</a>, the <a href="https://www.nsf.gov">National Science Foundation</a>, <a href="https://www.energy.gov">Department of Energy</a>, and <a href="https://www.epa.gov">EPA</a> while emphasizing "energy dominance" and violent crime reduction. The Army Corps of Engineers gets its civil works projects. The Indian Health Service stays funded. It's not glamorous legislation, but it's the machinery that keeps federal agencies running.</p>
+
+                <p>The real story? Congress proved it can still pass major spending bills with overwhelming majorities when partisan poison pills are kept out. Whether that lesson sticks remains to be seen.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Veterans -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Veterans Score a Double Win on Jobs and Housing</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.congress.gov/bill/119th-congress/house-bill/4446">Congress.gov</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-veterans.jpg" alt="Veteran silhouette transitioning from military to civilian career">
+            </figure>
+            <div class="section-body">
+                <p>Two veteran-focused bills crossed the finish line on the same day, and both passed with the kind of unanimity that reminds you Congress occasionally remembers who it works for.</p>
+
+                <p>The <a href="https://www.congress.gov/bill/119th-congress/house-bill/4446">FAST VETS Act</a> (H.R. 4446) fixes a bureaucratic absurdity: when a veteran's circumstances change and their vocational rehabilitation goals are no longer achievable, the <a href="https://www.va.gov">VA</a> must now actually update their plan. Before this, vets could get stuck in programs that no longer made sense for them. It passed the House by voice vote and the Senate by unanimous consent.</p>
+
+                <p>The <a href="https://www.congress.gov/bill/119th-congress/house-bill/224">Disabled Veterans Housing Support Act</a> tackles an equally frustrating problem: veterans' disability compensation was counting against them when applying for <a href="https://www.hud.gov/program_offices/comm_planning/cdbg">Community Development Block Grant</a> housing assistance. The law now excludes that compensation from income calculations. It also mandates a <a href="https://www.gao.gov">GAO</a> report on how HUD treats veteran disability payments across all its programs.</p>
+
+                <p>Neither bill makes headlines. Both make actual differences in actual lives.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Whole Milk -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Got Milk? Schools Can Now Serve the Whole Thing</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.congress.gov/bill/119th-congress/senate-bill/222">Congress.gov</a></span>
+                <span class="section-date">January 14, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-milk.jpg" alt="Glass of whole milk on school cafeteria tray">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://www.congress.gov/bill/119th-congress/senate-bill/222">Whole Milk for Healthy Kids Act</a> (S.222) does exactly what its name suggests: schools participating in the federal lunch program can now offer whole milk alongside reduced-fat and skim options. The Senate passed it by unanimous consent in November; the House followed with a voice vote in December.</p>
+
+                <p>The backstory matters here. Federal school nutrition guidelines since 2012 restricted schools to fat-free and low-fat milk, based on dietary fat concerns that have since been substantially revised. Nutrition science evolved; the rules didn't. Parents and dairy farmers had been pushing for this change for years.</p>
+
+                <p>The law also lets parents (not just physicians) provide written statements for milk substitutes when kids have dietary restrictions. And alternative milk beverages now need to meet <a href="https://www.usda.gov">USDA</a> nutritional standards for calcium, protein, and vitamins A and D—a sensible guardrail against schools serving flavored water and calling it lunch.</p>
+
+                <p>It's a small policy shift with outsized symbolic weight: sometimes Congress does listen when the science changes.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Epstein Files -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Epstein Files Get Their Sunshine Moment</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.congress.gov/bill/119th-congress/house-bill/4405">Congress.gov</a></span>
+                <span class="section-date">November 19, 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-epstein-files.jpg" alt="Government files being unsealed with light rays emerging">
+            </figure>
+            <div class="section-body">
+                <p>When 427 members of Congress agree on something and only one person votes no, you've either found genuine consensus or a bill nobody wants to be caught opposing. The <a href="https://www.congress.gov/bill/119th-congress/house-bill/4405">Epstein Files Transparency Act</a> (H.R. 4405) might be both.</p>
+
+                <p>The law requires the <a href="https://www.justice.gov">Attorney General</a> to publicly release all federal prosecution files related to Jeffrey Epstein within 30 days—searchable and downloadable. The House and Senate Judiciary Committees get an unredacted list of government officials and "politically exposed persons" named in those files. Survivors' personal information stays protected.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-votes-breakdown.png" alt="Bar chart showing Congressional votes on major 2025 legislation">
+                    <figcaption>The Epstein Files Act passed 427-1 in the House—the most lopsided vote of 2025. Compare that to the razor-thin margins on the "One Big Beautiful Bill."</figcaption>
+                </figure>
+
+                <p>Representative <a href="https://higgins.house.gov/">Clay Higgins</a> (R-LA) cast the lone dissenting vote, though he didn't elaborate publicly on his reasoning. The Senate passed it the same day by unanimous consent.</p>
+
+                <p>Whether the released files satisfy public curiosity or fuel further speculation remains to be seen. But Congress sent a clear signal: on this particular issue, opacity was no longer politically defensible.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Rescissions -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">$9 Billion in Cuts: Foreign Aid and Public Broadcasting Take the Hit</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.congress.gov/bill/119th-congress/house-bill/4">Congress.gov</a></span>
+                <span class="section-date">July 24, 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-rescissions.jpg" alt="Giant scissors cutting through budget ribbons">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://www.congress.gov/bill/119th-congress/house-bill/4">Rescissions Act of 2025</a> (H.R. 4) is exactly what it sounds like: Congress taking back money it already appropriated. The bill rescinds $7.9 billion from international assistance programs and $1.1 billion from the <a href="https://www.cpb.org/">Corporation for Public Broadcasting</a>.</p>
+
+                <p>House Majority Leader <a href="https://scalise.house.gov/">Steve Scalise</a> (R-LA) introduced it in June. The House passed it quickly; the Senate followed with amendments in July. The speed was notable—rescissions typically generate more debate.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-budget-impact.png" alt="Horizontal bar chart showing fiscal impact of 2025 legislation">
+                    <figcaption>The rescissions look small next to the OBBBA's $1 trillion Medicaid impact, but they represent real programmatic choices about federal priorities.</figcaption>
+                </figure>
+
+                <p>The foreign aid cuts affect <a href="https://www.usaid.gov/">USAID</a> programs, embassy security funding, and international development initiatives. The CPB cut eliminates federal support for <a href="https://www.pbs.org/">PBS</a> and <a href="https://www.npr.org/">NPR</a>—a perennial conservative target that finally landed.</p>
+
+                <p>Defenders of the cuts point to fiscal responsibility and prioritizing domestic spending. Critics note that foreign aid is less than 1% of the federal budget and that public broadcasting serves rural and underserved communities. The debate will continue; the money is already gone.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: One Big Beautiful Bill -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The "One Big Beautiful Bill": A $1 Trillion Gamble on Healthcare and Taxes</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.congress.gov/bill/119th-congress/house-bill/1">Congress.gov</a></span>
+                <span class="section-date">July 4, 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-big-beautiful-bill.jpg" alt="Monumental legislation casting shadows on citizens below">
+            </figure>
+            <div class="section-body">
+                <p>Call it the most aptly named legislation in recent memory: <a href="https://www.congress.gov/bill/119th-congress/house-bill/1">H.R. 1</a>, the "One Big Beautiful Bill Act," is massive, ambitious, and deeply polarizing. It passed the House 218-214, the Senate 51-50 (with Vice President <a href="https://www.whitehouse.gov/administration/vice-president-vance/">JD Vance</a> breaking the tie), and the House concurrence vote 218-214. President Trump signed it on Independence Day—symbolism very much intended.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-legislation-timeline.png" alt="Timeline showing when major 2025 bills were signed">
+                    <figcaption>The partisan bills came first (July); bipartisan legislation followed through the fall and into 2026.</figcaption>
+                </figure>
+
+                <p>The healthcare provisions are sweeping. <a href="https://www.medicaid.gov/">Medicaid</a> faces nearly $1 trillion in cuts over the budget window, with work requirements for expansion adults, restrictions on provider taxes, and quarterly death file screenings. The <a href="https://www.healthcare.gov/">ACA marketplaces</a> lose automatic re-enrollment, requiring annual verification for premium tax credits. Over 10 million people could lose coverage, according to <a href="https://www.cbo.gov/">CBO</a> estimates.</p>
+
+                <p>The tax provisions permanently extend the 2017 individual rates, raise the SALT deduction cap to $40,000 (temporarily), and create new deductions for tips, overtime, and auto loan interest. "Trump accounts"—tax-deferred savings for children—arrive and expire by 2028. The child tax credit gets a permanent $200 bump. Businesses can expense domestic R&D retroactively and deduct 100% of qualifying property in year one.</p>
+
+                <p><a href="https://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program">SNAP</a> takes hits too: work requirement expansions, caps on the Thrifty Food Plan, and new state matching requirements. Noncitizen eligibility tightens further.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> This is the most consequential domestic legislation since the Affordable Care Act—and it moved through Congress with the narrowest possible margins. Whether it's "beautiful" depends entirely on which side of the healthcare and tax debates you stand.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Legislative Ledger</h2>
+            <p class="closing-text">2025 produced a study in contrasts: one massive partisan reconciliation bill that reshaped healthcare and taxes, and a series of bipartisan wins on veterans, transparency, and government funding. The lesson? Congress can still function—when the incentives align. Watch for implementation battles on the OBBBA and the first release of Epstein files in the coming weeks.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

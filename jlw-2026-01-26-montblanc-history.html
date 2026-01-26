@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pen That Signed History — January 26, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - sophisticated navy/gold for Montblanc */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #1A1A2E;
+            --accent-gold: #C9A227;
+            --accent-soft: rgba(26, 26, 46, 0.08);
+            --accent-hover: #2D2D4A;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #3D3D5C;
+                --accent-gold: #D4AF37;
+                --accent-soft: rgba(61, 61, 92, 0.2);
+                --accent-hover: #4D4D6C;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-gold);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent-gold); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent-gold);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent-gold);
+            text-decoration: underline;
+            text-decoration-color: rgba(201, 162, 39, 0.3);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent-gold);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent-gold);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 26, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Brand History</span>
+            <h1 class="hero-title">The Pen That Signed History</h1>
+            <p class="hero-subtitle">How three men in Hamburg invented the modern luxury pen—and built a company that would outfit presidents, writers, and CEOs for over a century.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-pen-that-signed-history.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-montblanc-history.png" alt="Elegant Montblanc fountain pen with signature white star cap on aged parchment">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: The Founding -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">A Banker, an Engineer, and a Stationer Walk Into Hamburg</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.montblanc.com/en-us/history">Montblanc Archives</a></span>
+                <span class="section-date">1906</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-founders.png" alt="Victorian-era gentlemen in a Hamburg pen workshop circa 1906">
+            </figure>
+            <div class="section-body">
+                <p>The year was 1906. In Hamburg, Germany, three men with distinctly different skill sets decided that writing instruments could be better. <a href="https://en.wikipedia.org/wiki/Montblanc">Alfred Nehemias</a> brought money (he was a banker). August Eberstein brought engineering expertise. Claus Johannes Voss brought retail instinct as a stationer. Together, they founded what would become one of the most recognizable luxury brands on Earth.</p>
+
+                <p>They didn't call it Montblanc. Not yet. The company started as "Simplo Filler Pen Co." in 1907, after a brief stint under the unwieldy name "Simplizissiumus-Füllhalter." Their first breakthrough came in 1909 with the "Rouge et Noir"—a safety pen with a distinctive red cap that earned it the nickname "Little Red Riding Hood" in some markets. The name came from Stendhal's famous novel, a literary reference that hinted at the company's future positioning.</p>
+
+                <p>What made them different? At a time when fountain pens were either cheap and unreliable or expensive curiosities, Nehemias, Eberstein, and Voss aimed for the middle ground that would eventually become the high ground: pens that worked beautifully, felt substantial, and signaled something about their owners. The pen as status symbol was born not in a luxury goods boardroom but in a Hamburg workshop, among engineers who simply believed writing instruments deserved more respect.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: The Brand Identity -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">When a Mountain Became a Logo</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.montblanc.com/en-us/history">Brand History</a></span>
+                <span class="section-date">1910–1913</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-mountain-logo.png" alt="Mont Blanc mountain peak viewed from above, forming a distinctive six-pointed star shape">
+            </figure>
+            <div class="section-body">
+                <p>Legend has it the name came from a card game. Someone—possibly a relative of one of the founders—drew an analogy between their pens becoming the "pinnacle" of writing instruments and <a href="https://en.wikipedia.org/wiki/Mont_Blanc">Mont Blanc</a>, the highest peak in the Alps. By 1910, the Simplo Filler Pen Co. had officially adopted "Montblanc" as their brand name. The pen as mountain. The mountain as pen.</p>
+
+                <p>Three years later, in 1913, they trademarked the logo that would become one of the most recognized symbols in luxury goods: a white, six-pointed rounded star representing the snow-covered summit as seen from above. It's a masterclass in visual branding—abstract enough to work across cultures, concrete enough to tell a story. Every Montblanc product, from fountain pens to watches to leather goods, carries that snowcap.</p>
+
+                <div class="callout">
+                    <p><strong>The 4810 Code:</strong> Starting in 1929, Montblanc began engraving "4810" on their finest nibs—the height of Mont Blanc in meters at the time of the company's naming. It's a detail most owners never consciously notice, but it connects every writing instrument to that founding metaphor: the pinnacle.</p>
+                </div>
+
+                <p>What's remarkable is how little the core brand identity has changed in over a century. The star is slightly refined, the typography has evolved, but a 1913 Montblanc advertisement would feel surprisingly coherent next to a 2026 campaign. That's either extraordinary brand discipline or a testament to getting it right the first time. Probably both.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: The Meisterstück -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Meisterstück: A Masterpiece That Refused to Change</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.montblanc.com/en-us/collection/writing-instruments/meisterstueck">Product Heritage</a></span>
+                <span class="section-date">1924–Present</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-meisterstuck.png" alt="Classic Meisterstück fountain pen in museum display with Art Deco lighting">
+            </figure>
+            <div class="section-body">
+                <p>In 1924, Montblanc introduced the <a href="https://www.montblanc.com/en-us/collection/writing-instruments/meisterstueck">Meisterstück</a>—German for "masterpiece." They were not being subtle. The pen was meant to be definitive, the ultimate expression of everything the company had learned in its first two decades. A century later, it still is.</p>
+
+                <p>The Meisterstück 149, the large "cigar" diplomat pen, has remained virtually unchanged in shape since 1952. Let that sink in. While technology companies obsolete their products every two years, the most famous fountain pen in history looks essentially the same as it did when Eisenhower was president. The black resin body. The gold-plated clip. The white star cap. The 14- or 18-karat gold nib engraved with "4810."</p>
+
+                <figure class="chart">
+                    <img src="images/chart-meisterstuck-price.png" alt="Chart showing Meisterstück 149 price evolution from 1952 to 2025">
+                    <figcaption>The Meisterstück 149's price journey tells the story of Montblanc's transformation from pen manufacturer to luxury house. Note the inflection points at Dunhill (1977) and Richemont (1993) acquisitions.</figcaption>
+                </figure>
+
+                <p>In 1934, Montblanc introduced the piston filling system, which held more ink and was cleaner than earlier mechanisms. They kept iterating on the interior while preserving the exterior. It's a design philosophy that luxury watchmakers would later emulate: honor the heritage, improve the mechanics. The Meisterstück has been used to sign peace treaties, executive orders, and book deals. Chancellor <a href="https://en.wikipedia.org/wiki/Konrad_Adenauer">Konrad Adenauer</a> famously lent his to President Kennedy in 1963 to sign the Golden Book in Cologne. When you need a pen that photographs well for posterity, there's really only one choice.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: WWII and Recovery -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Surviving Bombs and Rebuilding From Ashes</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Montblanc_(company)">Historical Records</a></span>
+                <span class="section-date">1944–1946</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-wwii-survival.png" alt="Bombed factory ruins with a single intact fountain pen amid the rubble">
+            </figure>
+            <div class="section-body">
+                <p>In 1944, Allied bombing raids heavily damaged the Hamburg factory. The company that had spent four decades perfecting the art of writing instruments found itself amid rubble and uncertainty. What do you do when your manufacturing capacity lies in ashes?</p>
+
+                <p>You improvise. Production moved briefly to Denmark during reconstruction—making Danish-manufactured Montblancs from this era among the most prized collector's items today. These wartime pens tell a different story than the usual luxury narrative: they're artifacts of survival, of a company that refused to disappear even when the ground itself was burning.</p>
+
+                <p>Material shortages forced compromises. Some wartime pens featured steel nibs instead of gold, simpler materials instead of the precious resins that would later become signature. Collectors prize these austerity-era Montblancs precisely because they mark a moment of adversity. By 1946, manufacturing had resumed in Hamburg. The factory was rebuilt, the supply chains restored, and Montblanc emerged from the war with both its heritage intact and a new story to tell: even world wars couldn't stop them from making pens.</p>
+
+                <p>The postwar era would set the stage for the company's next transformation—from respected pen manufacturer to global luxury empire.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: The Luxury Pivot -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">From Pens to Power: The Richemont Reinvention</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.richemont.com/our-businesses/maisons/montblanc/">Richemont Corporate</a></span>
+                <span class="section-date">1977–1993</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-richemont-luxury.png" alt="Elegant luxury boutique interior with glass display cases featuring pens, watches, and leather goods">
+            </figure>
+            <div class="section-body">
+                <p>Here's a fact that surprises most people: before 1977, Montblanc made cheap school pens. They had a product called the "Carrera" (yes, like the Porsche) aimed at students and everyday writers. The company was respected, profitable, and utterly unremarkable as a luxury brand.</p>
+
+                <p>Then <a href="https://en.wikipedia.org/wiki/Dunhill_(company)">Alfred Dunhill Ltd.</a> acquired a majority stake. The British luxury company saw something in Montblanc that Montblanc itself had perhaps undervalued: the potential to be not just a pen manufacturer but a symbol of achievement. Dunhill's first move was brutal and decisive—they killed the lower-tier lines entirely. No more school pens. No more accessibility plays. Montblanc would be luxury or nothing.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-product-timeline.png" alt="Timeline showing Montblanc's product category expansion from 1906 to 2014">
+                    <figcaption>Montblanc's careful expansion from single-product company to lifestyle brand, always anchored by writing instruments.</figcaption>
+                </figure>
+
+                <p>In 1993, the <a href="https://www.richemont.com/">Richemont Group</a>—which owns Cartier, Van Cleef & Arpels, and other pillars of luxury—absorbed Dunhill and Montblanc. Under Richemont's stewardship, Montblanc expanded cautiously into watches (1997), eyewear (2001), and fragrances (2001). The 2006 acquisition of <a href="https://en.wikipedia.org/wiki/Minerva_(watchmaker)">Minerva</a>, a historic Swiss watchmaker founded in 1858, silenced critics who dismissed Montblanc timepieces as mere fashion accessories. Today, Montblanc generates an estimated €1.2 billion annually, operates 638 boutiques globally, and employs over 3,400 people. The white star now appears on products that would have baffled the three founders in Hamburg—but the brand DNA remains intact.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Limited Editions -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The $4,000 Pen: When Limited Editions Became Investments</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.christies.com/">Auction Records</a></span>
+                <span class="section-date">1992–Present</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-limited-editions.png" alt="Collection of ornate limited edition fountain pens arranged in a private collector's vault">
+            </figure>
+            <div class="section-body">
+                <p>In 1992, Montblanc did something that would define the next three decades of the company: they launched the Writers Edition and Patron of Art series. The first Writers Edition honored <a href="https://en.wikipedia.org/wiki/Ernest_Hemingway">Ernest Hemingway</a>; the first Patron of Art celebrated <a href="https://en.wikipedia.org/wiki/Lorenzo_de%27_Medici">Lorenzo de' Medici</a>. Both sold out. Both appreciated wildly in value.</p>
+
+                <p>The Hemingway pen originally retailed for around $600. Today, a mint-condition example fetches $3,500 to $4,000 on the secondary market—a return that would make many stock portfolios envious. The Writers Edition transformed fountain pens from functional objects into collectibles, from tools into investments.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-writers-edition-value.png" alt="Bar chart comparing original retail prices to current values for Writers Edition pens">
+                    <figcaption>Writers Edition pens as alternative investments: the Hemingway's 500%+ appreciation outperforms many traditional asset classes over the same period.</figcaption>
+                </figure>
+
+                <p>Each annual release follows a careful formula: honor a literary figure (Hemingway, <a href="https://en.wikipedia.org/wiki/Edgar_Allan_Poe">Poe</a>, <a href="https://en.wikipedia.org/wiki/Franz_Kafka">Kafka</a>, <a href="https://en.wikipedia.org/wiki/Agatha_Christie">Christie</a>) or artistic patron (Medici, <a href="https://en.wikipedia.org/wiki/Pope_Julius_II">Pope Julius II</a>, <a href="https://en.wikipedia.org/wiki/Catherine_the_Great">Catherine the Great</a>), incorporate design elements that tell their story, limit production to create scarcity, and price high enough to signal exclusivity but low enough to sell out. It's luxury marketing perfected—the pen as both functional object and museum piece, something you can use daily and will to your grandchildren.</p>
+
+                <p>The secondary market for Montblanc limited editions now rivals fine watches and vintage wines. Auction houses like <a href="https://www.christies.com/">Christie's</a> and <a href="https://www.sothebys.com/">Sotheby's</a> regularly feature rare Montblancs alongside paintings and jewelry. A banker in Hamburg in 1906 might not have imagined this—but then again, maybe he did.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Pinnacle, Still</h2>
+            <p class="closing-text">One hundred and twenty years after three men decided that writing instruments could be better, the white star remains the global symbol of writing well. From Hamburg workshop to luxury empire, from wartime survival to billion-euro brand, Montblanc proved that the pen—properly made, properly positioned—might indeed be mightier than the sword. Or at least more profitable.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

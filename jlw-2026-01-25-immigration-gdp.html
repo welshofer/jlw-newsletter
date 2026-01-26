@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The $97 Billion Question — January 25, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal accent for economic/policy topic */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #0A5670;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --positive: #2E8B57;
+            --negative: #C04040;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #4AB4D1;
+                --accent-soft: rgba(74, 180, 209, 0.15);
+                --accent-hover: #6AC4DD;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --positive: #5DBF88;
+                --negative: #E07070;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .callout.positive {
+            border-left-color: var(--positive);
+        }
+
+        .callout.negative {
+            border-left-color: var(--negative);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 25, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Economics & Policy</span>
+            <h1 class="hero-title">The $97 Billion Question</h1>
+            <p class="hero-subtitle">Do undocumented immigrants boost or burden U.S. GDP? The research is in—and it's more nuanced than the headlines suggest.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-97-billion-question.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-immigration-gdp.jpg" alt="Abstract visualization of labor flows and GDP growth curves">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: CBO Projections -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The CBO Delivers Its Verdict: Immigration Is a Net Fiscal Positive</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cbo.gov/publication/economic-projections-2026">Congressional Budget Office</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-cbo-projections.jpg" alt="CBO building with ascending growth charts">
+            </figure>
+            <div class="section-body">
+                <p>When the non-partisan Congressional Budget Office releases projections, policymakers on both sides typically stop arguing and start reading. The <a href="https://www.cbo.gov">CBO's</a> latest 10-year economic outlook contains a finding that should reframe the entire immigration debate: net immigration—including undocumented arrivals—will <strong>reduce the federal deficit by $0.9 trillion</strong> over the next decade.</p>
+
+                <p>The mechanism is straightforward economics. A larger labor force means higher economic output, which generates more tax revenue. The CBO projects immigration will add approximately 0.2 percentage points annually to real GDP growth—modest in any single year, but compounding into real money over a decade. By 2030, immigration will account for <em>all</em> U.S. population growth as native birth rates continue their decline.</p>
+
+                <div class="callout positive">
+                    <p><strong>Key finding:</strong> "The labor force is projected to be larger than it would be without that immigration... resulting in higher economic output and additional tax revenue."</p>
+                </div>
+
+                <p>This isn't ideological framing—it's the baseline projection America's budget planners are using. Any policy that significantly reduces immigration isn't just a cultural choice; it's a fiscal decision with a $900 billion price tag.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Brookings Headwinds -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Growth Headwinds Are Already Here</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.brookings.edu/articles/labor-market-monitor-january-2026">Brookings Institution</a></span>
+                <span class="section-date">January 8, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-brookings-headwinds.jpg" alt="Economic headwinds pushing back GDP growth curve">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://www.brookings.edu">Brookings</a> isn't waiting for policy changes to measure the damage—they're already tracking it. A projected sharp slowdown in net migration is expected to shave 0.2 to 0.3 percentage points off real GDP growth in 2025. That sounds abstract until you translate it: <strong>$10 billion to $40 billion in reduced consumption</strong> this year alone.</p>
+
+                <p>The institution's labor market monitor identifies a scenario where net migration turns negative as a "significant headwind to economic growth." This isn't hypothetical fearmongering; it's what happens when you remove a key driver of labor force expansion from an economy that has already stripped itself of manufacturing jobs and is increasingly dependent on services.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-gdp-scenarios.png" alt="GDP impact under different immigration scenarios">
+                    <figcaption>Comparison of GDP impact across policy scenarios: Mass deportation estimates range from -2.6% to -6.8%, while baseline immigration contributes +0.2% annually.</figcaption>
+                </figure>
+
+                <p>The timing matters. Consumer spending drives roughly 70% of U.S. GDP. Remove millions of consumers—each buying groceries, paying rent, fueling vehicles—and the math stops working for businesses that depend on that demand.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Deportation Shock -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The "Deportation Labor Shock" Would Hit Like a Recession</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.econlib.org/the-deportation-labor-shock-2026">Econlib</a></span>
+                <span class="section-date">January 3, 2026</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-deportation-shock.jpg" alt="Empty construction sites with abandoned tools">
+            </figure>
+            <div class="section-body">
+                <p>Economists at the <a href="https://www.econlib.org">Library of Economics and Liberty</a> have modeled what mass deportation would actually look like in macroeconomic terms, and the numbers are stark. Removing 8.5 to 10.8 million unauthorized workers from the economy could shrink U.S. GDP by <strong>2.6% to 6.8%</strong>.</p>
+
+                <p>For context, the 2008 financial crisis contracted GDP by about 4.3%. The upper-bound deportation scenario would be worse than the Great Recession—except this time it would be a <em>policy choice</em> rather than a market failure.</p>
+
+                <div class="callout negative">
+                    <p><strong>Critical insight:</strong> "A mass deportation event would constitute a negative supply shock, simultaneously contracting output and driving up prices."</p>
+                </div>
+
+                <p>The inflationary implications deserve attention. When you remove labor supply from agriculture, construction, and hospitality—industries already struggling to find workers—you don't just get fewer goods and services. You get higher prices for the goods and services that remain. It's the worst of both worlds: stagflation engineered by policy rather than market forces.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-labor-sectors.png" alt="Immigrant labor concentration by sector">
+                    <figcaption>Construction (25%), agriculture (45%), and hospitality (22%) are particularly dependent on immigrant labor. The construction sector already faces a 500,000 worker shortfall.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 4: NFAP Trillion Dollar Cost -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The $1.9 Trillion Price Tag of Restriction</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://nfap.com/research/immigration-policies-economic-growth-2025">National Foundation for American Policy</a></span>
+                <span class="section-date">October 28, 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-nfap-trillion.jpg" alt="Economic visualization of trillion dollar loss">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://nfap.com">NFAP</a> has put a specific dollar figure on the cost of restrictive immigration enforcement: <strong>$1.9 trillion in cumulative GDP loss</strong> between 2025 and 2028. That's not a projection about theoretical maximum damage—it's the expected outcome of policies already being implemented or proposed.</p>
+
+                <p>Their model shows 2025 GDP growth falling from a potential 2.1% to 1.5% under restrictive scenarios. The labor force could contract by 6.8 million workers by 2028, with 4 million of that loss directly attributable to policies targeting undocumented immigrants.</p>
+
+                <p>Here's what $1.9 trillion means in concrete terms: it's roughly equivalent to the entire economic output of California for a year. It's enough to fund Medicare for six years. It's the margin between a growing economy and a stagnant one.</p>
+
+                <p>The think tank's analysis is particularly notable because it comes from an organization founded by a former INS commissioner—not exactly a group with anti-enforcement priors. Their concern isn't about immigration enforcement in principle; it's about the economic mathematics of removing millions of productive workers from a labor market that cannot replace them.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Manhattan Institute Counter-Perspective -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Net Cost Argument: What the Other Side's Numbers Show</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.manhattan-institute.org/fiscal-impact-illegal-immigration-2025">Manhattan Institute</a></span>
+                <span class="section-date">October 14, 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-manhattan-fiscal.jpg" alt="Fiscal balance scale with public services and tax contributions">
+            </figure>
+            <div class="section-body">
+                <p>Any honest analysis of this question requires engaging with the strongest counter-arguments. The <a href="https://www.manhattan-institute.org">Manhattan Institute</a>—a center-right think tank with serious economists—has produced research showing that the average new undocumented immigrant will cost taxpayers a net <strong>$80,000 more than they contribute</strong> over their lifetime.</p>
+
+                <p>Their argument focuses on a different question than the CBO analysis. While the CBO measures aggregate economic output and tax revenue, Manhattan Institute calculates the lifetime fiscal balance: services consumed (education, healthcare, infrastructure) versus taxes paid. By this measure, existing undocumented immigrants are projected to cost the federal government $225,000 each over the next 30 years.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-fiscal-debate.png" alt="Dual perspective on fiscal impact">
+                    <figcaption>The fiscal impact debate: CBO/ITEP show net positive contributions at the macro level, while CIS/Manhattan Institute focus on per-person lifetime fiscal balance showing net costs.</figcaption>
+                </figure>
+
+                <p>This methodological divergence explains much of the political disagreement. If you measure GDP contribution, immigration looks like an unambiguous win. If you measure per-person fiscal balance, particularly for low-wage workers who use public services, the picture becomes more complicated. Both sets of numbers can be true simultaneously—the question is which framing you find more relevant to policy.</p>
+
+                <div class="callout">
+                    <p><strong>The analytical gap:</strong> "While immigration broadly contributes to economic growth, the fiscal profile of unlawful immigrants specifically remains a net burden on public finances." — Manhattan Institute</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 6: ITEP Tax Contributions -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The $97 Billion They Already Pay—Including to Programs They Can't Access</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://itep.org/undocumented-immigrants-state-local-tax-contributions-2025">Institute on Taxation and Economic Policy</a></span>
+                <span class="section-date">January 22, 2025</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-itep-taxes.jpg" alt="Tax contribution streams flowing to federal programs">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://itep.org">ITEP</a> has quantified what undocumented immigrants actually contribute to federal, state, and local tax coffers: <strong>$96.7 billion annually</strong>. That's not an estimate of potential contribution—it's what they're already paying through payroll taxes, sales taxes, and property taxes (directly or via rent).</p>
+
+                <p>The breakdown reveals a particular irony. Of that total, $59.4 billion goes to federal taxes and $37.3 billion to state and local taxes. More than a third—$33.9 billion—funds Social Security and Medicare. Programs that, by law, undocumented immigrants cannot access.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-tax-contributions.png" alt="Tax contribution breakdown by category">
+                    <figcaption>Undocumented immigrants contribute $96.7B annually in taxes. $33.9B funds Social Security and Medicare—programs they cannot legally access.</figcaption>
+                </figure>
+
+                <p>ITEP calculates that granting work authorization would boost these contributions by an additional $40.2 billion annually—a function of higher wages and fuller tax compliance that comes with legal status. The current system effectively creates a massive subsidy to social insurance programs from workers who will never collect benefits.</p>
+
+                <p>This doesn't resolve the fiscal balance debate (services still cost money), but it does undermine the "they don't pay taxes" talking point that dominates public discourse. Nearly $100 billion annually is not a trivial contribution.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Bottom Line</h2>
+            <p class="closing-text">The research consensus is clearer than the political debate suggests. At the macro level, immigration—including undocumented immigration—contributes positively to GDP growth, tax revenue, and deficit reduction. At the micro level, individual fiscal balances depend heavily on wage levels, service usage, and which costs you count. The honest answer to "net positive or negative?" is: <em>it depends on what you're measuring</em>. But the economic costs of mass restriction are increasingly well-quantified—and they're measured in trillions.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

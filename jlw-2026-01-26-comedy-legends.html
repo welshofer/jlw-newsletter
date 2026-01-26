@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pantheon of Laughter — January 26, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - violet/amber for comedy elegance */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #7C5C8A;
+            --accent-soft: rgba(124, 92, 138, 0.12);
+            --accent-hover: #6A4D76;
+            --accent-secondary: #D4A84B;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #A07DB0;
+                --accent-soft: rgba(160, 125, 176, 0.15);
+                --accent-hover: #B08EC0;
+                --accent-secondary: #E8B85A;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer,
+            .audio-player {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 26, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Comedy Legends</span>
+            <h1 class="hero-title">The Pantheon of Laughter</h1>
+            <p class="hero-subtitle">Five comedians who didn't just make us laugh—they rewired how humanity processes pain, power, and absurdity. Combined box office: $16 billion. Cultural impact: immeasurable.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-pantheon-of-laughter.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-legendary-comedians.jpg" alt="Five spotlights on an empty stage with comedy masks and vintage film reels">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Richard Pryor -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-richard-pryor.jpg" alt="Richard Pryor on stage in dramatic spotlight">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">Richard Pryor: The Man Who Made Confession an Art Form</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.rollingstone.com/culture/culture-lists/50-best-stand-up-comics-of-all-time-126359/">Rolling Stone</a></span>
+                <span class="section-date">1940–2005</span>
+            </div>
+            <div class="section-body">
+                <p>Before <a href="https://en.wikipedia.org/wiki/Richard_Pryor">Richard Pryor</a>, stand-up comedy had rules. Don't talk about race. Don't talk about drugs. Don't talk about the parts of yourself you're ashamed of. Pryor burned those rules to the ground—sometimes literally, given the infamous freebasing incident he later turned into material.</p>
+
+                <p>What made Pryor revolutionary wasn't just his willingness to discuss taboo subjects. It was his refusal to perform a version of himself. When he talked about growing up in his grandmother's brothel in Peoria, about his MS diagnosis, about setting himself on fire while freebasing cocaine, he stripped away the protective irony that most comedians hide behind. He was raw in a way that made audiences uncomfortable—and then made them laugh anyway.</p>
+
+                <p>The numbers tell part of the story: five <a href="https://www.grammy.com/artists/richard-pryor/11422">Grammy Awards</a> for Best Comedy Album, the first <a href="https://www.kennedy-center.org/artists/p/po-pz/richard-pryor/">Kennedy Center Mark Twain Prize</a>, and films that grossed over $3.5 billion adjusted for inflation. In 1980, he became the first Black actor to earn $1 million for a single film (<a href="https://en.wikipedia.org/wiki/Stir_Crazy_(film)">Stir Crazy</a>). His 1983 Columbia Pictures contract was worth $40 million—about $120 million today.</p>
+
+                <div class="callout">
+                    <p><strong>The Pryor Effect:</strong> <a href="https://en.wikipedia.org/wiki/Eddie_Murphy">Eddie Murphy</a>, <a href="https://en.wikipedia.org/wiki/Chris_Rock">Chris Rock</a>, <a href="https://en.wikipedia.org/wiki/Dave_Chappelle">Dave Chappelle</a>—every Black comedian who followed walks a path Pryor macheted through the jungle. When <a href="https://www.imdb.com/list/ls052672615/">Comedy Central</a> ranked the 100 greatest stand-ups of all time in 2004, Pryor was #1. Not because he told the best jokes, but because he redefined what jokes could be.</p>
+                </div>
+
+                <p>His legacy isn't just influence—it's permission. Permission to be honest about pain. Permission to find humor in trauma. Permission to make the audience love you for your flaws, not despite them.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: George Carlin -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-george-carlin.jpg" alt="George Carlin at microphone with floating words">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">George Carlin: The Philosopher Who Happened to Be Funny</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/George_Carlin">Wikipedia</a></span>
+                <span class="section-date">1937–2008</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/George_Carlin">George Carlin</a> didn't just do comedy—he weaponized language itself. His "Seven Dirty Words" routine didn't just get laughs; it went to the <a href="https://en.wikipedia.org/wiki/FCC_v._Pacifica_Foundation">Supreme Court</a> and fundamentally shaped broadcast law in America. How many comedians can claim their material became constitutional precedent?</p>
+
+                <p>Carlin's 31-year partnership with <a href="https://www.hbo.com/">HBO</a> produced 14 specials—a run of sustained excellence unmatched in comedy history. Each special was an event, a new collection of observations about American hypocrisy, linguistic absurdity, and the fundamental stupidity of human institutions. When asked which was his favorite, Carlin always said "Jammin' in New York" (1992)—his first live HBO show, performed in his hometown for 6,500 people.</p>
+
+                <p>The Grammys recognized him five times for Best Comedy Album. He hosted the premiere episode of <a href="https://www.nbc.com/saturday-night-live">Saturday Night Live</a> in 1975. He was arrested seven times for performing the "Seven Dirty Words" routine. That last statistic might be the most Carlin thing possible—the idea that you could get arrested for saying words, words that everyone knows, words that exist specifically to express things we all feel.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-grammys.png" alt="Grammy Awards comparison chart showing Richard Pryor, George Carlin, and Robin Williams each with 5 wins">
+                    <figcaption>Grammy Awards for Best Comedy Album: The top three all-time winners share the record at five each.</figcaption>
+                </figure>
+
+                <p>Four days before his death in 2008, Carlin was named the recipient of the <a href="https://www.kennedy-center.org/whats-on/explore-by-genre/comedy/mark-twain-prize/">Mark Twain Prize for American Humor</a>—making him the first posthumous recipient when the award was given that November. A fitting end for someone who spent his career mocking how we handle death.</p>
+
+                <p>His final lesson might be his most important: the role of the comedian isn't to make people comfortable. It's to make them think—and sometimes thinking requires discomfort.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Charlie Chaplin -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-charlie-chaplin.jpg" alt="The Little Tramp silhouette against industrial machinery">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">Charlie Chaplin: The Silent Voice That Echoed Across Centuries</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.britannica.com/biography/Charlie-Chaplin">Britannica</a></span>
+                <span class="section-date">1889–1977</span>
+            </div>
+            <div class="section-body">
+                <p>In the 1910s and 1920s, <a href="https://en.wikipedia.org/wiki/Charlie_Chaplin">Charlie Chaplin</a> was considered the most famous person on Earth. Not the most famous actor. Not the most famous comedian. The most famous <em>person</em>. That's not hyperbole—it's documented fact.</p>
+
+                <p>What Chaplin understood, perhaps before anyone else, was that comedy could carry weight. His Little Tramp character—the bowler hat, the cane, the too-tight jacket—wasn't just funny. He was a symbol of dignity in poverty, resilience in adversity, humanity in an increasingly mechanized world. When he satirized industrial dehumanization in <a href="https://en.wikipedia.org/wiki/Modern_Times_(film)">Modern Times</a> (1936), he created perhaps the most enduring critique of capitalism ever filmed.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-timeline.png" alt="Career timeline showing peak influence periods for each comedian">
+                    <figcaption>Career spans and peak influence: Chaplin's dominant era (1918–1940) predates the others by decades, yet his influence persists.</figcaption>
+                </figure>
+
+                <p>The business acumen matched the artistic genius. Chaplin co-founded <a href="https://en.wikipedia.org/wiki/United_Artists">United Artists</a> in 1919 with <a href="https://en.wikipedia.org/wiki/Mary_Pickford">Mary Pickford</a>, <a href="https://en.wikipedia.org/wiki/Douglas_Fairbanks">Douglas Fairbanks</a>, and <a href="https://en.wikipedia.org/wiki/D._W._Griffith">D.W. Griffith</a>—four artists who decided they'd rather own their work than rent it to studios. "The Kid" (1921) grossed over $2.5 million, "The Gold Rush" (1925) earned over $5 million—enormous sums when a movie ticket cost a nickel.</p>
+
+                <p>Even his stubbornness made history. When talkies became the standard after 1929, Chaplin released <a href="https://en.wikipedia.org/wiki/City_Lights">City Lights</a> (1931) as a silent film anyway. His reasoning was simple: the Tramp was a universal character who spoke no language and therefore spoke all languages. He was right. The film was a massive success.</p>
+
+                <p>Chaplin won an Honorary Academy Award, received the world's longest standing ovation (12 minutes) at the 1972 Oscars, and was knighted by Queen Elizabeth II. But his greatest legacy is simpler: he proved that making people laugh and making them feel could be the same act.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Robin Williams -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-robin-williams.jpg" alt="Robin Williams in explosive improvisational energy">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Robin Williams: The Human Lightning Bolt</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Robin_Williams">Wikipedia</a></span>
+                <span class="section-date">1951–2014</span>
+            </div>
+            <div class="section-body">
+                <p>Watching <a href="https://en.wikipedia.org/wiki/Robin_Williams">Robin Williams</a> perform stand-up was like watching someone channel electricity. The impressions tumbled out—dozens of voices, accents, characters—faster than the human brain should be able to process. He didn't tell jokes so much as embody them, becoming a different person with each punchline.</p>
+
+                <p>His films grossed over $5 billion worldwide. <a href="https://en.wikipedia.org/wiki/Mrs._Doubtfire">Mrs. Doubtfire</a> (1993) earned $441 million—adjusted for inflation, nearly $730 million in today's dollars. <a href="https://en.wikipedia.org/wiki/Aladdin_(1992_Disney_film)">Aladdin</a> (1992), where his Genie redefined what animated voice acting could be, remains one of Disney's most beloved films. He reportedly improvised 16 hours of material for that role.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-box-office.png" alt="Box office comparison chart showing Eddie Murphy at $6.7B and Robin Williams at $5B">
+                    <figcaption>Lifetime box office earnings (adjusted for inflation): The comedy Mount Rushmore, ranked by theatrical receipts.</figcaption>
+                </figure>
+
+                <p>But here's the thing about Williams that gets lost in the chaos of his comedy: he was a genuinely great actor. Four Oscar nominations. Four. <a href="https://en.wikipedia.org/wiki/Good_Morning,_Vietnam">Good Morning, Vietnam</a>. <a href="https://en.wikipedia.org/wiki/Dead_Poets_Society">Dead Poets Society</a>. <a href="https://en.wikipedia.org/wiki/The_Fisher_King">The Fisher King</a>. And finally, the win—Best Supporting Actor for <a href="https://en.wikipedia.org/wiki/Good_Will_Hunting">Good Will Hunting</a> (1997), playing a therapist who breaks through to <a href="https://en.wikipedia.org/wiki/Matt_Damon">Matt Damon</a>'s troubled genius.</p>
+
+                <p>The scene where he tells Will "It's not your fault" is one of the most emotionally devastating moments in film history—and it only works because Williams brought genuine vulnerability to a role that could have been a cliche. The same man who could do 47 impressions in 30 seconds could also sit still, say four words, and make you cry.</p>
+
+                <div class="callout">
+                    <p><strong>The Numbers:</strong> 5 Grammy Awards, 6 Golden Globes, 2 Emmys, 2 Screen Actors Guild Awards. But the statistic that matters most: reportedly, Williams never turned down a request to visit sick children in hospitals. The lightning bolt had a heart.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Eddie Murphy -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-eddie-murphy.jpg" alt="Eddie Murphy in iconic 1980s red leather jacket">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">Eddie Murphy: The Supernova Who Saved Saturday Night</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Eddie_Murphy">Wikipedia</a></span>
+                <span class="section-date">1961–Present</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/Eddie_Murphy">Eddie Murphy</a> joined <a href="https://www.nbc.com/saturday-night-live">Saturday Night Live</a> in 1980 at age 19. By most accounts, he saved it from cancellation. The original cast was gone, the ratings were tanking, and then this kid from Brooklyn showed up and became the only reason to watch. Gumby. Mr. Robinson's Neighborhood. Buckwheat. James Brown. Murphy wasn't just doing impressions—he was creating iconic characters in real time.</p>
+
+                <p>The transition to film was even more explosive. <a href="https://en.wikipedia.org/wiki/48_Hrs.">48 Hrs.</a> (1982). <a href="https://en.wikipedia.org/wiki/Trading_Places">Trading Places</a> (1983). <a href="https://en.wikipedia.org/wiki/Beverly_Hills_Cop">Beverly Hills Cop</a> (1984)—which earned Murphy $14.5 million including backend points, making him one of the highest-paid actors in Hollywood before he turned 25. <a href="https://en.wikipedia.org/wiki/Coming_to_America">Coming to America</a> (1988), where he played multiple characters so convincingly that audiences didn't realize it was all the same person.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-impact-radar.png" alt="Radar chart comparing five comedians across six dimensions">
+                    <figcaption>Multi-dimensional impact assessment: Each comedian excels in different areas, but together they cover the full spectrum of comedic influence.</figcaption>
+                </figure>
+
+                <p>His films have grossed over $6.7 billion worldwide—making him the sixth-highest-grossing American actor in box office history. Not the sixth-highest-grossing comedian. The sixth-highest-grossing <em>actor</em>. That includes action stars, superheroes, everyone. Murphy's counting house rivals the Avengers'.</p>
+
+                <p>The raw stand-up specials—<a href="https://en.wikipedia.org/wiki/Delirious_(Eddie_Murphy)">Delirious</a> (1983) and <a href="https://en.wikipedia.org/wiki/Eddie_Murphy:_Raw">Raw</a> (1987)—remain touchstones of the form. Raw was the highest-grossing stand-up film in history at the time. The red leather suit. The cockiness. The willingness to say anything. Murphy brought a swagger to comedy that hadn't existed before.</p>
+
+                <p>In 2019, <a href="https://www.netflix.com/">Netflix</a> paid him $70 million for a series of comedy specials—a bet that the magic is still there, four decades after he first stepped on stage at SNL. The supernova keeps burning.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Common Thread</h2>
+            <p class="closing-text">What connects a silent film star from 1920s Hollywood, a confessional comic from 1970s Peoria, and a 19-year-old SNL phenomenon? They all understood that comedy isn't about making people laugh—it's about making them feel seen. The laugh is just evidence that you've touched something real. These five didn't just tell jokes. They told truths we didn't know we needed to hear, wrapped in permission to find them funny. That's why their influence outlasts their lifetimes.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

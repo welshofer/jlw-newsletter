@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winston Churchill: Walking with Destiny — January 25, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           AUDIO PLAYER
+           ======================================== */
+
+        .audio-player {
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+            padding: var(--space-sm) var(--space-md);
+        }
+
+        .audio-player-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .audio-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .audio-player audio {
+            flex: 1;
+            height: 36px;
+            min-width: 200px;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        blockquote {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+        }
+
+        blockquote p {
+            margin: 0;
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: var(--space-xs);
+            font-style: normal;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Infographic styling */
+        .infographic {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .infographic img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .infographic figcaption {
+            background: var(--bg-alt);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: var(--space-sm) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .audio-player-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer,
+            .audio-player {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="newsletter-brand">The Weekly Digest</a>
+            <time class="newsletter-date">January 25, 2026</time>
+        </div>
+    </header>
+
+    <div class="audio-player">
+        <div class="audio-player-inner">
+            <span class="audio-label">Listen to this issue</span>
+            <audio controls preload="metadata">
+                <source src="../audio/churchill-life-and-times.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Historical Profile</span>
+            <h1 class="hero-title">Winston Churchill: Walking with Destiny</h1>
+            <p class="hero-subtitle">The aristocrat who failed his entrance exams, the soldier who charged into battle, the politician who crossed the floor, the writer who won the Nobel Prize—and the leader who refused to surrender when surrender seemed the only option.</p>
+
+            <div class="hero-image">
+                <img src="../images/hero-churchill.png" alt="Winston Churchill in his wartime study, cigar in hand, surrounded by maps and papers">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: The Making of a Legend -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Making of a Legend</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Winston_Churchill">Wikipedia</a></span>
+                <span class="section-date">1874–1900</span>
+            </div>
+            <div class="section-body">
+                <p>Here's what you need to know about young Winston Churchill: he was terrible at school. Not "charmingly mediocre"—genuinely bad. He failed the Sandhurst entrance exam twice. His father, <a href="https://en.wikipedia.org/wiki/Lord_Randolph_Churchill">Lord Randolph Churchill</a>, wrote him off as a disappointment.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-01-early-life.png" alt="Young Churchill as a cavalry officer in India, circa 1896">
+                </div>
+
+                <p>And yet. Born at <a href="https://en.wikipedia.org/wiki/Blenheim_Palace">Blenheim Palace</a> on November 30, 1874, Churchill responded to academic failure by becoming, essentially, his own university. Stationed in India with the 4th Queen's Own Hussars, a bored 22-year-old devoured Plato, Gibbon, Darwin, and Macaulay—giving himself the education Harrow and Sandhurst never provided. He also played polo obsessively, even with a chronically dislocated shoulder.</p>
+
+                <p>The adventures came fast. In 1898, he participated in the <a href="https://en.wikipedia.org/wiki/Battle_of_Omdurman">Battle of Omdurman</a>—the last major British cavalry charge in history. In 1899, captured during the Boer War, he escaped from a POW camp in Pretoria and traveled 300 miles through enemy territory to safety in Portuguese East Africa. The escape made him a national celebrity overnight.</p>
+
+                <blockquote>
+                    <p>"I am all for the public schools but I do not want to go there one moment longer than is necessary."</p>
+                    <cite>— Winston Churchill, on his unhappy schooldays at Harrow</cite>
+                </blockquote>
+
+                <p>By age 25, he was an MP. By 30, he had defected from the Conservatives to the Liberals—a move that earned him a reputation as an opportunistic turncoat that would shadow him for decades. The pattern was set: Churchill would always be brilliant, always be controversial, and never be trusted by his own side.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Voice in the Wilderness -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Voice in the Wilderness</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://winstonchurchill.org/the-life-of-churchill/life/wilderness-years/">Churchill Archive</a></span>
+                <span class="section-date">1929–1939</span>
+            </div>
+            <div class="section-body">
+                <p>The 1930s should have been the end. After the Conservatives lost power in 1929, Churchill spent a decade in political exile—mocked as a warmonger, dismissed as a relic, shouted down in Parliament.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-02-wilderness.jpg" alt="Churchill at Chartwell during the wilderness years, writing at his standing desk">
+                </div>
+
+                <p>Three issues destroyed his credibility with his own party. First: he opposed Indian independence, attacking <a href="https://en.wikipedia.org/wiki/Mahatma_Gandhi">Gandhi</a> in terms that alienated moderates. Second: he backed King Edward VIII during the <a href="https://en.wikipedia.org/wiki/Abdication_of_Edward_VIII">Abdication Crisis</a> of 1936—a catastrophic miscalculation that nearly ended his career when the House shouted him into silence. Third: he warned about Hitler.</p>
+
+                <figure class="chart">
+                    <img src="../images/chart-career-timeline.png" alt="Timeline showing Churchill's political career phases from 1900-1955">
+                    <figcaption>Churchill's political trajectory—from Liberal reformer to Conservative outcast to wartime savior</figcaption>
+                </figure>
+
+                <p>From October 1930 onward, Churchill delivered speech after speech about the Nazi threat. In November 1934, he gave a pivotal radio broadcast urging rearmament. The political establishment ignored him. <a href="https://en.wikipedia.org/wiki/Neville_Chamberlain">Chamberlain</a> pursued appeasement. Churchill was the madman shouting at clouds.</p>
+
+                <blockquote>
+                    <p>"The government simply cannot make up their minds, or they cannot get the Prime Minister to make up his mind. So they go on in strange paradox, decided only to be undecided, resolved to be irresolute..."</p>
+                    <cite>— Winston Churchill, 1936</cite>
+                </blockquote>
+
+                <p>Historians now understand this "exile" differently. Churchill wrote constantly—including the massive <em>Marlborough: His Life and Times</em>—honing the historical perspective he would later use to frame World War II not as chaos but as narrative. The wilderness made the war leader.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Their Finest Hour -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Their Finest Hour</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://winstonchurchill.org/the-life-of-churchill/life/prime-minister/">Churchill Archive</a></span>
+                <span class="section-date">1940–1945</span>
+            </div>
+            <div class="section-body">
+                <p>On May 10, 1940, two things happened. Adolf Hitler invaded France. And Winston Churchill became Prime Minister of Great Britain. He was 65 years old.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-03-finest-hour.png" alt="Churchill giving the V for Victory sign during the Blitz">
+                </div>
+
+                <p>What followed was the moment for which his entire erratic, controversial, brilliant life had been preparation. Britain stood alone. The Cabinet—especially <a href="https://en.wikipedia.org/wiki/Lord_Halifax">Lord Halifax</a>—urged negotiation with Hitler. Churchill refused.</p>
+
+                <blockquote>
+                    <p>"I have nothing to offer but blood, toil, tears and sweat."</p>
+                    <cite>— Winston Churchill, first speech as Prime Minister, May 13, 1940</cite>
+                </blockquote>
+
+                <p>The speeches are remembered because they worked. Churchill didn't just manage a war; he weaponized the English language. "We shall fight on the beaches." "Never in the field of human conflict was so much owed by so many to so few." These weren't just words—they were actions, shaping British resolve when military reality offered little hope.</p>
+
+                <figure class="chart">
+                    <img src="../images/chart-wwii-timeline.png" alt="Timeline of key WWII events from May 1940 to September 1945">
+                    <figcaption>The arc of the war—from the fall of France to unconditional surrender</figcaption>
+                </figure>
+
+                <p>Behind the speeches: strategic decisions that shaped the war's outcome. Churchill cultivated <a href="https://en.wikipedia.org/wiki/Franklin_D._Roosevelt">FDR</a> relentlessly, securing Lend-Lease supplies before America entered the conflict. He maintained an "uneasy alliance" with <a href="https://en.wikipedia.org/wiki/Joseph_Stalin">Stalin</a>, meeting him in Moscow (1942) and Yalta (1945). He pushed the Mediterranean strategy—North Africa, Sicily, Italy—to delay the cross-channel invasion until 1944, when the Allies were actually ready.</p>
+
+                <div class="callout">
+                    <p><strong>The working style:</strong> Churchill often worked from bed in the morning, dictating speeches while wearing a silk dressing gown and sipping watered-down whiskey. His staff called the late-night Cabinet meetings "midnight follies."</p>
+                </div>
+
+                <p>And then, in July 1945, with the war in Europe won but Japan still fighting, British voters turned him out of office. The war leader was not wanted for peace.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: The Iron Curtain Falls -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Iron Curtain Falls</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nationalchurchillmuseum.org/sinews-of-peace-iron-curtain-speech.html">National Churchill Museum</a></span>
+                <span class="section-date">1945–1955</span>
+            </div>
+            <div class="section-body">
+                <p>The most consequential speech of the Cold War wasn't delivered by a head of state. It was delivered by a man who had just been voted out of office, speaking at a small college in Missouri.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-04-iron-curtain.png" alt="Churchill delivering the Iron Curtain speech at Westminster College, Fulton, Missouri, 1946">
+                </div>
+
+                <p>On March 5, 1946, at <a href="https://en.wikipedia.org/wiki/Westminster_College_(Missouri)">Westminster College</a> in Fulton, Missouri, Churchill spoke the words that would define a generation's understanding of geopolitics:</p>
+
+                <blockquote>
+                    <p>"From Stettin in the Baltic to Trieste in the Adriatic, an iron curtain has descended across the Continent."</p>
+                    <cite>— Winston Churchill, "Sinews of Peace" speech, March 5, 1946</cite>
+                </blockquote>
+
+                <p>The phrase "Iron Curtain" hadn't originated with Churchill—but he made it stick. The speech was controversial at the time; the wartime alliance with the Soviet Union was barely cold. But Churchill saw what was coming. Again.</p>
+
+                <p>He returned to power in 1951 for a quieter second term as Prime Minister, focused on housing policy and the nuclear deterrent. His health was failing—he'd suffered strokes that the public didn't know about. He resigned in 1955, age 80.</p>
+
+                <p>In 1953, he won the <a href="https://en.wikipedia.org/wiki/Nobel_Prize_in_Literature">Nobel Prize in Literature</a>—not Peace, but Literature—for his oratory and historical writings. The Swedish Academy recognized what Churchill had always understood: words were his weapons.</p>
+
+                <figure class="chart">
+                    <img src="../images/chart-literary-output.png" alt="Chart showing Churchill's major literary works and word counts">
+                    <figcaption>Churchill's literary output—millions of words that won him the Nobel Prize</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 5: The Black Dog and the Brush -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Black Dog and the Brush</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.iwm.org.uk/history/a-closer-look-at-churchills-paintings">Imperial War Museum</a></span>
+                <span class="section-date">Personal Life</span>
+            </div>
+            <div class="section-body">
+                <p>Churchill called his depression the "Black Dog." It followed him throughout his life. He never hid from it—he managed it.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-05-black-dog.png" alt="Churchill painting at his easel in the gardens of Chartwell">
+                </div>
+
+                <p>His primary coping mechanism was painting. He produced over 500 canvases in his lifetime, mostly landscapes and still lifes, working in an impressionist style he'd taught himself. The studio at <a href="https://www.nationaltrust.org.uk/visit/kent/chartwell">Chartwell</a>, his family home in Kent, remains filled with his work.</p>
+
+                <p>His marriage to <a href="https://en.wikipedia.org/wiki/Clementine_Churchill">Clementine Hozier</a> in 1908 provided the stability his turbulent career required. She was often the only person who could scold him—and the only person whose opinion he truly feared. Their letters reveal a partnership that survived five decades of political upheaval, financial worry, and personal tragedy.</p>
+
+                <blockquote>
+                    <p>"I am ready to meet my Maker. Whether my Maker is prepared for the great ordeal of meeting me is another matter."</p>
+                    <cite>— Winston Churchill, on his 75th birthday</cite>
+                </blockquote>
+
+                <p>The public image—the champagne, the cigars, the witticisms—was partially performance. Churchill cultivated his own legend carefully. His "drunkenness" was largely exaggerated, often by himself, for effect. He was a night owl, famous for holding Cabinet meetings late into the evening. His daily intake did include <a href="https://en.wikipedia.org/wiki/Pol_Roger">Pol Roger champagne</a> and brandy, but spread across long hours.</p>
+
+                <div class="callout">
+                    <p><strong>Curious fact:</strong> The first known written use of "OMG" appears in a 1917 letter sent <em>to</em> Churchill by Admiral John Fisher: "I hear that a new order of Knighthood is on the tapis—O.M.G. (Oh! My God!)—Shower it on the Admiralty!!"</p>
+                </div>
+
+                <p>He died on January 24, 1965—exactly 70 years to the day after his father. He was 90 years old.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Walking with Destiny -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Walking with Destiny</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.amazon.com/Churchill-Walking-Destiny-Andrew-Roberts/dp/1101980990">Andrew Roberts, 2018</a></span>
+                <span class="section-date">Modern Historiography</span>
+            </div>
+            <div class="section-body">
+                <p>Churchill's reputation has never been settled. Hero worship gave way to revisionist critique; the critique has sparked counter-revisions. The debate is not finished.</p>
+
+                <div class="section-image">
+                    <img src="../images/article-06-legacy.png" alt="The Churchill statue in Parliament Square, London, against a stormy sky">
+                </div>
+
+                <p>Modern critics focus on his imperialism—his views on race, his handling of the <a href="https://en.wikipedia.org/wiki/Bengal_famine_of_1943">Bengal Famine of 1943</a>, his opposition to Indian independence. These critiques are not new (his contemporaries made them), but they carry different weight in a postcolonial era.</p>
+
+                <p>The definitive modern biography is <a href="https://www.amazon.com/Churchill-Walking-Destiny-Andrew-Roberts/dp/1101980990">Andrew Roberts' <em>Churchill: Walking with Destiny</em></a> (2018), which drew on new sources including King George VI's diary to reveal Churchill's careful management of the monarch during the war. <a href="https://www.amazon.com/Splendid-Vile-Saga-Churchill-Family/dp/0385348711">Erik Larson's <em>The Splendid and the Vile</em></a> offers a narrative non-fiction portrait of his family life during the Blitz.</p>
+
+                <p>His advocacy for a "United States of Europe" makes him a contested figure in modern Brexit debates—both Remainers and Leavers claim his legacy. This is fitting. Churchill was never simple, never consistent, never belonging entirely to any faction.</p>
+
+                <div class="callout">
+                    <p><strong>Visit in person:</strong> <a href="https://www.nationaltrust.org.uk/visit/kent/chartwell">Chartwell</a> in Kent preserves his studio and gardens. The <a href="https://www.iwm.org.uk/visits/churchill-war-rooms">Cabinet War Rooms</a> in London remain exactly as they were in 1945, down to the sugar cubes left on the tables. He is buried in the churchyard at Bladon, near his birthplace at Blenheim Palace.</p>
+                </div>
+
+                <p>The leadership lesson endures. In crisis, communication <em>is</em> action. Churchill didn't just manage the war; he told the story of it. He understood that before you can fight, people must believe the fight is worth having—and that belief is built with words.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Until Next Week</h2>
+            <p class="closing-text">History isn't just what happened—it's the stories we choose to tell about it. Churchill understood this better than anyone. He wrote history, made history, and shaped how we remember it.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The Weekly Digest</span>
+            <div class="footer-links">
+                <a href="../index.html">Archive</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

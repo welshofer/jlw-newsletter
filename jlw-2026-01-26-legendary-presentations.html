@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art of Commanding a Room — January 26, 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --border: #2E2A25;
+            }
+        }
+        
+        *, *::before, *::after { box-sizing: border-box; }
+        
+        html { font-size: 18px; scroll-behavior: smooth; }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+        
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+        
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+        
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .audio-player {
+            margin-top: var(--space-lg);
+            background: var(--accent-soft);
+            padding: var(--space-md);
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .audio-player-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-right: var(--space-sm);
+        }
+        
+        .audio-player audio {
+            vertical-align: middle;
+        }
+        
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 0 0 var(--space-sm);
+        }
+        
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .section-source, .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+        
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .section-body p { margin: 0 0 var(--space-sm); }
+        .section-body p:last-child { margin-bottom: 0; }
+        
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        
+        .article-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .callout p { margin: 0; font-size: 0.95rem; }
+        
+        .callout-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space-xs);
+        }
+        
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: var(--space-md);
+            margin: var(--space-md) 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        .chart {
+            margin: var(--space-md) 0;
+        }
+        
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+        
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+        }
+        
+        ul, ol {
+            margin: var(--space-sm) 0;
+            padding-left: var(--space-md);
+        }
+        
+        li { margin-bottom: var(--space-xs); }
+        
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+        
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+        
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+        
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+        
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .section { padding: var(--space-lg) 0; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 26, 2026</time>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Legendary Presentations</span>
+            <h1 class="hero-title">The Art of Commanding a Room</h1>
+            <p class="hero-subtitle">What the greatest presentations in history teach us about persuasion, storytelling, and moving people to action</p>
+            
+            <div class="audio-player">
+                <span class="audio-player-label">Listen</span>
+                <audio controls>
+                    <source src="audio/commanding-a-room.wav" type="audio/wav">
+                </audio>
+            </div>
+            
+            <div class="hero-image">
+                <img src="images/hero-legendary-presentations.jpg" alt="Legendary presentations throughout history">
+            </div>
+        </div>
+    </section>
+    
+    <main class="content">
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-jobs-iphone.jpg" alt="Steve Jobs iPhone introduction 2007">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">Steve Jobs and the iPhone: The Theater of Revelation</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.youtube.com/watch?v=MnrJzXM7a6o">Apple Keynote Archive</a></span>
+                <span class="section-date">January 9, 2007</span>
+            </div>
+            <div class="section-body">
+                <p>When Steve Jobs walked onto that Macworld stage in 2007, he didn't just unveil a phone. He rewrote the rules of product launches forever. But here's the thing most people miss: the iPhone wasn't even the best product Apple announced that year. It was simply the best <em>presented</em>.</p>
+                
+                <p>Jobs took the stage with a simple premise: Apple is introducing three revolutionary products. A widescreen iPod with touch controls. A revolutionary mobile phone. A breakthrough internet communicator. He repeated each one, letting anticipation build. Then the reveal: "These are not three separate devices. This is one device."</p>
+                
+                <blockquote>"Every once in a while, a revolutionary product comes along that changes everything."</blockquote>
+                
+                <p>The audience erupted. But the magic wasn't in the product—it was in the structure. Jobs deliberately misdirected, creating a setup that made the payoff feel twice as significant.</p>
+                
+                <p><strong>What made it work:</strong></p>
+                <ul>
+                    <li><strong>The Rule of Three:</strong> Three products becoming one is more memorable than just announcing one product</li>
+                    <li><strong>Controlled information release:</strong> Jobs showed features one at a time, never overwhelming the audience</li>
+                    <li><strong>Live demonstrations:</strong> He actually used the phone on stage, scrolling through photos, making calls—proving the impossible was real</li>
+                    <li><strong>Competitive framing:</strong> He positioned existing smartphones as "not so smart" before showing the alternative</li>
+                </ul>
+                
+                <div class="callout">
+                    <div class="callout-title">The Lesson</div>
+                    <p>Structure your presentation as revelation, not explanation. Create anticipation before delivering the answer. Your audience should feel like they're discovering something with you, not being lectured at.</p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-mlk-dream.jpg" alt="Martin Luther King Jr. I Have a Dream speech 1963">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">MLK and "I Have a Dream": The Architecture of Moral Urgency</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.archives.gov/files/press/exhibits/dream-speech.pdf">National Archives</a></span>
+                <span class="section-date">August 28, 1963</span>
+            </div>
+            <div class="section-body">
+                <p>August 28, 1963. The Lincoln Memorial. 250,000 people gathered for the March on Washington. King had a prepared text—a solid speech about the promissory note of American democracy. But eleven minutes in, gospel singer Mahalia Jackson called out from behind him: "Tell them about the dream, Martin!"</p>
+                
+                <p>King pushed his notes aside and improvised the most famous eight minutes in American oratory.</p>
+                
+                <blockquote>"I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character."</blockquote>
+                
+                <p>The "I Have a Dream" refrain wasn't in his prepared remarks. It came from a place of genuine feeling, repeated and varied like a jazz musician building to a crescendo.</p>
+                
+                <p><strong>What made it work:</strong></p>
+                <ul>
+                    <li><strong>Anaphora:</strong> The repetition of "I have a dream" nine times created a hypnotic rhythm</li>
+                    <li><strong>Concrete imagery:</strong> Not abstract freedom, but "little black boys and black girls joining hands with little white boys and white girls"</li>
+                    <li><strong>Biblical cadence:</strong> King drew on the call-and-response tradition of Black churches, turning the audience into participants</li>
+                    <li><strong>Personal stakes:</strong> He invoked his own children, grounding universal principles in specific humanity</li>
+                </ul>
+                
+                <figure class="chart">
+                    <img src="images/chart-impact.png" alt="Impact metrics by presentation type">
+                    <figcaption>Historical presentations and their documented reach across different metrics</figcaption>
+                </figure>
+                
+                <div class="callout">
+                    <div class="callout-title">The Lesson</div>
+                    <p>Prepare thoroughly, then be willing to abandon the script when the moment demands it. The most powerful presentations know when to shift from the planned to the present. And repetition isn't redundancy—it's rhythm.</p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-jfk-moon.jpg" alt="JFK Moon speech Rice University 1962">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">JFK and the Moon Speech: Making the Impossible Feel Inevitable</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.jfklibrary.org/learn/about-jfk/historic-speeches/address-at-rice-university-on-the-nations-space-effort">JFK Library</a></span>
+                <span class="section-date">September 12, 1962</span>
+            </div>
+            <div class="section-body">
+                <p>Rice University, September 1962. The United States was losing the space race. The Soviets had put the first human in orbit. American rockets kept exploding on the launch pad. And Kennedy stood before 35,000 people to announce America would put a man on the moon by the end of the decade.</p>
+                
+                <p>It was audacious. Most experts thought it impossible. Kennedy's genius was making impossibility feel like destiny.</p>
+                
+                <blockquote>"We choose to go to the moon in this decade and do the other things, not because they are easy, but because they are hard."</blockquote>
+                
+                <p>That line reframed the entire challenge. Difficulty wasn't an obstacle—it was the point.</p>
+                
+                <p><strong>What made it work:</strong></p>
+                <ul>
+                    <li><strong>Time compression:</strong> Kennedy condensed 50,000 years of human history into 50 years, making the moon landing feel like the natural next step</li>
+                    <li><strong>Inclusive language:</strong> "We choose"—not the government, not NASA, but all of us together</li>
+                    <li><strong>Concrete deadline:</strong> "Before this decade is out" gave the impossible a specific, measurable timeline</li>
+                    <li><strong>Difficulty as virtue:</strong> He turned the hardest objection into the strongest argument</li>
+                </ul>
+                
+                <figure class="chart">
+                    <img src="images/chart-timeline.png" alt="Timeline of legendary presentations">
+                    <figcaption>Six decades of presentations that changed the world</figcaption>
+                </figure>
+                
+                <div class="callout">
+                    <div class="callout-title">The Lesson</div>
+                    <p>When proposing something ambitious, don't minimize the difficulty—embrace it. Frame the challenge as the reason to act, not the reason to hesitate. And always give your impossible dream a deadline.</p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-robinson-creativity.jpg" alt="Ken Robinson TED Talk on creativity 2006">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Ken Robinson and the TED Talk That Launched a Movement</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.ted.com/talks/sir_ken_robinson_do_schools_kill_creativity">TED</a></span>
+                <span class="section-date">February 2006</span>
+            </div>
+            <div class="section-body">
+                <p>Monterey, California, 2006. Ken Robinson had 18 minutes to talk about education reform—a topic that usually puts audiences to sleep. Instead, he delivered what would become the most-watched TED Talk in history, with over 75 million views.</p>
+                
+                <p>His secret? He made them laugh first.</p>
+                
+                <blockquote>"If you're not prepared to be wrong, you'll never come up with anything original."</blockquote>
+                
+                <p>Robinson opened with jokes. He told stories about his son in a nativity play, about a little girl drawing God ("They will in a minute"), about Gillian Lynne being told she had a learning disorder when she really just needed to dance. Each story carried a lesson, but the lessons were secondary to the entertainment.</p>
+                
+                <p><strong>What made it work:</strong></p>
+                <ul>
+                    <li><strong>Humor as Trojan horse:</strong> Laughter disarmed skepticism, making the audience receptive to challenging ideas</li>
+                    <li><strong>Story over statistics:</strong> One story about Gillian Lynne communicated more than any educational research</li>
+                    <li><strong>Conversational delivery:</strong> Robinson spoke like he was chatting at a dinner party, not lecturing from a podium</li>
+                    <li><strong>Universal theme:</strong> Everyone has a story about creativity being squashed—he made it personal for every viewer</li>
+                </ul>
+                
+                <figure class="chart">
+                    <img src="images/chart-ted-views.png" alt="Most-watched TED Talks">
+                    <figcaption>Ken Robinson's talk has maintained its number one position for nearly two decades</figcaption>
+                </figure>
+                
+                <div class="callout">
+                    <div class="callout-title">The Lesson</div>
+                    <p>Humor isn't frivolous—it's strategic. Making people laugh creates goodwill that makes them want to agree with you. And stories beat statistics every time. One vivid example does more work than a hundred data points.</p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-airbnb-pitch.jpg" alt="Airbnb pitch deck 2008">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">Airbnb: The Pitch Deck That Built a $100B Company</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.slideshare.net/PitchDeckCoach/airbnb-first-pitch-deck-editable">Y Combinator</a></span>
+                <span class="section-date">2008</span>
+            </div>
+            <div class="section-body">
+                <p>2008. Three guys with an idea to let strangers sleep in your apartment. They'd raised $30,000 selling novelty cereal boxes during the Obama campaign. Every VC in Silicon Valley had passed. Then they got into Y Combinator and created what's now studied as the perfect pitch deck.</p>
+                
+                <p>The deck was 10 slides. It told a clear story: here's the problem (hotels are expensive, impersonal), here's the solution (real homes, real hosts), here's why now (economic crisis, sharing economy), here's the business model (take a cut of every booking).</p>
+                
+                <p><strong>What made it work:</strong></p>
+                <ul>
+                    <li><strong>One idea per slide:</strong> No cognitive overload—each slide made exactly one point</li>
+                    <li><strong>Problem before solution:</strong> They made investors feel the pain before offering the remedy</li>
+                    <li><strong>Market size framing:</strong> They didn't just show the hotel market—they showed the intersection of hotel spend and online booking growth</li>
+                    <li><strong>Traction as proof:</strong> Even early, they showed real bookings, real revenue, real growth</li>
+                </ul>
+                
+                <div class="callout">
+                    <div class="callout-title">The Lesson</div>
+                    <p>Simplicity scales. The most fundable pitch isn't the one with the most information—it's the one with the clearest narrative. And always lead with the problem. If investors don't feel the problem, they won't value your solution.</p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-jobs-stanford.jpg" alt="Steve Jobs Stanford commencement 2005">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">Steve Jobs at Stanford: The Power of Mortality</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.stanford.edu/2005/06/12/youve-got-find-love-jobs-says/">Stanford News</a></span>
+                <span class="section-date">June 12, 2005</span>
+            </div>
+            <div class="section-body">
+                <p>Stanford, June 2005. Jobs had been diagnosed with pancreatic cancer the year before. He stood before the graduating class and told three stories: dropping out of Reed College, getting fired from Apple, and facing death.</p>
+                
+                <blockquote>"Remembering that I'll be dead soon is the most important tool I've ever encountered to help me make the big choices in life."</blockquote>
+                
+                <p>No slides. No product demos. Just three stories, simply told, that illuminated a philosophy: follow your curiosity, trust the journey, treat every day as if it might be your last.</p>
+                
+                <p><strong>What made it work:</strong></p>
+                <ul>
+                    <li><strong>Vulnerability:</strong> Jobs shared failures and fears—getting fired, facing death—creating intimacy with thousands</li>
+                    <li><strong>Three-act structure:</strong> Each story was complete but connected to the others by a common thread</li>
+                    <li><strong>Earned wisdom:</strong> He didn't preach from theory—every insight came from painful personal experience</li>
+                    <li><strong>Stakes:</strong> The mortality framing made every word feel urgent, important, true</li>
+                </ul>
+                
+                <div class="callout">
+                    <div class="callout-title">The Lesson</div>
+                    <p>Authenticity is armor-piercing. When you share real struggles and real stakes, audiences stop analyzing and start feeling. And structure matters even without slides—three stories, one theme, creates a presentation that people remember for decades.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Common Thread</h2>
+            <p class="closing-text">Six presentations. Six different contexts. One pattern: they treated communication as craft, not afterthought. Jobs rehearsed for weeks. King had been refining those refrains for years. Kennedy's speech was edited down from much longer drafts. The greatest presenters understood something most people miss: the goal isn't to transfer information—it's to change how people feel about information they may already know. That's the art of commanding a room.</p>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+            <div class="footer-links">
+                <a href="index.html">Archive</a>
+                <a href="https://github.com/welshofer/jlw-newsletter">GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

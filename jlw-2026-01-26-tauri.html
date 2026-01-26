@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crab That Ate Electron's Lunch — January 26, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm Rust/Tauri theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #C4654A;
+            --accent-soft: rgba(196, 101, 74, 0.12);
+            --accent-hover: #A85439;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 26, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Tauri Framework</span>
+            <h1 class="hero-title">The Crab That Ate Electron's Lunch</h1>
+            <p class="hero-subtitle">How a Rust-powered framework went from promising alternative to production powerhouse in 2025, with mobile support, governance milestones, and a bold plan to ditch system WebViews entirely.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-crab-that-ate-electrons-lunch.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-tauri-framework.jpg" alt="Abstract visualization of Tauri framework with rust-orange crab shell patterns transforming into app windows">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-electron-vs-tauri.jpg" alt="Tauri vs Electron comparison visualization">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">DoltHub's Honest Migration Assessment: Why They Haven't Switched Yet</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.dolthub.com/blog/2025-11-13-electron-vs-tauri/">DoltHub Blog</a></span>
+                <span class="section-date">Nov 13, 2025</span>
+            </div>
+            <div class="section-body">
+                <p>When a company building database tools publicly documents their framework evaluation, you pay attention. <a href="https://www.dolthub.com">DoltHub</a>, makers of the Dolt Workbench supporting MySQL, Postgres, and their own versioned database, spent serious engineering time evaluating a Tauri migration for their <a href="https://www.electronjs.org">Electron</a> app. The verdict? They're staying put—for now.</p>
+
+                <p>The blockers are instructive. Windows Store distribution requires .appx/.msix formats; Tauri only supports .exe and .msi. macOS universal binary codesigning breaks during multi-architecture builds. These aren't deal-breakers for most apps, but they're showstoppers for enterprise software that needs smooth distribution channels.</p>
+
+                <p>The technical comparison, however, favors Tauri dramatically. Bundle sizes shrink by 10-15x. The <a href="https://nextjs.org">Next.js</a> integration is cleaner—Tauri's static-site export just works, while Electron requires the increasingly unmaintained <a href="https://github.com/nicholaslee119/nextron">Nextron</a> workaround. And Tauri's Rust APIs feel more coherent than Electron's IPC patterns.</p>
+
+                <div class="callout">
+                    <p><strong>The takeaway:</strong> Tauri is technically superior for greenfield projects. But if you're migrating an existing Electron app with enterprise distribution requirements, your mileage will vary. DoltHub is keeping their migration branch open.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-mobile-apps.jpg" alt="Developer with four mobile apps connected to a laptop">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">One Developer, Four Mobile Apps: A Tauri Production Retrospective</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://blog.erikhorton.com/2025/10/05/4-mobile-apps-with-tauri-a-retrospective.html">Erik Horton's Blog</a></span>
+                <span class="section-date">Oct 5, 2025</span>
+            </div>
+            <div class="section-body">
+                <p>Erik Horton decided to stress-test Tauri's mobile capabilities by building four apps he'd actually use. <a href="https://github.com/erikhorton/tension">Tension</a> tracks blood pressure via Bluetooth monitor integration. <a href="https://github.com/erikhorton/spaced-out">Spaced Out</a> is an Anki-style spaced repetition tool. <a href="https://github.com/erikhorton/nback">Nback</a> implements dual N-back cognitive training. <a href="https://github.com/erikhorton/pomagotchi">Pomagotchi</a> combines Pomodoro timers with creature-raising mechanics.</p>
+
+                <p>His verdict: "a great experience." Project initialization is quick. Mac and mobile deployment is smooth. Hot Module Replacement works across devices and emulators. The pain point? Rust compile times. "Like all Rust projects, compiling is where you spend all of your time." Regular <code>cargo clean</code> became necessary to manage disk space consumption.</p>
+
+                <p>The most interesting detail: Horton leaned heavily on AI coding assistants (Claude Sonnet 4.5, GPT-5) for rapid prototyping. Most apps reached working prototypes within 10 minutes, with features completing in 1-2 hours. The combination of Tauri's clean architecture and modern AI tooling suggests a new development velocity paradigm for cross-platform mobile apps.</p>
+
+                <p><strong>Watch for:</strong> More production mobile apps shipping with Tauri in 2026 as developers realize they don't need to learn React Native or Flutter for simple utility apps.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-board-elections.jpg" alt="Governance visualization with boardroom and voting ballots">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">Four Years In: Tauri's Governance Matures with Board Elections</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://v2.tauri.app/blog/tauri-board-elections-2025/">Tauri Blog</a></span>
+                <span class="section-date">Jun 30, 2025</span>
+            </div>
+            <div class="section-body">
+                <p>Open source projects often struggle with governance as they grow. <a href="https://tauri.app">Tauri</a> celebrated four years within <a href="https://commonsconservancy.org">The Commons Conservancy</a>, the Dutch non-profit framework, by running board director elections with 5 open seats. The staggered election system—seats elected over two years—ensures continuity while enabling fresh perspectives.</p>
+
+                <p>Director positions serve two-year terms, with the board ranging from 3 to 7 members. Candidates needed to submit personal statements covering their background, Tauri involvement, and intended contributions. Voting ran July 7-14 among Working Group Members, with results announced by July 19.</p>
+
+                <p>Why does this matter for developers? Governance determines sustainability. Projects with clear contribution paths, transparent decision-making, and institutional backing are safer bets for production use. Tauri's dual licensing (MIT and Apache 2.0) plus Commons Conservancy oversight signals long-term stability that many alternatives lack.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-timeline.png" alt="Tauri framework timeline from 2022 to 2025">
+                    <figcaption>Tauri's journey: From 1.0 in June 2022 to mobile support, Servo integration, and governance milestones.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-verso-integration.jpg" alt="Servo engine transforming into Verso browser window">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Verso Integration: The Audacious Plan to Replace System WebViews</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://v2.tauri.app/blog/tauri-verso-integration/">Tauri Blog</a></span>
+                <span class="section-date">Mar 17, 2025</span>
+            </div>
+            <div class="section-body">
+                <p>Tauri's greatest strength—using native system WebViews—is also its biggest inconsistency problem. WebKit on macOS renders differently than Edge WebView2 on Windows, which differs from WebKitGTK on Linux. Cross-platform testing is mandatory. Enter <a href="https://github.com/nicholaslee119/verso">Verso</a>, a browser built on <a href="https://servo.org">Servo</a>, Mozilla's experimental Rust-based rendering engine.</p>
+
+                <p>The integration, called <code>tauri-runtime-verso</code>, works as a drop-in replacement for the default <code>tauri-runtime-wry</code>. Swap the runtime, and your app renders identically across platforms. The implementation already supports CLI functionality, React integration, official plugins (logging, file opener), window management, hot-reload with Vite, and drag regions.</p>
+
+<pre><code>let controller = VersoBuilder::new()
+    .with_panel(true)
+    .maximized(true)
+    .build(versoview_path, Url::parse("https://example.com").unwrap());</code></pre>
+
+                <p>The roadmap includes pre-built executables, an "evergreen shared Verso" model (similar to WebView2) for automatic updates and smaller bundles, and Verso-specific customization options. <a href="https://nlnet.nl/project/Verso/">NLNet funding</a> supports the project, addressing the web ecosystem's lack of a cross-platform, non-corporate-controlled rendering option.</p>
+
+                <div class="callout">
+                    <p><strong>The implications:</strong> If Verso matures, Tauri could offer Electron's consistency guarantee (one renderer everywhere) while maintaining its size and performance advantages. That's a compelling combination for enterprise adoption.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-tauri-2.jpg" alt="Tauri 2.0 visualization with mobile devices and plugin icons">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">Tauri 2.0: The Release That Made Mobile Real</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://v2.tauri.app/blog/tauri-20/">Tauri Blog</a></span>
+                <span class="section-date">Oct 2, 2024</span>
+            </div>
+            <div class="section-body">
+                <p>October 2024's Tauri 2.0 stable release wasn't just a version bump—it was a complete platform expansion. A single codebase now targets Linux, macOS, Windows, Android, and iOS. <a href="https://crabnebula.dev">CrabNebula</a> invested over 2,870 work hours in 2024 alone pushing toward this milestone.</p>
+
+                <p>The architectural shift moved core functionality into plugins, enabling independent iteration and lowering the barrier for first contributors. The plugin system extends to mobile with native code support: Swift on iOS, Kotlin on Android, directly exposable to the Tauri frontend. Mobile-specific plugins now cover camera/barcode scanning, biometric authentication, device location, NFC reading/writing, and native notifications.</p>
+
+                <p>Development workflow improvements matter too. Hot Module Replacement now works on mobile devices and emulators—no full rebuilds for frontend changes. The CLI connects to localhost dev servers when targeting Android or iOS, eliminating the need to expose development servers on public networks.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-bundle-size.png" alt="Bundle size comparison between Tauri and Electron">
+                    <figcaption>App bundle size comparison: Tauri apps range from 0.6MB to 12MB; Electron equivalents range from 80MB to 180MB.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-performance.jpg" alt="Performance comparison visualization with scales and speedometers">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Numbers Don't Lie: Tauri's Performance Edge in 2025</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.gethopp.app/blog/tauri-vs-electron">Multiple benchmarks</a></span>
+                <span class="section-date">2025</span>
+            </div>
+            <div class="section-body">
+                <p>A year after 2.0's release, the benchmark data has matured. A minimal Tauri app can be under 600KB; equivalent Electron apps start at 80MB. A basic todo list app launches in 0.4 seconds with Tauri using 28MB RAM, versus 1.5 seconds and 250MB RAM for Electron. On macOS, Electron's Chromium renderer processes consumed roughly double the memory of Tauri's WKWebView processes for identical windows.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-memory-startup.png" alt="Memory and startup time comparison">
+                    <figcaption>Side-by-side benchmarks: Tauri uses 8.9x less RAM and starts 3.75x faster than Electron.</figcaption>
+                </figure>
+
+                <p>The security story strengthens these numbers. Tauri's Rust backend limits system access by default, reducing exploit surface. Electron's Node.js exposure requires careful sandboxing. The architecture inherently sandboxes the WebView from backend logic, and using native WebView components instead of a bundled browser engine means fewer CVEs to track.</p>
+
+                <p>But context matters. Electron powers <a href="https://slack.com">Slack</a>, <a href="https://code.visualstudio.com">VS Code</a>, <a href="https://discord.com">Discord</a>—apps with massive ecosystem investments and Node.js integration requirements. For new projects prioritizing efficiency, security, and native feel, Tauri is the stronger choice. For migrations with heavy Node.js dependencies or enterprise distribution requirements, Electron remains defensible.</p>
+
+                <p><strong>The trajectory:</strong> Tauri adoption grew 35% year-over-year after the 2.0 release. Expect that trend to accelerate as mobile production apps ship and Verso integration matures.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Quiet Revolution</h2>
+            <p class="closing-text">Tauri didn't win by shouting about Electron's failures. It won by quietly solving problems: smaller binaries, faster startup, lower memory, and now mobile from a single codebase. The Verso experiment could extend that lead. For developers starting new desktop or mobile projects in 2026, the question isn't whether to consider Tauri—it's whether you have a specific reason not to.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+            <div class="footer-links">
+                <a href="https://tauri.app">Tauri</a>
+                <a href="https://github.com/tauri-apps/tauri">GitHub</a>
+                <a href="https://v2.tauri.app/blog/">Blog</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

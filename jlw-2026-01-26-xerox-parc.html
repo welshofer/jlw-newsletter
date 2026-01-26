@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lab That Invented the Future — January 26, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - warm, sophisticated */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 26, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Tech History</span>
+            <h1 class="hero-title">The Lab That Invented the Future</h1>
+            <p class="hero-subtitle">In a single decade, a few dozen researchers in Palo Alto invented the personal computer, the graphical interface, Ethernet, the laser printer, and object-oriented programming. Then they watched someone else commercialize all of it.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-lab-that-invented-the-future.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-parc-lab.jpg" alt="Atmospheric 1970s research lab with CRT monitors, beanbag chairs, and researchers gathered around revolutionary computing technology">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: The Founding -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Copier Company's Existential Bet</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.amazon.com/Dealers-Lightning-Xerox-PARC-Computer/dp/0887309895">Dealers of Lightning</a></span>
+                <span class="section-date">1970</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-founding.jpg" alt="Two executives shaking hands over architectural blueprints, warm golden light, the founding moment of PARC">
+            </figure>
+            <div class="section-body">
+                <p>In 1969, <a href="https://en.wikipedia.org/wiki/Xerox">Xerox</a> CEO Peter McColough had a terrifying premonition: the paperless office. The company that had built an empire on copying documents suddenly realized that digital technology might make paper irrelevant. His response was audacious—pour money into inventing the future before it could destroy you.</p>
+
+                <p>He tapped <a href="https://en.wikipedia.org/wiki/George_Pake">George Pake</a>, a physicist from Washington University, to build something unprecedented: a corporate research lab with the intellectual freedom of a top university. They placed it 3,000 miles from Xerox's stifling Rochester headquarters, in the shadow of <a href="https://www.stanford.edu/">Stanford University</a>. The Palo Alto Research Center—PARC—was born.</p>
+
+                <p>The culture Pake built was unlike any corporate environment of the era. Beanbag chairs replaced conference tables ("it's impossible to leap to your feet and denounce someone from a beanbag chair," noted <a href="https://en.wikipedia.org/wiki/Alan_Kay">Alan Kay</a>). Researchers had near-unlimited budgets and zero commercial pressure. Friday "Dealer" meetings forced scientists to defend their ideas before brilliant, often ruthless peers. It was a hothouse for genius—and for expensive ideas that would never make Xerox a dime.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-parc-timeline.png" alt="Timeline showing PARC's major inventions from 1970 to 1984">
+                    <figcaption>A decade of invention: PARC's breakthroughs from founding to the Macintosh launch</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 2: The Alto -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Computer That Predicted Everything</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.computerhistory.org/revolution/input-output/14/347">Computer History Museum</a></span>
+                <span class="section-date">1973</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-alto.jpg" alt="The Xerox Alto computer with portrait-oriented screen, three-button mouse, and WYSIWYG display">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://en.wikipedia.org/wiki/Xerox_Alto">Xerox Alto</a>, completed in 1973, was the first modern personal computer. While IBM's mainframes filled entire rooms and used punch cards, the Alto was designed for a single user sitting at a desk. It had a portrait-oriented screen (to mimic a sheet of paper), a three-button mouse refined by <a href="https://en.wikipedia.org/wiki/Bill_English_(computer_engineer)">Bill English</a> from <a href="https://en.wikipedia.org/wiki/Douglas_Engelbart">Doug Engelbart</a>'s original prototype, and a revolutionary bit-mapped display where every pixel could be controlled individually.</p>
+
+                <p><a href="https://en.wikipedia.org/wiki/Chuck_Thacker">Chuck Thacker</a> designed the hardware. <a href="https://en.wikipedia.org/wiki/Butler_Lampson">Butler Lampson</a> architected the system. But it was the software that made the Alto prophetic. <a href="https://en.wikipedia.org/wiki/Bravo_(software)">Bravo</a>, created by <a href="https://en.wikipedia.org/wiki/Charles_Simonyi">Charles Simonyi</a>, was the first WYSIWYG word processor—what you saw on screen was exactly what would print. Bold text looked bold. Italics looked italic. The metaphor of the "desktop" began here.</p>
+
+                <div class="callout">
+                    <p><strong>The hidden cost:</strong> Xerox built roughly 2,000 Altos, but only for internal use. At an estimated cost of $12,000–$40,000 per unit, they never attempted mass production. The world's first personal computer remained a secret for nearly a decade.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Ethernet -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Memo That Connected Everything</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.ieee.org/about/history-center/ethernet-history.html">IEEE History</a></span>
+                <span class="section-date">May 22, 1973</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-ethernet.jpg" alt="Coaxial Ethernet cable snaking through an office with glowing data pulses, computers connected in constellation">
+            </figure>
+            <div class="section-body">
+                <p>On May 22, 1973, a researcher named <a href="https://en.wikipedia.org/wiki/Robert_Metcalfe">Bob Metcalfe</a> typed a memo outlining a system he called "Ethernet"—named after the luminiferous ether once thought to carry light waves. The problem was practical: PARC needed a way to connect their Altos to the laser printer Gary Starkweather was building. Metcalfe's solution would eventually connect the entire world.</p>
+
+                <p>Working with <a href="https://en.wikipedia.org/wiki/David_Boggs">David Boggs</a>, Metcalfe invented a protocol called CSMA/CD (Carrier Sense Multiple Access with Collision Detection). Think of it like a polite dinner party: you listen to see if anyone is talking, and if silence, you speak. If two people talk at once, both stop, wait a random interval, and try again. The original PARC Ethernet ran at 2.94 Mbps—blindingly fast compared to the 300-baud modems of the day.</p>
+
+                <p>Metcalfe would later leave PARC to found <a href="https://en.wikipedia.org/wiki/3Com">3Com</a>, finally commercializing the technology he'd invented. Ethernet became the backbone of local area networking, and eventually the physical layer of the internet itself. The memo is now in the Computer History Museum.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Laser Printer -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Rebel Who Saved Xerox (From Itself)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.wired.com/2012/12/xerox-parc-laser-printer/">Wired</a></span>
+                <span class="section-date">1971</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-laser.jpg" alt="Laser beam scanning across a photosensitive drum, cutaway technical illustration of xerographic printing">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/Gary_Starkweather">Gary Starkweather</a> was an optical engineer at Xerox's main lab in Rochester when he had a dangerous idea: what if you used a laser to "paint" an image directly onto a xerographic drum, instead of using a lens to copy an existing paper document? His bosses hated it. They were in the copier business, not the printer business. He was told to stop or be fired.</p>
+
+                <p>Starkweather did what frustrated geniuses do—he called PARC. They welcomed him with open arms. By 1971, he had built the EARS system (Ethernet, Alto, Research character generator, Scanned laser output terminal), capable of printing 60 pages per minute at 300 dpi. The laser printer was born.</p>
+
+                <p>Ironically, this was the one PARC invention Xerox actually commercialized successfully. The <a href="https://en.wikipedia.org/wiki/Xerox_9700">Xerox 9700</a>, released in 1977, became a multi-billion dollar product line. It arguably paid for all of PARC's other experiments—the ones Xerox would fail to monetize. The laser printer saved Xerox's business while proving they could commercialize innovation. They just chose not to do it with everything else.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Smalltalk -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Language Built for Children (That Conquered the World)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://worrydream.com/EarlyHistoryOfSmalltalk/">Early History of Smalltalk</a></span>
+                <span class="section-date">1976</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-smalltalk.jpg" alt="Abstract visualization of object-oriented programming with geometric shapes sending message arrows, overlapping windows">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/Alan_Kay">Alan Kay</a>'s vision was wildly ambitious: a portable computer for children called the <a href="https://en.wikipedia.org/wiki/Dynabook">Dynabook</a>. To make it work, he needed a programming language simple enough for kids but powerful enough for complex simulations. With <a href="https://en.wikipedia.org/wiki/Dan_Ingalls">Dan Ingalls</a> and <a href="https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)">Adele Goldberg</a>, he created <a href="https://en.wikipedia.org/wiki/Smalltalk">Smalltalk</a>—the first true object-oriented programming language.</p>
+
+                <p>Instead of a long list of procedural instructions, Smalltalk software was composed of "objects" that sent messages to each other. The paradigm shift was profound: programs became collections of autonomous entities collaborating, rather than monolithic scripts executing step by step. The Smalltalk environment also introduced the GUI elements we now take for granted—overlapping windows, pop-up menus, icons.</p>
+
+                <p>Kay never got his Dynabook (we're still waiting), but Smalltalk's DNA spread everywhere. <a href="https://en.wikipedia.org/wiki/Objective-C">Objective-C</a>, which powered macOS and iOS for decades, borrowed heavily from it. <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>'s object model traces back to PARC. Every time you instantiate a class or call a method, you're speaking a language that began in Palo Alto.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: The Apple Visit -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Visit That Changed Everything (Except Xerox)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.folklore.org/StoryView.py?story=A_Rich_Neighbor_Named_Xerox.txt">Folklore.org</a></span>
+                <span class="section-date">December 1979</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-apple.jpg" alt="Young Steve Jobs watching a computer demonstration through glass, his reflection overlapping with glowing GUI on screen">
+            </figure>
+            <div class="section-body">
+                <p>This is the most famous meeting in tech history. In December 1979, a young <a href="https://en.wikipedia.org/wiki/Steve_Jobs">Steve Jobs</a> struck a deal: Xerox could buy 100,000 shares of pre-IPO <a href="https://www.apple.com/">Apple</a> stock for $1 million. In exchange, Apple engineers got full access to PARC's technology. It was, in retrospect, one of the worst trades in corporate history.</p>
+
+                <p>There were two visits. The first was flashy but superficial. Jobs, realizing he hadn't seen the "real" stuff, demanded a second, deeper technical dive. Adele Goldberg famously fought against showing Apple the technology, arguing they were "giving away the kitchen sink." She was overruled by Xerox executives who saw a quick $1 million and not much else.</p>
+
+                <p>Jobs saw three things: Ethernet, object-oriented programming, and the graphical user interface. He largely ignored the first two but was mesmerized by the GUI. "I was so blinded by the first thing they showed me," he later said. "I thought it was the best thing I'd ever seen in my life." Apple's Lisa and Macintosh would follow—improving on PARC's vision with menu bars, drag-and-drop, and a simpler one-button mouse.</p>
+
+                <div class="callout">
+                    <p><strong>The myth vs. reality:</strong> Jobs didn't "steal" the GUI—he paid for a peek. Apple significantly improved on what PARC had built. But the narrative of Xerox's fumble became Silicon Valley legend, a cautionary tale about the gap between invention and commercialization.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 7: The Legacy -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">The Diaspora: Where the Ideas Actually Went</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://spectrum.ieee.org/xerox-parc">IEEE Spectrum</a></span>
+                <span class="section-date">1981–present</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-legacy.jpg" alt="Seeds scattering from a golden dandelion, each transforming into company silhouettes, the diaspora metaphor">
+            </figure>
+            <div class="section-body">
+                <p>Why didn't Xerox become Apple or Microsoft? They tried. In 1981, Xerox released the <a href="https://en.wikipedia.org/wiki/Xerox_Star">Star 8010</a>—years ahead of its time, but priced at $16,500 (roughly $50,000 today). An IBM PC cost $1,565. Xerox's sales force knew how to sell copiers to office managers, not complex networked computers to IT departments. The Star was a commercial disaster.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-price-comparison.png" alt="Bar chart comparing prices of Xerox Star, IBM PC, Apple Lisa, and Macintosh">
+                    <figcaption>The price barrier: PARC's commercial vision was 10x more expensive than what the market would bear</figcaption>
+                </figure>
+
+                <p>But the ideas didn't die—they scattered. <a href="https://en.wikipedia.org/wiki/John_Warnock">John Warnock</a> and <a href="https://en.wikipedia.org/wiki/Charles_Geschke">Charles Geschke</a> left to create <a href="https://www.adobe.com/">Adobe</a>, revolutionizing publishing with PostScript and PDF. Charles Simonyi joined <a href="https://www.microsoft.com/">Microsoft</a> to build Word and Excel. Bob Metcalfe commercialized Ethernet through 3Com. The brilliant minds that Xerox couldn't figure out how to use became the architects of the modern tech industry.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-parc-diaspora.png" alt="Horizontal bar chart showing peak revenues of companies founded or transformed by PARC alumni">
+                    <figcaption>The true return on PARC's investment: billions in revenue—for companies Xerox didn't own</figcaption>
+                </figure>
+
+                <p>As Alan Kay famously said: "The best way to predict the future is to invent it." PARC did exactly that. They just forgot to mention you also have to <em>sell</em> it.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Inventors' Paradox</h2>
+            <p class="closing-text">Every time you click a mouse, open a window, print a document, or connect to a network, you're using technology that was invented in a single building in Palo Alto during the 1970s. The people who built the future weren't at Apple or Microsoft—they were at a copier company that couldn't see what it had. The lesson isn't about invention. It's about the chasm between having an idea and making it matter.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

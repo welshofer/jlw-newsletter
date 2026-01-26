@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Reckoning Ahead — January 25, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for political forecasting */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #095A72;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #3FA8C7;
+                --accent-soft: rgba(63, 168, 199, 0.15);
+                --accent-hover: #5DBDD8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* HEADER */
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* HERO */
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* CONTENT SECTIONS */
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* CLOSING / FOOTER */
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 25, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">2026 Midterms</span>
+            <h1 class="hero-title">The Reckoning Ahead</h1>
+            <p class="hero-subtitle">Ten months out, the forecast is sobering for the GOP. History, polling, and the economy are all pointing the same direction—toward a Democratic wave that could reshape the political landscape.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-reckoning-ahead.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-midterms-2026.jpg" alt="The US Capitol at dusk, symbolizing the pivotal 2026 midterm elections">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Generic Ballot -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-generic-ballot.jpg" alt="Abstract visualization of approval rating polls">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">Democrats Open a Five-Point Lead on the Generic Ballot</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.realclearpolitics.com/epolls/other/2026_generic_congressional_vote-7654.html">RealClearPolitics</a></span>
+                <span class="section-date">January 24, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The numbers are in, and they're not good for Republicans. Aggregated generic congressional ballot polls now show Democrats with an average lead of approximately <strong>D+5.3</strong> over Republicans—a margin that, if it holds through November, would almost certainly flip control of the House.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-generic-ballot.png" alt="Generic ballot polling trend showing Democrats leading by 5.3 points">
+                    <figcaption>Democrats have steadily widened their lead since September 2025, now sitting at a comfortable D+5.3 advantage.</figcaption>
+                </figure>
+
+                <p>The generic ballot isn't just an academic exercise—it's historically the single best predictor of House outcomes. A D+5 environment typically translates to 15-25 seat gains, more than enough to overcome the current 6-seat Republican majority. <a href="https://fivethirtyeight.com">FiveThirtyEight's</a> models suggest a D+5 national environment gives Democrats roughly an 85% chance of retaking the chamber.</p>
+
+                <p>President <a href="https://www.whitehouse.gov">Trump's</a> approval rating isn't helping matters. At 45.8% approval versus 50.9% disapproval (net -5.1%), he's operating in territory that historically presages significant losses for the incumbent party. Every president since <a href="https://en.wikipedia.org/wiki/Harry_S._Truman">Truman</a> with approval below 50% has seen their party lose seats in the subsequent midterm.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Economy -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-economy-inflation.jpg" alt="Shopping cart with floating price tags symbolizing inflation">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Cost-of-Living Albatross</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.denvergazette.com/news/politics/2026-midterm-issues-economy">Denver Gazette</a> / <a href="https://www.brookings.edu">Brookings</a></span>
+                <span class="section-date">January 22, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Midterms are almost always a referendum on the economy—and right now, voters are giving this administration failing grades. Inflation and cost of living remain the top "life space" issues for voters, with public approval of the administration's handling of these issues described as "dismal" by analysts at <a href="https://www.brookings.edu">Brookings</a>.</p>
+
+                <p>The trust matrix is stark: voters currently trust Republicans more on border security, but Democrats hold decisive advantages on healthcare and abortion access. Given that economic anxiety is the dominant lens through which most voters evaluate incumbents, the GOP's border message may not be enough to overcome kitchen-table frustrations.</p>
+
+                <div class="callout">
+                    <p><strong>Key finding:</strong> A majority of Americans view the economy as "fair or poor"—a sentiment that historically correlates with 20+ seat swings against the president's party.</p>
+                </div>
+
+                <p>Healthcare—specifically <a href="https://www.medicaid.gov">Medicaid</a>—has emerged as a particularly potent wedge issue. The administration's proposed cuts to the program are polling catastrophically, giving Democrats a clear attack vector in districts where healthcare access is top of mind. Watch for this to dominate advertising in the fall.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Six-Year Itch -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-six-year-itch.jpg" alt="Hourglass with sand running out, representing the six-year itch">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">History's Verdict: The Six-Year Itch</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.brookings.edu/blog/fixgov/2026/01/20/midterm-six-year-itch">Brookings Institution</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>There's a reason political scientists call a two-term president's second midterm the "six-year itch"—and the historical pattern is brutal. On average, the president's party loses 25-30 House seats and 4-6 Senate seats in sixth-year elections. The combination of party fatigue, accumulated grievances, and an energized opposition creates what one analyst calls a "target-rich environment" for the out-party.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-six-year-itch.png" alt="Historical chart showing sixth-year midterm losses for president's party">
+                    <figcaption>The historical pattern is unforgiving: only Clinton in 1998 (during impeachment backlash) avoided losses. The projected -12 for 2026 would be below average—but still enough to flip the House.</figcaption>
+                </figure>
+
+                <p>The exceptions prove the rule. <a href="https://en.wikipedia.org/wiki/Bill_Clinton">Clinton's</a> 1998 gains came amid Republican overreach on impeachment—a circumstance that rallied Democratic voters. <a href="https://en.wikipedia.org/wiki/Ronald_Reagan">Reagan's</a> modest 1986 losses (-5 House seats) occurred during an economic boom. Neither condition applies today.</p>
+
+                <p>Current projections suggest Republicans will lose approximately 12 House seats—below the historical average but enough to flip control given their slim 219-213 majority. The structural forces are simply too powerful: a tired electorate, an underwater president, and an opposition party that smells blood.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Political Violence -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-political-extremism.jpg" alt="Fractured glass reflecting chaotic imagery, representing political polarization">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Extremism Factor</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://blogs.lse.ac.uk/usappblog/2026/01/18/political-violence-2026-midterms">LSE US Centre</a></span>
+                <span class="section-date">January 18, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Here's the wild card that could determine whether this is merely a bad year for Republicans or a catastrophic one: political violence has emerged as a top-tier concern for voters, ranking alongside the economy in recent surveys. And the perception of which party is "too extreme" may decide which way independents break.</p>
+
+                <p>Polling indicates voters see <em>both</em> parties as too extreme—but the distribution matters. When asked which party poses a greater threat to democratic norms, Republicans consistently poll worse among the critical independent bloc that decides swing districts. Concerns about "election integrity" and political manipulation remain elevated following the 2024 cycle.</p>
+
+                <p>The strategic implication is clear: this issue set may depress turnout among moderate voters or cause them to break late against whichever party they perceive as more chaotic. For Republicans in purple districts, this creates an impossible needle to thread—distancing from national rhetoric risks alienating the base, while embracing it risks losing the middle.</p>
+
+                <div class="callout">
+                    <p><strong>Watch for:</strong> Late-breaking independent voters. If extremism concerns dominate the final weeks, expect a cascade toward the party perceived as the "safer" choice—historically, that means voting against the party holding the White House.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5: House -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-house-majority.jpg" alt="Balance scale with house figurines, representing the narrow House majority">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">The House Is a Toss-Up (Leaning Blue)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://thehill.com/homenews/campaign/509283-cook-political-report-house-ratings-2026">The Hill</a> / <a href="https://www.cookpolitical.com">Cook Political Report</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Let's talk math. Republicans currently hold a 219-213 House majority—a margin so thin that Democrats need only flip three seats to win back the gavel. According to <a href="https://www.cookpolitical.com">Cook Political Report</a>, Republicans are projected to lose approximately 12 seats if current trends hold.</p>
+
+                <p>The vulnerability landscape is telling: 29 Republican-held seats are rated as "vulnerable" compared to 40 Democratic seats on paper—but the momentum has shifted decisively against the GOP. Of the 17 pure "Toss Up" seats, Republicans hold 11. That's a structural problem when the national environment is D+5.</p>
+
+                <p><a href="https://www.cookpolitical.com/about/staff/erin-covey">Erin Covey</a> at Cook puts it bluntly: "The number of Republicans in peril should provide enough opportunities for Democrats to reach 218 seats." Translation: the path to a Democratic House majority runs through Biden 2020 districts currently held by Republicans—and those seats are moving.</p>
+
+                <p>The big question is whether Republican retirements will accelerate. Open seats are always more competitive, and a wave of GOP departures could turn a bad year into a bloodbath. Watch the next six weeks for announcements.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Senate -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-senate-races.jpg" alt="Chess board in endgame position, representing the strategic Senate battle">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Senate's Uphill Climb</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cookpolitical.com/ratings/senate-race-ratings">Cook Political Report</a></span>
+                <span class="section-date">January 12, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>If the House is tilting blue, the Senate remains a much harder climb for Democrats—but not an impossible one. The current split is 53-47 Republican, meaning Democrats need a net gain of 4 seats to take the majority. That's a steep ask, but the map offers a narrow path.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-senate-ratings.png" alt="Senate race ratings showing current state of play">
+                    <figcaption>The current Senate map: Democrats need to run the table on toss-ups AND flip at least one lean-R seat to take the majority.</figcaption>
+                </figure>
+
+                <p>The current Cook ratings show four pure toss-ups: <strong>Georgia</strong> (<a href="https://www.ossoff.senate.gov">Ossoff</a>-D), <strong>Maine</strong> (<a href="https://www.collins.senate.gov">Collins</a>-R), <strong>Michigan</strong> (Open-D), and <strong>North Carolina</strong> (Open-R). Democrats are defending Ossoff in an increasingly purple Georgia while hoping to flip the open North Carolina seat and defeat Collins in Maine.</p>
+
+                <p><a href="https://twitter.com/JessicaTaylor">Jessica Taylor</a> at Cook frames the challenge: "Texas isn't initially a top Democratic target, but the minority party only has two obvious offensive opportunities in North Carolina and Maine. In order to find a way to flip the four seats they need to regain the majority... they need to put one of the other double-digit Trump states in play."</p>
+
+                <p>The wild cards: <strong>Alaska</strong> (<a href="https://www.sullivan.senate.gov">Sullivan</a>-R) and <strong>Ohio</strong> (Husted-R) are rated Lean Republican but could drift into toss-up territory if the environment deteriorates further. Texas remains a reach, but Democratic money is already flowing into the race.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">What to Watch</h2>
+            <p class="closing-text">The fundamentals are set: a D+5 environment, a six-year itch, and economic headwinds all pointing toward significant GOP losses. But ten months is an eternity in politics. Watch for late-breaking developments on inflation, any shift in the extremism narrative, and—critically—whether Republican retirements accelerate. The wave is forming. The only question is how big it gets.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

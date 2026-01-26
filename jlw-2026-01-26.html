@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creatine for Your Brain: January 2026 Research Roundup</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for cognitive science */
+            --bg: #FDFBF7;
+            --bg-alt: #F0F7F9;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #095A72;
+            --border: #D8E2E8;
+            --border-strong: #B8CDD6;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F1416;
+                --bg-alt: #162024;
+                --text: #F0F7F9;
+                --text-secondary: #9AABB8;
+                --accent: #3AB4D9;
+                --accent-soft: rgba(58, 180, 217, 0.15);
+                --accent-hover: #5AC4E5;
+                --border: #243438;
+                --border-strong: #354B52;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* Audio player */
+        .audio-player {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 8px;
+            margin: var(--space-lg) auto;
+            max-width: var(--content-width);
+        }
+
+        .audio-player audio {
+            width: 100%;
+        }
+
+        .audio-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xs);
+            display: block;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "\2022";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer,
+            .audio-player {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">2026-01-26</time>
+        </div>
+    </header>
+
+    <div class="audio-player">
+        <span class="audio-label">Listen to this issue (AI narration)</span>
+        <audio controls preload="metadata">
+            <source src="audio/jlw-2026-01-26.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Cognitive Science</span>
+            <h1 class="hero-title">Your Brain on Creatine: What January 2026 Research Reveals</h1>
+            <p class="hero-subtitle">Six studies in 30 days are rewriting what we thought we knew about creatine and cognition. The loading phase you skipped? It might be the whole point.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-creatine-brain.png" alt="Crystalline brain structure with glowing teal neural pathways representing creatine's cognitive effects">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Loading Phase Isn't Optional for Your Brain</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.mdpi.com/journal/nutrients">Nutrients</a></span>
+                <span class="section-date">2026-01-21</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-01-sleep-cognition.jpg" alt="Scientific illustration of sleep and brain activity with creatine enhancement">
+                </div>
+
+                <p>You've probably heard the advice: skip the loading phase, just take 3-5 grams daily, let it build up over a month. For muscles, that's fine. For your brain, you might be waiting forever.</p>
+
+                <p>A new randomized crossover trial in <em>Nutrients</em> put physically active men through one week of high-dose creatine loading (20g/day). The cognitive improvements appeared within days, not weeks. Participants reported better subjective sleep quality, earlier bedtimes, and measurable gains on cognitive performance tests.</p>
+
+                <p>Here's the interesting part: objective sleep data from EEG and actigraphy showed no significant changes. The participants <em>felt</em> better rested and <em>performed</em> better cognitively, but their actual sleep architecture looked the same. This suggests creatine's rapid benefits may work through recovery perception and neural energy availability, not sleep structure itself.</p>
+
+                <div class="callout">
+                    <p><strong>The takeaway:</strong> If you want cognitive benefits from creatine, the traditional 20g/day loading phase for 5-7 days appears to matter much more than previously thought. Standard maintenance doses may never meaningfully reach your brain.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Creatine Doubles the Effectiveness of CBT for Depression</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.psychiatrypodcast.com">Psychiatry & Behavioral Health News</a></span>
+                <span class="section-date">2026-01-15</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-02-depression-therapy.png" alt="Visualization of therapy and neural support for depression treatment">
+                </div>
+
+                <p>Adding 5 grams of creatine daily to Cognitive Behavioral Therapy can double the reduction in depression severity compared to therapy alone. That's not a marginal improvement; that's the difference between a treatment that helps and one that transforms.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-depression-efficacy.png" alt="Bar chart comparing CBT alone (28% reduction) versus CBT plus creatine (56% reduction)">
+                    <figcaption>Depression severity reduction: CBT with creatine shows 2x the effect of therapy alone</figcaption>
+                </figure>
+
+                <p>The mechanism isn't mysterious: your brain is an energy hog. Emotional regulation, forming new neural pathways, processing difficult thoughts, all of it costs ATP. Creatine provides "bioenergetic support," essentially giving your brain more fuel for the hard work of changing patterns.</p>
+
+                <p>Epidemiological data released this month adds another dimension. Low dietary creatine intake correlates with higher depression risk, and the effect is particularly pronounced in women. Whether that's because women typically consume less red meat (the primary dietary source) or because female brains have different creatine metabolism remains an open question.</p>
+
+                <div class="callout">
+                    <p><strong>Why this matters:</strong> Depression treatment often requires combining approaches. Creatine at 5g/day is cheap, safe, and apparently doubles the effect of gold-standard therapy. That's a clinical game-changer hiding in the supplement aisle.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Sweet Spot for Starting: Ages 66-76</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://academic.oup.com/nutritionreviews">Nutrition Reviews (Oxford Academic)</a></span>
+                <span class="section-date">2026-01-10</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-03-aging-brains.jpg" alt="Elderly person with healthy brain showing enhanced neural connections">
+                </div>
+
+                <p>A comprehensive systematic review just established something specific: creatine shows its clearest cognitive benefits in adults aged 66-76. Not younger adults, not the very elderly, but that particular window.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-population-benefits.png" alt="Horizontal bar chart showing effect sizes by population type">
+                    <figcaption>Cognitive effect sizes by population: older adults and those under stress show largest benefits</figcaption>
+                </figure>
+
+                <p>The effects concentrate on memory and attention specifically, not on global cognition scores. If you're looking for a general intelligence boost, creatine probably won't deliver. But if you're in your late 60s or 70s and want to remember where you put your keys or stay focused through a long conversation, the evidence is now fairly robust.</p>
+
+                <p>One critical finding: older brains appear to resist saturation more than younger ones. Standard doses that work for a 25-year-old's muscles may simply never build up adequate levels in a 70-year-old's brain. The review explicitly calls for higher-dose protocols in elderly trials, suggesting that under-dosing may have masked benefits in previous research.</p>
+
+                <div class="callout">
+                    <p><strong>Looking forward:</strong> If you're in your 60s and considering creatine for cognitive preservation, starting now with higher doses than the typical muscle-building protocol may be the most evidence-based approach.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Creatine as "Metabolic Armor" Under Stress</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nutraingredients.com">NutraIngredients / Frontiers in Nutrition</a></span>
+                <span class="section-date">2026-01-08</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-04-stress-armor.png" alt="Abstract representation of metabolic protection during cognitive stress">
+                </div>
+
+                <p>Here's a reframe worth considering: creatine probably won't make you smarter when you're well-rested and operating normally. But it might prevent you from getting dumber when you're exhausted, hypoxic, or under extreme stress.</p>
+
+                <p>New research on the "muscle-brain axis" describes creatine as a buffer against metabolic stress states. Your brain relies heavily on the creatine kinase system to regenerate ATP during bursts of high neural activity. When you're sleep-deprived, oxygen-limited, or mentally overloaded, that system becomes the limiting factor.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-saturation-timeline.png" alt="Line chart showing brain versus muscle creatine saturation over 35 days">
+                    <figcaption>Brain creatine saturates much slower than muscle; loading phase accelerates the timeline</figcaption>
+                </figure>
+
+                <p>Supplementation can increase brain creatine stores by approximately 9-10%. That's not huge, but during an "energy crisis" (all-nighter, high-altitude, intense stress), that buffer may be the difference between maintaining function and experiencing measurable cognitive impairment.</p>
+
+                <div class="callout">
+                    <p><strong>The shift:</strong> Stop thinking about creatine as "brain enhancement" and start thinking about it as "cognitive insurance." The payoff happens during your worst moments, not your best ones.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The CABA Trial: 11% Brain Creatine Increase in Alzheimer's Patients</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.kumc.edu">University of Kansas Medical Center</a></span>
+                <span class="section-date">2026-01-05</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-05-alzheimers-trial.png" alt="Scientific visualization of brain health improvement in elderly patients">
+                </div>
+
+                <p>A persistent worry about creatine for older brains has been the blood-brain barrier. Does enough actually get through? The CABA trial (Creatine to Augment Bioenergetics in Alzheimer's) just answered that question with MRI spectroscopy data.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-dosing-protocols.png" alt="Bar chart showing brain creatine increase by dosing protocol">
+                    <figcaption>Brain creatine increase varies dramatically by protocol: loading + high maintenance shows 11% improvement</figcaption>
+                </figure>
+
+                <p>High-dose creatine is well-tolerated in Alzheimer's patients, and the pilot data shows an achievable 11% increase in brain creatine levels. That increase correlated with moderate improvements in working memory, providing early signal that the metabolic approach might actually help.</p>
+
+                <p>This directly contradicts older concerns that the elderly brain is too "resistant" to creatine uptake. The barrier isn't impermeable; it just requires more aggressive dosing to overcome.</p>
+
+                <div class="callout">
+                    <p><strong>What's next:</strong> The CABA trial is a feasibility study, not a definitive treatment trial. But it proves the concept and opens the door for larger randomized controlled trials of metabolic therapies in dementia.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Dosing Disconnect: Why Most Users Never Feel Cognitive Effects</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://examine.com">Examine.com</a></span>
+                <span class="section-date">2025-12-29</span>
+            </div>
+            <div class="section-body">
+                <div class="section-image">
+                    <img src="images/article-06-dosing-brain.png" alt="Comparison of dosing protocols for brain versus muscle benefits">
+                </div>
+
+                <p>Let's close with the practical synthesis: if you've tried creatine for cognitive benefits and felt nothing, you were probably taking too little for too short a time.</p>
+
+                <p>Brain saturation requires fundamentally different dosing than muscle saturation. Your skeletal muscle is metabolically greedy and relatively permeable; it soaks up creatine readily. Your brain is protected by the blood-brain barrier and synthesizes its own creatine locally. External supplementation has to work harder to make a dent.</p>
+
+                <p>The updated recommendations based on 2025-2026 data:</p>
+
+                <p><strong>For acute cognitive effects:</strong> A loading phase of 20g/day for 5-7 days, then transition to maintenance.</p>
+
+                <p><strong>For ongoing cognitive support:</strong> 10g/day may be necessary, not the 3-5g that works for muscle maintenance.</p>
+
+                <p><strong>For older adults:</strong> Expect to need higher doses and longer timelines than younger users.</p>
+
+                <div class="callout">
+                    <p><strong>The bottom line:</strong> Standard "muscle maintenance" dosing may take months to impact brain levels, if it ever does at all. The brain is selectively permeable, and most cognitive benefits in the research literature come from loading protocols, not maintenance protocols.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Convergence</h2>
+            <p class="closing-text">Six papers in one month, all pointing the same direction: creatine's cognitive benefits are real, but we've been underdosing and expecting too much from maintenance protocols. The loading phase matters. Higher doses matter. And the effect is less about making you smarter than about protecting you from getting dumber when conditions get hard. If you've dismissed creatine for brain health because you tried 5g for a month and felt nothing, the new research suggests you never really gave it a fair trial.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

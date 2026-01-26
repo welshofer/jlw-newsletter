@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Geometry of the Infinite — January 26, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - indigo/violet for scholarly depth */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D72;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7BB8;
+                --accent-soft: rgba(139, 123, 184, 0.15);
+                --accent-hover: #9B8BC8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .closing-text a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 26, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Art + Mathematics</span>
+            <h1 class="hero-title">The Geometry of the Infinite</h1>
+            <p class="hero-subtitle">How medieval Islamic artisans discovered mathematical truths that Western science wouldn't prove for another 500 years.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-geometry-of-the-infinite.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-islamic-geometry.jpg" alt="Intricate Islamic geometric star pattern with interlocking decagons and pentagons in indigo and gold">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1 -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Palace That Contains All Possible Symmetries</h2>
+            <div class="section-meta">
+                <span class="section-source">Background: <a href="https://www.alhambra-patronato.es/">The Alhambra</a></span>
+            </div>
+
+            <figure class="article-image">
+                <img src="images/article-01-alhambra-symmetry.jpg" alt="The Alhambra's muqarnas ceiling with intricate geometric tilework">
+            </figure>
+
+            <div class="section-body">
+                <p>In 1944, mathematician Edith Müller sat down with photographs of the <a href="https://www.alhambra-patronato.es/">Alhambra</a> in Granada, Spain, and made a startling claim: this 14th-century palace contained examples of all 17 possible ways to tile a plane with repeating patterns. Every wallpaper group. Every symmetry operation. All of them, created six centuries before mathematicians had even proven that exactly 17 such groups exist.</p>
+
+                <p>The mathematics here isn't decorative—it's fundamental. A "wallpaper group" describes the symmetries of a pattern that repeats infinitely in two directions. You can rotate it, reflect it, glide it, or combine these operations in specific ways. The Russian crystallographer Evgraf Fedorov proved in 1891 that there are precisely 17 distinct combinations. The <a href="https://en.wikipedia.org/wiki/Nasrid_dynasty">Nasrid</a> artisans of the Alhambra found all 17 through pure visual intuition, compass, and straightedge.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-wallpaper-groups.png" alt="Chart showing all 17 wallpaper groups plotted by rotational symmetry and mirror axes">
+                    <figcaption>All 17 wallpaper groups, classified by rotational symmetry order and number of mirror axes. Every single one appears in the Alhambra's tilework.</figcaption>
+                </figure>
+
+                <p>Walk through the <a href="https://en.wikipedia.org/wiki/Hall_of_the_Abencerrajes">Hall of the Abencerrajes</a> and you're walking through a textbook of mathematical group theory, rendered in ceramic and stucco. The muqarnas dome overhead—a honeycomb of interlocking cells—isn't just beautiful. It's a three-dimensional proof that these medieval craftsmen understood something profound about the structure of space itself.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Tiles That Broke Physics</h2>
+            <div class="section-meta">
+                <span class="section-source">Research: <a href="https://www.science.org/doi/10.1126/science.1135491">Science, 2007</a></span>
+            </div>
+
+            <figure class="article-image">
+                <img src="images/article-02-girih-quasicrystal.jpg" alt="Girih tiles arranged in a quasicrystalline pattern on aged parchment">
+            </figure>
+
+            <div class="section-body">
+                <p>In 2007, Harvard physicist <a href="https://www.physics.harvard.edu/people/facpages/lu">Peter Lu</a> was wandering through Uzbekistan when he noticed something impossible. The 15th-century <a href="https://en.wikipedia.org/wiki/Darb-e_Imam">Darb-e Imam shrine</a> in Isfahan featured patterns with fivefold and tenfold rotational symmetry that never exactly repeated—the same "quasiperiodic" structure that mathematician <a href="https://www.britannica.com/biography/Roger-Penrose">Roger Penrose</a> had discovered in the 1970s and that had won <a href="https://en.wikipedia.org/wiki/Dan_Shechtman">Dan Shechtman</a> the 2011 Nobel Prize in Chemistry for finding in physical quasicrystals.</p>
+
+                <p>The medieval Islamic artisans had done it 500 years earlier using <em>girih</em> tiles—a set of just five shapes (decagon, pentagon, hexagon, bowtie, rhombus) whose edges are decorated with lines that form continuous strapwork when assembled. Lu and physicist <a href="https://www.princeton.edu/~steinh/">Paul Steinhardt</a> demonstrated that these tiles could generate infinite non-repeating patterns through a "self-similar transformation"—essentially constructing a fractal.</p>
+
+                <div class="callout">
+                    <p>"We were stunned to find that medieval Islamic artists used a self-similar transformation to create these patterns... essentially constructing a fractal." — Peter Lu and Paul Steinhardt, Science (2007)</p>
+                </div>
+
+                <p>This wasn't just decorative genius. Before Lu's discovery, scientists believed that quasiperiodic order—filling infinite space without ever strictly repeating—was impossible in crystalline matter. The Isfahan artisans had intuited mathematical structures that 20th-century physics considered impossible. They were doing materials science avant la lettre, with clay and compass.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Scholar-Craftsmen Who Bridged Two Worlds</h2>
+            <div class="section-meta">
+                <span class="section-source">Historical: <a href="https://en.wikipedia.org/wiki/House_of_Wisdom">House of Wisdom, Baghdad</a></span>
+            </div>
+
+            <figure class="article-image">
+                <img src="images/article-03-scholar-artisans.jpg" alt="Medieval Islamic scholar at drafting table with compass and straightedge creating geometric patterns">
+            </figure>
+
+            <div class="section-body">
+                <p>How did illiterate craftsmen create patterns that would stump mathematicians for centuries? The answer lies in a remarkable collaboration between scholars and artisans that flourished during the Islamic Golden Age.</p>
+
+                <p>In 10th-century Baghdad, the Persian mathematician <a href="https://en.wikipedia.org/wiki/Abu_al-Wafa%27_al-Buzjani">Abu al-Wafa' al-Buzjani</a> wrote a treatise called "On Those Parts of Geometry Needed by Craftsmen." It wasn't abstract theory—it was a practical manual showing artisans how to construct complex geometric figures using only compass and straightedge. The <a href="https://en.wikipedia.org/wiki/Ban%C5%AB_M%C5%ABs%C4%81">Banu Musa brothers</a> translated Greek geometric texts and expanded on Euclidean knowledge. <a href="https://en.wikipedia.org/wiki/Omar_Khayyam">Omar Khayyam</a>—yes, the poet—solved cubic equations geometrically.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-timeline-evolution.png" alt="Timeline showing the evolution of Islamic geometric art from 700 CE to 1700 CE">
+                    <figcaption>A thousand years of geometric evolution: from simple 8-pointed stars in Kairouan to the quasicrystalline complexity of Timurid Isfahan.</figcaption>
+                </figure>
+
+                <p>This knowledge flowed directly to the guilds. As one early guild saying put it: "Whoever does not know geometry cannot be an architect." Six centuries later, <a href="https://en.wikipedia.org/wiki/Mimar_Sinan">Mimar Sinan</a>, the "Grand Architect" of the Ottoman Empire, would use geometry not just for decoration but for structural integrity and acoustic perfection in masterpieces like the <a href="https://en.wikipedia.org/wiki/Selimiye_Mosque">Selimiye Mosque</a>.</p>
+
+                <p>The collaboration was formalized. Scholars provided the theory; craftsmen provided the practice. The result was a knowledge system that could transmit mathematical sophistication without requiring literacy—encoded in the patterns themselves.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Hidden Ratio in Every Star</h2>
+            <div class="section-meta">
+                <span class="section-source">Mathematics: <a href="https://www.cambridge.org/core/books/islamic-patterns/48C0F11C9BED6C8B7C5B9C4B1D7E8F9A">Cambridge University Press</a></span>
+            </div>
+
+            <figure class="article-image">
+                <img src="images/article-04-golden-ratio.jpg" alt="Golden ratio spiral overlaid on Islamic star polygon construction">
+            </figure>
+
+            <div class="section-body">
+                <p>Pick up any Islamic geometric pattern featuring 10-pointed stars and you'll find the golden ratio hiding in plain sight. It's not decoration—it's mathematical necessity.</p>
+
+                <p>The golden ratio (φ ≈ 1.618) appears naturally in the relationship between the edge lengths of pentagons and decagons. When artisans drew 10-pointed stars using compass and straightedge, they were implicitly encoding φ into every proportion. The five girih tiles—the building blocks of the most complex Islamic patterns—all contain internal angles that are multiples of 36°, the fundamental angle of the pentagon. This isn't coincidence; it's why these tiles can create quasiperiodic patterns at all.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-star-polygons.png" alt="Comparison of 6-point, 8-point, 10-point, and 12-point star polygons with their mathematical properties">
+                    <figcaption>Star polygons and their properties: only the 10-point star contains the golden ratio and can create quasi-periodic (non-repeating) tilings.</figcaption>
+                </figure>
+
+                <p>The 8-pointed star—the most common in Islamic art—tessellates cleanly with 45° angles. Simple, versatile, satisfying. But the 10-pointed star does something stranger: it can only tile the plane non-periodically. Medieval artisans discovered through trial and error what Penrose proved mathematically: certain symmetries can fill space infinitely without ever exactly repeating. They chose these patterns deliberately, perhaps because the infinite non-repetition felt more spiritually resonant than the predictable march of periodic tiles.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">From Kairouan to Abu Dhabi: A Living Tradition</h2>
+            <div class="section-meta">
+                <span class="section-source">Contemporary: <a href="https://www.louvreabudhabi.ae/">Louvre Abu Dhabi</a></span>
+            </div>
+
+            <figure class="article-image">
+                <img src="images/article-05-monuments.jpg" alt="Louvre Abu Dhabi dome interior with rain of light streaming through geometric star perforations">
+            </figure>
+
+            <div class="section-body">
+                <p>The <a href="https://en.wikipedia.org/wiki/Great_Mosque_of_Kairouan">Great Mosque of Kairouan</a> in Tunisia (670 CE) laid the first stones. The <a href="https://en.wikipedia.org/wiki/Great_Mosque_of_Isfahan">Great Mosque of Isfahan</a> became a laboratory of Persian geometry over a thousand years. The <a href="https://en.wikipedia.org/wiki/Alc%C3%A1zar_of_Seville">Alcázar of Seville</a> blended Gothic and Islamic geometry through Mudéjar craftsmen. Each monument represents a chapter in an ongoing conversation between mathematics and stone.</p>
+
+                <p>That conversation continues. Jean Nouvel's <a href="https://www.louvreabudhabi.ae/">Louvre Abu Dhabi</a> (2017) features a massive dome consisting of 7,850 stars arranged in a complex geometric lattice. As sunlight passes through, it creates what Nouvel calls a "rain of light"—the same effect you'd see in a traditional <a href="https://en.wikipedia.org/wiki/Mashrabiya">mashrabiya</a> screen, scaled to monumental proportions. The <a href="https://www.imarabe.org/">Institut du Monde Arabe</a> in Paris goes further, with motor-controlled apertures that open and close like camera shutters, mimicking traditional geometric screens while responding to light levels in real time.</p>
+
+                <p>Modern parametric design software—<a href="https://www.grasshopper3d.com/">Grasshopper</a>, <a href="https://www.rhino3d.com/">Rhino</a>—now lets designers generate Islamic patterns algorithmically, exploring variations that would have taken medieval artisans years to construct by hand. Artists like <a href="https://en.wikipedia.org/wiki/Monir_Shahroudy_Farmanfarmaian">Monir Shahroudy Farmanfarmaian</a> and <a href="https://en.wikipedia.org/wiki/Rasheed_Araeen">Rasheed Araeen</a> have fused these ancient patterns with contemporary minimalism, proving the tradition isn't a museum piece but a living language.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6 -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Infinite Made Visible</h2>
+            <div class="section-meta">
+                <span class="section-source">Philosophy: <a href="https://press.uchicago.edu/ucp/books/book/chicago/A/bo3614781.html">Art and Spirituality in Islam</a></span>
+            </div>
+
+            <figure class="article-image">
+                <img src="images/article-06-tawhid.jpg" alt="Abstract visualization of divine unity - a point of light expanding into infinite geometric tessellation">
+            </figure>
+
+            <div class="section-body">
+                <p>Why geometry? Why not the human figure, landscapes, the natural world?</p>
+
+                <p>The answer isn't just religious prohibition. Aniconism—the avoidance of figural representation in sacred contexts—created the conditions, but it doesn't explain the passion. Islamic geometric art expresses something deliberate about how these cultures understood reality itself.</p>
+
+                <p>The concept of <em>tawhid</em>—the absolute oneness of God—finds its visual analog in patterns that begin from a single point and expand infinitely outward. The pattern has no privileged center, no beginning, no end. Every point is equivalent. The infinite is made visible through finite means. As philosopher <a href="https://en.wikipedia.org/wiki/Seyyed_Hossein_Nasr">Seyyed Hossein Nasr</a> writes: "Art is the mirror of a culture and its world view... Islamic art reflects the cultural values of Islam, and reveals the way Muslims view the spiritual realm and the universe."</p>
+
+                <p>The act of drawing these patterns—following the compass, watching the geometry unfold—was itself considered a form of <em>dhikr</em>, remembrance of the divine. The infinite regularity of the pattern mirrors the infinite regularity of divine order. The craftsman isn't decorating a mosque; he's making visible the underlying structure of creation.</p>
+
+                <p>This is geometry as spiritual technology. A meditation practice encoded in tile and stucco. A thousand years before fractal mathematics or chaos theory, Islamic artisans were exploring the same territory through pure visual intuition: how simple rules, endlessly applied, generate structures of incomprehensible complexity. The universe itself, perhaps, works the same way.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Compass Awaits</h2>
+            <p class="closing-text">Want to try drawing these patterns yourself? <a href="https://www.artofislamicpattern.com/">The Art of Islamic Pattern</a> offers courses in London and field trips to Granada and Fez. <a href="https://www.amazon.com/Islamic-Geometric-Patterns-Eric-Broug/dp/0500287341">Eric Broug's books</a> provide step-by-step compass-and-straightedge instructions. As Broug says: "To draw a pattern is to analyze it; to analyze it is to understand the mind of the maker."</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

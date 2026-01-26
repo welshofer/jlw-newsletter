@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Money We're Owed — January 26, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - indigo/violet for UBI economic topic */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #4A3D73;
+            --accent-light: #7C5C8A;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --gold: #D4A84B;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8A7BB8;
+                --accent-soft: rgba(138, 123, 184, 0.15);
+                --accent-hover: #9A8BC8;
+                --accent-light: #A08CB8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --gold: #E4B85B;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .article-image {
+            margin: 0 0 var(--space-md) 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Quote styling */
+        blockquote {
+            margin: var(--space-md) 0;
+            padding: var(--space-sm) var(--space-md);
+            border-left: 3px solid var(--gold);
+            background: var(--bg-alt);
+            font-style: italic;
+        }
+
+        blockquote p {
+            margin: 0;
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: var(--space-xs);
+            font-style: normal;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 26, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Universal Basic Income</span>
+            <h1 class="hero-title">The Money We're Owed</h1>
+            <p class="hero-subtitle">From sci-fi fantasy to Cook County policy: UBI's moment has arrived, though not in the form anyone predicted. Here's what January 2026 tells us about the future of free money.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-money-were-owed.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-ubi-social-fabric.png" alt="Abstract visualization of interconnected hands forming a safety net, catching currency symbols in deep indigo and violet tones">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Tech Community AGI Debate -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-agi-anxiety.png" alt="Silhouettes of programmers at terminals with neural network patterns morphing above them">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">The People Building AI Want UBI Yesterday</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://news.ycombinator.com">Hacker News</a></span>
+                <span class="section-date">January 23, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>There's a particular flavor of anxiety that emerges when the people building a technology start demanding safeguards against it. This week, <a href="https://news.ycombinator.com">Hacker News</a>—the closest thing Silicon Valley has to a town square—erupted in urgent debate about UBI as an "immediate necessity," not a far-future concept.</p>
+
+                <p>The catalyst? New AI benchmarks achieved in early 2026 that reportedly show capabilities approaching or exceeding human performance on white-collar knowledge tasks. The developers watching these systems improve aren't debating <em>whether</em> AI will displace jobs—they're debating the timeline in months, not years.</p>
+
+                <div class="callout">
+                    <p>The consensus is shifting among developers from UBI as a "future concept" to a "transition mechanism" needed within 12-24 months.</p>
+                </div>
+
+                <p>This matters because technical communities often preview broader societal shifts. When the people writing the code say the code is coming for everyone's job, it's worth paying attention. The urgency here isn't philosophical—it's practical, from people who can see the training curves and know what's next.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ai-policy-gap.png" alt="Chart showing AI capability growth dramatically outpacing policy response">
+                    <figcaption>The gap between AI capability and policy response continues to widen, with AI-specific displacement programs only beginning to emerge in 2025-2026.</figcaption>
+                </figure>
+
+                <p>The tech community's position has evolved from "UBI might be necessary someday" to "we need transition income before AGI arrives." That's not a small shift—it's the difference between hypothetical insurance and urgent necessity.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Federal Stimulus Rumors -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-stimulus-rumors.png" alt="Dollar bills transforming into question marks amid social media bubbles">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Stimulus That Wasn't (But Everyone Wanted)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://economictimes.com">Economic Times</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Every few months, social media fills with confident claims about imminent government checks. This January was no exception: "Universal $2,000 Stimulus" rumors spread virally, prompting government officials and fact-checkers to issue clarifications.</p>
+
+                <p>The reality? January 2026's "direct payments" are limited to specific tax credit adjustments and cost-of-living increases for federal beneficiaries—standard bureaucratic machinery, not transformative policy. No universal checks. No UBI pilot expansion. Just the usual COLA adjustments that barely keep pace with inflation.</p>
+
+                <p>But here's what matters: the search volume for "January 2026 stimulus" reveals something important about where public sentiment sits. Americans aren't just hoping for free money—they're <em>expecting</em> it, repeatedly, despite continuous disappointment. That gap between public demand and political reality is itself a political fact.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ubi-funding-sources.png" alt="Donut chart showing 45% ARPA funds, 30% philanthropy, 12% local government">
+                    <figcaption>Most guaranteed income pilots still depend on temporary pandemic relief funding (ARPA) or private philanthropy—only 12% use sustainable local government budgets.</figcaption>
+                </figure>
+
+                <p>The rumor cycle reveals a political constituency that's formed without representation. These aren't people asking for handouts—they're people who've experienced pandemic-era support, found it transformative, and wonder why it stopped. The demand exists; the supply doesn't.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Musk Universal High Income -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-musk-abundance.png" alt="Futuristic robotic arm offering horn of plenty against cosmic backdrop">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">Musk's Vision: Not Basic, But High</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://tradingkey.com">TradingKey</a> / <a href="https://www.foxbusiness.com">Fox Business</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://x.com/elonmusk">Elon Musk</a> has a new term for what comes after work: "Universal High Income." Not basic—high. The distinction matters because it reframes the entire debate.</p>
+
+                <blockquote>
+                    <p>"Work will become optional... we will have Universal High Income, not just basic."</p>
+                    <cite>— Elon Musk, January 2026</cite>
+                </blockquote>
+
+                <p>The argument: Artificial General Intelligence will arrive by 2026 (or shortly after) and eventually perform most white-collar work. When AI can do everything, the cost of goods approaches materials plus energy—essentially nothing. In Musk's framing, we don't need UBI because scarcity itself disappears. Everyone becomes wealthy by default.</p>
+
+                <p>It's an intoxicating vision, and it's also convenient for someone whose companies are building the very systems that will displace workers. The "abundance will save us" thesis requires no government intervention, no taxation, no redistribution—just faith that technology's benefits will automatically flow to everyone.</p>
+
+                <p>The skeptical response: technology's benefits have <em>never</em> automatically flowed to everyone. The industrial revolution created both unprecedented wealth and unprecedented poverty. The digital revolution concentrated gains among a shrinking elite. Why would AGI be different?</p>
+
+                <p>Still, Musk's framing shifts the Overton window. If even tech billionaires acknowledge that work will become optional, the political conversation has fundamentally changed. The question is no longer <em>whether</em> we need to address post-work economics, but <em>how</em>—and who controls the answer.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: California CalUBI -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-california-calubi.png" alt="California bear holding safety net with robots and regulatory documents flowing">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">California's Bet: UBI for the AI-Displaced</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://digitaldemocracy.org">Digital Democracy</a> / CA Legislature</span>
+                <span class="section-date">January 7, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>California is doing something new: treating AI displacement as a specific policy category requiring a specific response. Assembly Bill 3058 created "CalUBI"—the California Unconditional Benefit Income program—and as of January 2026, the Employment Development Department is finalizing regulations.</p>
+
+                <p>The structure: $1,000 monthly payments for 12 months, specifically targeting workers displaced by automation and AI. That's not poverty relief or general welfare—it's <em>technological transition insurance</em>, a fundamentally different policy category.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ubi-monthly-amounts.png" alt="Bar chart comparing monthly UBI amounts across programs">
+                    <figcaption>CalUBI's $1,000/month matches the emerging standard for guaranteed income pilots, though still falls short of the federal poverty line for a single adult ($1,960/month).</figcaption>
+                </figure>
+
+                <p>The implications ripple outward. If California—the world's fifth-largest economy—successfully implements AI-specific UBI, it becomes a template. Other states will face pressure to respond. The federal government will have a working model to copy or reject.</p>
+
+                <p>Payments are projected to begin January 1, 2027. That's not far away. The question isn't whether CalUBI will launch, but whether it will be sufficient—and whether the AI displacement it's designed to address will outpace the bureaucracy trying to respond.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: NY Foster Youth -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-foster-youth.png" alt="Young person at crossroads with supportive hands extending from one path">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">New York's Targeted Play: Foster Youth First</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://billtrack50.com">BillTrack50</a> / NY Senate</span>
+                <span class="section-date">January 7, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>While California bets on universal-ish coverage for AI-displaced workers, <a href="https://www.nysenate.gov/">New York</a> is taking a different approach: targeted basic income for the most vulnerable. Bill S07291, now in committee, would provide $1,000 monthly for three years to youth aging out of foster care.</p>
+
+                <p>This is "TBI"—Targeted Basic Income—and it might be the politically viable path forward. The argument writes itself: these are young adults who've received inadequate support from the state their entire lives, then get cut off entirely at 18 or 21. Society already failed them; guaranteed income is remediation, not charity.</p>
+
+                <p>The three-year window matters. It's long enough to pursue education, build employment history, or establish stability—the things most people take for granted because they had family support. The $36,000 total investment per recipient is modest compared to the lifetime costs of homelessness, incarceration, or chronic unemployment that foster care alumni face at elevated rates.</p>
+
+                <p>TBI for specific populations may be more politically sustainable than universal programs. It's harder to oppose "help for foster kids" than "free money for everyone." If New York passes S07291, expect similar bills in every blue state within two years—each targeting a sympathetic population as a proof-of-concept for broader eventual expansion.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Cook County Permanent -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-cook-county-permanent.png" alt="Cook County building with banner transforming from PILOT to PERMANENT">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">The First Permanent Program: Cook County Makes History</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://economicsecurityproject.org">Economic Security Project</a></span>
+                <span class="section-date">January 1, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Here's the milestone that will appear in future textbooks: on January 1, 2026, Cook County, Illinois became home to the first permanent government-funded guaranteed income program in the United States.</p>
+
+                <blockquote>
+                    <p>"We are making history by making guaranteed income a permanent part of our safety net."</p>
+                    <cite>— Cook County Board President Toni Preckwinkle</cite>
+                </blockquote>
+
+                <p>The distinction from previous programs is crucial. The "Promise Pilot" that served 3,250 households was funded by temporary federal ARPA pandemic money. When that ran out, most similar programs nationwide ended. Cook County did something different: allocated $7.5 million from its own 2026 budget to continue.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ubi-pilots-growth.png" alt="Line chart showing GI pilots growing from 1 in 2018 to 130 in 2026, with Cook County marked as first permanent">
+                    <figcaption>The US went from 1 guaranteed income pilot (Stockton SEED) to 130 active programs—but Cook County is the first to transition from experiment to permanent policy.</figcaption>
+                </figure>
+
+                <p>This changes the calculus for every other local government running GI pilots. The question is no longer "can it work?" but "will we make it permanent?" Cook County proved it's politically viable to commit ongoing local revenue to direct cash transfers. The excuses just got harder.</p>
+
+                <p>The program is modest—not everyone in Cook County gets a check. But permanence matters more than scale at this stage. Pilots can be dismissed as experiments. Permanent programs are precedent.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Real Question Isn't "Will It Work?"</h2>
+            <p class="closing-text">Every pilot study shows the same thing: unconditional cash helps people. It doesn't make them lazy; it makes them stable. The evidence is in. The real question is political will—and whether policy can move fast enough to matter when the AI displacement wave actually hits. Cook County took the first permanent step. California is building AI-specific infrastructure. Tech workers are demanding action before their own systems make them obsolete. January 2026 may be remembered as the month UBI stopped being a thought experiment and started being a policy fight.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

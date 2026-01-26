@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Right to Bear Arms in 2026 — January 25, 2026</title>
+    <title>The Slow Fade: America's 30-Year Demographic Reckoning — January 25, 2026</title>
 
     <!-- Fonts: Editorial elegance meets technical clarity -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,17 +12,16 @@
 
     <style>
         :root {
-            /* Core palette - constitutional gravitas */
+            /* Core palette - warm, sophisticated */
             --bg: #FDFBF7;
             --bg-alt: #F5F1EA;
             --text: #1A1815;
             --text-secondary: #5C564D;
-            --accent: #8B1538;
-            --accent-soft: rgba(139, 21, 56, 0.12);
-            --accent-hover: #6B1029;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
             --border: #E5E0D8;
             --border-strong: #D1C9BC;
-            --navy: #1E3A5F;
 
             /* Typography scale */
             --font-display: 'Fraunces', Georgia, serif;
@@ -49,12 +48,11 @@
                 --bg-alt: #1E1B18;
                 --text: #F5F1EA;
                 --text-secondary: #A69E93;
-                --accent: #D14A6B;
-                --accent-soft: rgba(209, 74, 107, 0.15);
-                --accent-hover: #E05A7B;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
                 --border: #2E2A25;
                 --border-strong: #3D3832;
-                --navy: #4A7BAA;
             }
         }
 
@@ -215,7 +213,6 @@
         .section:nth-child(4) { animation-delay: 0.4s; }
         .section:nth-child(5) { animation-delay: 0.5s; }
         .section:nth-child(6) { animation-delay: 0.6s; }
-        .section:nth-child(7) { animation-delay: 0.7s; }
 
         .section:last-child {
             border-bottom: none;
@@ -305,8 +302,21 @@
             text-decoration-color: var(--accent);
         }
 
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article images */
         .article-image {
-            margin: 0 0 var(--space-md) 0;
+            margin: 0 0 1.5rem 0;
             border-radius: 8px;
             overflow: hidden;
         }
@@ -340,6 +350,21 @@
             color: var(--accent);
         }
 
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
         /* Charts and data visualizations */
         .chart {
             margin: var(--space-md) 0;
@@ -361,6 +386,28 @@
             margin-top: var(--space-xs);
             padding: 0 var(--space-xs);
             line-height: 1.5;
+        }
+
+        /* Infographic styling */
+        .infographic {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .infographic img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .infographic figcaption {
+            background: var(--bg-alt);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: var(--space-sm) var(--space-md);
+            border-top: 1px solid var(--border);
         }
 
         /* ========================================
@@ -410,6 +457,24 @@
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
         }
 
         /* ========================================
@@ -471,203 +536,191 @@
 
     <section class="hero">
         <div class="hero-inner">
-            <span class="hero-label">Constitutional Law</span>
-            <h1 class="hero-title">The Right to Bear Arms in 2026</h1>
-            <p class="hero-subtitle">From SCOTUS chambers to state capitols, the legal battlefield over the Second Amendment is more active than it's been in a generation. Here's what happened this week.</p>
+            <span class="hero-label">Demographics & Population</span>
+            <h1 class="hero-title">The Slow Fade: America's 30-Year Demographic Reckoning</h1>
+            <p class="hero-subtitle">By 2040, immigration will be 100% of US population growth. By 2045, no racial majority. By 2054, one in four Americans will be over 65. The math is done. The question is whether we're ready.</p>
 
             <div class="audio-player">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                 <span class="audio-player-label">Listen</span>
                 <audio controls preload="metadata">
-                    <source src="audio/the-right-to-bear-arms-2026.wav" type="audio/wav">
+                    <source src="audio/the-slow-fade.wav" type="audio/wav">
                 </audio>
             </div>
 
             <div class="hero-image">
-                <img src="images/hero-second-amendment.jpg" alt="Abstract composition symbolizing constitutional rights with parchment texture, scales of justice, and dramatic lighting">
+                <img src="images/hero-demographic-future.jpg" alt="Abstract visualization of America's demographic future with population pyramids morphing into hourglass shapes">
             </div>
         </div>
     </section>
 
     <main class="content">
-        <!-- SECTION 1: Virginia Legislature -->
+        <!-- SECTION 1 -->
         <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-growth-deceleration.jpg" alt="Abstract visualization of population growth deceleration">
+            </figure>
             <span class="section-number">01</span>
-            <h2 class="section-title">Virginia's Purple Battleground Heats Up</h2>
+            <h2 class="section-title">The End of American Expansion</h2>
             <div class="section-meta">
-                <span class="section-source">via <a href="https://www.nraila.org/articles/20260123/virginia-legislative-update">NRA-ILA</a></span>
-                <span class="section-date">January 23, 2026</span>
+                <span class="section-source">via <a href="https://www.cbo.gov/publication/59697">Congressional Budget Office</a></span>
+                <span class="section-date">January 2024</span>
             </div>
-            <figure class="article-image">
-                <img src="images/article-01-virginia-capitol.jpg" alt="Virginia State Capitol at dusk with warm golden lights glowing through windows">
-            </figure>
             <div class="section-body">
-                <p>The 2026 legislative session in Richmond isn't even a month old, and the <a href="https://virginiageneralassembly.gov/">Virginia General Assembly</a> has already become a referendum on post-<em>Bruen</em> gun policy. This week, the House Public Safety Subcommittee held hearings on a slate of bills that would make your head spin if you tried to track them all—but two matter most.</p>
+                <p>Here's a number that should reshape how you think about this country: <strong>0.4%</strong>. That's the average annual population growth rate the <a href="https://www.cbo.gov">CBO</a> projects for the next 30 years. For context, the historical average since 1974 was 0.9%. We're not slowing down a little. We're cutting our growth rate in half.</p>
 
-                <p><a href="https://lis.virginia.gov/">HB 217</a> would impose new restrictions on "assault firearms" and large-capacity magazines, essentially importing California's regulatory framework to the Commonwealth. Meanwhile, pro-gun bills seeking to reduce waiting periods are advancing from the opposite flank. The subcommittee is the first filter, and nothing's passed yet—but the fact that both extremes are getting hearings tells you Virginia is genuinely in play.</p>
+                <p>The trajectory: 342 million Americans today, 383 million by 2054. That's 41 million more people over three decades. Sounds like growth, right? Except here's the structural reality the CBO lays bare: without immigration, the US population would start <em>shrinking</em> by 2040. Not stabilizing. Shrinking.</p>
 
-                <p>Why does this matter beyond state lines? Virginia has historically been a bellwether. It flipped blue in 2019, passed red flag laws in 2020, and then saw Republicans retake the House of Delegates in 2021. If gun control legislation passes here in 2026, it signals momentum. If it stalls, gun rights advocates can claim the post-<em>Bruen</em> constitutional awakening has teeth even in purple states.</p>
+                <figure class="chart">
+                    <img src="images/chart-population-projection.png" alt="US Population Projection 2024-2054 showing growth from 342M to 383M">
+                    <figcaption>US population will grow by 41 million over 30 years, but at half the historical rate. Source: CBO 2024</figcaption>
+                </figure>
+
+                <p>This isn't a temporary blip or a post-pandemic adjustment. It's structural. The CBO's projections assume net immigration of about 1.1 million people annually. That's not a ceiling or a floor, it's the level required to keep the population from declining. Immigration has gone from a political debate to a mathematical necessity.</p>
+
+                <p>The implications ripple through everything: housing demand, labor supply, tax base, infrastructure investment. Every long-term projection you've seen for the American economy needs to be recalibrated. The era of building for relentless expansion is over. Now we're building for managed transition.</p>
             </div>
         </article>
 
-        <!-- SECTION 2: ATF Rule -->
+        <!-- SECTION 2 -->
         <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-graying-america.jpg" alt="Visualization of aging population with silhouettes aging from child to elderly">
+            </figure>
             <span class="section-number">02</span>
-            <h2 class="section-title">The ATF Quietly Rewrites "Unlawful User"</h2>
+            <h2 class="section-title">When the Old Outnumber the Young</h2>
             <div class="section-meta">
-                <span class="section-source">via <a href="https://www.federalregister.gov/documents/2026/01/22/2026-00001/definition-of-unlawful-user-of-or-addicted-to-any-controlled-substance">Federal Register</a></span>
-                <span class="section-date">January 22, 2026</span>
+                <span class="section-source">via <a href="https://www.census.gov/library/stories/2018/03/graying-america.html">US Census Bureau</a></span>
+                <span class="section-date">June 2024 (Updated)</span>
             </div>
-            <figure class="article-image">
-                <img src="images/article-02-atf-rule.jpg" alt="Legal documents scattered across a desk with highlighted sections and federal agency seal">
-            </figure>
             <div class="section-body">
-                <p>If you've ever wondered why the <a href="https://www.atf.gov/">Bureau of Alcohol, Tobacco, Firearms and Explosives</a> seems to write rules that get struck down, Wednesday's Interim Final Rule might actually surprise you. For once, the ATF narrowed its authority rather than expanding it.</p>
+                <p>In 2034, the <a href="https://www.census.gov">Census Bureau</a> projects a crossing point that's never happened in American history: for the first time, adults over 65 will outnumber children under 18. Think about that. A society with more grandparents than grandchildren. More people drawing from systems than paying into them.</p>
 
-                <p>The new rule clarifies who qualifies as an "unlawful user of or addicted to any controlled substance"—a category that bars you from purchasing firearms under 18 U.S.C. § 922(g)(3). Previously, a single drug arrest or a failed drug test within the past year could trigger an inference of unlawful use. Under the new framework, "evidence of a pattern of regular use over an extended period" is required. Isolated incidents no longer count.</p>
+                <p>By 2054, 23% of Americans, some 84 million people, will be 65 or older. The 85-and-older population will nearly <em>triple</em>. This isn't speculation. These people are already alive. The actuarial math is locked in.</p>
 
-                <div class="callout">
-                    <p><strong>Key change:</strong> The ATF removed regulatory text that allowed an inference of unlawful use from a single arrest or drug test. Now, a "pattern of use" is explicitly required—raising the evidentiary bar significantly.</p>
-                </div>
+                <figure class="chart">
+                    <img src="images/chart-age-distribution.png" alt="Age Distribution Shift comparing 2024 vs 2054">
+                    <figcaption>The 65+ population grows from 16% to 23% of the total, while working-age adults shrink from 62% to 58%. Source: Census Bureau</figcaption>
+                </figure>
 
-                <p>This matters for two reasons. First, it reduces erroneous <a href="https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/nics">NICS</a> background check denials—the so-called "false positives" that have frustrated lawful buyers for years. Second, it preemptively aligns ATF regulations with emerging circuit court opinions that have found <em>Bruen</em> requires a historical analogue for any firearms restriction, and historical drug prohibitions were far more targeted than the old rule suggested.</p>
+                <p>The working-age population (18-64) drops from 62% to 58% of the total. Fewer workers supporting more retirees. The dependency ratio, the number of non-workers per worker, climbs relentlessly. <a href="https://www.ssa.gov">Social Security</a> and <a href="https://www.medicare.gov">Medicare</a> solvency calculations that already look strained become genuinely dire.</p>
+
+                <p>Healthcare systems will face demand unlike anything in their history. Not just more patients, but more complex patients, more chronic conditions, more end-of-life care. The infrastructure for aging, from housing to transportation to care facilities, barely exists at the scale we'll need.</p>
+
+                <p>This is the demographic winter that Europe and Japan hit first. The US was supposed to be the exception, the young country with the forever-young population. That exception is expiring.</p>
             </div>
         </article>
 
-        <!-- SECTION 3: Fifth Circuit + Baltimore -->
+        <!-- SECTION 3 -->
         <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-fertility-rates.jpg" alt="Visualization of declining fertility with sparse nurseries">
+            </figure>
             <span class="section-number">03</span>
-            <h2 class="section-title">Two Courts, Two Defeats for Gun Control</h2>
+            <h2 class="section-title">The 1.7 Problem</h2>
             <div class="section-meta">
-                <span class="section-source">via <a href="https://www.news2a.com/legal/fifth-circuit-denies-doj-delay-post-office">News2A</a> / <a href="https://thereload.com/court-dismisses-baltimore-trace-data-suit/">The Reload</a></span>
-                <span class="section-date">January 22, 2026</span>
+                <span class="section-source">via <a href="https://www.cbo.gov/publication/59697">Congressional Budget Office</a></span>
+                <span class="section-date">January 2024</span>
             </div>
-            <figure class="article-image">
-                <img src="images/article-03-federal-courts.jpg" alt="Federal courthouse corridor with marble columns and natural light streaming through tall windows">
-            </figure>
             <div class="section-body">
-                <p>Wednesday was a bad day for the Department of Justice and gun control advocates in federal court. Two separate rulings—one procedural, one substantive—both went against them.</p>
-
-                <p>In the <a href="https://www.ca5.uscourts.gov/">Fifth Circuit</a>, a three-judge panel denied the DOJ's request to pause proceedings in a case challenging the federal ban on carrying firearms in U.S. Post Offices and their parking lots. The government wanted to wait for other Supreme Court outcomes before proceeding, but the court wasn't having it: "Motion to hold in abeyance DENIED." This accelerates a potential ruling that could strike down one of the most common "sensitive place" restrictions in the country.</p>
+                <p>The total fertility rate (TFR) sits at 1.62 births per woman and is projected to hover around 1.70 through 2054. The replacement rate, the number needed just to maintain population without immigration, is 2.1. The US has been below replacement since 1972. Over half a century of demographic momentum is now exhausted.</p>
 
                 <figure class="chart">
-                    <img src="images/chart-circuit-cases.png" alt="Bar chart showing Second Amendment cases pending in federal circuit courts">
-                    <figcaption>The Fifth Circuit leads in both pending 2A cases and pro-gun rulings since Bruen.</figcaption>
+                    <img src="images/chart-fertility-rate.png" alt="US Fertility Rate from 1960 to 2054 showing decline below replacement">
+                    <figcaption>The US fertility rate dropped below replacement in 1972 and has never recovered. It's projected to stay at 1.70 indefinitely. Source: CBO</figcaption>
                 </figure>
 
-                <p>Meanwhile, in Maryland, a U.S. District Court judge dismissed a lawsuit filed by the City of <a href="https://www.baltimorecity.gov/">Baltimore</a>, backed by <a href="https://www.everytown.org/">Everytown for Gun Safety</a>. The suit sought to force the ATF to release aggressive trace data for use in litigation against gun manufacturers. The court ruled that the <a href="https://www.congress.gov/bill/108th-congress/house-bill/2673">Tiahrt Amendment</a> explicitly prohibits such disclosures for civil lawsuits. "Congress has spoken clearly on this issue," the judge wrote.</p>
+                <p>What's driving this? Pick your explanation. Women prioritizing education and careers. Economic precarity making parenthood feel unaffordable. Housing costs that make family formation feel impossible. Cultural shifts toward smaller families or no children at all. Delayed marriage. Delayed everything.</p>
 
-                <p>The Baltimore ruling is particularly significant because it represents a defeat for the "lawfare" strategy—using civil litigation to achieve regulatory goals that legislatures won't pass. If you can't sue manufacturers using trace data, one of the key weapons in the gun control legal arsenal just got blunted.</p>
+                <p>The CBO projects fertility for women under 24 will continue falling, while rising slightly for women 30-49. The age of first birth keeps climbing. But delayed childbearing has biological limits, and those limits translate into smaller completed family sizes regardless of initial intentions.</p>
+
+                <p>No country with sustained below-replacement fertility has ever returned to replacement through policy intervention alone. Hungary, Singapore, Japan, all have tried. All have failed. The only lever that actually moves population numbers is immigration. Which brings us back to that 1.1 million annual net migration the CBO assumes. Not a policy choice. A mathematical constraint.</p>
             </div>
         </article>
 
-        <!-- SECTION 4: Post Office Carry -->
+        <!-- SECTION 4 -->
         <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-global-advantage.jpg" alt="US map standing tall while China, Japan, Europe shrink">
+            </figure>
             <span class="section-number">04</span>
-            <h2 class="section-title">Can You Carry in a Post Office Parking Lot?</h2>
+            <h2 class="section-title">The Last Growing Superpower</h2>
             <div class="section-meta">
-                <span class="section-source">via <a href="https://www.firearmspolicy.org/">Firearms Policy Coalition</a></span>
-                <span class="section-date">January 22, 2026</span>
+                <span class="section-source">via <a href="https://www.un.org/development/desa/pd/">United Nations Population Division</a></span>
+                <span class="section-date">January 2024</span>
             </div>
-            <figure class="article-image">
-                <img src="images/article-04-post-office.jpg" alt="Brass post office mail slot in weathered oak paneling with morning light">
-            </figure>
             <div class="section-body">
-                <p>It sounds like a trivia question, but it's actually a constitutional one: Is the parking lot of a United States Post Office a "sensitive place" where the Second Amendment doesn't apply?</p>
+                <p>Here's the geopolitical silver lining, if you can call it that. While America grapples with slowing growth, its major competitors face outright collapse.</p>
 
-                <p>The <a href="https://www.firearmspolicy.org/">Firearms Policy Coalition</a> says no, and with the Fifth Circuit denying the government's delay tactics, they're about to get their day in court. The case challenges 18 U.S.C. § 930 and 39 C.F.R. § 232.1—federal statutes that make it a crime to bring a firearm onto postal property, including parking lots.</p>
+                <p><a href="https://www.stats.gov.cn/english/">China</a> will shrink by over 100 million people by 2050, falling from 1.4 billion to approximately 1.3 billion. The one-child policy's demographic echo is now playing out in empty maternity wards and closing schools. <a href="https://www.stat.go.jp/english/">Japan</a> drops from 125 million to 100 million. The <a href="https://ec.europa.eu/eurostat">European Union</a> declines from 447 million to 419 million.</p>
 
-                <p>Under <em>Bruen</em>'s historical test, the government must show that post offices were historically off-limits to armed citizens. Good luck with that. In the founding era, mail was carried by armed riders, and post offices were often general stores where merchants kept firearms for protection. The historical analogue simply doesn't exist.</p>
+                <figure class="chart">
+                    <img src="images/chart-global-comparison.png" alt="Global Population Change 2024-2050 showing US growth vs China, Japan, EU decline">
+                    <figcaption>The US is the only major developed economy projected to maintain population growth through 2050. Source: UN, CBO</figcaption>
+                </figure>
 
-                <p>If the Fifth Circuit strikes down the post office ban, it opens the door to challenges against dozens of other federal "gun-free zones"—from VA hospitals to federal courthouses to Army Corps of Engineers land. The dominoes are lined up.</p>
+                <p>The United States is the only major developed nation projected to keep growing. That's not because Americans are having more children. It's because America still attracts immigrants at scale, and those immigrants have children.</p>
+
+                <p>Economic power ultimately rests on people: workers, consumers, taxpayers, innovators. A shrinking population doesn't just mean fewer of each. It means resources redirected from investment to elderly care, from expansion to maintenance, from growth to managed decline. China's dream of overtaking the US economically runs headlong into the reality of an aging, shrinking workforce. Japan's stagnation becomes Europe's future.</p>
+
+                <p>This relative advantage isn't guaranteed. It depends on maintaining immigration levels that are currently politically contested. But the structural reality is clear: the demographic bet for American preeminence isn't on fertility. It's on continuing to be the place people want to move to.</p>
             </div>
         </article>
 
-        <!-- SECTION 5: NFA Challenge -->
+        <!-- SECTION 5 -->
         <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-sunbelt-shift.jpg" alt="Arrows flowing from Northeast to Southwest showing migration patterns">
+            </figure>
             <span class="section-number">05</span>
-            <h2 class="section-title">The Tax Is Gone. Is the Registry Next?</h2>
+            <h2 class="section-title">The Great Rebalancing: Sun Belt Rise, Rust Belt Fade</h2>
             <div class="section-meta">
-                <span class="section-source">via <a href="https://www.saf.org/saf-files-response-brief-in-nfa-challenge/">Second Amendment Foundation</a></span>
-                <span class="section-date">January 21, 2026</span>
+                <span class="section-source">via <a href="https://statchatva.org/2023/05/01/projections-show-the-south-and-west-will-continue-to-drive-national-population-growth/">Weldon Cooper Center</a></span>
+                <span class="section-date">May 2023</span>
             </div>
-            <figure class="article-image">
-                <img src="images/article-05-nfa-briefs.jpg" alt="Legal briefs fanned out on a law firm desk with brass lamp and leather-bound volumes">
-            </figure>
             <div class="section-body">
-                <p>Here's a legal theory so clever it might actually work: If Congress eliminated the tax on certain NFA items, does the government still have constitutional authority to require registration?</p>
+                <p>The national numbers mask a more dramatic internal reshuffling. The <a href="https://demographics.coopercenter.org">Weldon Cooper Center for Public Service</a> projects that the South and West will capture essentially all population growth through 2040. The Northeast begins <em>absolute</em> population decline between 2040 and 2050. The Midwest starts shrinking even earlier.</p>
 
-                <p>The <a href="https://www.saf.org/">Second Amendment Foundation</a> and <a href="https://www.firearmspolicy.org/">Firearms Policy Coalition</a> filed response briefs this week in <em>Brown v. ATF</em> and <em>Jensen v. ATF</em>, arguing the answer is no. Their reasoning: The <a href="https://en.wikipedia.org/wiki/National_Firearms_Act">National Firearms Act of 1934</a> justified registration requirements under Congress's taxing power. But when the "One Big Beautiful Bill Act" eliminated taxes on certain NFA items effective January 1, 2026, that constitutional hook evaporated.</p>
+                <p><a href="https://www.texas.gov">Texas</a>, <a href="https://www.myflorida.com">Florida</a>, <a href="https://georgia.gov">Georgia</a>, <a href="https://www.nc.gov">North Carolina</a>: these states will gain congressional seats, electoral votes, economic weight, and cultural influence. The Rust Belt's long decline accelerates from relative to absolute. Cities that built infrastructure for millions will serve populations of hundreds of thousands.</p>
 
-                <p>"With the tax gone, the registration requirement is nothing more than an unconstitutional registry of law-abiding gun owners," the briefs argue. It's a novel attack—and given <em>Bruen</em>'s emphasis on text and history, it may find traction with judges who are already skeptical of federal gun regulations.</p>
+                <p>This isn't just about weather and taxes, though those matter. It's about where young people are going, where immigrants are settling, where businesses are expanding. The South and West have younger populations, more growth-oriented politics, and lower costs. The Northeast and Midwest have legacy infrastructure, older populations, and pension obligations that constrain investment.</p>
 
-                <p>If successful, this theory could dismantle registration mandates for suppressors, short-barreled rifles, and other items that remain legal but heavily regulated. The NFA has survived for 92 years; this might be its first real constitutional stress test.</p>
+                <p>The political implications are obvious: the Electoral College tilts further toward the Sun Belt. But the economic implications are just as profound. Capital follows people. Talent follows capital. The feedback loop that made the Northeast the center of American economic gravity is now running in reverse.</p>
             </div>
         </article>
 
-        <!-- SECTION 6: SCOTUS Wolford -->
+        <!-- SECTION 6 -->
         <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-diversity.jpg" alt="Diverse mosaic of faces representing majority-minority America">
+            </figure>
             <span class="section-number">06</span>
-            <h2 class="section-title">SCOTUS Takes on "Vampire Rules"</h2>
+            <h2 class="section-title">Majority-Minority: The End of Demographic Dominance</h2>
             <div class="section-meta">
-                <span class="section-source">via <a href="https://www.scotusblog.com/case-files/cases/wolford-v-lopez/">SCOTUSblog</a></span>
-                <span class="section-date">January 20, 2026</span>
+                <span class="section-source">via <a href="https://www.census.gov/newsroom/press-releases/2023/population-projections.html">US Census Bureau</a></span>
+                <span class="section-date">November 2023</span>
             </div>
-            <figure class="article-image">
-                <img src="images/article-06-scotus.jpg" alt="Supreme Court building facade at golden hour with dramatic clouds and American flag">
-            </figure>
             <div class="section-body">
-                <p>On Monday, the <a href="https://www.supremecourt.gov/">Supreme Court</a> heard oral arguments in <em>Wolford v. Lopez</em>, a case that could reshape how Second Amendment rights work on private property. At issue: Hawaii's law that bans carrying firearms on all private property open to the public—unless the owner explicitly posts a sign <em>allowing</em> it.</p>
-
-                <p>Gun rights advocates call these "vampire rules": You can't enter unless you're invited. The default is prohibition, not permission. Hawaii, California, New York, and New Jersey all have similar provisions.</p>
+                <p>Around 2045, the non-Hispanic White population drops below 50% of the total. By 2060, it's projected at 44%. No racial or ethnic group will constitute a majority. The United States becomes, in demographic terms, the first major Western nation to transition to a truly pluralistic composition.</p>
 
                 <figure class="chart">
-                    <img src="images/chart-scotus-timeline.png" alt="Timeline of major Supreme Court Second Amendment decisions from 2008 to 2026">
-                    <figcaption>The post-Bruen era has seen an acceleration of Second Amendment litigation at the Supreme Court.</figcaption>
+                    <img src="images/chart-racial-composition.png" alt="Racial/Ethnic Composition showing shift from 2024 to 2060">
+                    <figcaption>By 2060, no single racial/ethnic group will constitute a majority of the US population. Source: Census Bureau, Pew Research</figcaption>
                 </figure>
 
-                <p>Justice <a href="https://en.wikipedia.org/wiki/Brett_Kavanaugh">Kavanaugh</a> was characteristically direct: "If you have a right to carry, and you can't carry anywhere, that's a problem." The state's attorney struggled to articulate a limiting principle—if businesses can be presumptively off-limits, what about sidewalks? Parks? The logical endpoint of Hawaii's rule is that the right to carry exists only in your home and your car.</p>
+                <p>The <a href="https://www.pewresearch.org">Pew Research Center</a> and Census Bureau project Hispanic Americans will reach 27% of the population by 2060, up from 19% today. Asian Americans will double to 9%. The non-Hispanic White population will shrink by approximately 19 million in absolute terms.</p>
 
-                <div class="callout">
-                    <p><strong>Watch for:</strong> A decision is expected by June. If the Court rules against Hawaii, states will have to flip their default rules—allowing carry unless explicitly prohibited.</p>
-                </div>
+                <p>This transformation reshapes everything from consumer markets to political coalitions to cultural identity. Brands built on assumptions about the "average American" need to rethink their core customer. Political parties built on demographic coalitions face realignment. Institutions designed by and for one dominant group will serve populations that don't share that history.</p>
 
-                <p>The implications extend beyond concealed carry. A ruling against Hawaii would signal that <em>Bruen</em> means what it says: The Second Amendment protects the right to carry in public, not just the right to keep arms at home. That's a fundamental shift in how lower courts have been interpreting the decision.</p>
-            </div>
-        </article>
-
-        <!-- SECTION 7: SCOTUS Cert Denials -->
-        <article class="section">
-            <span class="section-number">07</span>
-            <h2 class="section-title">76 Cases Denied, But Two Still Live</h2>
-            <div class="section-meta">
-                <span class="section-source">via <a href="https://www.scotusblog.com/2026/01/court-declines-to-hear-challenges-to-felon-in-possession-ban/">SCOTUSblog</a></span>
-                <span class="section-date">January 20, 2026</span>
-            </div>
-            <figure class="article-image">
-                <img src="images/article-07-cert-denials.jpg" alt="Stack of case folders with numbered tabs and DENIED stamps, dramatic lighting">
-            </figure>
-            <div class="section-body">
-                <p>The same day the Court heard <em>Wolford</em>, it declined to grant certiorari in 76 pending petitions challenging the federal felon-in-possession ban (18 U.S.C. § 922(g)(1)). At first glance, that looks like a massive win for gun control: The Court won't hear challenges to one of the most expansive firearms restrictions in federal law.</p>
-
-                <p>But look closer. The Court explicitly kept two cases on its docket: <em>Vincent v. Bondi</em> and <em>Thompson v. United States</em>. <em>Vincent</em> involves a defendant whose sole disqualifying offense was a non-violent check fraud conviction from decades ago. <em>Thompson</em> presents similar facts.</p>
-
-                <figure class="chart">
-                    <img src="images/chart-state-trends.png" alt="Bar chart comparing state gun policy landscape in 2022 versus 2026">
-                    <figcaption>The number of states with constitutional carry has grown from 25 to 29 since Bruen was decided.</figcaption>
-                </figure>
-
-                <p>This is classic Supreme Court strategy: Reject the messy cases, keep the clean ones. By holding <em>Vincent</em> and <em>Thompson</em>, the justices are signaling they want to address whether <em>all</em> felonies—including ancient, non-violent ones—can constitutionally strip someone of their Second Amendment rights. The answer, under <em>Bruen</em>'s historical test, may well be no.</p>
-
-                <p>If the Court eventually rules that non-violent felonies don't justify permanent disarmament, millions of Americans could have their gun rights restored. That's not hyperbole—according to the <a href="https://www.sentencingproject.org/">Sentencing Project</a>, over 19 million Americans have felony convictions, the majority for non-violent offenses.</p>
+                <p>Whether this transition is smooth or turbulent depends on choices made now. Are institutions adapting? Is representation expanding? Are the benefits of growth shared? The demographic transition is locked in. The societal response isn't.</p>
             </div>
         </article>
     </main>
 
     <section class="closing">
         <div class="closing-inner">
-            <h2 class="closing-title">The Constitution in Motion</h2>
-            <p class="closing-text">Four years after <em>Bruen</em> rewrote the rules, the Second Amendment is still being litigated at a pace not seen since the Bill of Rights was ratified. Courts are divided, legislatures are scrambling, and the fundamental question—what does "the right to keep and bear arms" actually mean in 2026?—remains genuinely unsettled. We'll keep watching.</p>
+            <h2 class="closing-title">The Math is Done. The Politics Aren't.</h2>
+            <p class="closing-text">These projections aren't predictions. They're calculations based on people already alive, fertility rates already measured, immigration patterns already observed. The demographic future of 2054 is largely determined today. What's not determined is how we respond: whether we build the infrastructure for an aging society, whether we embrace the immigration that keeps us growing, whether we manage the regional rebalancing equitably. The numbers tell us what's coming. They don't tell us whether we're ready.</p>
         </div>
     </section>
 

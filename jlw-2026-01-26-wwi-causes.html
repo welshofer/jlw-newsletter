@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lamps Go Out — January 26, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette — Indigo: gravity befitting the topic */
+            --bg: #FDFBF7;
+            --bg-alt: #F3F1ED;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #5B4B8A;
+            --accent-soft: rgba(91, 75, 138, 0.12);
+            --accent-hover: #483A6E;
+            --border: #D8E2E8;
+            --border-strong: #C1CBCF;
+            --warn: #B85C38;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #8B7BB5;
+                --accent-soft: rgba(139, 123, 181, 0.15);
+                --accent-hover: #A594C8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --warn: #E07B52;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">The JLW Newsletter</a>
+            <time class="newsletter-date">January 26, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">History</span>
+            <h1 class="hero-title">The Lamps Go Out</h1>
+            <p class="hero-subtitle">How a web of alliances, imperial ambition, nationalist fervor, and staggering miscalculation turned one assassination into the deadliest conflict the world had ever seen.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-lamps-go-out.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-wwi-causes.jpg" alt="Imperial chess pieces positioned on a map of pre-1914 Europe, representing the great powers locked in strategic rivalry">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <!-- SECTION 1: The Alliance System -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-alliances.jpg" alt="European capitals connected by glowing treaty chains, some taut and threatening to snap">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Treaty Trap: How Six Nations Chained Themselves Together</h2>
+            <div class="section-meta">
+                <span class="section-source">Treaty system established 1879&ndash;1907</span>
+            </div>
+            <div class="section-body">
+                <p>Here is the paradox that still haunts international relations: every alliance formed to prevent war made war more likely. By 1907, Europe had organized itself into two armed camps so rigid that any bilateral dispute would automatically become a continental one. The architecture of "peace through strength" became the architecture of collective suicide.</p>
+
+                <p>On one side, the <strong>Triple Alliance</strong> — born from the <a href="https://en.wikipedia.org/wiki/Dual_Alliance_(1879)">Dual Alliance</a> of 1879 between Germany and Austria-Hungary, expanded in 1882 to include Italy. On the other, the <strong>Triple Entente</strong> — stitched together from the <a href="https://en.wikipedia.org/wiki/Franco-Russian_Alliance">Franco-Russian Alliance</a> of 1894, the <a href="https://en.wikipedia.org/wiki/Entente_Cordiale">Entente Cordiale</a> of 1904, and the <a href="https://en.wikipedia.org/wiki/Anglo-Russian_Entente">Anglo-Russian Entente</a> of 1907. Each agreement was rational in isolation. Together, they formed a doomsday machine.</p>
+
+                <p>The Franco-Russian pact alone committed Russia to deploy 700,000&ndash;800,000 troops against Germany if France were attacked. That single clause meant a Balkan crisis involving Austria-Hungary would drag in Russia (Slavic solidarity), which would activate Germany (Dual Alliance), which would trigger France (Franco-Russian Alliance), which would pull in Britain (Entente Cordiale's informal military cooperation). No one designed this cascade. Everyone contributed to it.</p>
+
+                <div class="callout">
+                    <p><strong>The core lesson:</strong> Security guarantees don't just deter — they also entangle. Every treaty that made one country feel safer made the system as a whole more fragile. The alliance web didn't cause the war, but it guaranteed that any war would be enormous.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Imperial Rivalries -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-imperialism.jpg" alt="Map of colonial Africa and Asia divided into European territories with trade routes as golden lines">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">Empires in Collision: When Trade Wars Became Real Wars</h2>
+            <div class="section-meta">
+                <span class="section-source">Imperial competition accelerated 1890&ndash;1914</span>
+            </div>
+            <div class="section-body">
+                <p>By 1913, Germany had surpassed Britain in manufacturing output — 14.8% of global production versus Britain's 13.6%. Read that again. The country that invented the Industrial Revolution had been overtaken by a nation that didn't even exist as a unified state until 1871. That statistic alone explains much of what followed.</p>
+
+                <p><a href="https://en.wikipedia.org/wiki/Kaiser_Wilhelm_II">Kaiser Wilhelm II</a>'s <em>Weltpolitik</em> — his demand for Germany's "place in the sun" — wasn't irrational. Germany was the continent's largest economy and yet possessed a colonial empire laughably small compared to Britain's or France's. The problem was method. The <a href="https://en.wikipedia.org/wiki/First_Moroccan_Crisis">First Moroccan Crisis</a> of 1905, in which Wilhelm personally visited Tangier to challenge French influence, backfired spectacularly: the Algeciras Conference of 1906 left Germany more isolated, not less. The <a href="https://en.wikipedia.org/wiki/Agadir_Crisis">Agadir Crisis</a> of 1911 — when Germany dispatched the gunboat <em>Panther</em> to Morocco — pushed Britain and France into a naval cooperation agreement that effectively made the Entente a military reality.</p>
+
+                <p>Economic anxiety ran both ways. German exports to Britain totaled 1.4 billion Marks by 1913, while British exports to Germany reached &pound;40.6 million. Interdependence was supposed to make war unthinkable. Instead, it made each side terrified of the other's growth. The logic of empire — that national greatness required territorial expansion — was the shared delusion. The competition over who got to exploit which part of Africa or Asia poisoned relations between nations that had far more to gain from cooperation than conflict.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Naval Arms Race & Militarism -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-naval-race.jpg" alt="Two massive dreadnought battleships facing each other in stormy North Sea waters">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">Dreadnoughts and Conscripts: The Arms Race Nobody Could Win</h2>
+            <div class="section-meta">
+                <span class="section-source">Military escalation 1906&ndash;1914</span>
+            </div>
+            <div class="section-body">
+                <p>When <a href="https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)">HMS <em>Dreadnought</em></a> launched in 1906, it rendered every battleship afloat instantly obsolete — including Britain's own massive fleet. The ship's all-big-gun design, turbine propulsion, and unprecedented speed meant the naval balance reset to zero overnight. By 1914, Britain had built 29 dreadnoughts to Germany's 17. The gap never closed, but Germany's attempt to close it consumed both nations.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-dreadnought-race.png" alt="Line chart showing Britain building 29 dreadnoughts versus Germany's 17 between 1906 and 1914">
+                    <figcaption>The naval arms race: Britain maintained a roughly 2:1 advantage throughout, but the cost was staggering for both nations. Source: Massie, <em>Dreadnought</em> (1991).</figcaption>
+                </figure>
+
+                <p>On land, the numbers were even more staggering. Russia's peacetime army stood at 1.4 million — the largest on earth — with the capacity to mobilize 5 million. France, with a smaller population than Germany, extended conscription from two years to three in 1913, maintaining 820,000 active troops. Germany's 1913 Army Bill pushed its peacetime strength to 800,000, expandable to 4 million on mobilization. Britain's army was a comparative runt at 250,000, but its navy was the world's largest by a wide margin.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-army-sizes.png" alt="Bar chart comparing peacetime and mobilized army sizes for six European powers in 1914">
+                    <figcaption>Peacetime armies versus wartime mobilization capacity. Russia's sheer numbers terrified German planners; Germany's efficiency terrified everyone else. Source: Ferguson, <em>The Pity of War</em> (1999).</figcaption>
+                </figure>
+
+                <p>Behind these numbers sat a more insidious force: <strong>war planning as destiny</strong>. The <a href="https://en.wikipedia.org/wiki/Schlieffen_Plan">Schlieffen Plan</a>, devised by Count Alfred von Schlieffen and modified by <a href="https://en.wikipedia.org/wiki/Helmuth_von_Moltke_the_Younger">Moltke the Younger</a>, required Germany to knock out France in 42 days before pivoting east to face Russia's slow mobilization. This plan had a terrifying implication: once Russia began mobilizing, Germany had to attack immediately or lose its only strategic advantage. Military timetables replaced political judgment. The generals didn't just prepare for war — they made it structurally impossible to stop.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Nationalism & the Balkans -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-balkans.jpg" alt="Cracked porcelain map of the Balkans with national colors and fracture lines glowing with fire">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Powder Keg: Nationalism, Empire's Decline, and the Balkan Fuse</h2>
+            <div class="section-meta">
+                <span class="section-source">Balkan crises 1908&ndash;1913</span>
+            </div>
+            <div class="section-body">
+                <p>If the alliance system was the explosive and the arms race was the detonator, the Balkans were the fuse. The <a href="https://en.wikipedia.org/wiki/Ottoman_Empire">Ottoman Empire</a>'s slow-motion collapse created a vacuum that every neighboring power rushed to fill — and the competing claims of Austrian imperialism and Serbian nationalism made violence virtually certain.</p>
+
+                <p>The <a href="https://en.wikipedia.org/wiki/Bosnian_crisis">Bosnian Crisis of 1908</a> was the dress rehearsal. When Austria-Hungary formally annexed Bosnia-Herzegovina, Serbia and Russia were outraged but lacked the military strength to respond. Germany's unambiguous diplomatic support for Austria forced Russia to back down — a humiliation <a href="https://en.wikipedia.org/wiki/Tsar_Nicholas_II">Tsar Nicholas II</a> vowed would never be repeated. That vow, made in private fury, would prove decisive six years later.</p>
+
+                <p>Then came the <a href="https://en.wikipedia.org/wiki/Balkan_Wars">Balkan Wars</a> of 1912&ndash;1913, which redrew the map catastrophically. The Ottoman Empire lost 83% of its European territory. Serbia doubled in size, absorbing Kosovo and Northern Macedonia. Pan-Slavic confidence soared. But a swollen, emboldened Serbia was exactly what Austria-Hungary feared most — a magnet for the empire's own restive South Slavic populations. The <a href="https://en.wikipedia.org/wiki/Black_Hand_(Serbia)">Black Hand</a> (<em>Ujedinjenje ili Smrt</em>), led by Colonel <a href="https://en.wikipedia.org/wiki/Dragutin_Dimitrijevi%C4%87">Dragutin Dimitrijevi&cacute;</a> ("Apis"), head of Serbian military intelligence, represented the most extreme expression of this nationalist energy. Their weapon of choice would be a 19-year-old student with a pistol.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: The Assassination -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-assassination.jpg" alt="A vintage 1914 automobile on Sarajevo cobblestones with dramatic shadows">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">Sarajevo, June 28: The Shot That Echoed for a Century</h2>
+            <div class="section-meta">
+                <span class="section-source">June 28, 1914</span>
+            </div>
+            <div class="section-body">
+                <p>The date itself was a provocation. June 28 — <a href="https://en.wikipedia.org/wiki/Vidovdan">St. Vitus Day</a>, <em>Vidovdan</em> — is the most sacred date in Serbian national mythology, commemorating the 1389 Battle of Kosovo. For the Archduke <a href="https://en.wikipedia.org/wiki/Archduke_Franz_Ferdinand_of_Austria">Franz Ferdinand</a>, heir to the Austro-Hungarian throne, to tour Sarajevo on this day was either an act of breathtaking ignorance or deliberate defiance. The Black Hand saw it as both.</p>
+
+                <p>The first assassination attempt that morning failed — a bomb bounced off the Archduke's car and detonated under the vehicle behind. Franz Ferdinand, shaken but determined, continued to City Hall. It was the return journey that proved fatal. The motorcade took a wrong turn onto Franz Josef Street. The driver stopped. And there, standing on the corner by sheer coincidence after the earlier plan had collapsed, was <a href="https://en.wikipedia.org/wiki/Gavrilo_Princip">Gavrilo Princip</a>, a 19-year-old Bosnian Serb student, armed with a Browning pistol. Two shots. The Archduke and his wife <a href="https://en.wikipedia.org/wiki/Sophie,_Duchess_of_Hohenberg">Sophie</a> were dead within the hour.</p>
+
+                <p>The assassination was a local act with global consequences — but only because every major power chose to use it as an opportunity rather than contain it. Austria-Hungary wanted to crush Serbia. Germany wanted to back its ally. Russia refused another Bosnian humiliation. France honored its alliance. Britain had commitments it couldn't abandon. Every capital made a rational decision in isolation. Together, they were catastrophic.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: The July Crisis -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-diplomacy.jpg" alt="Diplomatic conference table with torn papers, overturned ink wells, and a flickering oil lamp">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">37 Days: How Diplomacy Failed and the Dominoes Fell</h2>
+            <div class="section-meta">
+                <span class="section-source">July 5 &ndash; August 4, 1914</span>
+            </div>
+            <div class="section-body">
+                <p>The five weeks between assassination and general war are the most studied diplomatic failure in history. Every step toward the abyss was a choice — and every choice narrowed the next one.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-july-crisis.png" alt="Timeline showing the nine key events from assassination on June 28 to Britain declaring war on August 4, 1914">
+                    <figcaption>37 days from assassination to world war. Each decision point reduced the options available at the next. Source: Clark, <em>The Sleepwalkers</em> (2012).</figcaption>
+                </figure>
+
+                <p>On <strong>July 5</strong>, Kaiser <a href="https://en.wikipedia.org/wiki/Kaiser_Wilhelm_II">Wilhelm II</a> issued the infamous "<a href="https://en.wikipedia.org/wiki/Blank_cheque">blank cheque</a>" — Germany's unconditional pledge of support for whatever action Austria-Hungary chose to take against Serbia. This wasn't just diplomatic backing; it was an explicit encouragement to be aggressive. Vienna took nearly three weeks to act on it, delivering a deliberately unacceptable <strong>ultimatum on July 23</strong> — 10 demands designed to be refused. Serbia's reply, submitted on July 25, accepted nine of the ten points but balked at Point 6: allowing Austro-Hungarian officials to conduct investigations on Serbian soil. It was a minor objection to a major intrusion. Austria declared war on July 28 anyway.</p>
+
+                <p>The dominos fell fast. <a href="https://en.wikipedia.org/wiki/Tsar_Nicholas_II">Tsar Nicholas II</a> ordered general mobilization on <strong>July 30</strong> — the point of no return for Germany, whose Schlieffen Plan required striking west before Russia was ready. Germany declared war on Russia on <strong>August 1</strong>, on France on <strong>August 3</strong>, and invaded Belgium the same day. Britain's entry on <strong>August 4</strong> came via the <a href="https://en.wikipedia.org/wiki/Treaty_of_London_(1839)">Treaty of London of 1839</a>, guaranteeing Belgian neutrality. German Chancellor <a href="https://en.wikipedia.org/wiki/Theobald_von_Bethmann-Hollweg">Bethmann-Hollweg</a> dismissed this treaty as "a scrap of paper." Britain disagreed.</p>
+
+                <div class="callout">
+                    <p><a href="https://en.wikipedia.org/wiki/Edward_Grey,_1st_Viscount_Grey_of_Fallodon">Sir Edward Grey</a>, British Foreign Secretary, standing at a window of the Foreign Office on the evening of August 3, 1914: <em>"The lamps are going out all over Europe; we shall not see them lit again in our lifetime."</em></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 7: Historiographical Debate -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-07-historiography.jpg" alt="Stack of history books with bookmarks, magnifying glass on a map of Europe, scholarly library setting">
+            </figure>
+            <span class="section-number">07</span>
+            <h2 class="section-title">Who's to Blame? A Century of Argument</h2>
+            <div class="section-meta">
+                <span class="section-source">Historiographical debate 1919&ndash;present</span>
+            </div>
+            <div class="section-body">
+                <p>The ink on the armistice was barely dry before the argument began, and it hasn't stopped since. <a href="https://en.wikipedia.org/wiki/Article_231_of_the_Treaty_of_Versailles">Article 231</a> of the Treaty of Versailles — the "War Guilt Clause" — formally assigned blame to Germany and its allies. This was politics masquerading as history, and the resentment it generated helped fuel the rise of <a href="https://en.wikipedia.org/wiki/Nazism">National Socialism</a>. But was it wrong?</p>
+
+                <p><a href="https://en.wikipedia.org/wiki/Fritz_Fischer">Fritz Fischer</a> thought so — or rather, he thought it didn't go far enough. His 1961 blockbuster <em><a href="https://en.wikipedia.org/wiki/Germany%27s_Aims_in_the_First_World_War">Germany's Aims in the First World War</a></em> argued that Germany's political and military leadership had actively planned a war of aggression from 1912 onward, seeking <em>Weltmacht</em> (world power) status and using war to resolve domestic social tensions. The Fischer thesis caused a firestorm in Germany — partly because it implicitly connected Wilhelmine aggression to the Nazi catastrophe that followed.</p>
+
+                <p><a href="https://en.wikipedia.org/wiki/A._J._P._Taylor">A.J.P. Taylor</a> offered a different villain: the railway timetable. His "war by timetable" thesis argued that rigid mobilization plans — particularly the Schlieffen Plan's 42-day clock — stripped decision-making from politicians and handed it to logistics officers. Once the first mobilization order went out, the machinery couldn't be stopped. War became not a political choice but a scheduling inevitability.</p>
+
+                <p>The most influential recent intervention is <a href="https://en.wikipedia.org/wiki/Christopher_Clark_(historian)">Christopher Clark</a>'s 2012 masterwork <em><a href="https://en.wikipedia.org/wiki/The_Sleepwalkers:_How_Europe_Went_to_War_in_1914">The Sleepwalkers</a></em>, which rejects the search for a single villain entirely. Clark portrays all the European powers as "sleepwalkers, watchful but unseeing, haunted by dreams, yet blind to the reality of the horror they were about to bring into the world." His argument — that mutual distrust, strategic paranoia, and institutional incompetence shared across every capital produced the catastrophe — is both more generous and more damning than any single-culprit theory. If everyone is guilty, then the system itself was the problem. And that system, in various forms, still exists.</p>
+            </div>
+        </article>
+
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Still Echoing</h2>
+            <p class="closing-text">The Great War killed roughly 20 million people and dismantled four empires. It created the conditions for the Russian Revolution, the rise of fascism, and the Second World War. Every cause examined here — alliance entanglement, imperial competition, arms races, nationalism, assassination, and diplomatic failure — has modern analogs. The question isn't whether it could happen again. The question is whether we'd recognize the cascade before the lamps go out.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">The JLW Newsletter</span>
+            <div class="footer-links">
+                <a href="index.html">Archive</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

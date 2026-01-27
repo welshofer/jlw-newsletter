@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Twenty-Year Crisis — January 26, 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F0EDE6;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #4A6274;
+            --accent-soft: rgba(74, 98, 116, 0.12);
+            --accent-hover: #35495E;
+            --border: #D8E2E8;
+            --border-strong: #B8C8D4;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A0B0BC;
+                --accent: #7BA3BE;
+                --accent-soft: rgba(123, 163, 190, 0.15);
+                --accent-hover: #8FB8D4;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html { font-size: 18px; scroll-behavior: smooth; }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400; line-height: 1.7;
+            color: var(--text); background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: baseline;
+        }
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem; font-weight: 600;
+            color: var(--text); text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem; color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* HERO */
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem; font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em; border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700; line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px; margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px; overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+        .hero-image img { width: 100%; height: auto; display: block; }
+
+        /* CONTENT */
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto; padding: 0 var(--space-md);
+        }
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0; transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+        .section:last-child { border-bottom: none; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem; font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem; font-weight: 600;
+            line-height: 1.3; letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+        }
+        .section-meta {
+            display: flex; gap: var(--space-sm);
+            align-items: center; margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem; color: var(--text-secondary);
+        }
+        .section-source a {
+            color: var(--accent); text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        .section-source a:hover { border-color: var(--accent); }
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem; color: var(--text-secondary);
+        }
+        .section-date::before { content: "•"; margin: 0 0.5em; }
+        .section-body p { margin: 0 0 var(--space-sm); }
+        .section-body p:last-child { margin-bottom: 0; }
+        .section-body a {
+            color: var(--accent); text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+        .section-body a:hover { text-decoration-color: var(--accent); }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px; overflow: hidden;
+        }
+        .article-image img { width: 100%; height: auto; display: block; }
+
+        /* Charts */
+        .chart { margin: var(--space-md) 0; padding: 0; }
+        .chart img {
+            width: 100%; height: auto; display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem; color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs); line-height: 1.5;
+        }
+
+        /* Callout */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .callout p { margin: 0; font-size: 0.95rem; }
+
+        /* CLOSING */
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center; background: var(--bg-alt);
+        }
+        .closing-inner { max-width: var(--content-width); margin: 0 auto; }
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem; font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+        .closing-text { color: var(--text-secondary); margin: 0 0 var(--space-md); }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: var(--space-sm);
+        }
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem; font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner {
+                flex-direction: column; align-items: flex-start; gap: var(--space-xs);
+            }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .section { padding: var(--space-lg) 0; }
+            .section-title { font-size: 1.35rem; }
+        }
+
+        @media print {
+            .header, .footer { display: none; }
+            .section { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">2026-01-26</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">History &bull; Analysis</span>
+            <h1 class="hero-title">The Twenty-Year Crisis</h1>
+            <p class="hero-subtitle">How a vindictive peace, a broken economy, and a catastrophic failure of collective nerve produced the deadliest conflict in human history.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-twenty-year-crisis.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-wwii-causes.jpg" alt="Oil-painting-style panorama of 1930s Europe at twilight, storm clouds gathering over a continent of sharp borders, scattered treaty documents, and military formations on the horizon">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Treaty of Versailles -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Carthaginian Peace That Built a Time Bomb</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Treaty_of_Versailles">Treaty of Versailles, 1919</a></span>
+                <span class="section-date">June 28, 1919</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-versailles.jpg" alt="Ornate diplomatic hall with a massive treaty document on a table, cracking red wax seals, and a distant German cityscape through tall windows">
+            </figure>
+            <div class="section-body">
+                <p>The war to end all wars produced a peace that guaranteed another one. When the Allied powers gathered at <a href="https://en.wikipedia.org/wiki/Palace_of_Versailles">Versailles</a> in 1919, they faced an impossible task: punish Germany enough to satisfy vengeful publics, yet leave it stable enough not to collapse into chaos. They failed on both counts.</p>
+
+                <p><a href="https://en.wikipedia.org/wiki/Article_231_of_the_Treaty_of_Versailles">Article 231</a> — the "War Guilt Clause" — forced Germany to accept sole responsibility for the war. It wasn't just a diplomatic formality. It was the legal foundation for reparations set at 132 billion gold marks (roughly $33 billion in 1921, equivalent to over $500 billion today). Germany lost 13% of its territory, 10% of its population, all overseas colonies, and was stripped to a military of just 100,000 men with no air force, no submarines, and a navy of six battleships.</p>
+
+                <p>The economist <a href="https://en.wikipedia.org/wiki/John_Maynard_Keynes">John Maynard Keynes</a>, who attended the conference as a British Treasury representative, quit in disgust and published <em>The Economic Consequences of the Peace</em> within months. His warning was prophetic: "If we aim deliberately at the impoverishment of Central Europe, vengeance, I dare predict, will not limp." <a href="https://en.wikipedia.org/wiki/Georges_Clemenceau">Clemenceau</a> wanted security. <a href="https://en.wikipedia.org/wiki/Woodrow_Wilson">Wilson</a> wanted idealism. <a href="https://en.wikipedia.org/wiki/David_Lloyd_George">Lloyd George</a> wanted votes. The compromise satisfied no one and enraged an entire nation.</p>
+
+                <p>The so-what here is structural: Versailles created a Germany that was humiliated but not destroyed, weakened but not incapacitated, resentful but not incapable of rebuilding. That combination — wounded pride plus latent industrial power — was a detonator waiting for a spark.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Rise of Fascism -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">From Beer Halls to Ballot Boxes: Democracy Devours Itself</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Nazi_Party">NSDAP Electoral History</a></span>
+                <span class="section-date">1920–1933</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-fascism.jpg" alt="Abstract expressionist depiction of a dark rising tide with angular shapes forming into marching columns, a ballot box transforming into a clenched fist">
+            </figure>
+            <div class="section-body">
+                <p>Here's the uncomfortable truth about fascism's rise: it was democratic. <a href="https://en.wikipedia.org/wiki/Adolf_Hitler">Hitler</a> didn't seize power in a coup. He was <em>invited</em> into government by the same conservative establishment that thought it could control him. They were catastrophically wrong.</p>
+
+                <p>The <a href="https://en.wikipedia.org/wiki/Weimar_Republic">Weimar Republic</a> was born weak — associated in the public mind with surrender and humiliation. Its proportional representation system produced fragmented coalitions that couldn't govern effectively. Between 1919 and 1933, Germany cycled through 14 chancellors. Meanwhile, the <a href="https://en.wikipedia.org/wiki/Nazi_Party">NSDAP</a> grew from a fringe beer-hall movement polling 2.6% in May 1928 to the largest party in the Reichstag at 37.3% by July 1932. That's a 14-fold increase in four years.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-nsdap-votes.png" alt="Bar chart showing NSDAP vote share rising from 6.5% in 1924 to 43.9% in March 1933">
+                    <figcaption>The Nazi electoral surge tracked almost perfectly with economic misery. The Wall Street Crash of October 1929 marks the inflection point. Source: German Federal Archives (Bundesarchiv).</figcaption>
+                </figure>
+
+                <p>Italy had shown the template earlier. <a href="https://en.wikipedia.org/wiki/Benito_Mussolini">Mussolini's</a> March on Rome in October 1922 demonstrated that a disciplined minority willing to use both violence and elections could capture a state. In Japan, the military gradually eclipsed civilian government through a series of assassinations and <em>fait accompli</em> foreign adventures. Three industrial nations, three paths to the same destination: authoritarian nationalism fueled by grievance, economic anxiety, and contempt for parliamentary weakness.</p>
+
+                <p>The critical lesson: fascism didn't replace democracy. It <em>used</em> democracy — exploiting free speech, free assembly, and free elections — to dismantle the very system that enabled its rise. By the time <a href="https://en.wikipedia.org/wiki/Paul_von_Hindenburg">President Hindenburg</a> appointed Hitler chancellor on January 30, 1933, the game was already over. The <a href="https://en.wikipedia.org/wiki/Reichstag_fire">Reichstag fire</a> four weeks later was merely the excuse for a fait already accompli.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Great Depression -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Crash That Broke the World's Faith</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Great_Depression">Economic History</a></span>
+                <span class="section-date">1929–1933</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-depression.jpg" alt="Stock ticker tape cascading downward like a waterfall, transforming into bread lines at the bottom, currency notes fluttering like dead leaves">
+            </figure>
+            <div class="section-body">
+                <p>If Versailles loaded the gun, the <a href="https://en.wikipedia.org/wiki/Great_Depression">Great Depression</a> pulled the trigger. The <a href="https://en.wikipedia.org/wiki/Wall_Street_Crash_of_1929">Wall Street crash</a> of October 1929 didn't just destroy American portfolios — it detonated a chain reaction that demolished the fragile international economic order. American banks called in foreign loans. Global trade collapsed by 65% between 1929 and 1934. And nowhere was the devastation more politically consequential than in Germany.</p>
+
+                <p>By 1932, German unemployment hit 5.6 million — roughly 30% of the workforce. Industrial production fell to 58% of its 1928 level. The Weimar government, trapped between deflation and debt, imposed austerity that deepened the spiral. People who had survived hyperinflation in 1923 (when a wheelbarrow of banknotes wouldn't buy a loaf of bread) now faced mass unemployment. The middle class was annihilated twice in a decade.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-unemployment-seats.png" alt="Dual-axis chart showing German unemployment rising in lockstep with NSDAP Reichstag seats from 1928-1933">
+                    <figcaption>The correlation is almost grotesque in its clarity: as unemployment doubled, then tripled, Nazi parliamentary seats increased twenty-fold. Economic despair and political extremism moved in near-perfect synchrony. Sources: Statistisches Reichsamt; German Federal Archives.</figcaption>
+                </figure>
+
+                <p>The Depression didn't just radicalize Germany. In Japan, the collapse of silk exports (accounting for 40% of Japanese export earnings) devastated the rural economy and strengthened the hand of military expansionists who argued that only imperial conquest could secure economic survival. The <a href="https://en.wikipedia.org/wiki/Mukden_incident">Manchurian Incident</a> of September 1931 — Japan's seizure of northeast China — was driven as much by economic desperation as by military ambition.</p>
+
+                <p>What makes the Depression so central to WWII's causation isn't just the misery it created — it's the faith it destroyed. Faith in liberal democracy. Faith in free markets. Faith in international cooperation. In its place rose the seductive logic of the strong leader, the closed economy, the martial nation. Hitler, Mussolini, and Japan's military clique all offered the same bargain: surrender your freedom, and we'll restore your dignity. Millions accepted.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Appeasement -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">The Umbrella and the Abyss: Appeasement's Fatal Logic</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Appeasement">Diplomatic History</a></span>
+                <span class="section-date">1936–1939</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-appeasement.jpg" alt="A lone figure with an umbrella and a paper stands before an enormous looming shadow, with a map of Europe shifting beneath their feet">
+            </figure>
+            <div class="section-body">
+                <p>Appeasement has become a dirty word — shorthand for cowardice in the face of tyranny. That's too simple. <a href="https://en.wikipedia.org/wiki/Neville_Chamberlain">Chamberlain</a> wasn't a fool. He was a rational man making rational calculations based on incomplete information and traumatic memory. The problem was that his opponent wasn't rational at all.</p>
+
+                <p>The logic of appeasement was rooted in genuine horror at the prospect of another war. Britain had lost nearly a million men in 1914–18. France lost 1.4 million. When Hitler remilitarized the Rhineland on March 7, 1936 — in flagrant violation of both Versailles and the <a href="https://en.wikipedia.org/wiki/Locarno_Treaties">Locarno Treaties</a> — he sent 22,000 troops with orders to retreat if France resisted. France had 350,000 men nearby. But Paris didn't act, and London backed Paris's inaction. Hitler later admitted: "The forty-eight hours after the march into the Rhineland were the most nerve-racking of my life. If the French had marched, we would have had to withdraw with our tails between our legs."</p>
+
+                <p>They didn't march. And with each unchallenged violation — the <a href="https://en.wikipedia.org/wiki/Anschluss">Anschluss</a> with Austria in March 1938, the <a href="https://en.wikipedia.org/wiki/Munich_Agreement">Munich Agreement</a> surrendering the Sudetenland in September 1938 — the cost of resistance grew while the credibility of the Western democracies shrank. Chamberlain's return from Munich waving a signed paper and declaring "peace for our time" is history's most famous self-deception. <a href="https://en.wikipedia.org/wiki/Winston_Churchill">Churchill's</a> response in the House of Commons was devastating: "You were given the choice between war and dishonour. You chose dishonour, and you will have war."</p>
+
+                <div class="callout">
+                    <p><strong>The Counterfactual:</strong> Historians still debate whether earlier resistance would have stopped Hitler. A.J.P. Taylor controversially argued in <em>The Origins of the Second World War</em> (1961) that Hitler was an opportunist, not a planner — that he exploited openings rather than following a master blueprint. The orthodox view holds that <em>Mein Kampf</em> laid out his intentions quite clearly. What's undeniable is that appeasement gave him the resources (Austrian gold reserves, Czech armaments, Rhineland fortifications) to make war on his terms.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Expansionism -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">The World as Chessboard: Three Empires on the March</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Causes_of_World_War_II">Multiple Theaters</a></span>
+                <span class="section-date">1931–1939</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-expansionism.jpg" alt="A chess board at dramatic low angle with military formations replacing pieces, advancing across squares representing different nations">
+            </figure>
+            <div class="section-body">
+                <p>WWII wasn't the result of a single aggressor. It emerged from three simultaneous expansionist projects on three continents, each feeding the others' ambitions and collectively overwhelming a world order that had no mechanism to stop any of them.</p>
+
+                <p><strong>Japan</strong> moved first. The <a href="https://en.wikipedia.org/wiki/Japanese_invasion_of_Manchuria">invasion of Manchuria</a> in September 1931 established the puppet state of <a href="https://en.wikipedia.org/wiki/Manchukuo">Manchukuo</a>, giving Japan access to coal, iron, and agricultural land. The League of Nations condemned it. Japan quit the League. Nothing happened. The template was set. By July 1937, Japan launched a full-scale <a href="https://en.wikipedia.org/wiki/Second_Sino-Japanese_War">invasion of China</a>, producing atrocities like the <a href="https://en.wikipedia.org/wiki/Nanjing_Massacre">Nanjing Massacre</a> that killed an estimated 200,000–300,000 civilians.</p>
+
+                <p><strong>Italy</strong> attacked next. <a href="https://en.wikipedia.org/wiki/Second_Italo-Ethiopian_War">Mussolini's invasion of Ethiopia</a> in October 1935 — complete with poison gas against spear-carrying warriors — exposed the League's impotence. Britain and France imposed half-hearted sanctions that excluded oil (the one commodity that mattered) and drove Mussolini into Hitler's arms. The <a href="https://en.wikipedia.org/wiki/Pact_of_Steel">Rome-Berlin Axis</a> was born from Western fecklessness.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-aggression-timeline.png" alt="Timeline of aggressive actions from 1931-1939, showing Germany, Japan, Italy, and Allied responses color-coded on a horizontal timeline">
+                    <figcaption>The accelerating pattern of aggression, 1931–1939. Note how events cluster ever more tightly toward 1939, and how Allied responses appear only at the very end. Source: Historical consensus, multiple archives.</figcaption>
+                </figure>
+
+                <p><strong>Germany</strong> was the most systematic. Hitler's <a href="https://en.wikipedia.org/wiki/Lebensraum"><em>Lebensraum</em></a> doctrine demanded eastward expansion for "living space." Each step — rearmament (1935), Rhineland (1936), Austria (1938), Sudetenland (1938), the rest of Czechoslovakia (March 1939) — tested the limits and found none. The <a href="https://en.wikipedia.org/wiki/Spanish_Civil_War">Spanish Civil War</a> (1936–39) served as a proving ground, where the <a href="https://en.wikipedia.org/wiki/Condor_Legion">Condor Legion</a> perfected the tactics of terror bombing that would define the coming war — including the destruction of <a href="https://en.wikipedia.org/wiki/Bombing_of_Guernica">Guernica</a>.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: League of Nations -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">A House Built on Sand: Why Collective Security Collapsed</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/League_of_Nations">League of Nations Archives</a></span>
+                <span class="section-date">1920–1939</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-league-nations.jpg" alt="A grand but crumbling neoclassical building with cracking pillars and weathering stone doves, empty chairs visible through windows, storm clouds gathering">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://en.wikipedia.org/wiki/League_of_Nations">League of Nations</a> was Woodrow Wilson's noblest idea and the interwar period's cruelest joke. It was supposed to be the architecture of permanent peace — a forum where disputes would be resolved by dialogue, not artillery. Instead, it became the most expensive debating society in history, toothless precisely when teeth were needed most.</p>
+
+                <p>The structural problems were baked in from the start. The United States — whose president had championed the League's creation — <a href="https://en.wikipedia.org/wiki/United_States_and_the_League_of_Nations">never joined</a>, after the Senate rejected the treaty in November 1919. Without American economic and military weight, the League was missing its anchor. It had no standing army, no enforcement mechanism beyond moral suasion and voluntary sanctions, and required unanimous consent for substantive action — giving any aggressor the ability to veto its own punishment.</p>
+
+                <p>The League's defining failures came in rapid succession. When Japan seized Manchuria, the League formed the <a href="https://en.wikipedia.org/wiki/Lytton_Report">Lytton Commission</a>, which took 18 months to produce a report condemning the invasion. Japan's response was to walk out. When Italy attacked Ethiopia, <a href="https://en.wikipedia.org/wiki/Haile_Selassie">Emperor Haile Selassie</a> personally addressed the League Assembly in Geneva in June 1936, pleading: "It is us today. It will be you tomorrow." The delegates listened politely and did nothing effective.</p>
+
+                <p>The historian <a href="https://en.wikipedia.org/wiki/E._H._Carr">E.H. Carr</a> named his famous 1939 analysis <em>The Twenty Years' Crisis</em> — arguing that the interwar order was built on utopian assumptions about human nature and state behavior that had no basis in reality. International law without international power was just aspiration. And aspiration, it turns out, doesn't stop tanks.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7: Road to War -->
+        <article class="section">
+            <span class="section-number">07</span>
+            <h2 class="section-title">The Devil's Handshake: August 1939 and the Point of No Return</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Molotov%E2%80%93Ribbentrop_Pact">Diplomatic Archives</a></span>
+                <span class="section-date">August–September 1939</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-07-road-to-war.jpg" alt="Two enormous hands reaching across a map of Poland for a handshake, each concealing a dagger behind its back, a countdown clock approaching midnight">
+            </figure>
+            <div class="section-body">
+                <p>By the spring of 1939, the pretense of peace was exhausted. When Hitler swallowed the rest of Czechoslovakia in March — violating the Munich Agreement that was barely six months old — even Chamberlain finally understood. Britain and France issued an unprecedented guarantee to Poland: attack Poland, and you are at war with us.</p>
+
+                <p>Hitler took it as a dare. The problem was <a href="https://en.wikipedia.org/wiki/Free_City_of_Danzig">Danzig</a> — a historically German city placed under League administration by Versailles, surrounded by the <a href="https://en.wikipedia.org/wiki/Polish_Corridor">Polish Corridor</a> that separated East Prussia from the rest of Germany. Hitler demanded its return. Poland refused. Britain and France scrambled to construct a deterrent alliance, but their critical failure was diplomatic: they couldn't bring the <a href="https://en.wikipedia.org/wiki/Soviet_Union">Soviet Union</a> onside. Negotiations with Moscow dragged through the summer of 1939, hampered by mutual distrust and Poland's refusal to allow Soviet troops on its soil.</p>
+
+                <p>Then came the thunderbolt. On August 23, 1939, Nazi Germany and the Soviet Union — ideological blood enemies — signed the <a href="https://en.wikipedia.org/wiki/Molotov%E2%80%93Ribbentrop_Pact">Molotov-Ribbentrop Pact</a>. The published terms were a non-aggression agreement. The secret protocol divided Eastern Europe into spheres of influence: Poland would be split between them, the Baltic states assigned to Moscow, and Finland and Bessarabia ceded to the Soviet sphere. <a href="https://en.wikipedia.org/wiki/Joseph_Stalin">Stalin</a> bought time and territory. Hitler bought a one-front war.</p>
+
+                <p>At 4:45 a.m. on September 1, 1939, the German battleship <a href="https://en.wikipedia.org/wiki/SMS_Schleswig-Holstein"><em>Schleswig-Holstein</em></a> opened fire on the Polish garrison at <a href="https://en.wikipedia.org/wiki/Westerplatte">Westerplatte</a>. The Luftwaffe struck Polish airfields. 1.5 million German troops poured across the border. Two days later, on September 3, Britain and France declared war. Twenty years and sixty-five days after the Armistice that was supposed to end all wars, Europe was at war again. It would kill 70–85 million people before it ended.</p>
+
+                <div class="callout">
+                    <p><strong>The Final Tally:</strong> WWII killed approximately 3% of the world's 1940 population. The Soviet Union lost 27 million. China lost 15–20 million. Poland lost 17% of its entire population — the highest proportional loss of any nation. Germany lost 7–9 million. The scale of destruction was so total that it took a generation to even begin counting the dead.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Lessons That Refuse to Stay Learned</h2>
+            <p class="closing-text">The causes of the Second World War weren't mysterious. They were visible in real time — Keynes predicted the consequences of Versailles in 1919, Churchill warned about Hitler in 1932, Haile Selassie told the League exactly what would happen in 1936. The tragedy isn't that no one saw it coming. The tragedy is that seeing it coming wasn't enough. Structural grievances, economic collapse, institutional failure, and the lethal miscalculation that aggression can be managed rather than confronted — these aren't artifacts of the 1930s. They're standing invitations for repetition, whenever complacency mistakes itself for peace.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

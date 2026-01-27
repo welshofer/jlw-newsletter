@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Arsenal of the Reich — January 26, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - industrial amber & gunmetal */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #B85C38;
+            --accent-soft: rgba(184, 92, 56, 0.12);
+            --accent-hover: #9A4D2F;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #E07B52;
+                --accent-soft: rgba(224, 123, 82, 0.15);
+                --accent-hover: #F08B62;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "·";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">26 Jan 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Industrial History</span>
+            <h1 class="hero-title">The Arsenal of the Reich</h1>
+            <p class="hero-subtitle">From a bankrupt forge with seven workers to the armorer of empires&mdash;the Krupp dynasty built modern Germany and armed its darkest ambitions. Four centuries of steel, blood, and reinvention.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-arsenal-of-the-reich.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-krupp-forge.jpg" alt="A massive 19th century steel forge at night, molten metal pouring from a crucible with sparks and smoke rising against an amber sky">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Origins -->
+        <article class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Seven Workers and a Dead Man's Secret</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Friedrich_Krupp">Krupp Archives / Essen</a></span>
+                <span class="section-date">1811–1826</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-01-friedrich-origins.jpg" alt="A small dark workshop forge in early 1800s Germany, a crucible glowing with molten metal">
+            </figure>
+            <div class="section-body">
+                <p>The <a href="https://en.wikipedia.org/wiki/Krupp">Krupp family</a> first appears in <a href="https://en.wikipedia.org/wiki/Essen">Essen</a>'s registry in 1587, when one Arndt Krupp made his fortune the old-fashioned way: buying up the property of neighbors who fled the plague. Capitalism has always rewarded the unsqueamish. But the industrial dynasty proper begins with <a href="https://en.wikipedia.org/wiki/Friedrich_Krupp">Friedrich Krupp</a>, a man consumed by a single obsession: cracking the English monopoly on cast steel.</p>
+
+                <p>In 1811, Friedrich founded the <em>Fried. Krupp Gussstahlfabrik</em>&mdash;the Cast Steel Works. The name was grander than the reality. He burned through the family fortune trying to reverse-engineer what Sheffield foundries had perfected over generations. By the time tuberculosis killed him in 1826, the "factory" was a single workshop with <strong>seven employees</strong> and a mountain of debt. His 14-year-old son Alfred inherited the secret recipe for cast steel and absolutely nothing else.</p>
+
+                <p>That inheritance&mdash;a formula and a ruin&mdash;would become the seed of Europe's largest industrial empire. Every dynasty needs its founding myth, and the Krupps have one of the best: a dead father, a boy with a secret, and a forge still warm.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Alfred Krupp -->
+        <article class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Cannon King Who Sold to Everyone</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Alfred_Krupp">Britannica / Krupp Archives</a></span>
+                <span class="section-date">1847–1887</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-02-cannon-king.jpg" alt="A colossal cast steel cannon at the 1851 Crystal Palace exhibition, surrounded by Victorian-era spectators">
+            </figure>
+            <div class="section-body">
+                <p><a href="https://en.wikipedia.org/wiki/Alfred_Krupp">Alfred Krupp</a> didn't start with cannons. He started with spoons. Then cutlery dies, mint stamps, and machine parts&mdash;anything to keep the forge burning. His real breakthrough was the <strong>seamless railway tire</strong>, patented in 1852: a solid ring of cast steel with no weld seam, far safer than the iron tires that cracked under locomotives. Those three interlocking rings became the Krupp logo and remain recognizable today.</p>
+
+                <p>But it was the <a href="https://en.wikipedia.org/wiki/Great_Exhibition">1851 Great Exhibition</a> at London's Crystal Palace that announced Krupp to the world. Alfred displayed a <strong>4,300-pound steel ingot</strong>&mdash;the largest ever cast&mdash;alongside a 6-pound steel cannon. The ingot was a flex. The cannon was a business plan. Within two decades, Krupp artillery would demolish French fortifications in the <a href="https://en.wikipedia.org/wiki/Franco-Prussian_War">Franco-Prussian War of 1870–71</a>, and Alfred would earn his nickname: the <em>Kanonenkönig</em>, the Cannon King.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-krupp-employees.png" alt="Line chart showing Krupp workforce growth from 7 employees in 1826 to peaks of 250,000 in WWII, with annotations marking key events">
+                    <figcaption>From 7 workers to a quarter million: The Krupp workforce across two centuries, with war peaks and post-war collapses clearly visible.</figcaption>
+                </figure>
+
+                <p>Alfred was also an industrial paternalist of the first order. His <em>General Regulativ</em> of 1872 offered workers sickness funds, pensions, and company housing&mdash;a decade before Bismarck's national welfare legislation. The catch? Total obedience. No politics, no unions, no socialism. Alfred's welfare state was a gilded cage, and the deal was explicit: "The purpose of work is to serve the firm," he wrote. By the time he died in 1887, Krupp employed <strong>21,000 people</strong> and had manufactured <strong>24,576 guns</strong>.</p>
+
+                <div class="callout">
+                    <p><strong>Alfred Krupp, 1877:</strong> "I wish I had a man who could start a counter-revolution... against Jews, socialists and liberals." The paternalist's benevolence had hard limits.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Imperial Germany -->
+        <article class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Kruppized: How One Word Redefined Naval Warfare</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Krupp_cemented_armour">Naval History Archives</a></span>
+                <span class="section-date">1887–1914</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-03-imperial-naval.jpg" alt="A German Imperial battleship in drydock with thick armored hull plates being riveted">
+            </figure>
+            <div class="section-body">
+                <p>Alfred's son <a href="https://en.wikipedia.org/wiki/Friedrich_Alfred_Krupp">Friedrich Alfred ("Fritz") Krupp</a> lacked his father's volcanic personality but possessed something more useful: diplomatic instincts. When <a href="https://en.wikipedia.org/wiki/Kaiser_Wilhelm_II">Kaiser Wilhelm II</a> decided to challenge Britain's Royal Navy, Fritz positioned Krupp as the indispensable partner. The result was one of the most consequential metallurgical breakthroughs in military history.</p>
+
+                <p>In 1893, Krupp perfected a nickel-steel armor cementation process so superior that the word <strong>"Kruppized"</strong> entered the global naval lexicon. The numbers were staggering: <strong>10.2 inches</strong> of Krupp cemented armor provided the same protection as <strong>12 inches</strong> of Harvey armor. Every major navy on earth bought it. Admiral <a href="https://en.wikipedia.org/wiki/Alfred_von_Tirpitz">Tirpitz</a>'s Naval Bills of 1898 and 1900&mdash;the massive fleet expansion that helped trigger the Anglo-German arms race leading to World War I&mdash;poured money directly into Krupp's coffers.</p>
+
+                <p>By 1900, the Essen works had consumed the city. Krupp was a state within a state: its own police, fire brigade, housing colonies, and regulations governing every aspect of workers' lives. The company employed <strong>43,000 people</strong>. The factory complex was not adjacent to Essen. It <em>was</em> Essen.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Two World Wars -->
+        <article class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Big Bertha, Slave Labor, and the Dock at Nuremberg</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Krupp_Trial">Nuremberg Trial Archives</a></span>
+                <span class="section-date">1914–1948</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-04-big-bertha.jpg" alt="A massive 420mm artillery howitzer on a World War I battlefield with an ominous red-amber sky">
+            </figure>
+            <div class="section-body">
+                <p>When Fritz died in 1902 without a male heir, his daughter <a href="https://en.wikipedia.org/wiki/Bertha_Krupp">Bertha</a> inherited everything. Kaiser Wilhelm II personally arranged her marriage to diplomat <a href="https://en.wikipedia.org/wiki/Gustav_Krupp_von_Bohlen_und_Halbach">Gustav von Bohlen und Halbach</a>, who took the Krupp name by imperial decree. The dynasty would continue. What it would become is one of the darkest chapters in industrial history.</p>
+
+                <p>World War I made Krupp synonymous with mechanized destruction. The <strong>420mm "Big Bertha" howitzer</strong>&mdash;named mockingly after the heiress&mdash;fired a <strong>1,785-pound shell</strong> up to <strong>9 kilometers</strong>. It demolished the "impregnable" Belgian forts at Liège in days. The even more terrifying <a href="https://en.wikipedia.org/wiki/Paris_Gun">"Paris Gun"</a> shelled the French capital from <strong>75 miles away</strong>, a range so absurd that its shells reached the stratosphere in flight.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-krupp-guns.png" alt="Bar chart showing Krupp artillery production by era, from 2,400 in early arms to 120,000 during Nazi rearmament">
+                    <figcaption>Krupp artillery output escalated exponentially across five eras of conflict, peaking at an estimated 120,000 pieces during WWII.</figcaption>
+                </figure>
+
+                <p>Gustav's conversion to Nazism was total. In 1933, he became chairman of the Reich Association of German Industry, personally purging Jewish members. As the Wehrmacht devoured Europe, Krupp devoured its captive populations. The company exploited an estimated <strong>100,000 slave laborers</strong>, including <strong>23,000 prisoners of war</strong> and thousands from concentration camps. Conditions were deliberately brutal.</p>
+
+                <p>Gustav was indicted at Nuremberg but declared medically unfit&mdash;senile and bedridden. His son <a href="https://en.wikipedia.org/wiki/Alfried_Krupp_von_Bohlen_und_Halbach">Alfried</a>, who had run the company since 1943 under Hitler's special "Lex Krupp" decree, stood trial instead. The verdict: <strong>guilty of crimes against humanity</strong>. Twelve years in prison, total forfeiture of assets.</p>
+
+                <div class="callout">
+                    <p><strong>Gustav Krupp von Bohlen und Halbach:</strong> "War material is life-saving for one's own people and whoever works and performs in these spheres can be proud of it." The industrialist's self-justification, in his own words.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Post-War -->
+        <article class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Convicted, Pardoned, Rebuilt: The Cold War's Favorite War Criminal</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://en.wikipedia.org/wiki/Alfried_Krupp_von_Bohlen_und_Halbach">Manchester, <em>The Arms of Krupp</em></a></span>
+                <span class="section-date">1951–1967</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-05-postwar-rebuild.jpg" alt="A bombed-out factory complex being rebuilt with construction cranes rising from rubble">
+            </figure>
+            <div class="section-body">
+                <p>History has a talent for irony. In 1951&mdash;just three years into his sentence&mdash;U.S. High Commissioner <a href="https://en.wikipedia.org/wiki/John_J._McCloy">John J. McCloy</a> pardoned Alfried Krupp and returned his entire fortune. The Cold War needed West German industry more than it needed justice. Alfried walked out of Landsberg Prison (the same facility where Hitler had written <em>Mein Kampf</em>) and returned to Essen to rebuild.</p>
+
+                <p>And rebuild he did. The <a href="https://en.wikipedia.org/wiki/Wirtschaftswunder"><em>Wirtschaftswunder</em></a>&mdash;Germany's economic miracle&mdash;ran on steel, and Krupp supplied it. By the late 1950s, Alfried was once again a billionaire, a pillar of the European Common Market, the host of heads of state at <a href="https://en.wikipedia.org/wiki/Villa_H%C3%BCgel">Villa Hügel</a>. The pivot was deliberate: heavy engineering, plant construction, civilian steel. The cannons were done. The guilt, apparently, was also done.</p>
+
+                <p>When asked about the Nazi years in 1959, Alfried offered this: <em>"What guilt? For what happened under Hitler? No. But it is regrettable that the German people themselves allowed themselves to be so deceived by Hitler."</em> A century of Krupp rhetorical tradition: the company takes credit for the steel but never for what the steel was used to do.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Modern Era -->
+        <article class="section">
+            <span class="section-number">06</span>
+            <h2 class="section-title">ThyssenKrupp: The Name Endures, the Empire Doesn't</h2>
+            <div class="section-meta">
+                <span class="source-date">via <a href="https://www.thyssenkrupp.com">ThyssenKrupp AG</a></span>
+                <span class="section-date">1967–Present</span>
+            </div>
+            <figure class="article-image">
+                <img src="images/article-06-modern-thyssenkrupp.jpg" alt="A modern glass-and-steel corporate tower next to a weathered 19th century factory chimney">
+            </figure>
+            <div class="section-body">
+                <p>Alfried died in 1967. His son Arndt, in a move that shocked Germany, renounced his inheritance rights in exchange for a reported annual stipend of $2 million. The 156-year-old family dynasty was over. The company became a public foundation-owned entity, and in 1999, it merged with its historic rival <a href="https://en.wikipedia.org/wiki/Thyssen_AG">Thyssen AG</a> to form <a href="https://www.thyssenkrupp.com">ThyssenKrupp</a>.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-thyssenkrupp-revenue.png" alt="Line chart showing ThyssenKrupp revenue from 2000-2024, with key events like the financial crisis and elevator sale annotated">
+                    <figcaption>ThyssenKrupp revenue since the 1999 merger. The 2020 elevator sale (€17.2B) and 2024 restructuring (11,000 jobs cut) mark an empire in retreat.</figcaption>
+                </figure>
+
+                <p>The modern company is a study in managed decline. The lucrative elevator division&mdash;the crown jewel&mdash;was <a href="https://en.wikipedia.org/wiki/TK_Elevator">sold in 2020 for €17.2 billion</a> to cover pension liabilities and debt. In 2024, ThyssenKrupp announced it would cut <strong>11,000 jobs</strong> to address overcapacity and sky-high energy costs. Revenue hovers around <strong>€33 billion</strong> with <strong>93,000 employees</strong>&mdash;a fraction of the empire's peak.</p>
+
+                <p>The <a href="https://en.wikipedia.org/wiki/Alfried_Krupp_von_Bohlen_und_Halbach_Foundation">Alfried Krupp von Bohlen und Halbach Foundation</a>, established in 1968, remains the largest shareholder. It funds science, art, and education with the dividends&mdash;an attempt to turn the profits of arms and slave labor into public good. <a href="https://en.wikipedia.org/wiki/Villa_H%C3%BCgel">Villa Hügel</a>, the 269-room mansion Alfred built with 87,000 square feet of fireproof living space (he had a phobia of fire), is now a museum and cultural venue. The cannons are on display. The context plaques are careful.</p>
+
+                <p>The name Krupp endures because it captures something essential about industrial capitalism itself: the capacity to build magnificent things and terrible things with the same ingot of steel, the same factory floor, the same family name on the letterhead. Four centuries of ambition, innovation, exploitation, and reinvention&mdash;and the forge, in some form, still burns.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Forge Still Burns</h2>
+            <p class="closing-text">From seven workers in a ruined workshop to the arsenal that armed two world wars&mdash;the Krupp story is industrial capitalism in its purest, most troubling form. The steel endures. So do the questions about what it was forged to do.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

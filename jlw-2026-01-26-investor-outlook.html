@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priced for Perfection — January 26, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for markets */
+            --bg: #FDFBF7;
+            --bg-alt: #F0F5F7;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #095A72;
+            --border: #D8E2E8;
+            --border-strong: #B0C4D0;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0E1416;
+                --bg-alt: #152022;
+                --text: #F0F5F7;
+                --text-secondary: #8FA6B3;
+                --accent: #2AACCC;
+                --accent-soft: rgba(42, 172, 204, 0.15);
+                --accent-hover: #3DC0E0;
+                --border: #1E3038;
+                --border-strong: #2A4450;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "\2022";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Weekly</a>
+            <time class="newsletter-date">2026.01.26</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Investor Outlook 2026</span>
+            <h1 class="hero-title">Priced for Perfection</h1>
+            <p class="hero-subtitle">The S&P 500 enters 2026 with the thinnest risk premium since the dot-com era. Four Mag 7 earnings, a Fed pause, and geopolitical whiplash will decide whether the bull market broadens or buckles.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/priced-for-perfection.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-investor-outlook-2026.png" alt="Financial district skyline at dawn with holographic data streams and candlestick patterns in teal cyan">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: Mag 7 Earnings -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-mag7-earnings.png" alt="Four illuminated corporate constellations connected by earnings data streams against a teal sky">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">Ten Trillion Dollars Walk Into an Earnings Call</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-1-26-the-billion-dollar-tightrope-magnificent-7-earnings-preview-amid-historic-market-concentration">MarketMinute</a>, <a href="https://www.nasdaq.com/articles/mag-7-earnings-week-also-brings-new-fed-policy">Nasdaq</a></span>
+                <span class="section-date">Jan 26, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>This is not a normal earnings week. Four of the <a href="https://finance.yahoo.com/news/magnificent-7-off-mixed-start-170622327.html">Magnificent Seven</a>&mdash;<a href="https://www.meta.com">Meta</a>, <a href="https://www.microsoft.com">Microsoft</a>, <a href="https://www.tesla.com">Tesla</a>, and <a href="https://www.apple.com">Apple</a>&mdash;report between Wednesday and Thursday, carrying a combined market cap of $10 trillion. That's roughly the GDP of Japan and Germany combined, all going through a quarterly gut check in 48 hours.</p>
+
+                <p>The stakes are unusually high because the Mag 7 are no longer winning by default. Only two of them beat the S&P 500 in 2025, and so far in 2026 the group is trailing the broader index. The <a href="https://articles.stockcharts.com/article/broadening-broadening-everywhere-in-early-2026-record-high-mid-caps/">SPDR S&P MidCap 400 ETF</a> is outpacing them all. Mid-caps are printing records. The <a href="https://www.wsj.com/market-data/quotes/index/DJIA">Dow</a> is flirting with 50,000. The concentration narrative from 2025&mdash;where the top 10 stocks commanded nearly 40% of the index&mdash;might finally be cracking.</p>
+
+                <p>What to watch: <a href="https://www.microsoft.com">Microsoft</a> is expected to post earnings of $3.88/share on $80.2B revenue (+20% YoY). <a href="https://www.meta.com">Meta</a> has signaled CapEx could exceed $100 billion in 2026&mdash;a staggering bet on AI infrastructure. <a href="https://www.apple.com">Apple</a>'s iPhone 17 "Pro-heavy" mix should push revenue to $138B. <a href="https://www.tesla.com">Tesla</a> faces the toughest road: deliveries fell 16% after the EV tax credit expired in September 2025. If these four provide conservative forward guidance, expect the rotation into value, small-caps, and international markets to accelerate sharply.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-sp500-targets.png" alt="Bar chart showing Wall Street 2026 S&P 500 year-end targets ranging from 7,400 to 8,100">
+                    <figcaption>Wall Street consensus calls for 14-32% upside from 2025 year-end levels. Oppenheimer is the most bullish at 8,100.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Fed Holds Steady -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-fed-pause.png" alt="A brass balance scale in a Federal Reserve chamber with a dove and hawk in equilibrium">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Fed Blinks First&mdash;by Not Blinking</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cnbc.com/2026/01/26/fed-rates-may-hold-steady.html">CNBC</a>, <a href="https://www.bankrate.com/banking/federal-reserve/will-the-fed-cut-rates-in-2026/">Bankrate</a></span>
+                <span class="section-date">Jan 26, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.federalreserve.gov">Federal Reserve</a> meets Tuesday and Wednesday with the market pricing a 95% probability of no change. After seven cuts totaling 175 basis points since September 2024, the central bank is hitting the brakes at 3.50-3.75%. The CME FedWatch tool shows Wall Street doesn't expect the next cut until June.</p>
+
+                <p>The reasoning is straightforward: inflation won't cooperate. Core PCE sits at 2.8%, a full 80 basis points above target. CPI is flirting with 3%. <a href="https://www.frbsf.org">San Francisco Fed President Mary Daly</a> put it plainly: "Policy is in a good place." <a href="https://www.philadelphiafed.org">Philadelphia Fed President Anna Paulson</a> agreed, telling the <a href="https://www.wsj.com">Wall Street Journal</a> she's comfortable holding steady.</p>
+
+                <p>But the political pressure is relentless. President Trump escalated his criticism of <a href="https://en.wikipedia.org/wiki/Jerome_Powell">Fed Chair Jerome Powell</a> at Davos last week, and Treasury Secretary <a href="https://en.wikipedia.org/wiki/Scott_Bessent">Scott Bessent</a> hinted the next Fed chair (Powell's term expires in May) could be announced imminently. <a href="https://www.morganstanley.com">Morgan Stanley</a> projects just two more 25bp cuts this year&mdash;June and September&mdash;while the Fed's own dot plot signals only one. For investors, the message is clear: the era of easy money is on pause. Position accordingly.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-fed-rates.png" alt="Line chart showing Fed funds rate declining from 5.00% to 3.75% with projected path to 3.25%">
+                    <figcaption>The Fed has cut 175bp since Sept 2024 but sticky inflation is forcing a pause. Morgan Stanley expects just two more cuts in 2026.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 3: Greenland Trade Crisis -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-greenland-tariffs.png" alt="Aerial view of Greenland's icy coastline with translucent trade route lines and NATO alliance paths">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Arctic Standoff That Almost Upended Transatlantic Trade</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.cnbc.com/2026/01/21/european-lawmakers-suspend-us-trade-deal-amid-greenland-tariff-tensions.html">CNBC</a>, <a href="https://www.euronews.com/2026/01/21/trump-suspends-european-tariffs-after-framework-greenland-deal-agreed">Euronews</a></span>
+                <span class="section-date">Jan 21, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>On January 17, President Trump announced a 10% tariff on Denmark and seven European allies&mdash;Norway, Sweden, France, Germany, the UK, the Netherlands, Finland&mdash;until "a Deal is reached for the Complete and Total purchase of <a href="https://en.wikipedia.org/wiki/Greenland">Greenland</a>." The tariff would escalate to 25% by June 1.</p>
+
+                <p>Europe's response was swift and calibrated for maximum impact. The <a href="https://www.europarl.europa.eu">European Parliament</a> suspended work on the US-EU trade deal reached last summer. Trade committee chairman <a href="https://en.wikipedia.org/wiki/Bernd_Lange">Bernd Lange</a> left no ambiguity: "We have been left with no alternative." Behind closed doors, officials discussed deploying the <a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_22_7729">Anti-Coercion Instrument</a>&mdash;a "trade bazooka" that could restrict US corporate access to the EU single market. The <a href="https://www.ft.com">Financial Times</a> reported the EU was contemplating &euro;93 billion ($108 billion) in retaliatory tariffs.</p>
+
+                <p>Then, on January 21, Trump reversed course after talks with <a href="https://en.wikipedia.org/wiki/Mark_Rutte">NATO Secretary-General Mark Rutte</a>, agreeing to a "framework" deal on Arctic cooperation. But as <a href="https://polsci.ku.dk/english/staff/?pure=en/persons/115735">Ole W&aelig;ver</a> of the University of Copenhagen noted, the framework may be little more than "face-saving." The underlying message to investors: geopolitical risk premiums can materialize overnight, and the transatlantic trade architecture remains fragile. Hedge accordingly.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Micron HBM Supercycle -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-micron-hbm.png" alt="Gleaming semiconductor wafers stacked like gold bars with teal circuit traces glowing">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Memory Is the New Oil&mdash;and Micron Just Struck Gusher</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-1-22-ai-memory-supercycle-micron-shares-skyrocket-18-as-hbm4-demand-hits-fever-pitch">MarketMinute</a>, <a href="https://www.cnbc.com/2026/01/16/micron-stock-climbs-as-ceo-highlights-ai-demand-for-memory.html">CNBC</a></span>
+                <span class="section-date">Jan 22, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The bottleneck for artificial intelligence is no longer just the logic processors from <a href="https://www.nvidia.com">NVIDIA</a>. It's the High Bandwidth Memory that feeds them. <a href="https://www.micron.com">Micron Technology</a> shares surged 18% over three trading days last week, shattering the $300 barrier to hit a historic $346. The stock is up 247% over the past year.</p>
+
+                <p>The numbers are staggering. Q1 revenue hit $13.6 billion&mdash;up 57% year over year&mdash;with gross margins at 56.8% and adjusted EPS of $4.78, up 167%. CEO <a href="https://www.linkedin.com/in/sanjaymehrotra">Sanjay Mehrotra</a> told <a href="https://www.cnbc.com">CNBC</a>: "AI-driven demand is accelerating. It is real. It is here." Micron's entire 2026 HBM output is sold out, and management says they can meet only half to two-thirds of demand from key customers. DDR5 DRAM contract prices jumped over 300% year-over-year in Q4.</p>
+
+                <p>The investment scale matches the ambition. Micron is spending $200 billion on US production capacity, including two Idaho fabs and a 600,000-square-foot facility in Clay, New York, where Commerce Secretary <a href="https://en.wikipedia.org/wiki/Howard_Lutnick">Howard Lutnick</a> attended the groundbreaking. Analysts are tripping over themselves to upgrade: <a href="https://www.bernstein.com">Bernstein</a> raised its target to $330, <a href="https://www.mizuhogroup.com">Mizuho</a> to $390, <a href="https://www.key.com/kco/home/index.html">KeyBanc</a> to $325. But the contrarian signal is already forming&mdash;China's <a href="https://en.wikipedia.org/wiki/ChangXin_Memory_Technologies">CXMT</a> is raising billions to enter higher-end memory segments. Today's scarcity won't last forever.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: IMF Growth Upgrade -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-imf-growth.png" alt="Abstract globe with interconnected economic nodes glowing in teal, showing AI neural network patterns">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">The IMF Sees a World That Shrugged Off Its Own Tariffs</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.imf.org/en/publications/weo/issues/2026/01/19/world-economic-outlook-update-january-2026">IMF</a>, <a href="https://www.taipeitimes.com/News/biz/archives/2026/01/20/2003850876">Taipei Times</a></span>
+                <span class="section-date">Jan 19, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The <a href="https://www.imf.org">International Monetary Fund</a> raised its 2026 global growth forecast to 3.3%&mdash;up 0.2 percentage points from October&mdash;in its <a href="https://www.imf.org/en/publications/weo/issues/2026/01/19/world-economic-outlook-update-january-2026">January World Economic Outlook Update</a>. The headline says "steady amid divergent forces." Translation: the AI investment boom is papering over the cracks that tariff disruptions opened.</p>
+
+                <p>The US leads with a 2.4% forecast (revised up 0.3pp), propelled by a post-shutdown rebound and continued fiscal stimulus. China was upgraded to 4.5% after a 10-percentage-point reduction in US tariff rates on Chinese goods. India runs hot at 6.4%. The Euro area gets a modest 1.3%. The standout downgrade: Brazil, cut 0.3pp to 1.6%, battered by tighter monetary policy fighting an inflation flare-up.</p>
+
+                <p>The risk section reads like a venture investor's nightmare: "AI firms could fail to deliver earnings commensurate with their lofty valuations." The IMF modeled a scenario where a moderate AI stock correction tightens financial conditions and knocks 0.4% off global growth. Meanwhile, global inflation continues its descent from 4.1% to 3.8%, but the US path back to target remains "more gradual." The subtext for portfolio managers: growth is sturdy but fragile, and the AI trade carries systemic risk that the IMF is now explicitly pricing.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-imf-growth.png" alt="Grouped bar chart comparing IMF October 2025 forecasts versus January 2026 upgrades across major economies">
+                    <figcaption>IMF upgraded most economies but downgraded Brazil. The US leads developed markets at 2.4%, while India powers ahead at 6.4%.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Vanishing Risk Premium -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-risk-premium.png" alt="Silhouette balancing on a razor-thin tightrope between skyscrapers with teal neon glow">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">When the Safety Net Vanishes: The Zero Risk Premium Problem</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-1-6-the-second-peak-shiller-pe-hits-levels-seen-only-once-since-the-1870s">MarketMinute</a>, <a href="https://www.oppenheimer.com/news-media/2026/insights/oam/2026-market-outlook">Oppenheimer</a></span>
+                <span class="section-date">Jan 6, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Here's a number that should make every investor uncomfortable: 0.02%. That's the equity risk premium&mdash;the extra return stocks offer over risk-free Treasuries&mdash;as of January 2026. It's the lowest reading since the height of the dot-com bubble. The S&P 500's forward earnings yield sits at near parity with the 10-year Treasury. You are being paid essentially nothing for the privilege of holding equity volatility.</p>
+
+                <p>The Shiller CAPE ratio has climbed to 40.58&mdash;a threshold crossed only once in 155 years of market data, during 1999-2000. That "normalization" produced a 50% drawdown and a lost decade. But 2026 isn't 2000. Corporate profitability is structurally higher. AI capex is creating genuine productive capacity, not vaporware. <a href="https://www.oppenheimer.com">Oppenheimer</a> argues earnings will hit $305/share (up from $275), justifying an 8,100 target on a 26.5x multiple.</p>
+
+                <p>The counterpoint from <a href="https://www.morningstar.com">Morningstar</a> is sobering: AI stocks need even stronger growth to support their current prices, and their base case for AI growth sits below market consensus. The pragmatic investor response isn't to flee equities but to rebalance aggressively. International markets trade at 15x forward earnings. Emerging markets at 13x. The <a href="https://www.ishares.com/us/products/244049/ishares-core-msci-emerging-markets-etf">iShares EM ETF</a> has absorbed nearly $6 billion in January alone&mdash;on pace for its largest monthly inflow since 2012. When the safety net vanishes, smart money doesn't stand still. It moves to where the margin exists.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-erp-cape.png" alt="Dual-axis line chart showing equity risk premium declining to near zero while Shiller CAPE ratio rises to 40.58">
+                    <figcaption>The equity risk premium has compressed to levels last seen during the dot-com era, while the Shiller CAPE approaches its all-time high of 44.2 from January 2000.</figcaption>
+                </figure>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Week Ahead</h2>
+            <p class="closing-text">Four Mag 7 earnings. A Fed decision. And a market priced for perfection standing on its thinnest margin of safety in a generation. The broadening thesis has data behind it now&mdash;69% of S&P 500 stocks above their 50-day moving average, mid-caps printing records, emerging markets absorbing billions. But breadth doesn't insulate against valuation risk. The question isn't whether 2026 will be a good year for stocks. Every major bank says it will. The question is <em>which</em> stocks, and whether you're positioned for the rotation that's already underway. The bull market isn't ending. It's evolving. Make sure your portfolio is, too.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Weekly</span>
+        </div>
+    </footer>
+</body>
+</html>

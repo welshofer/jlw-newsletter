@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Wins the AI War? — January 28, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan for tech forecasting */
+            --bg: #FDFBF7;
+            --bg-alt: #F0F5F7;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #0A5A72;
+            --border: #D8E2E8;
+            --border-strong: #B8CCD6;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0E1419;
+                --bg-alt: #152028;
+                --text: #E8EEF2;
+                --text-secondary: #8BA3B3;
+                --accent: #2AAFD4;
+                --accent-soft: rgba(42, 175, 212, 0.15);
+                --accent-hover: #3DC4E8;
+                --border: #1E3040;
+                --border-strong: #2A4050;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "\2022";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">2026-01-28</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">AI &middot; Geopolitics &middot; Forecasting</span>
+            <h1 class="hero-title">Who Wins the AI War?</h1>
+            <p class="hero-subtitle">Seven companies are spending hundreds of billions to own intelligence itself. In January 2026, the scoreboard shifted in ways nobody predicted.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/who-wins-the-ai-war.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-ai-war.png" alt="Epic chess board with AI company logos as pieces, teal and electric blue energy crackling between them">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- SECTION 1: DeepSeek + Geopolitics (Jan 27 + Jan 13) -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-deepseek.png" alt="Chinese dragon made of circuit boards emerging from a server rack">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">The $25 Billion Dragon That Broke the Scoreboard</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://scmp.com/tech/deepseek-jan-2026-impact">South China Morning Post</a></span>
+                <span class="section-date">January 27, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Here's the thing about the AI "war" — everyone assumed it was an arms race that only money could win. Then <a href="https://www.deepseek.com/">DeepSeek</a> showed up with a fraction of the compute budget and a model that beats <a href="https://openai.com/">OpenAI's</a> GPT-4.5 Turbo on coding and math benchmarks. At 40% of the inference cost. Running on consumer hardware you can buy at Best Buy.</p>
+
+                <p><a href="https://www.deepseek.com/">DeepSeek-V4</a> is an open-weight Mixture-of-Experts model with "Silent Reasoning" — an internal chain of thought that operates without the verbose step-by-step output that makes other reasoning models slow and expensive. It handles over a million tokens of context. And it emerged from a Chinese lab operating under US chip export controls that were specifically designed to prevent exactly this outcome.</p>
+
+                <div class="callout">
+                    <p>"The first fully sovereign reasoning model in terms of architecture and operation." That's how analysts described it. The chip ban strategy is cracking — not because China acquired banned chips, but because algorithmic efficiency turned out to be a potent counter to raw compute supremacy.</p>
+                </div>
+
+                <p>By January 27, the DeepSeek app had become a top download globally, and US officials were already scrambling to discuss new export controls targeting "reasoning model architectures" — a concept that barely existed in policy circles six months ago. The uncomfortable truth: you can't embargo math.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Anthropic $350B (Jan 20) -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-anthropic.png" alt="Fortress of safety shields with glowing brain at center, dollar signs floating upward">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">Safety Pays: Anthropic Hits $350 Billion</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://economictimes.com/tech/anthropic-valuation-jan-2026">Economic Times</a></span>
+                <span class="section-date">January 20, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Remember when "AI safety" was dismissed as a handbrake on innovation? <a href="https://www.anthropic.com/">Anthropic</a> just valued itself at $350 billion — nearly double the $183 billion from five months ago — and is projecting $18 billion in 2026 revenue. Some analysts see $55 billion by 2027. The "responsible AI" company is printing money faster than the "move fast and break things" crowd.</p>
+
+                <p>The secret isn't the safety research itself — it's what that research unlocked. Regulated industries like healthcare, finance, and government don't want the fastest model. They want the model their compliance team will sign off on. <a href="https://www.anthropic.com/">Claude for Healthcare</a>, launched January 11, targets enterprise hospital systems where a hallucination isn't an amusing quirk but a potential liability.</p>
+
+                <p>Then there's <a href="https://www.anthropic.com/">Claude Cowork</a> — an autonomous agent for complex desktop tasks that positions Anthropic not just as a chatbot vendor but as an operating system layer for knowledge work. The enterprise "safe harbor" positioning is a genuine competitive moat, and the revenue numbers prove the market agrees.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ai-valuations.png" alt="Bar chart comparing AI company valuations in January 2026">
+                    <figcaption>AI company valuations as of January 2026. OpenAI's IPO target leads at $1T, followed by Anthropic's $350B fundraise. Data: Economic Times, TechBuzz, analyst estimates.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 3: NVIDIA Acquires Groq (Jan 15) -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-nvidia-groq.png" alt="Giant green chip absorbing smaller glowing speed chip">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">NVIDIA Swallows Its Fastest Rival for $20 Billion</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://etcjournal.com/2026/01/nvidia-acquires-groq">ETC Journal</a></span>
+                <span class="section-date">January 15, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://www.nvidia.com/">NVIDIA</a> didn't just win the training compute race — it decided to buy the inference race too. The $20 billion acquisition of <a href="https://groq.com/">Groq</a> brings the Language Processing Unit (LPU) technology in-house, the same chips famous for generating tokens faster than you can read them.</p>
+
+                <p>This is a consolidation play with teeth. NVIDIA already dominates GPU-based training. Now by integrating Groq's inference-optimized architecture, they're positioning to own both sides of the compute equation. The message to competitors building custom inference chips: the incumbent just absorbed your most visible champion.</p>
+
+                <p>But here's the tension — every time NVIDIA consolidates further, it strengthens the case for DeepSeek-style algorithmic efficiency. Why pay NVIDIA's premium if a clever architecture can run on commodity hardware? The hardware moat and the software moat are locked in a race that neither can definitively win.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Google Gemini 3 Flash (Jan 13) -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-google-gemini.png" alt="Vast web connecting billions of devices to a central multicolored gemstone">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Google's Quiet Victory: Distribution Eats Benchmarks</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://riskinfo.ai/2026/01/google-gemini-updates">RiskInfo.ai</a></span>
+                <span class="section-date">January 13, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>While everyone argues about benchmark scores, <a href="https://deepmind.google/">Google DeepMind</a> is playing a fundamentally different game. <a href="https://deepmind.google/technologies/gemini/">Gemini 3 Flash</a> became the default model powering Google Search — which means it's now the most-used AI model on the planet, and most people using it don't even know.</p>
+
+                <p>Add to that: a multi-year deal to power <a href="https://www.apple.com/siri/">Apple's Siri</a>, Samsung committing to double Galaxy AI devices to 800 million using Gemini, and the open-weight release of <a href="https://deepmind.google/">MedGemma 1.5</a> for medical imaging. Google isn't trying to win the AI war by having the smartest model. It's trying to win by being the AI running inside every device you already own.</p>
+
+                <p>And then there's the elephant in the room: Gemini 4. Rumored to be a 100 trillion parameter model, Google is maintaining what one analyst called "a loud silence." If even half the rumors are true, the current benchmark leaderboard is about to become irrelevant.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ai-revenue.png" alt="Grouped bar chart showing AI revenue race">
+                    <figcaption>Annual Run Rate comparison across leading AI companies, 2025 vs. 2026 projections. Google's Cloud AI division dwarfs pure-play AI labs in raw revenue. Data: analyst estimates, Economic Times, ByteIota.</figcaption>
+                </figure>
+            </div>
+        </article>
+
+        <!-- SECTION 5: OpenAI Health + Codex (Jan 7) -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-openai.png" alt="Stethoscope with AI neural network wires, futuristic medical concept">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">OpenAI Wants to Be Your Doctor, Your Coder, and Your IPO of the Decade</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://byteiota.com/2026/01/07/openai-health-launch">ByteIota</a></span>
+                <span class="section-date">January 7, 2026</span>
+            </div>
+            <div class="section-body">
+                <p><a href="https://openai.com/">OpenAI</a> kicked off 2026 by launching ChatGPT Health — a consumer platform that integrates medical records and wellness apps — and then followed up with GPT-5.2-Codex going generally available in IDEs on January 26. They're simultaneously attacking healthcare, coding, and apparently consumer hardware (AI earbuds codenamed "Sweetpea" are reportedly coming later this year).</p>
+
+                <p>The numbers tell one story: $20 billion annual recurring revenue. Eyeing a $1 trillion valuation IPO in late 2026. But the body language tells another. <a href="https://twitter.com/sama">Sam Altman</a> reportedly issued a "code red" to refocus efforts against <a href="https://deepmind.google/">Google's Gemini</a>, suggesting internal anxiety that distribution advantages are starting to matter more than model quality.</p>
+
+                <p>OpenAI's strategy is clear: go vertical, go consumer, go public. The question is whether spreading across healthcare, coding, hardware, and an IPO simultaneously is ambition or distraction. History suggests that trying to be everything to everyone usually means being best at nothing — but then again, that's what people said about Google in 2005.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Meta Nuclear Energy (Jan 5) -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-meta-nuclear.png" alt="Nuclear cooling tower glowing with blue energy, connected to server racks">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">Meta Buys 6.6 Gigawatts of Nuclear Power (Yes, Nuclear)</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://amiko.consulting/2026/01/meta-nuclear-deal">Amiko Consulting</a></span>
+                <span class="section-date">January 5, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Forget model architectures for a moment. The AI war's actual bottleneck in 2026 isn't parameters or data — it's watts. <a href="https://about.meta.com/">Meta</a> signed contracts for 6.6 gigawatts of nuclear energy from <a href="https://www.vistracorp.com/">Vistra</a>, <a href="https://www.terrapower.com/">TerraPower</a>, and <a href="https://oklo.com/">Oklo</a>. That's enough to power a mid-sized city, and it's all earmarked for the Prometheus AI Supercluster in Ohio.</p>
+
+                <p>This is one of the largest corporate energy deals in history — and it's specifically for AI compute. The implicit admission: <a href="https://about.meta.com/">Meta</a>'s open-source AI strategy (Llama models) requires compute-at-scale that the existing energy grid simply cannot guarantee. So they're building their own.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-ai-energy.png" alt="Bar chart showing AI company energy commitments in gigawatts">
+                    <figcaption>Energy infrastructure commitments by major AI companies. Meta leads with 6.6 GW nuclear, followed by Microsoft and Google with diversified portfolios. The AI industry is becoming an energy industry. Data: Amiko Consulting, industry reports.</figcaption>
+                </figure>
+
+                <p>When tech companies start building nuclear power plants, you know the stakes have changed. The AI war isn't just about who has the best algorithm — it's about who can physically power the compute required to train and serve next-generation models. The companies that secured energy deals in 2025-2026 may have the most durable competitive advantage of all.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 7: Agentic AI Rise (Jan 1) -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-07-agentic.png" alt="Robot hand reaching from laptop to shake human hand, floating task cards around">
+            </figure>
+            <span class="section-number">07</span>
+            <h2 class="section-title">The Chatbot Is Dead. Long Live the Agent.</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://demandsage.com/2026/01/agentic-ai-report">DemandSage</a></span>
+                <span class="section-date">January 1, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>If 2025 was the year of "reasoning models," 2026 is the year of "agentic AI" — systems that don't just answer your questions but plan, act, and coordinate on your behalf. The shift isn't incremental. It's a category change in what AI products actually do.</p>
+
+                <p><a href="https://deepmind.google/">Google</a> launched GenTabs (internally "Disco"), a browser agent that navigates websites and completes tasks. <a href="https://www.anthropic.com/">Anthropic</a> shipped Claude Cowork for autonomous desktop operations. <a href="https://www.nvidia.com/">NVIDIA</a> dropped Cosmos at CES 2026 — foundation models specifically for "physical AI" meaning robots that can navigate and manipulate the real world.</p>
+
+                <p>The implication for the AI war is profound. When AI shifts from "ask and receive" to "assign and forget," the winner isn't necessarily the company with the best language model. It's the company with the best execution framework — the one whose agents can reliably complete 50-step workflows without hallucinating in step 23. That's an entirely different engineering challenge, and the leaderboard is wide open.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">So Who's Winning?</h2>
+            <p class="closing-text">Everyone and no one. Google has distribution. OpenAI has brand. Anthropic has enterprise trust. DeepSeek has efficiency. Meta has energy. NVIDIA has the hardware layer. The uncomfortable answer is that the AI war in 2026 doesn't have a single front — it has six. And the company that wins the final battle may be the one nobody's talking about yet, because the real moat isn't intelligence. It's infrastructure, distribution, and the ability to ship agents that don't break. The scoreboard will look completely different in six months. Set your watch.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+            <div class="footer-links">
+                <a href="index.html">Archive</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

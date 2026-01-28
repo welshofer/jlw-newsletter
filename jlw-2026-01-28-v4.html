@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vibes Are Shifting — January 28, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette - teal/cyan tech theme */
+            --bg: #FDFBF7;
+            --bg-alt: #F0F5F7;
+            --text: #1A1815;
+            --text-secondary: #4D5C6A;
+            --accent: #0D6E8A;
+            --accent-soft: rgba(13, 110, 138, 0.12);
+            --accent-hover: #0A5670;
+            --border: #D8E2E8;
+            --border-strong: #B8CCD6;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0E1214;
+                --bg-alt: #151B1E;
+                --text: #E8EDF0;
+                --text-secondary: #8A9BA8;
+                --accent: #2CADD4;
+                --accent-soft: rgba(44, 173, 212, 0.15);
+                --accent-hover: #3CC0E8;
+                --border: #1E2A30;
+                --border-strong: #2A3940;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "•";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-alt);
+            padding: var(--space-md);
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">2026-01-28</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Vibe Coding</span>
+            <h1 class="hero-title">The Vibes Are Shifting</h1>
+            <p class="hero-subtitle">Vibe coding grew up this week. Encrypted enterprise vaults, open-source insurgents, and a pointed question: is the thing that makes you productive quietly killing the commons?</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-vibes-are-shifting.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-vibe-coding.png" alt="Abstract landscape of code fragments dissolving into light, representing the convergence of human creativity and AI-assisted development">
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline visualization -->
+    <div style="max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-md) var(--space-lg);">
+        <figure class="chart">
+            <img src="images/chart-timeline.png" alt="Timeline showing six major vibe coding developments across the week of January 21-28, 2026">
+            <figcaption>A single week produced six major developments across the vibe coding landscape — from platform plays to philosophical critiques.</figcaption>
+        </figure>
+    </div>
+
+    <main class="content">
+        <!-- SECTION 1: Cursor Encrypted Indexing -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-cursor-encryption.png" alt="Glowing crystalline vault of Merkle tree nodes containing encrypted code symbols">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">Cursor Cracks the Enterprise Padlock</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.adwait.inc/2026/01/27/cursor-implements-new-cryptographic-architecture-for-codebase-indexing.html">Adwait Inc.</a></span>
+                <span class="section-date">Jan 27, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>The single biggest objection enterprises have lobbed at AI coding tools since day one has been security. "We can't send our proprietary code to your servers." It's a reasonable concern. And <a href="https://cursor.com">Cursor</a> just obliterated it.</p>
+
+                <p>The <a href="https://anysphere.inc">Anysphere</a>-built editor rolled out a new cryptographic architecture that uses Merkle trees to build a semantic understanding of codebases <em>without ever storing the source code</em>. Zero persistent storage. The AI can reason about your code's structure, patterns, and relationships — but it never holds onto the actual text. It's the kind of technical elegance that makes security teams exhale.</p>
+
+                <p>The numbers back up the shift. Over at <a href="https://salesforce.com">Salesforce</a>, 20,000 engineers — 90% of their entire workforce — are now using Cursor daily. That's not a pilot program. That's an institutional bet.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-cursor-enterprise.png" alt="Bar chart showing Cursor adoption at Salesforce: 22,000 total engineers, 20,000 daily active Cursor users (90%), 72% code reviewed by AI, 0 security incidents">
+                    <figcaption>Salesforce's Cursor deployment: 90% daily active usage across 22,000 engineers with zero security incidents reported.</figcaption>
+                </figure>
+
+                <p>And the timing isn't coincidental. The same day, <a href="https://www.infosys.com">Infosys</a> announced a strategic partnership with Cursor to embed it across their global client engagements. A new Center of Excellence will integrate Cursor into Infosys's delivery pipeline. When the world's largest IT services firms start baking your tool into their standard operating procedure, you've crossed from "developer favorite" to "enterprise infrastructure."</p>
+
+                <div class="callout">
+                    <p>"We've effectively decoupled semantic search from source code storage. For our enterprise clients, this means they can leverage state-of-the-art AI capabilities on their most sensitive codebases with zero security trade-offs."</p>
+                </div>
+
+                <p>Watch this space. The zero-storage architecture isn't just a feature — it's a competitive moat. Every other AI coding tool now has to answer the question Cursor just made irrelevant.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Replit Mobile Apps -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-replit-mobile.png" alt="Smartphone screen blooming into a garden of app icons, natural language transforming into applications">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">Replit Ships the "Describe It, Ship It" Pipeline for Mobile</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.indiatoday.in/technology/news/story/replit-now-lets-you-create-and-publish-apple-apps-with-simple-english-prompts-2494199-2026-01-27">India Today</a></span>
+                <span class="section-date">Jan 27, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Andrej Karpathy's original vision for vibe coding was about web apps — describe what you want, watch it materialize. <a href="https://replit.com">Replit</a> just extended that vision to mobile, and the implications are significant.</p>
+
+                <p>The new feature lets users describe an iOS app in plain English, and <a href="https://replit.com/ai">Replit Agent</a> handles everything: code generation, project scaffolding, UI assembly, and — here's the kicker — <em>App Store submission</em>. The entire pipeline from idea to published app, managed by an AI agent.</p>
+
+                <p>This comes on the heels of Replit's $400 million funding round at a $9 billion valuation, which puts them in rarefied air alongside Cursor's parent company Anysphere at the same valuation. The vibe coding sector now has two $9B companies, and they're attacking the problem from opposite ends: Cursor optimizes for professional developers who want to go faster; Replit optimizes for people who couldn't code at all.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-valuations.png" alt="Horizontal bar chart comparing AI coding tool valuations: Replit $9B, Cursor $9B, Windsurf $3B, Bolt $2B, Lovable $350M">
+                    <figcaption>The AI coding tool landscape, January 2026. Two $9B leaders have emerged with distinctly different strategies.</figcaption>
+                </figure>
+
+                <p>The question nobody is asking loudly enough: what happens to App Store quality when the barrier to publishing drops to a conversation? Apple's review process was already strained. This could be the stress test it wasn't designed for.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: SERA Open Source -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-sera-opensource.png" alt="Open book radiating streams of code branching into a community network">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">Ai2 Drops SERA, and the Open-Source Counter-Offensive Begins</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://aibusiness.com/ml/ai2-launches-sera-an-open-source-family-of-coding-agents">AI Business</a></span>
+                <span class="section-date">Jan 27, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Every major AI coding tool is proprietary. Copilot is Microsoft's. Cursor runs on closed models. Claude Code is Anthropic's. The entire vibe coding revolution has been built on walled gardens.</p>
+
+                <p>The <a href="https://allenai.org">Allen Institute for AI</a> (Ai2) just fired a shot across that bow with <strong>SERA</strong> — Soft-Verified Efficient Repository Agents. It's a family of open-source coding agents covering the full development lifecycle: generation, review, debugging, maintenance, and explanation. All open. All community-driven.</p>
+
+                <p>The timing is pointed, coming the same week as the "Vibe Coding Kills Open Source" paper (more on that below). Ai2 is essentially arguing the opposite thesis: that AI coding tools <em>can</em> strengthen the commons, provided they're built in the open.</p>
+
+                <div class="callout">
+                    <p>"We believe that the future of AI-powered software development should be open and accessible to everyone. SERA is our contribution to that vision, providing a powerful, transparent, and community-driven alternative to proprietary models."</p>
+                </div>
+
+                <p>Whether SERA can compete with the polish of Cursor or the distribution of Copilot remains to be seen. But its existence changes the negotiating dynamics. When there's a credible open-source alternative, the proprietary players have to justify their premium — and that's healthy for everyone.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Copilot C++ Modernization -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-cpp-modern.png" alt="Ancient stone architecture transforming into modern glass and steel, C++ symbols morphing into modern code">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Copilot Gets a Hard Hat for C++ Modernization</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://devblogs.microsoft.com/cppblog/github-copilot-for-c-app-modernization-now-in-public-preview/">Microsoft Developer Blogs</a></span>
+                <span class="section-date">Jan 27, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>Most vibe coding coverage focuses on greenfield development — building new things from scratch. But the real money in enterprise software is maintenance. Specifically, modernizing the millions of lines of legacy C++ that silently power banking systems, automotive firmware, and infrastructure software.</p>
+
+                <p><a href="https://github.com/features/copilot">GitHub Copilot</a> now has a specialized agent for exactly this problem. Launched in public preview alongside <a href="https://visualstudio.microsoft.com/vs/preview/">Visual Studio 2026</a>, it handles CMake projects, understands legacy patterns, and — critically — reduces the hallucination rate that made earlier AI tools dangerous for safety-critical codebases.</p>
+
+                <p>This is vibe coding's blue-collar moment. It's not glamorous. Nobody's tweeting about it. But automating the tedious, error-prone work of upgrading <code>auto_ptr</code> to <code>unique_ptr</code> across a million-line codebase? That's where AI delivers genuine, measurable ROI.</p>
+
+                <p>The pattern is clear: general-purpose AI assistants are specializing. Instead of one tool that does everything adequately, we're getting purpose-built agents that do specific things exceptionally well. Expect more vertical AI coding tools in 2026.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Open Source Critique -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-oss-critique.png" alt="A tree with code-branch roots, some thriving in teal light while others fade to grey">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Paper That Says Vibe Coding Is Starving Open Source</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.theregister.com/2026/01/23/vibe_coding_kills_open_source/">The Register</a></span>
+                <span class="section-date">Jan 23, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>A pre-print paper titled "Vibe Coding Kills Open Source" is making the rounds, and the argument is uncomfortable precisely because it's plausible.</p>
+
+                <p>The thesis: when AI gives developers a "good enough" solution instantly, the motivation to engage with open-source communities evaporates. Why file a bug report when the AI can work around it? Why submit a patch when Copilot already generated a fix? Why read the documentation when you can just describe what you want?</p>
+
+                <div class="callout">
+                    <p>"The symbiotic relationship between user and maintainer is breaking down. When AI provides the 'good enough' solution, the motivation to file a bug report, submit a patch, or engage with the community diminishes, starving open source of its lifeblood."</p>
+                </div>
+
+                <p>The counterargument — that AI lowers the barrier to contribution — has merit, but it's theoretical. The paper's evidence, drawn from GitHub contribution patterns over the past year, suggests engagement is measurably declining in projects where AI-generated code is prevalent.</p>
+
+                <p>This is the kind of second-order problem that doesn't show up until it's a crisis. The entire AI coding ecosystem is built on open-source foundations: transformer architectures, training datasets, package ecosystems. If the tools that consume open source also discourage contributing to it, we're looking at a slow-motion tragedy of the commons. SERA's launch (section 03) reads differently in this context.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: Copilot SDK -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-copilot-sdk.png" alt="SDK box opening to reveal glowing modular building blocks connecting into diverse applications">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">GitHub Turns Copilot Into a Platform With Its New SDK</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.infoworld.com/article/3712339/github-releases-copilot-sdk-to-bring-ai-agents-to-any-application.html">InfoWorld</a></span>
+                <span class="section-date">Jan 22, 2026</span>
+            </div>
+            <div class="section-body">
+                <p>This is the week's most strategically significant move, even if it got less attention than the flashier announcements. <a href="https://github.com">GitHub</a> released a technical preview of the <strong>Copilot SDK</strong> — a toolkit that lets developers embed Copilot's "agentic core" into any application.</p>
+
+                <p>Node.js, Python, Go, .NET — pick your language, plug in the SDK, and your application can now reason about code the way Copilot does. Want to build a code-review agent for your internal tools? A documentation generator that understands your codebase? A CI pipeline that explains failures in plain English? The SDK makes all of this possible.</p>
+
+                <p>This is <a href="https://microsoft.com">Microsoft</a>'s platform play. They're not just selling a coding assistant — they're becoming the runtime for AI-powered development tools. It's the same strategy that made Azure dominant: don't just build the product, build the platform that other products run on.</p>
+
+                <p>For the vibe coding ecosystem, this creates an interesting dynamic. The SDK could spawn a new generation of specialized tools (like the C++ modernizer in section 04) built on a common foundation. Or it could further entrench Microsoft's dominance. Probably both.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Vibes Going Forward</h2>
+            <p class="closing-text">Six stories. One unmistakable pattern: vibe coding is no longer a novelty — it's infrastructure. The interesting questions have shifted from "does this work?" to "who controls it?", "who benefits?", and "what breaks when everyone uses it?" The tools are getting specialized, the enterprise walls are falling, and the open-source community is sounding alarms worth hearing. Next week, expect the conversation to sharpen further as developers start building on the Copilot SDK and the SERA benchmarks start rolling in.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+        </div>
+    </footer>
+</body>
+</html>

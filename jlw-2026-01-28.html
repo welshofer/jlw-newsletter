@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Economy That Ate Itself — January 28, 2026</title>
+
+    <!-- Fonts: Editorial elegance meets technical clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Core palette — deep amber/sepia for Depression-era gravitas */
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #8B6914;
+            --accent-soft: rgba(139, 105, 20, 0.12);
+            --accent-hover: #6D5210;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            /* Typography scale */
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            /* Layout */
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        /* Dark mode variant */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #C99A2E;
+                --accent-soft: rgba(201, 154, 46, 0.15);
+                --accent-hover: #D9AA3E;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .newsletter-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-md) auto 0;
+            max-width: 400px;
+        }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.04),
+                0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           CONTENT SECTIONS
+           ======================================== */
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .section-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .section-source {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-source a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-source a:hover {
+            border-color: var(--accent);
+        }
+
+        .section-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+
+        .section-date::before {
+            content: "\2022";
+            margin: 0 0.5em;
+        }
+
+        .section-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .section-body a:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        .section-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article images */
+        .article-image {
+            margin: 0 0 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Charts and data visualizations */
+        .chart {
+            margin: var(--space-md) 0;
+            padding: 0;
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .chart figcaption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+            padding: 0 var(--space-xs);
+            line-height: 1.5;
+        }
+
+        /* Timeline */
+        .timeline {
+            background: var(--bg-alt);
+            border-radius: 8px;
+            padding: var(--space-md) var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        .timeline h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-md);
+            color: var(--text);
+        }
+        .timeline-item {
+            display: flex;
+            gap: var(--space-md);
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+        .timeline-year {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent);
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Code/technical snippets */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            background: var(--bg-alt);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           CLOSING / FOOTER
+           ======================================== */
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-md) var(--space-xl);
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .section {
+                padding: var(--space-lg) 0;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: var(--space-xs);
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+           ======================================== */
+
+        @media print {
+            .header,
+            .footer {
+                display: none;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="newsletter-brand">JLW Newsletter</a>
+            <time class="newsletter-date">January 28, 2026</time>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-label">Economic History</span>
+            <h1 class="hero-title">The Economy That Ate Itself</h1>
+            <p class="hero-subtitle">How a speculative binge, institutional cowardice, and the golden straitjacket turned a stock market correction into the worst economic catastrophe in modern history.</p>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span class="audio-player-label">Listen</span>
+                <audio controls preload="metadata">
+                    <source src="audio/the-economy-that-ate-itself.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero-great-depression.jpg" alt="Art Deco Wall Street canyon with ticker tape falling and storm clouds gathering, 1929">
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <!-- SECTION 1: The Speculative Bubble -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-01-speculation.jpg" alt="Hands reaching for stock certificates floating like balloons in golden light turning to shadow">
+            </figure>
+            <span class="section-number">01</span>
+            <h2 class="section-title">The Fever Dream: When Everyone Was a Genius</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.hoover.org/research/great-depression-may-have-started-much-earlier-we-thought">Hoover Institution / UCLA Economics</a></span>
+                <span class="section-date">October 2024</span>
+            </div>
+            <div class="section-body">
+                <p>Here's the myth: America was prosperous in the 1920s, and then the stock market crashed and ruined everything. Here's the reality: the Roaring Twenties were already rotting from the inside.</p>
+
+                <p>New research from the <a href="https://www.hoover.org">Hoover Institution</a> and <a href="https://economics.ucla.edu">UCLA Economics</a> uses a three-sector general equilibrium model to show that labor, investment, and output were <em>already significantly depressed</em> relative to theoretical predictions well before Black Thursday. The "Roaring Twenties" narrative, it turns out, masks a structural break in the economy that made collapse not just possible but probable.</p>
+
+                <p>The speculative mania layered on top of this weakness was breathtaking. By 1929, margin buying had become a national sport. You could purchase $10,000 worth of stock with just $1,000 down. <a href="https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average">The Dow Jones Industrial Average</a> had roughly doubled between 1927 and its September 1929 peak of 381. Shoe-shine boys gave stock tips. <a href="https://en.wikipedia.org/wiki/Joseph_P._Kennedy_Sr.">Joseph Kennedy</a> famously said he knew it was time to get out when his shoe-shine boy started offering stock advice.</p>
+
+                <div class="callout">
+                    <p>"The genesis of the Great Depression might lie in the 1920s economy... reflecting substantial changes in business organization that reduced demand for labor." — Hoover Institution, 2024</p>
+                </div>
+
+                <p>Then came Black Thursday (October 24, 1929) and Black Tuesday (October 29). The Dow would eventually lose 89% of its peak value, bottoming at 41.22 in July 1932. But the crash didn't <em>cause</em> the Depression — it detonated structural explosives that were already wired throughout the economy. The speculation merely determined the timing and the violence of the initial shock.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 2: Banking Collapse -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-02-banks.jpg" alt="1930s bank with CLOSED sign, long line of depositors, empty vault visible">
+            </figure>
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Dominoes Fall: 9,000 Banks and No Safety Net</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.aeaweb.org/articles?id=10.1257/jep.39.4">Journal of Economic Perspectives / Ben Bernanke</a></span>
+                <span class="section-date">Fall 2025</span>
+            </div>
+            <div class="section-body">
+                <p>If the stock market crash was the gunshot, the banking crisis was the hemorrhage. Between 1930 and 1933, approximately 9,000 American banks failed — roughly 40% of all banks in the country. No federal deposit insurance existed. When your bank closed, your savings were gone. Not frozen. <em>Gone.</em></p>
+
+                <p>Former <a href="https://www.federalreserve.gov">Federal Reserve</a> Chair <a href="https://en.wikipedia.org/wiki/Ben_Bernanke">Ben Bernanke</a> — whose entire academic career was built on studying this catastrophe — has published an updated analysis reinforcing his "financial accelerator" model. The mechanism is devastatingly simple: bank failures destroyed credit markets. Without credit, businesses couldn't operate, farmers couldn't plant, consumers couldn't buy. The real economy didn't just slow down; the transmission mechanism for economic activity itself was severed.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-banks-djia.png" alt="Dual-axis chart showing bank failures rising while the Dow Jones Industrial Average plummeted from 1928 to 1933">
+                    <figcaption>The cascade was self-reinforcing: stock losses triggered bank runs, bank failures destroyed credit, credit destruction crashed asset prices further. Data: FDIC Historical Statistics; Dow Jones & Company.</figcaption>
+                </figure>
+
+                <p>The first major wave hit in late 1930 when the <a href="https://en.wikipedia.org/wiki/Bank_of_United_States">Bank of United States</a> in New York collapsed — taking $200 million in deposits with it (roughly $4 billion in today's money). Its misleading name caused international panic; foreign depositors assumed the U.S. government itself was failing. The contagion spread. Each bank run confirmed the rationality of the last one. The worst single year was 1933, when over 4,000 banks collapsed in the months before <a href="https://en.wikipedia.org/wiki/Franklin_D._Roosevelt">Roosevelt's</a> inauguration.</p>
+
+                <div class="callout">
+                    <p>"Financial frictions... played a central role in the depth and persistence of the Great Depression." — Ben Bernanke, Journal of Economic Perspectives, 2025</p>
+                </div>
+
+                <p>Bernanke's key insight, now strengthened with modern data: the Depression lasted as long as it did not because of the initial shock, but because broken credit markets couldn't heal themselves. The market failure was in information — no one knew which banks were solvent, so rational people assumed none were. This is why the FDIC, created in 1933, remains arguably the single most important financial reform of the 20th century.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 3: The Fed's Catastrophic Failure -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-03-fed.jpg" alt="Federal Reserve building as fortress with gates closed, currency flowing away">
+            </figure>
+            <span class="section-number">03</span>
+            <h2 class="section-title">The Arsonist Fire Department: How the Fed Made Everything Worse</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://stevekeen.substack.com/p/what-caused-the-great-depression">Steve Keen / The Keen Perspective</a></span>
+                <span class="section-date">November 2025</span>
+            </div>
+            <div class="section-body">
+                <p>The Federal Reserve System had been created in 1913 specifically to prevent financial panics. Seventeen years later, it presided over the worst financial panic in American history. Not because it lacked tools — but because it <em>chose not to use them</em>.</p>
+
+                <p>The orthodox narrative comes from <a href="https://en.wikipedia.org/wiki/Milton_Friedman">Milton Friedman</a> and <a href="https://en.wikipedia.org/wiki/Anna_Schwartz">Anna Schwartz</a>'s landmark <em><a href="https://en.wikipedia.org/wiki/A_Monetary_History_of_the_United_States">A Monetary History of the United States</a></em> (1963): the Fed allowed the money supply to contract by roughly one-third between 1929 and 1933. It raised interest rates when it should have slashed them. It refused to act as lender of last resort when banks were failing by the hundreds. This was policy malpractice on a civilizational scale.</p>
+
+                <p>But economist <a href="https://en.wikipedia.org/wiki/Steve_Keen">Steve Keen</a> now offers a compelling counter-narrative. Using <a href="https://en.wikipedia.org/wiki/Hyman_Minsky">Hyman Minsky</a>'s Financial Instability Hypothesis, Keen demonstrates that credit-based demand collapsed <em>before</em> the money supply did — making private debt, not public money supply, the primary driver. The Fed's failure wasn't just that it tightened too much; it's that the institution was watching the wrong dashboard entirely.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-gdp-collapse.png" alt="Line chart showing U.S. Real GDP collapse from $103.6B in 1929 to $56.4B in 1933, a 46% decline">
+                    <figcaption>Real GDP fell 46% from peak to trough — a contraction so severe it took until 1940 to recover pre-crash output levels. Source: Bureau of Economic Analysis.</figcaption>
+                </figure>
+
+                <div class="callout">
+                    <p>"The collapse in credit-based demand... preceded the fall in the money supply, making debt the driver, not the passenger." — Steve Keen, 2025</p>
+                </div>
+
+                <p>This matters today because central bankers still debate whether to watch money supply or private credit. Keen argues that the 2008 financial crisis repeated the same fundamental error — institutions focused on monetary aggregates while private debt built to catastrophic levels. The Fed's Depression-era failure wasn't a one-time institutional mistake. It was a paradigm failure that keeps recurring.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 4: Smoot-Hawley and Trade Collapse -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-04-trade.jpg" alt="Cargo ships frozen in harbor with walls being built across the ocean, trade routes fading">
+            </figure>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Building Walls in a Burning House: The Trade Catastrophe</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.bankofengland.co.uk/speech/2026/january/driving-over-the-peak-or-a-false-summit">Bank of England / Alan Taylor Speech</a></span>
+                <span class="section-date">January 2026</span>
+            </div>
+            <div class="section-body">
+                <p>In June 1930, as the economy was already contracting, President <a href="https://en.wikipedia.org/wiki/Herbert_Hoover">Herbert Hoover</a> signed the <a href="https://en.wikipedia.org/wiki/Smoot%E2%80%93Hawley_Tariff_Act">Smoot-Hawley Tariff Act</a> into law. Over 1,000 economists had signed an open letter begging him not to. He signed it anyway. The result was the most spectacular own-goal in the history of trade policy.</p>
+
+                <p>Smoot-Hawley raised tariffs on over 20,000 imported goods to record levels. Trading partners didn't absorb the blow quietly — they retaliated. Canada, Britain, France, Germany, and dozens of other nations erected their own tariff walls. World trade volume collapsed by approximately 65% between 1929 and 1934. What had been a domestic banking crisis metastasized into a global depression.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-trade-collapse.png" alt="Line chart showing world trade volume index falling from 100 in 1929 to 35 in 1933">
+                    <figcaption>World trade didn't just decline — it disintegrated. The 65% collapse turned a financial crisis into a global catastrophe. Source: League of Nations World Trade Statistics.</figcaption>
+                </figure>
+
+                <p>A January 2026 speech by <a href="https://www.bankofengland.co.uk">Bank of England</a> MPC member <a href="https://en.wikipedia.org/wiki/Alan_M._Taylor">Alan Taylor</a> draws explicit parallels to today's trade environment. Taylor warns that the 1930s trade collapse was "man-made, not technological" — and argues that current "geoeconomic fragmentation" carries similar risks. The lesson isn't subtle: tariffs imposed during an economic downturn don't protect domestic industry; they accelerate the collapse of the global demand that domestic industry depends on.</p>
+
+                <p>Research from <a href="https://academic.oup.com/ej">The Economic Journal</a> by <a href="https://www.socsci.uci.edu/~varthi/">Vellore Arthi</a> (UC Irvine) adds a critical dimension often missing from Western-centric accounts: protectionism devastated the developing world even more brutally. Colonial economies dependent on commodity exports — India's cotton, Chile's copper, Brazil's coffee — saw their markets evaporate. The Depression wasn't just a North Atlantic affair. It was a global contagion, and trade policy was the vector.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 5: Structural Inequality -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-05-inequality.jpg" alt="Split scene: 1920s luxury party on left, breadline and empty factory on right, divided by cracking golden mirror">
+            </figure>
+            <span class="section-number">05</span>
+            <h2 class="section-title">The Penthouse and the Breadline: Inequality as Accelerant</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://www.nber.org/papers/w33202">NBER Working Paper 33202</a></span>
+                <span class="section-date">November 2024</span>
+            </div>
+            <div class="section-body">
+                <p>By 1929, the top 1% of American families received approximately 24% of all income — a concentration not seen again until 2007 (the eve of another financial crisis; coincidence worth noting). The bottom 40% lived on less than $1,500 per year. The economy had become a champagne tower: the glass at the top overflowed while the base went dry.</p>
+
+                <p>This structural inequality created a fundamental demand problem. Mass production had created the capacity to make consumer goods at unprecedented scale — automobiles, radios, refrigerators, washing machines. But the workers producing those goods couldn't afford to buy them. Installment credit papered over the gap temporarily. By 1929, consumer debt had more than doubled over the decade, with over half of all automobiles sold on credit. When the downturn hit, that debt became an anchor.</p>
+
+                <figure class="chart">
+                    <img src="images/chart-unemployment.png" alt="Bar chart showing U.S. unemployment rising from 3.2% in 1929 to 24.9% in 1933">
+                    <figcaption>Unemployment hit 24.9% in 1933 — one in four American workers had no job. The crisis-level bars (red) lasted four consecutive years. Source: Historical Statistics of the United States.</figcaption>
+                </figure>
+
+                <p>A new <a href="https://www.nber.org">NBER</a> working paper analyzing 500 years of interest rate and growth data identifies the 1930s as a permanent "structural break" — the moment when the long-running relationship between returns on capital and economic growth fundamentally shifted. The paper links this to the rise of the modern welfare state: Social Security, unemployment insurance, deposit guarantees. These weren't just humanitarian responses. They were structural repairs to an economy that had demonstrated, catastrophically, what happens when the gains of growth concentrate at the top while the majority accumulates debt.</p>
+
+                <p>The agricultural sector had been depressed since the early 1920s, when post-WWI demand collapsed and farm prices cratered. By 1929, roughly 40% of Americans lived in rural areas, and most of them were already poor before the crash. The Depression didn't bring poverty to rural America — it made existing poverty unsurvivable.</p>
+            </div>
+        </article>
+
+        <!-- SECTION 6: The Gold Standard Trap -->
+        <article class="section">
+            <figure class="article-image">
+                <img src="images/article-06-gold.jpg" alt="Gold bars forming prison bars with a globe trapped behind them, chains of gold coins">
+            </figure>
+            <span class="section-number">06</span>
+            <h2 class="section-title">The Golden Straitjacket: How the Gold Standard Spread the Plague</h2>
+            <div class="section-meta">
+                <span class="section-source">via <a href="https://medium.com/@bradbutcher/are-we-headed-for-a-1930s-style-slowdown">Brad Butcher / Medium</a></span>
+                <span class="section-date">April 2025</span>
+            </div>
+            <div class="section-body">
+                <p>If Smoot-Hawley collapsed trade, the <a href="https://en.wikipedia.org/wiki/Gold_standard">gold standard</a> collapsed the ability to respond. Under the gold standard, every major currency was pegged to gold at a fixed rate. This meant governments couldn't freely expand the money supply, cut interest rates, or run deficits to stimulate demand — the very tools that modern economics considers essential for fighting recessions.</p>
+
+                <p>The gold standard turned a series of national crises into a synchronized global catastrophe. When the U.S. economy contracted and deflation set in, gold flowed toward the United States (investors seeking safety). Countries losing gold were forced to raise interest rates to defend their currency pegs — <em>exactly the opposite</em> of what their economies needed. Britain abandoned gold in September 1931; its economy began recovering almost immediately. The United States didn't leave gold until 1933. The correlation between "date of gold standard departure" and "date recovery began" is one of the cleanest findings in economic history.</p>
+
+                <p>International dimensions made everything worse. The <a href="https://en.wikipedia.org/wiki/Treaty_of_Versailles">Treaty of Versailles</a> had imposed massive reparation payments on Germany. Germany borrowed from American banks to pay reparations to France and Britain, who used the money to repay war debts to the United States. When American lending stopped after the crash, this circular flow of capital collapsed. Germany's economy was devastated — unemployment hit 30% — creating the political vacuum that brought the <a href="https://en.wikipedia.org/wiki/Nazi_Party">Nazi Party</a> to power in 1933.</p>
+
+                <div class="callout">
+                    <p>"The parallels in 'regime uncertainty' — where businesses hoard cash because policy changes are too erratic — are the most dangerous echo of 1931." — Brad Butcher, 2025</p>
+                </div>
+
+                <p>Japan offers the counter-example: it abandoned the gold standard early, pursued aggressive monetary and fiscal expansion, and experienced a comparatively mild and short depression. The lesson is now textbook economics, but it came at a civilization-altering price: rigid monetary systems don't just constrain recovery — they export crisis across borders with ruthless efficiency.</p>
+            </div>
+        </article>
+
+        <!-- TIMELINE -->
+        <div class="timeline">
+            <h3>The Descent: A Timeline</h3>
+            <div class="timeline-item">
+                <span class="timeline-year">1927-29</span>
+                <span class="timeline-desc">Speculative mania drives the Dow from ~150 to 381. Margin buying allows 10:1 leverage. Consumer debt doubles over the decade.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">Oct 1929</span>
+                <span class="timeline-desc">Black Thursday (Oct 24) and Black Tuesday (Oct 29). The Dow loses 25% in two days. $30 billion in market value evaporates.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1930</span>
+                <span class="timeline-desc">Bank of United States collapses ($200M in deposits). 1,352 banks fail. Smoot-Hawley Tariff Act signed in June. Trade retaliation begins.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1931</span>
+                <span class="timeline-desc">2,294 banks fail. Britain abandons gold standard (Sept). European banking crisis spreads. U.S. unemployment hits 15.9%.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1932</span>
+                <span class="timeline-desc">Dow hits bottom at 41.22 (July) — down 89% from peak. GDP has contracted 46%. World trade has fallen 65%. Unemployment reaches 23.6%.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1933</span>
+                <span class="timeline-desc">4,004 banks fail before FDR's inauguration (March). Roosevelt declares bank holiday, abandons gold standard, creates FDIC. Unemployment peaks at 24.9%.</span>
+            </div>
+        </div>
+
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The Lesson That Keeps Being Forgotten</h2>
+            <p class="closing-text">The Great Depression wasn't caused by any single failure. It was caused by all of them at once — and by institutions that froze when they should have acted. Speculative excess, banking fragility, monetary policy paralysis, trade war escalation, structural inequality, and the golden handcuffs of rigid monetary systems all reinforced each other in a death spiral that took a decade to escape. Every economic crisis since — 1973, 1997, 2008, 2020 — has rhymed with at least one of these causes. The question isn't whether history repeats. It's whether we're listening when it does.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JLW Newsletter</span>
+            <div class="footer-links">
+                <a href="index.html">Archive</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

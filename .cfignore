@@ -1,0 +1,3 @@
+# Exclude large WAV files from Cloudflare Pages deployment
+# MP3 versions are used instead
+audio/*.wav

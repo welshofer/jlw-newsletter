@@ -1,0 +1,43 @@
+# ============================================
+# CONTENT — never committed, deployed via Cloudflare wrangler
+# ============================================
+*.html
+*.mp3
+*.wav
+*.mp4
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.webm
+index.html
+podcast.rss
+newsletter.md
+audio/
+images/
+video/
+charts/
+newsletters/
+
+# ============================================
+# Build / Runtime
+# ============================================
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+charts-venv/
+.venv/
+node_modules/
+.wrangler/
+
+# ============================================
+# Debug / Environment
+# ============================================
+.DS_Store
+firebase-debug.log
+*.debug.log
+.env
+.env.local
+*.tmp

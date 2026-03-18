@@ -1,0 +1,21 @@
+{
+  "title": "Curiosities",
+  "description": "Weekly deep dives on tech topics\nFull text and accompanying images available at https://jlw-newsletter.pages.dev/index.html",
+  "link": "https://jlw-newsletter.pages.dev/",
+  "feed_url": "https://jlw-newsletter.pages.dev/podcast.rss",
+  "site_base_url": "https://jlw-newsletter.pages.dev",
+  "author": "Jay Welshofer",
+  "owner_name": "Jay Welshofer",
+  "owner_email": "welshofer@gmail.com",
+  "language": "en-US",
+  "image_url": "",
+  "category": "News",
+  "explicit": "no",
+  "audio_base_url": "https://jlw-newsletter.pages.dev/audio",
+  "audio_dir": "audio",
+  "wav_dir": "audio",
+  "output_path": "podcast.rss",
+  "episode_description_template": "Audio version of: {title}",
+  "title_overrides": {},
+  "description_overrides": {}
+}

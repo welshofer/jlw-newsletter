@@ -14,6 +14,9 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+EXTRACT_TEXT="$SCRIPT_DIR/extract_text.py"
+
 NOTEBOOKLM="/Users/welshofer/Developer/notebooklm-py/.venv/bin/notebooklm"
 DEPLOY_DIR="$HOME/clawd/jlw-newsletter"
 POLL_INTERVAL=120  # seconds between status checks
@@ -30,44 +33,14 @@ if [[ ! -f "$HTML_FILE" ]]; then
 fi
 
 # --- Extract title from HTML ---
-TITLE=$(python3 -c "
-import re, sys
-with open('$HTML_FILE') as f:
-    m = re.search(r'<h1[^>]*>(.*?)</h1>', f.read(), re.DOTALL)
-    print(m.group(1).strip() if m else 'Newsletter')
-")
+TITLE=$(python3 "$EXTRACT_TEXT" --title-only "$HTML_FILE")
 echo "📽️  Generating cinematic video for: $TITLE"
 echo "   Slug: $SLUG"
 
 # --- Step 1: Extract text from HTML ---
 echo "📄 Extracting text from HTML..."
 TMPTEXT=$(mktemp /tmp/newsletter-text-XXXXX.md)
-python3 -c "
-from html.parser import HTMLParser
-import re
-
-class TextExtractor(HTMLParser):
-    def __init__(self):
-        super().__init__()
-        self.text = []
-        self.skip = False
-    def handle_starttag(self, tag, attrs):
-        if tag in ('style', 'script'): self.skip = True
-    def handle_endtag(self, tag):
-        if tag in ('style', 'script'): self.skip = False
-        if tag in ('p', 'h1', 'h2', 'h3', 'blockquote', 'div', 'article', 'section'): self.text.append('\n')
-    def handle_data(self, data):
-        if not self.skip: self.text.append(data)
-
-with open('$HTML_FILE') as f:
-    html = f.read()
-extractor = TextExtractor()
-extractor.feed(html)
-text = re.sub(r'\n{3,}', '\n\n', ''.join(extractor.text)).strip()
-with open('$TMPTEXT', 'w') as f:
-    f.write('# $TITLE\n\n' + text)
-print(f'   Extracted {len(text)} chars')
-"
+python3 "$EXTRACT_TEXT" "$HTML_FILE" "$TMPTEXT"
 
 # --- Step 2: Create notebook ---
 echo "📓 Creating NotebookLM notebook..."
@@ -119,7 +92,7 @@ else:
     print('unknown')
 " 2>/dev/null || echo "error")
 
-    if [[ "$STATUS" == "completed" ]] || [[ "$STATUS" == "pending" ]]; then
+    if [[ "$STATUS" == "completed" ]]; then
         echo "   Status: $STATUS (after ${ELAPSED}s)"
         break
     elif [[ "$STATUS" == "failed" ]]; then
@@ -127,6 +100,7 @@ else:
         exit 1
     fi
 
+    # Any non-terminal status (pending, processing, unknown, error, ...) keeps polling.
     printf "   [%dm %ds] Status: %s\r" $((ELAPSED / 60)) $((ELAPSED % 60)) "$STATUS"
     sleep "$POLL_INTERVAL"
     ELAPSED=$((ELAPSED + POLL_INTERVAL))

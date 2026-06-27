@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 from pathlib import Path
+from chart_style import apply_brand_style
 
 # Newsletter color scheme — teal/cyan tech theme
 ACCENT = '#0D6E8A'
@@ -24,7 +25,6 @@ OUTPUT_DIR = Path.home() / 'clawd' / 'jlw-newsletter' / 'images'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update({
-    'font.family': ['Source Sans 3', 'Source Sans Pro', 'Helvetica Neue', 'sans-serif'],
     'axes.facecolor': BG,
     'figure.facecolor': BG,
     'text.color': TEXT,
@@ -32,6 +32,7 @@ plt.rcParams.update({
     'xtick.color': TEXT_SECONDARY,
     'ytick.color': TEXT_SECONDARY,
 })
+apply_brand_style()
 
 
 def chart_1_expert_predictions():

@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - teal accent for tech
 ACCENT = '#0D6E8A'      # --accent (teal)
@@ -13,8 +14,7 @@ TEXT = '#1A1815'        # --text
 TEXT_SECONDARY = '#5C564D'  # --text-secondary
 GRID = '#E5E0D8'        # --border
 
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['SF Pro Display', 'Helvetica Neue', 'Arial']
+apply_brand_style()
 
 def chart_1_market_share():
     """NAS Market Share - Pie chart showing major players."""
@@ -57,7 +57,7 @@ def chart_1_market_share():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-nas-market-share.png',
+    plt.savefig(output_path('images/chart-nas-market-share.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 1 saved: chart-nas-market-share.png")
@@ -135,7 +135,7 @@ def chart_2_cloud_vs_nas_cost():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-nas-vs-cloud-cost.png',
+    plt.savefig(output_path('images/chart-nas-vs-cloud-cost.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 2 saved: chart-nas-vs-cloud-cost.png")
@@ -199,7 +199,7 @@ def chart_3_nas_performance():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-nas-performance.png',
+    plt.savefig(output_path('images/chart-nas-performance.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 3 saved: chart-nas-performance.png")

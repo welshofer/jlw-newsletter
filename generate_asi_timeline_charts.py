@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 from datetime import datetime
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - indigo theme for ASI/forecasting
 ACCENT = '#5B4B8A'      # Deep indigo
@@ -19,7 +20,7 @@ GRID = '#E5E0D8'
 BORDER = '#D1C9BC'
 
 # Set up matplotlib style
-plt.rcParams['font.family'] = ['Source Sans 3', 'sans-serif']
+apply_brand_style()
 plt.rcParams['axes.facecolor'] = BG
 plt.rcParams['figure.facecolor'] = BG
 plt.rcParams['savefig.facecolor'] = BG
@@ -86,7 +87,7 @@ def chart_1_expert_predictions():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-asi-predictions.png',
+    plt.savefig(output_path('images/chart-asi-predictions.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Generated: chart-asi-predictions.png")
@@ -130,7 +131,7 @@ def chart_2_ai_lab_valuations():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-ai-valuations.png',
+    plt.savefig(output_path('images/chart-ai-valuations.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Generated: chart-ai-valuations.png")
@@ -189,7 +190,7 @@ def chart_3_compute_energy_scaling():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-compute-energy.png',
+    plt.savefig(output_path('images/chart-compute-energy.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Generated: chart-compute-energy.png")
@@ -265,7 +266,7 @@ def chart_4_agi_asi_milestones():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-agi-timeline.png',
+    plt.savefig(output_path('images/chart-agi-timeline.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Generated: chart-agi-timeline.png")

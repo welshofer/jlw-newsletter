@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 from datetime import datetime
+from chart_style import output_path
 
 # Newsletter color scheme - Teal/Cyan for tech topics
 ACCENT = '#0D6E8A'      # --accent (deep teal)
@@ -59,7 +60,7 @@ def create_market_segmentation():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-market-segmentation.png',
+    plt.savefig(output_path('images/chart-market-segmentation.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-market-segmentation.png")
@@ -144,7 +145,7 @@ def create_activity_timeline():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-activity-timeline.png',
+    plt.savefig(output_path('images/chart-activity-timeline.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-activity-timeline.png")
@@ -237,7 +238,7 @@ def create_competitive_positioning():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-competitive-positioning.png',
+    plt.savefig(output_path('images/chart-competitive-positioning.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-competitive-positioning.png")
@@ -298,7 +299,7 @@ def create_documentation_savings():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-documentation-savings.png',
+    plt.savefig(output_path('images/chart-documentation-savings.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-documentation-savings.png")

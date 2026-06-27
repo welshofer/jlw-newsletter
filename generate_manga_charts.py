@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import chart_style
 from chart_style import apply_brand_style
 
 # Newsletter color scheme - violet/creative theme
@@ -14,7 +15,7 @@ TEXT = '#1A1815'        # --text
 TEXT_SECONDARY = '#4D5C6A'  # --text-secondary
 GRID = '#D8E2E8'        # --border
 
-OUTPUT_DIR = os.path.expanduser('~/clawd/jlw-newsletter/images/ai-manga-market')
+OUTPUT_DIR = chart_style.output_path('images', 'ai-manga-market')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 apply_brand_style()
@@ -62,7 +63,7 @@ def chart_1_market_growth():
     plt.tight_layout()
     plt.savefig(f'{OUTPUT_DIR}/chart-market-growth.png', dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Saved: chart-market-growth.png")
+    print("Saved: chart-market-growth.png")
 
 
 def chart_2_institutional_divide():
@@ -116,7 +117,7 @@ def chart_2_institutional_divide():
     plt.tight_layout()
     plt.savefig(f'{OUTPUT_DIR}/chart-institutional-divide.png', dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Saved: chart-institutional-divide.png")
+    print("Saved: chart-institutional-divide.png")
 
 
 def chart_3_job_displacement():
@@ -165,7 +166,7 @@ def chart_3_job_displacement():
     plt.tight_layout()
     plt.savefig(f'{OUTPUT_DIR}/chart-job-displacement.png', dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Saved: chart-job-displacement.png")
+    print("Saved: chart-job-displacement.png")
 
 
 def chart_4_tool_capabilities():
@@ -191,7 +192,7 @@ def chart_4_tool_capabilities():
 
     for i, (cap, scores) in enumerate(capabilities.items()):
         offset = width * multiplier
-        bars = ax.bar(x + offset, scores, width, label=cap, color=colors[i],
+        ax.bar(x + offset, scores, width, label=cap, color=colors[i],
                       edgecolor='white', linewidth=0.5)
         multiplier += 1
 
@@ -220,7 +221,7 @@ def chart_4_tool_capabilities():
     plt.tight_layout()
     plt.savefig(f'{OUTPUT_DIR}/chart-tool-capabilities.png', dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Saved: chart-tool-capabilities.png")
+    print("Saved: chart-tool-capabilities.png")
 
 
 if __name__ == '__main__':

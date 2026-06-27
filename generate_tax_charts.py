@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
 import os
+import chart_style
 
 # Newsletter color scheme — indigo/gold for fiscal gravitas
 ACCENT = '#3D3B8A'       # Deep indigo
@@ -18,7 +19,7 @@ GRID = '#D8E2E8'         # Grid lines
 RED = '#B85C38'          # Terracotta for deficit
 GREEN = '#4A8C5C'        # Green for surplus
 
-OUTPUT_DIR = os.path.expanduser('~/clawd/jlw-newsletter/images')
+OUTPUT_DIR = chart_style.output_path('images')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 

@@ -4,9 +4,9 @@
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import numpy as np
 from pathlib import Path
+import chart_style
 from chart_style import apply_brand_style
 
 # Newsletter color scheme — teal/cyan tech theme
@@ -21,7 +21,7 @@ BORDER = '#E5E0D8'
 WARM = '#B85C38'
 WARM_LIGHT = '#E07B52'
 
-OUTPUT_DIR = Path.home() / 'clawd' / 'jlw-newsletter' / 'images'
+OUTPUT_DIR = Path(chart_style.output_path('images'))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update({
@@ -107,7 +107,7 @@ def chart_1_expert_predictions():
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / 'chart-expert-predictions.png', dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f'✓ chart-expert-predictions.png')
+    print('✓ chart-expert-predictions.png')
 
 
 def chart_2_funding_escalation():
@@ -167,7 +167,7 @@ def chart_2_funding_escalation():
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / 'chart-funding-escalation.png', dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f'✓ chart-funding-escalation.png')
+    print('✓ chart-funding-escalation.png')
 
 
 def chart_3_metaculus_drift():
@@ -235,7 +235,7 @@ def chart_3_metaculus_drift():
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / 'chart-metaculus-drift.png', dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f'✓ chart-metaculus-drift.png')
+    print('✓ chart-metaculus-drift.png')
 
 
 if __name__ == '__main__':

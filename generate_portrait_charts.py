@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
+import chart_style
 from chart_style import apply_brand_style
 
 # Newsletter color scheme - terracotta accent
@@ -14,8 +15,8 @@ TEXT = '#1A1815'
 TEXT_SECONDARY = '#5C564D'
 GRID = '#E5E0D8'
 
-OUTPUT_DIR = Path('images')
-OUTPUT_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR = Path(chart_style.output_path('images'))
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 apply_brand_style()
 
@@ -32,9 +33,9 @@ def chart_facial_perception():
     x = np.arange(len(focal_lengths))
     width = 0.25
 
-    bars1 = ax.bar(x - width, attractiveness, width, label='Attractiveness', color=ACCENT, alpha=0.9)
-    bars2 = ax.bar(x, femininity_masculinity, width, label='Femininity/Masculinity', color=ACCENT_SOFT, alpha=0.9)
-    bars3 = ax.bar(x + width, dominance, width, label='Perceived Dominance', color=TEXT_SECONDARY, alpha=0.7)
+    ax.bar(x - width, attractiveness, width, label='Attractiveness', color=ACCENT, alpha=0.9)
+    ax.bar(x, femininity_masculinity, width, label='Femininity/Masculinity', color=ACCENT_SOFT, alpha=0.9)
+    ax.bar(x + width, dominance, width, label='Perceived Dominance', color=TEXT_SECONDARY, alpha=0.7)
 
     ax.set_ylabel('Average Rating (1-7 scale)', fontsize=12, color=TEXT_SECONDARY)
     ax.set_xlabel('Focal Length', fontsize=12, color=TEXT_SECONDARY)
@@ -84,7 +85,6 @@ def chart_working_distance():
 
     # Annotate the key distances
     for fl, dist in [(50, 5), (85, 8), (135, 13)]:
-        idx = focal_lengths.index(fl)
         ax.annotate(f'{dist} ft', (fl, dist), textcoords="offset points",
                    xytext=(0, 15), ha='center', fontsize=10, color=TEXT_SECONDARY)
 

@@ -13,6 +13,7 @@ Used by generate_video.sh to prepare content for NotebookLM ingestion.
 import argparse
 import re
 import sys
+from html import unescape
 from html.parser import HTMLParser
 
 
@@ -39,7 +40,12 @@ class TextExtractor(HTMLParser):
 
 def extract_title(html: str) -> str:
     m = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.DOTALL)
-    return m.group(1).strip() if m else "Newsletter"
+    if not m:
+        return "Newsletter"
+    # Strip any inner markup (e.g. <span> wrappers) and unescape HTML entities,
+    # so a nested <h1><span>The</span> Title</h1> yields "The Title", not the raw markup.
+    inner = re.sub(r"<[^>]+>", "", m.group(1))
+    return unescape(inner).strip()
 
 
 def extract_text(html: str) -> str:

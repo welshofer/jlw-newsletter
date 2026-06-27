@@ -6,8 +6,8 @@ Generate data visualization charts for Chronicle newsletter - January 28, 2026
 """
 
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 import os
+import chart_style
 
 # Chronicle newsletter color scheme
 ACCENT = '#3A2D5C'          # --accent (indigo)
@@ -17,7 +17,7 @@ TEXT = '#1A1815'            # --text
 TEXT_SECONDARY = '#4D5C6A'  # --text-secondary
 GRID = '#D8E2E8'            # --border
 
-output_dir = os.path.expanduser("~/clawd/jlw-newsletter/images")
+output_dir = chart_style.output_path("images")
 os.makedirs(output_dir, exist_ok=True)
 
 # Chart 1: Faculty AI Concerns - from Beth McMurtrie article

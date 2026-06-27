@@ -1,9 +1,9 @@
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import numpy as np
 import os
+import chart_style
 
 # Newsletter color scheme - steel blue war theme
 ACCENT = '#2C5F7C'
@@ -18,7 +18,7 @@ RUSSIA_RED = '#C4654A'
 
 
 def main():
-    output_dir = os.path.expanduser('~/clawd/jlw-newsletter/images')
+    output_dir = chart_style.output_path('images')
     os.makedirs(output_dir, exist_ok=True)
 
     # ─────────────────────────────────────────────

@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 from pathlib import Path
+import chart_style
 from chart_style import apply_brand_style
 
 # Newsletter color scheme — Indigo for academic/math topic
@@ -17,7 +18,7 @@ TEXT_SECONDARY = '#4D5C6A'
 GRID = '#D8E2E8'
 WARM = '#B85C38'
 
-OUTPUT_DIR = Path.home() / 'clawd' / 'jlw-newsletter' / 'images'
+OUTPUT_DIR = Path(chart_style.output_path('images'))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 apply_brand_style()
@@ -39,7 +40,7 @@ def chart_career_timeline():
 
     for (label, start, end, color), y in zip(positions, y_positions):
         duration = end - start
-        bar = ax.barh(y, duration, left=start, height=0.5, color=color,
+        ax.barh(y, duration, left=start, height=0.5, color=color,
                       edgecolor='white', linewidth=1.5, zorder=3)
         # Label inside bar if wide enough, else to the right
         mid = start + duration / 2
@@ -86,7 +87,7 @@ def chart_career_timeline():
     plt.savefig(OUTPUT_DIR / 'chart-career-timeline.png',
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Saved: chart-career-timeline.png")
+    print("Saved: chart-career-timeline.png")
 
 
 def chart_books_by_decade():
@@ -145,7 +146,7 @@ def chart_books_by_decade():
     plt.savefig(OUTPUT_DIR / 'chart-books-by-decade.png',
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Saved: chart-books-by-decade.png")
+    print("Saved: chart-books-by-decade.png")
 
 
 def chart_subject_coverage():
@@ -204,7 +205,7 @@ def chart_subject_coverage():
     plt.savefig(OUTPUT_DIR / 'chart-subject-coverage.png',
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Saved: chart-subject-coverage.png")
+    print("Saved: chart-subject-coverage.png")
 
 
 if __name__ == '__main__':

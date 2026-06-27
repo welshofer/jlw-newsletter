@@ -4,9 +4,9 @@
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import numpy as np
 import os
+import chart_style
 
 # Newsletter color scheme - teal/cyan for tech topic
 ACCENT = '#0D6E8A'
@@ -21,7 +21,7 @@ BORDER = '#D8E2E8'
 # Secondary colors for multi-series charts
 COLORS = ['#0D6E8A', '#E07B52', '#5B4B8A', '#2D6A4F', '#C4654A', '#8B6914']
 
-OUTPUT_DIR = os.path.expanduser('~/clawd/jlw-newsletter/images')
+OUTPUT_DIR = chart_style.output_path('images')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 

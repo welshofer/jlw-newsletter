@@ -81,16 +81,17 @@ echo "   Artifact ID: $ARTIFACT_ID"
 echo "⏳ Waiting for video generation (this can take 30-120 minutes)..."
 ELAPSED=0
 while [[ $ELAPSED -lt $MAX_WAIT ]]; do
-    STATUS=$($NOTEBOOKLM artifact list --json 2>&1 | python3 -c "
+    STATUS=$($NOTEBOOKLM artifact list --json 2>&1 | python3 -c '
 import sys, json
+target = sys.argv[1]
 data = json.load(sys.stdin)
-for a in data.get('artifacts', []):
-    if a['id'] == '$ARTIFACT_ID':
-        print(a['status'])
+for a in data.get("artifacts", []):
+    if a["id"] == target:
+        print(a["status"])
         break
 else:
-    print('unknown')
-" 2>/dev/null || echo "error")
+    print("unknown")
+' "$ARTIFACT_ID" 2>/dev/null || echo "error")
 
     if [[ "$STATUS" == "completed" ]]; then
         echo "   Status: $STATUS (after ${ELAPSED}s)"

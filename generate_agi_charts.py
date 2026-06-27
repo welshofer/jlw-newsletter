@@ -2,9 +2,9 @@
 """Generate data visualizations for AGI Timeline newsletter."""
 
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import numpy as np
 from pathlib import Path
+import chart_style
 
 # Newsletter color scheme - indigo/violet theme
 ACCENT = '#5B4B8A'  # Deep indigo
@@ -14,7 +14,7 @@ TEXT = '#1A1815'  # Dark text
 TEXT_SECONDARY = '#4D5C6A'  # Secondary text
 GRID = '#D8E2E8'  # Grid lines
 
-OUTPUT_DIR = Path.home() / 'clawd' / 'jlw-newsletter' / 'images'
+OUTPUT_DIR = Path(chart_style.output_path('images'))
 
 def setup_figure(figsize=(10, 6)):
     """Create figure with newsletter styling."""
@@ -81,7 +81,7 @@ def chart_agi_timeline_predictions():
     plt.savefig(OUTPUT_DIR / 'chart-agi-predictions.png',
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Created: chart-agi-predictions.png")
+    print("Created: chart-agi-predictions.png")
 
 
 def chart_infrastructure_investment():
@@ -122,7 +122,7 @@ def chart_infrastructure_investment():
     plt.savefig(OUTPUT_DIR / 'chart-agi-investment.png',
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Created: chart-agi-investment.png")
+    print("Created: chart-agi-investment.png")
 
 
 def chart_agi_progress_indicators():
@@ -146,7 +146,7 @@ def chart_agi_progress_indicators():
     x = np.arange(len(milestones))
     width = 0.35
 
-    bars1 = ax.bar(x - width/2, progress_2025, width, label='End of 2025',
+    ax.bar(x - width/2, progress_2025, width, label='End of 2025',
                    color='#9A8BB0', alpha=0.7, edgecolor='white')
     bars2 = ax.bar(x + width/2, progress_2026, width, label='Jan 2026 (Current)',
                    color=ACCENT, edgecolor='white')
@@ -181,7 +181,7 @@ def chart_agi_progress_indicators():
     plt.savefig(OUTPUT_DIR / 'chart-agi-progress.png',
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Created: chart-agi-progress.png")
+    print("Created: chart-agi-progress.png")
 
 
 def chart_valuation_growth():
@@ -221,7 +221,7 @@ def chart_valuation_growth():
     plt.savefig(OUTPUT_DIR / 'chart-valuation-growth.png',
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
-    print(f"Created: chart-valuation-growth.png")
+    print("Created: chart-valuation-growth.png")
 
 
 if __name__ == '__main__':

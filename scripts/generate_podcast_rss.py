@@ -3,6 +3,7 @@ import argparse
 import json
 import os
 import re
+import sys
 import wave
 from contextlib import closing
 from datetime import datetime, timezone
@@ -86,10 +87,28 @@ def title_from_basename(name: str) -> str:
     return name
 
 
-def extract_title_blurb(html_path: Path) -> Tuple[Optional[str], Optional[str]]:
+def _parse_html(html_path: Path) -> Tuple[str, Optional["BeautifulSoup"]]:
+    """Read and parse an HTML file exactly once.
+
+    Returns the raw text plus a parsed BeautifulSoup object (or None when bs4
+    is unavailable). Prefers the faster ``lxml`` parser, falling back to the
+    stdlib ``html.parser`` if lxml cannot be imported or used.
+    """
     text = html_path.read_text(encoding="utf-8", errors="ignore")
+    soup = None
     if BeautifulSoup:
-        soup = BeautifulSoup(text, "html.parser")
+        try:
+            soup = BeautifulSoup(text, "lxml")
+        except Exception:
+            try:
+                soup = BeautifulSoup(text, "html.parser")
+            except Exception:
+                soup = None
+    return text, soup
+
+
+def extract_title_blurb(text: str, soup) -> Tuple[Optional[str], Optional[str]]:
+    if soup is not None:
         h1 = soup.find("h1")
         title = h1.get_text(strip=True) if h1 else None
         blurb = None
@@ -127,10 +146,8 @@ def extract_title_blurb(html_path: Path) -> Tuple[Optional[str], Optional[str]]:
     return title, blurb
 
 
-def extract_image_src(html_path: Path) -> Optional[str]:
-    text = html_path.read_text(encoding="utf-8", errors="ignore")
-    if BeautifulSoup:
-        soup = BeautifulSoup(text, "html.parser")
+def extract_image_src(text: str, soup) -> Optional[str]:
+    if soup is not None:
         for key in ("og:image", "twitter:image"):
             tag = soup.find("meta", property=key) or soup.find("meta", attrs={"name": key})
             if tag and tag.get("content"):
@@ -145,10 +162,8 @@ def extract_image_src(html_path: Path) -> Optional[str]:
     return m.group(1).strip() if m else None
 
 
-def extract_audio_src(html_path: Path) -> Optional[str]:
-    text = html_path.read_text(encoding="utf-8", errors="ignore")
-    if BeautifulSoup:
-        soup = BeautifulSoup(text, "html.parser")
+def extract_audio_src(text: str, soup) -> Optional[str]:
+    if soup is not None:
         # Prefer explicit <source> inside <audio>
         for source in soup.find_all("source"):
             src = source.get("src")
@@ -160,7 +175,7 @@ def extract_audio_src(html_path: Path) -> Optional[str]:
         return None
 
     # Fallback: regex for audio sources
-    m = re.search(r"\\bsrc=[\"']([^\"']+\\.(?:wav|mp3))[\"']", text, re.IGNORECASE)
+    m = re.search(r"\bsrc=[\"']([^\"']+\.(?:wav|mp3))[\"']", text, re.IGNORECASE)
     return m.group(1).strip() if m else None
 
 
@@ -184,7 +199,7 @@ def slug_variants(title: str) -> set[str]:
 
 
 def is_variant_filename(base: str) -> bool:
-    return re.search(r"-v\\d+(\\b|$)", base) is not None
+    return re.search(r"-v\d+(\b|$)", base) is not None
 
 
 def build_html_index(base_dir: Path) -> Tuple[Dict[str, dict], Dict[str, dict], Dict[str, dict], List[dict]]:
@@ -211,11 +226,12 @@ def build_html_index(base_dir: Path) -> Tuple[Dict[str, dict], Dict[str, dict], 
     records: List[dict] = []
 
     for path in html_paths:
-        title, blurb = extract_title_blurb(path)
+        text, soup = _parse_html(path)
+        title, blurb = extract_title_blurb(text, soup)
         if not title:
             continue
         slug = slugify_title(title)
-        audio_src = extract_audio_src(path)
+        audio_src = extract_audio_src(text, soup)
         audio_stem = None
         if audio_src:
             audio_name = os.path.basename(audio_src)
@@ -228,7 +244,7 @@ def build_html_index(base_dir: Path) -> Tuple[Dict[str, dict], Dict[str, dict], 
             "title": title,
             "blurb": blurb,
             "slug": slug,
-            "image_src": extract_image_src(path),
+            "image_src": extract_image_src(text, soup),
             "audio_src": audio_src,
             "audio_stem": audio_stem,
             "in_newsletters": path.parent.name == "newsletters",
@@ -271,7 +287,8 @@ def build_feed(cfg: dict, base_dir: Path) -> ET.Element:
     index_title = None
     index_desc = None
     if index_path.exists():
-        index_title, index_desc = extract_title_blurb(index_path)
+        index_text, index_soup = _parse_html(index_path)
+        index_title, index_desc = extract_title_blurb(index_text, index_soup)
 
     def fuzzy_match(base_slug: str) -> Optional[dict]:
         if len(base_slug) < 6:
@@ -301,6 +318,11 @@ def build_feed(cfg: dict, base_dir: Path) -> ET.Element:
     for mp3 in mp3_files:
         base = mp3.stem
         if base not in allowed_audio:
+            print(
+                f"Warning: skipping {mp3.name}: no HTML page references "
+                f"audio '{base}'",
+                file=sys.stderr,
+            )
             continue
         wav = wav_dir / f"{base}.wav"
         ts = get_birth_or_mtime(wav if wav.exists() else mp3)

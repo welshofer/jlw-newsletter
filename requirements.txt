@@ -1,0 +1,7 @@
+# Python dependencies for the jlw-newsletter generation/publish pipeline (scripts/*.py and generate_*.py chart generators).
+beautifulsoup4>=4.12.3   # HTML parsing in generate_index/articles/podcast RSS generators
+lxml>=5.3.0              # fast parser backend now preferred by the HTML scrapers
+pillow>=11.0.0           # image resize/compress in scripts/optimize_images.py
+matplotlib>=3.8.0        # chart generators (generate_*_charts.py)
+numpy>=1.26.0           # numeric arrays backing the chart generators
+google-genai>=1.0.0     # Gemini API for image generation (generate_images.py / generate_ubi_images.py)

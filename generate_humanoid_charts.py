@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 from pathlib import Path
+import chart_style
 
 # Newsletter color scheme - teal/cyan tech theme
 ACCENT = '#0D6E8A'
@@ -54,7 +55,7 @@ def create_pricing_chart():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig(Path.home() / 'clawd/jlw-newsletter/images/chart-robot-pricing.png',
+    plt.savefig(Path(chart_style.output_path('images', 'chart-robot-pricing.png')),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-robot-pricing.png")
@@ -102,7 +103,7 @@ def create_deployment_timeline():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig(Path.home() / 'clawd/jlw-newsletter/images/chart-deployment-timeline.png',
+    plt.savefig(Path(chart_style.output_path('images', 'chart-deployment-timeline.png')),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-deployment-timeline.png")
@@ -115,7 +116,6 @@ def create_task_complexity_chart():
 
     demos = ['Early teleoperated\ndemos (2023)', 'First autonomous\npick-and-place', 'Multi-step\nassembly tasks', 'Unitree G1\nmimicry demo', 'Figure Helix 02\ndishwasher cycle']
     actions = [1, 5, 12, 25, 61]
-    years = [2023, 2024, 2024.5, 2025, 2026]
 
     colors = [TEXT_SECONDARY if a < 61 else ACCENT for a in actions]
     bars = ax.bar(demos, actions, color=colors, width=0.6)
@@ -150,7 +150,7 @@ def create_task_complexity_chart():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig(Path.home() / 'clawd/jlw-newsletter/images/chart-task-complexity.png',
+    plt.savefig(Path(chart_style.output_path('images', 'chart-task-complexity.png')),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-task-complexity.png")
@@ -168,8 +168,8 @@ def create_tesla_shift_chart():
     x = np.arange(len(years))
     width = 0.35
 
-    bars1 = ax.bar(x - width/2, model_sx, width, label='Model S/X Production', color=TEXT_SECONDARY, alpha=0.7)
-    bars2 = ax.bar(x + width/2, optimus, width, label='Optimus Production', color=ACCENT)
+    ax.bar(x - width/2, model_sx, width, label='Model S/X Production', color=TEXT_SECONDARY, alpha=0.7)
+    ax.bar(x + width/2, optimus, width, label='Optimus Production', color=ACCENT)
 
     ax.set_ylabel('% of Factory Capacity', fontsize=12, color=TEXT_SECONDARY)
     ax.set_title('Tesla: From Cars to Robots', fontsize=16, color=TEXT, fontweight='600', pad=20)
@@ -193,7 +193,7 @@ def create_tesla_shift_chart():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig(Path.home() / 'clawd/jlw-newsletter/images/chart-tesla-shift.png',
+    plt.savefig(Path(chart_style.output_path('images', 'chart-tesla-shift.png')),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-tesla-shift.png")

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import os
+import chart_style
 
 # Newsletter color scheme — Indigo/scholarly
 ACCENT = '#5B4B8A'
@@ -19,7 +20,7 @@ GRID = '#E5E0D8'
 WARM = '#B85C38'
 WARM_LIGHT = '#D4845E'
 
-OUT = os.path.expanduser('~/clawd/jlw-newsletter/images')
+OUT = chart_style.output_path('images')
 os.makedirs(OUT, exist_ok=True)
 
 

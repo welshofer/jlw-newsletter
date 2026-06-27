@@ -8,6 +8,7 @@ Theme: The academy under legal/political siege - courts, legislatures, federal o
 
 import os
 import asyncio
+import chart_style
 from datetime import datetime
 from google import genai
 from google.genai import types
@@ -42,7 +43,7 @@ async def generate_image():
     )
     
     # Save the image
-    output_dir = os.path.expanduser("~/clawd/jlw-newsletter/images")
+    output_dir = chart_style.output_path("images")
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, "hero-courts-and-campuses.png")
     

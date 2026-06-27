@@ -113,10 +113,19 @@ def optimize_directory(
     quality: int = 80,
     emit_webp: bool = True,
 ) -> dict:
-    """Optimize all images in a directory."""
+    """Optimize all images in a directory tree.
+
+    Walks *image_dir* recursively so per-issue subfolders (e.g.
+    images/ai-manga-market/) are processed too, not just the top level.
+    Non-image files, the hidden ".optimized" marker sidecars, and generated
+    .webp siblings are all skipped by the suffix filter; directories are
+    skipped by the is_file() guard.
+    """
     results = {"optimized": 0, "skipped": 0, "bytes_saved": 0, "webp_bytes": 0}
 
-    for img_path in image_dir.glob("*"):
+    for img_path in image_dir.rglob("*"):
+        if not img_path.is_file():
+            continue
         if img_path.suffix.lower() not in (".jpg", ".jpeg", ".png"):
             continue
         if img_path.stat().st_size < 100_000:  # Skip < 100KB

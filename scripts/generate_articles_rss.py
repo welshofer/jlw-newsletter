@@ -2,70 +2,37 @@
 """
 Generate an articles RSS feed from newsletter HTML files.
 Separate from podcast.rss — this is for RSS readers subscribing to the written content.
+
+Shares the single parse pass in newsletter_lib so the HTML is globbed and parsed
+once (rather than independently from generate_index.py). The shared parser also
+narrows its exception handling and warns on stderr instead of silently dropping
+files. ElementTree handles all XML escaping.
 """
 
-import re
 import sys
-from datetime import datetime
 from email.utils import format_datetime
 from pathlib import Path
 from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom.minidom import parseString
 
-from bs4 import BeautifulSoup
-
-
-SITE_URL = "https://jlw-newsletter.pages.dev"
-
-
-def extract_article_metadata(html_path: Path) -> dict | None:
-    """Extract metadata from a newsletter HTML file for RSS."""
-    try:
-        content = html_path.read_text(errors="replace")
-        soup = BeautifulSoup(content, "html.parser")
-
-        title_tag = soup.find("title")
-        title = title_tag.string.strip() if title_tag and title_tag.string else html_path.stem
-
-        # Extract date from filename
-        date_match = re.search(r"(\d{4}-\d{2}-\d{2})", html_path.name)
-        if date_match:
-            pub_date = datetime.strptime(date_match.group(1), "%Y-%m-%d")
-        else:
-            pub_date = datetime.fromtimestamp(html_path.stat().st_mtime)
-
-        # Extract description from hero subtitle or first paragraph
-        description = ""
-        hero_subtitle = soup.find(class_="hero-subtitle")
-        if hero_subtitle:
-            description = hero_subtitle.get_text(strip=True)[:500]
-        if not description:
-            first_p = soup.find("p")
-            if first_p:
-                description = first_p.get_text(strip=True)[:500]
-
-        return {
-            "title": title,
-            "link": f"{SITE_URL}/{html_path.name}",
-            "description": description,
-            "pub_date": pub_date,
-            "guid": f"{SITE_URL}/{html_path.name}",
-        }
-    except Exception:
-        return None
+from newsletter_lib import SITE_URL, canonical_newsletters
 
 
 def generate_articles_rss(repo_path: Path) -> str:
     """Generate articles.rss from all newsletter HTML files."""
-    articles = []
-
-    for html_file in sorted(repo_path.glob("jlw-*.html"), reverse=True):
-        # Skip version variants
-        if re.search(r"-v\d+\.html$", html_file.name):
-            continue
-        meta = extract_article_metadata(html_file)
-        if meta:
-            articles.append(meta)
+    # canonical_newsletters parses each file exactly once and returns the
+    # canonical (non-variant / newest) record per issue, sorted newest-first.
+    newsletters = canonical_newsletters(repo_path)
+    articles = [
+        {
+            "title": nl["title"],
+            "link": f"{SITE_URL}/{nl['path']}",
+            "description": nl["description"],
+            "pub_date": nl["date"],
+            "guid": f"{SITE_URL}/{nl['path']}",
+        }
+        for nl in newsletters
+    ]
 
     # Build RSS XML
     rss = Element("rss", version="2.0")

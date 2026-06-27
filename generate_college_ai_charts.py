@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - Indigo theme for education/uncertainty
 ACCENT = '#5B4B8A'      # Indigo accent
@@ -15,11 +16,10 @@ GRID = '#D8E2E8'
 BORDER = '#E5E0D8'
 
 # Set up matplotlib defaults
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['SF Pro Display', 'Helvetica Neue', 'Arial']
+apply_brand_style()
 plt.rcParams['axes.unicode_minus'] = False
 
-output_dir = Path('/Users/welshofer/clawd/jlw-newsletter/images')
+output_dir = Path(output_path('images'))
 
 
 def chart_entry_level_decline():

@@ -3,6 +3,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - teal/cyan for tech topics
 ACCENT = '#0D6E8A'
@@ -17,8 +18,7 @@ TAURI_COLOR = '#0D6E8A'      # Teal (primary accent)
 ELECTRON_COLOR = '#6B5B95'   # Purple
 SWIFTUI_COLOR = '#F28E2B'    # Orange
 
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['SF Pro Display', 'Helvetica Neue', 'Arial']
+apply_brand_style()
 
 def chart_bundle_size():
     """Bar chart comparing bundle sizes."""
@@ -57,7 +57,7 @@ def chart_bundle_size():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-bundle-size-compare.png',
+    plt.savefig(output_path('images/chart-bundle-size-compare.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("✓ chart-bundle-size-compare.png")
@@ -101,7 +101,7 @@ def chart_memory_usage():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-memory-usage.png',
+    plt.savefig(output_path('images/chart-memory-usage.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("✓ chart-memory-usage.png")
@@ -149,7 +149,7 @@ def chart_github_stars():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-github-stars.png',
+    plt.savefig(output_path('images/chart-github-stars.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("✓ chart-github-stars.png")
@@ -193,7 +193,7 @@ def chart_platform_coverage():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-platform-coverage.png',
+    plt.savefig(output_path('images/chart-platform-coverage.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("✓ chart-platform-coverage.png")
@@ -235,7 +235,7 @@ def chart_startup_time():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-startup-time.png',
+    plt.savefig(output_path('images/chart-startup-time.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("✓ chart-startup-time.png")

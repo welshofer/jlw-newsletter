@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+from chart_style import apply_brand_style
 
 # Newsletter color scheme - violet/creative theme
 ACCENT = '#7C5C8A'      # --accent (violet)
@@ -16,7 +17,7 @@ GRID = '#D8E2E8'        # --border
 OUTPUT_DIR = os.path.expanduser('~/clawd/jlw-newsletter/images/ai-manga-market')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-plt.rcParams['font.family'] = ['SF Pro Display', 'Helvetica Neue', 'Arial', 'sans-serif']
+apply_brand_style()
 
 def chart_1_market_growth():
     """AI Manga Tools Market Growth Projection"""

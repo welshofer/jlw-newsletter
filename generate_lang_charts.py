@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 from pathlib import Path
+from chart_style import apply_brand_style
 
 # Newsletter color scheme — Indigo for academic/math topic
 ACCENT = '#5B4B8A'
@@ -19,7 +20,7 @@ WARM = '#B85C38'
 OUTPUT_DIR = Path.home() / 'clawd' / 'jlw-newsletter' / 'images'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-plt.rcParams['font.family'] = ['Source Sans 3', 'Source Sans Pro', 'Helvetica Neue', 'sans-serif']
+apply_brand_style()
 
 
 def chart_career_timeline():

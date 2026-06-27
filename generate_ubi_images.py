@@ -9,8 +9,9 @@ from google import genai
 from google.genai import types
 from PIL import Image as PILImage
 import time
+from chart_style import output_path
 
-OUTPUT_DIR = Path("/Users/welshofer/clawd/jlw-newsletter/images")
+OUTPUT_DIR = Path(output_path("images"))
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 model = "gemini-3-pro-image-preview"

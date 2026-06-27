@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - teal/tech theme
 ACCENT = '#0D6E8A'      # --accent (teal cyan)
@@ -15,7 +16,7 @@ GRID = '#D8E2E8'        # --border
 WARNING = '#C4654A'     # coral for malware
 SUCCESS = '#4A8C6A'     # green for positive
 
-plt.rcParams['font.family'] = ['SF Pro Display', 'Helvetica Neue', 'sans-serif']
+apply_brand_style()
 
 def chart_malware_growth():
     """Chart 1: Growth in malicious AI skills/extensions over time."""
@@ -55,7 +56,7 @@ def chart_malware_growth():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-malware-growth.png',
+    plt.savefig(output_path('images/chart-malware-growth.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("✓ Created chart-malware-growth.png")
@@ -99,7 +100,7 @@ def chart_context_window_evolution():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-context-evolution.png',
+    plt.savefig(output_path('images/chart-context-evolution.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("✓ Created chart-context-evolution.png")
@@ -149,7 +150,7 @@ def chart_benchmark_comparison():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-benchmark-comparison.png',
+    plt.savefig(output_path('images/chart-benchmark-comparison.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("✓ Created chart-benchmark-comparison.png")
@@ -200,7 +201,7 @@ def chart_integration_ecosystem():
              fontsize=9, color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-integrations.png',
+    plt.savefig(output_path('images/chart-integrations.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("✓ Created chart-integrations.png")

@@ -3,6 +3,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - indigo/violet for tech/presentations
 ACCENT = '#5B4B8A'      # Indigo accent
@@ -12,8 +13,7 @@ TEXT = '#1A1815'        # Dark text
 TEXT_SECONDARY = '#4D5C6A'
 GRID = '#D8E2E8'
 
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['SF Pro Display', 'Helvetica Neue', 'Arial']
+apply_brand_style()
 
 def chart1_market_landscape():
     """Bar chart: AI Presentation Tools vs Traditional - Feature Comparison"""
@@ -62,7 +62,7 @@ def chart1_market_landscape():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-tool-landscape.png',
+    plt.savefig(output_path('images/chart-tool-landscape.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Generated: chart-tool-landscape.png")
@@ -104,7 +104,7 @@ def chart2_format_adoption():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-format-adoption.png',
+    plt.savefig(output_path('images/chart-format-adoption.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Generated: chart-format-adoption.png")
@@ -164,7 +164,7 @@ def chart3_ai_timeline():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-ai-timeline.png',
+    plt.savefig(output_path('images/chart-ai-timeline.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Generated: chart-ai-timeline.png")

@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - teal/cyan accent for tech/measurement topic
 ACCENT = '#0D6E8A'
@@ -14,8 +15,7 @@ TEXT_SECONDARY = '#4D5C6A'
 GRID = '#D8E2E8'
 WARM = '#B85C38'
 
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['SF Pro Display', 'Helvetica Neue', 'Arial']
+apply_brand_style()
 
 def chart_1_memory_retention():
     """Chart showing how narrative structure affects memory retention."""
@@ -62,7 +62,7 @@ def chart_1_memory_retention():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-memory-retention.png',
+    plt.savefig(output_path('images/chart-memory-retention.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 1: Memory retention saved")
@@ -106,7 +106,7 @@ def chart_2_measurement_framework():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-measurement-framework.png',
+    plt.savefig(output_path('images/chart-measurement-framework.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 2: Measurement framework saved")
@@ -157,7 +157,7 @@ def chart_3_roi_metrics():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-storytelling-roi.png',
+    plt.savefig(output_path('images/chart-storytelling-roi.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 3: Storytelling ROI saved")
@@ -208,7 +208,7 @@ def chart_4_ai_tools_comparison():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-ai-tools.png',
+    plt.savefig(output_path('images/chart-ai-tools.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 4: AI tools comparison saved")

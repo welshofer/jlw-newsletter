@@ -15,6 +15,8 @@ from pathlib import Path
 from newsletter_lib import (
     SITE_URL,
     absolutize,
+    atomic_write_bytes,
+    atomic_write_text,
     canonical_newsletters,
 )
 
@@ -24,6 +26,18 @@ SITE_DESCRIPTION = (
     "and culture."
 )
 
+# Single source of truth for the Content-Security-Policy. Used both for the
+# in-page <meta> tag and the Cloudflare Pages `_headers` file so they match.
+CSP = (
+    "default-src 'self'; "
+    "img-src 'self' data: https:; "
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+    "font-src https://fonts.gstatic.com; "
+    "script-src 'self' 'unsafe-inline'; "
+    "base-uri 'self'; "
+    "form-action 'none'"
+)
+
 FAVICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="JLW">
   <rect width="64" height="64" rx="13" fill="#FDFBF7"/>
   <text x="32" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#B85C38">JLW</text>
@@ -31,8 +45,27 @@ FAVICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" wid
 """
 
 
-def _render_card(nl: dict) -> str:
-    """Render one newsletter as a card (hero thumbnail + date + title + blurb)."""
+def _webp_sibling(thumbnail: str, repo_path: Path) -> str:
+    """Return the relative ``.webp`` path when a sibling of ``thumbnail`` exists
+    on disk in ``repo_path``; otherwise an empty string. Remote/absolute/data
+    URLs are skipped (we can only test local files)."""
+    if not thumbnail or thumbnail.startswith(
+        ("http://", "https://", "//", "data:")
+    ):
+        return ""
+    webp_rel = Path(thumbnail).with_suffix(".webp")
+    if (repo_path / webp_rel).exists():
+        return webp_rel.as_posix()
+    return ""
+
+
+def _render_card(nl: dict, repo_path: Path) -> str:
+    """Render one newsletter as a card (hero thumbnail + date + title + blurb).
+
+    When a ``.webp`` sibling of the raster thumbnail exists on disk, the image
+    is wrapped in a ``<picture>`` with a WebP ``<source>`` so capable browsers
+    fetch the smaller file while older ones fall back to the original raster.
+    """
     href = escape(nl["path"], quote=True)
     title = escape(nl["title"])
     date_attr = escape(nl["date"].strftime("%Y-%m-%d"), quote=True)
@@ -40,11 +73,22 @@ def _render_card(nl: dict) -> str:
     title_attr = escape(nl["title"], quote=True)
 
     thumb_html = ""
-    if nl.get("thumbnail"):
-        thumb_html = (
+    thumbnail = nl.get("thumbnail")
+    if thumbnail:
+        img_tag = (
             f'<img class="card-thumb" loading="lazy" alt="" '
-            f'src="{escape(nl["thumbnail"], quote=True)}">'
+            f'src="{escape(thumbnail, quote=True)}">'
         )
+        webp_src = _webp_sibling(thumbnail, repo_path)
+        if webp_src:
+            thumb_html = (
+                "<picture>"
+                f'<source type="image/webp" srcset="{escape(webp_src, quote=True)}">'
+                f"{img_tag}"
+                "</picture>"
+            )
+        else:
+            thumb_html = img_tag
 
     subtitle_html = ""
     if nl.get("subtitle"):
@@ -61,7 +105,7 @@ def _render_card(nl: dict) -> str:
             </a>'''
 
 
-def _render_year_sections(newsletters: list) -> str:
+def _render_year_sections(newsletters: list, repo_path: Path) -> str:
     """Group newsletters by year (newest-first) with a heading per year."""
     sections = []
     current_year = None
@@ -84,7 +128,7 @@ def _render_year_sections(newsletters: list) -> str:
                 sections.append(flush())
             current_year = nl["year"]
             cards = []
-        cards.append(_render_card(nl))
+        cards.append(_render_card(nl, repo_path))
     if current_year is not None:
         sections.append(flush())
 
@@ -97,7 +141,7 @@ def generate_index(repo_path: Path, newsletters: list | None = None) -> str:
     if newsletters is None:
         newsletters = canonical_newsletters(repo_path)
 
-    year_sections = _render_year_sections(newsletters)
+    year_sections = _render_year_sections(newsletters, repo_path)
 
     # OpenGraph image: newest newsletter's hero thumbnail when available.
     og_image = ""
@@ -114,15 +158,7 @@ def generate_index(repo_path: Path, newsletters: list | None = None) -> str:
     desc = escape(SITE_DESCRIPTION, quote=True)
     site_url = escape(SITE_URL, quote=True)
 
-    csp = (
-        "default-src 'self'; "
-        "img-src 'self' data: https:; "
-        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-        "font-src https://fonts.gstatic.com; "
-        "script-src 'self' 'unsafe-inline'; "
-        "base-uri 'self'; "
-        "form-action 'none'"
-    )
+    csp = CSP
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -138,7 +174,7 @@ def generate_index(repo_path: Path, newsletters: list | None = None) -> str:
     <meta property="og:url" content="{site_url}/">{og_image_tag}
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="apple-touch-icon" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="alternate" type="application/rss+xml" title="JLW Newsletter Podcast" href="podcast.rss">
     <link rel="alternate" type="application/rss+xml" title="JLW Newsletter Articles" href="articles.rss">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -168,9 +204,16 @@ def generate_index(repo_path: Path, newsletters: list | None = None) -> str:
         .year-section {{ margin-bottom: 3rem; }}
         .year {{ font-family: var(--font-display); font-size: 1.6rem; margin: 0 0 1.3rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }}
         .card-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }}
-        .newsletter-entry.card {{ display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: inherit; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }}
-        .newsletter-entry.card:hover {{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14); border-color: var(--accent); }}
+        .newsletter-entry.card {{ display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: inherit; }}
+        .newsletter-entry.card:hover {{ box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14); border-color: var(--accent); }}
         .newsletter-entry.card:hover .card-title {{ color: var(--accent); }}
+        .newsletter-entry.card:focus-visible {{ outline: none; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14); border-color: var(--accent); }}
+        .newsletter-entry.card:focus-visible .card-title {{ color: var(--accent); }}
+        @media (prefers-reduced-motion: no-preference) {{
+            .newsletter-entry.card {{ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }}
+            .newsletter-entry.card:hover {{ transform: translateY(-4px); }}
+            .newsletter-entry.card:focus-visible {{ transform: translateY(-4px); }}
+        }}
         .card-thumb {{ width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: var(--border); }}
         .card-body {{ padding: 1.1rem 1.2rem 1.3rem; }}
         .card-body time {{ font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.5; }}
@@ -178,6 +221,8 @@ def generate_index(repo_path: Path, newsletters: list | None = None) -> str:
         .card-subtitle {{ font-size: 0.92rem; opacity: 0.72; }}
         .count {{ font-family: var(--font-mono); font-size: 0.72rem; opacity: 0.5; margin-top: 2rem; }}
         .empty {{ opacity: 0.6; font-style: italic; margin: 2rem 0; }}
+        .no-results {{ opacity: 0.6; font-style: italic; margin: 2rem 0; }}
+        .no-results[hidden] {{ display: none; }}
     </style>
 </head>
 <body>
@@ -194,7 +239,8 @@ def generate_index(repo_path: Path, newsletters: list | None = None) -> str:
         </div>
         <div class="archive">{year_sections if year_sections else '<p class="empty">No newsletters yet.</p>'}
         </div>
-        <p class="count">{len(newsletters)} issues</p>
+        <p class="no-results" id="no-results" role="status" hidden></p>
+        <p class="count" id="archive-count">{len(newsletters)} issues</p>
     </div>
     <script>
     (function () {{
@@ -202,11 +248,18 @@ def generate_index(repo_path: Path, newsletters: list | None = None) -> str:
         if (!input) return;
         var entries = Array.prototype.slice.call(document.querySelectorAll('.newsletter-entry'));
         var sections = Array.prototype.slice.call(document.querySelectorAll('.year-section'));
+        var countEl = document.getElementById('archive-count');
+        var noResults = document.getElementById('no-results');
+        var total = entries.length;
         input.addEventListener('input', function () {{
-            var q = input.value.trim().toLowerCase();
+            var raw = input.value.trim();
+            var q = raw.toLowerCase();
+            var visible = 0;
             entries.forEach(function (el) {{
                 var t = (el.getAttribute('data-title') || '').toLowerCase();
-                el.style.display = (!q || t.indexOf(q) !== -1) ? '' : 'none';
+                var show = (!q || t.indexOf(q) !== -1);
+                el.style.display = show ? '' : 'none';
+                if (show) visible++;
             }});
             sections.forEach(function (sec) {{
                 var es = sec.querySelectorAll('.newsletter-entry');
@@ -216,6 +269,17 @@ def generate_index(repo_path: Path, newsletters: list | None = None) -> str:
                 }}
                 sec.style.display = anyShown ? '' : 'none';
             }});
+            if (countEl) {{
+                countEl.textContent = (q ? visible : total) + ' issues';
+            }}
+            if (noResults) {{
+                if (q && visible === 0) {{
+                    noResults.textContent = 'No issues match "' + raw + '"';
+                    noResults.hidden = false;
+                }} else {{
+                    noResults.hidden = true;
+                }}
+            }}
         }});
     }})();
     </script>
@@ -224,21 +288,23 @@ def generate_index(repo_path: Path, newsletters: list | None = None) -> str:
 
 
 def write_sitemap(repo_path: Path, newsletters: list) -> Path:
-    """Write sitemap.xml listing the site root + every newsletter URL."""
-    urls = [f"{SITE_URL}/"]
-    urls += [f"{SITE_URL}/{nl['path']}" for nl in newsletters]
-    body = "\n".join(
-        f"  <url><loc>{escape(u)}</loc></url>" for u in urls
-    )
+    """Write sitemap.xml listing the site root + every newsletter URL (each
+    newsletter URL carrying a ``<lastmod>`` from its record date)."""
+    lines = [f"  <url><loc>{escape(SITE_URL)}/</loc></url>"]
+    for nl in newsletters:
+        loc = escape(f"{SITE_URL}/{nl['path']}")
+        lastmod = nl["date"].strftime("%Y-%m-%d")
+        lines.append(
+            f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod></url>"
+        )
+    body = "\n".join(lines)
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         f"{body}\n"
         "</urlset>\n"
     )
-    path = repo_path / "sitemap.xml"
-    path.write_text(xml)
-    return path
+    return atomic_write_text(repo_path / "sitemap.xml", xml)
 
 
 def write_robots(repo_path: Path) -> Path:
@@ -248,23 +314,78 @@ def write_robots(repo_path: Path) -> Path:
         "Allow: /\n\n"
         f"Sitemap: {SITE_URL}/sitemap.xml\n"
     )
-    path = repo_path / "robots.txt"
-    path.write_text(content)
-    return path
+    return atomic_write_text(repo_path / "robots.txt", content)
 
 
 def write_favicon(repo_path: Path) -> Path:
     """Write the brandmark favicon.svg (JLW monogram in the brand accent)."""
-    path = repo_path / "favicon.svg"
-    path.write_text(FAVICON_SVG)
-    return path
+    return atomic_write_text(repo_path / "favicon.svg", FAVICON_SVG)
+
+
+def write_headers(repo_path: Path) -> Path:
+    """Emit a Cloudflare Pages `_headers` file applying security headers to all
+    paths, including a header-form CSP that matches the in-page <meta> CSP."""
+    content = (
+        "/*\n"
+        "  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  X-Frame-Options: DENY\n"
+        f"  Content-Security-Policy: {CSP}\n"
+    )
+    return atomic_write_text(repo_path / "_headers", content)
+
+
+def write_apple_touch_icon(repo_path: Path) -> Path | None:
+    """Render a 180x180 PNG JLW monogram as apple-touch-icon.png (iOS renders
+    SVG touch icons blank). Returns the path, or ``None`` when Pillow is not
+    installed so the rest of the run still succeeds."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except Exception:
+        return None
+
+    import io
+
+    size = 180
+    bg = (253, 251, 247)   # --bg light (#FDFBF7)
+    fg = (184, 92, 56)     # --accent  (#B85C38)
+    text = "JLW"
+
+    img = Image.new("RGB", (size, size), bg)
+    draw = ImageDraw.Draw(img)
+
+    font = None
+    for name in ("DejaVuSans-Bold.ttf", "Arial Bold.ttf", "Arial.ttf"):
+        try:
+            font = ImageFont.truetype(name, 60)
+            break
+        except Exception:
+            continue
+    if font is None:
+        font = ImageFont.load_default()
+
+    try:
+        bbox = draw.textbbox((0, 0), text, font=font)
+        tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+        pos = ((size - tw) / 2 - bbox[0], (size - th) / 2 - bbox[1])
+    except Exception:
+        tw, th = draw.textlength(text, font=font), 60
+        pos = ((size - tw) / 2, (size - th) / 2)
+
+    draw.text(pos, text, fill=fg, font=font)
+
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    return atomic_write_bytes(repo_path / "apple-touch-icon.png", buf.getvalue())
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate index.html (plus sitemap.xml, robots.txt and favicon.svg) "
-            "from the jlw-*.html newsletters in a repo directory."
+            "Generate index.html (plus sitemap.xml, robots.txt, favicon.svg, "
+            "_headers and apple-touch-icon.png) from the jlw-*.html newsletters "
+            "in a repo directory."
         )
     )
     parser.add_argument(
@@ -279,14 +400,21 @@ def main() -> None:
     newsletters = canonical_newsletters(repo)
 
     output = generate_index(repo, newsletters)
-    (repo / "index.html").write_text(output)
+    atomic_write_text(repo / "index.html", output)
 
     write_sitemap(repo, newsletters)
     write_robots(repo)
     write_favicon(repo)
+    write_headers(repo)
+    icon = write_apple_touch_icon(repo)
 
     print(f"Generated index.html with entries from {repo}")
-    print(f"Wrote sitemap.xml, robots.txt, favicon.svg ({len(newsletters)} issues)")
+    extras = "sitemap.xml, robots.txt, favicon.svg, _headers"
+    if icon is not None:
+        extras += ", apple-touch-icon.png"
+    else:
+        print("note: Pillow unavailable; skipped apple-touch-icon.png")
+    print(f"Wrote {extras} ({len(newsletters)} issues)")
 
 
 if __name__ == "__main__":

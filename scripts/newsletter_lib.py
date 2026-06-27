@@ -8,8 +8,10 @@ rich enough for BOTH the archive index and the articles RSS feed. This avoids
 the two generators independently globbing and re-parsing the same files.
 """
 
+import os
 import re
 import sys
+import tempfile
 from datetime import datetime
 from pathlib import Path
 from typing import Iterator, Optional
@@ -19,6 +21,46 @@ from bs4 import BeautifulSoup
 
 # Canonical public site URL (used for feeds, sitemap, OpenGraph, etc.).
 SITE_URL = "https://jlw-newsletter.pages.dev"
+
+
+def atomic_write_text(path: Path, text: str, encoding: str = "utf-8") -> Path:
+    """Write ``text`` to ``path`` atomically: write to a temp file in the same
+    directory then ``os.replace()`` over the target so readers never observe a
+    half-written file and no partial output survives a crash."""
+    path = Path(path)
+    fd, tmp = tempfile.mkstemp(
+        dir=str(path.parent), prefix=f".{path.name}.", suffix=".tmp"
+    )
+    try:
+        with os.fdopen(fd, "w", encoding=encoding) as fh:
+            fh.write(text)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+    return path
+
+
+def atomic_write_bytes(path: Path, data: bytes) -> Path:
+    """Binary counterpart to :func:`atomic_write_text` (temp file + replace)."""
+    path = Path(path)
+    fd, tmp = tempfile.mkstemp(
+        dir=str(path.parent), prefix=f".{path.name}.", suffix=".tmp"
+    )
+    try:
+        with os.fdopen(fd, "wb") as fh:
+            fh.write(data)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+    return path
 
 
 def make_soup(content: str) -> BeautifulSoup:
@@ -110,6 +152,16 @@ def _parse_one(html_path: Path) -> Optional[dict]:
             if img:
                 thumbnail = img.get("src", "") or ""
 
+        # Full body HTML for the articles feed's <content:encoded>. Prefer the
+        # semantic <article>/<main> container, falling back to <body>.
+        body_html = ""
+        container = soup.find("article") or soup.find("main") or soup.find("body")
+        if container is not None:
+            try:
+                body_html = container.decode_contents()
+            except Exception:
+                body_html = container.get_text()
+
         return {
             "path": html_path.name,
             "base": newsletter_base(html_path.name),
@@ -121,6 +173,7 @@ def _parse_one(html_path: Path) -> Optional[dict]:
             "year": date.year,
             "subtitle": smart_truncate(subtitle_raw, 200),
             "description": description[:500],
+            "body_html": body_html,
             "thumbnail": thumbnail,
         }
     except (OSError, ValueError, UnicodeDecodeError) as exc:

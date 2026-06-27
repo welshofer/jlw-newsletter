@@ -6,6 +6,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import numpy as np
+from chart_style import output_path
 
 # Newsletter color scheme - Teal/Cyan tech theme
 ACCENT = '#0D6E8A'
@@ -18,7 +19,7 @@ GRID = '#D8E2E8'
 BORDER = '#E5E0D8'
 HIGHLIGHT = '#E07B52'  # warm accent for emphasis
 
-OUT_DIR = '/Users/welshofer/clawd/jlw-newsletter/images/apple-ai-edge'
+OUT_DIR = output_path('images/apple-ai-edge')
 
 
 def chart_1_neural_engine_tops():

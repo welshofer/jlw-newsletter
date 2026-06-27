@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - violet/indigo for this P-Doom topic
 ACCENT = '#5B4B8A'      # Deep violet
@@ -17,8 +18,7 @@ DANGER = '#B85C38'      # Terracotta for high risk
 SAFE = '#4A9B7F'        # Green-teal for low risk
 
 # Set default font
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif']
+apply_brand_style()
 
 
 def chart1_individual_estimates():
@@ -108,7 +108,7 @@ def chart1_individual_estimates():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-pdoom-estimates.png',
+    plt.savefig(output_path('images/chart-pdoom-estimates.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-pdoom-estimates.png")
@@ -191,7 +191,7 @@ def chart2_survey_distribution():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-survey-distribution.png',
+    plt.savefig(output_path('images/chart-survey-distribution.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-survey-distribution.png")
@@ -242,7 +242,7 @@ def chart3_experts_vs_superforecasters():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-experts-vs-forecasters.png',
+    plt.savefig(output_path('images/chart-experts-vs-forecasters.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-experts-vs-forecasters.png")
@@ -302,7 +302,7 @@ def chart4_turing_split():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-turing-split.png',
+    plt.savefig(output_path('images/chart-turing-split.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Created: chart-turing-split.png")

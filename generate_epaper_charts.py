@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - warm terracotta accent
 ACCENT = '#B85C38'
@@ -14,10 +15,10 @@ TEXT_SECONDARY = '#5C564D'
 GRID = '#E5E0D8'
 SECONDARY_COLOR = '#4A7C59'  # Complementary green for contrast
 
-plt.rcParams['font.family'] = ['SF Pro Display', 'Helvetica Neue', 'sans-serif']
+apply_brand_style()
 plt.rcParams['axes.unicode_minus'] = False
 
-OUTPUT_DIR = '/Users/welshofer/clawd/jlw-newsletter/images/'
+OUTPUT_DIR = output_path('images/')
 
 # =============================================================================
 # Chart 1: E-Paper Refresh Rate Evolution (2020-2026)

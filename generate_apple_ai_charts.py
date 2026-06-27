@@ -3,6 +3,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+from chart_style import output_path, apply_brand_style
 
 # Newsletter color scheme - teal/cyan for tech
 ACCENT = '#0D6E8A'
@@ -12,7 +13,7 @@ TEXT = '#1A1815'
 TEXT_SECONDARY = '#4D5C6A'
 GRID = '#D8E2E8'
 
-plt.rcParams['font.family'] = ['SF Pro Display', 'Helvetica Neue', 'Arial', 'sans-serif']
+apply_brand_style()
 
 def chart1_ai_strategy_radar():
     """Radar chart comparing Apple's AI strategy to competitors."""
@@ -60,7 +61,7 @@ def chart1_ai_strategy_radar():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-ai-strategy-radar.png',
+    plt.savefig(output_path('images/chart-ai-strategy-radar.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 1 saved: chart-ai-strategy-radar.png")
@@ -103,7 +104,7 @@ def chart2_visual_intelligence_adoption():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-visual-intelligence-adoption.png',
+    plt.savefig(output_path('images/chart-visual-intelligence-adoption.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 2 saved: chart-visual-intelligence-adoption.png")
@@ -171,7 +172,7 @@ def chart3_ai_partnership_timeline():
              color=TEXT_SECONDARY, ha='right', style='italic')
 
     plt.tight_layout()
-    plt.savefig('/Users/welshofer/clawd/jlw-newsletter/images/chart-partnership-timeline.png',
+    plt.savefig(output_path('images/chart-partnership-timeline.png'),
                 dpi=150, facecolor=BG, bbox_inches='tight')
     plt.close()
     print("Chart 3 saved: chart-partnership-timeline.png")

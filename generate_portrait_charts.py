@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
+from chart_style import apply_brand_style
 
 # Newsletter color scheme - terracotta accent
 ACCENT = '#B85C38'
@@ -16,8 +17,7 @@ GRID = '#E5E0D8'
 OUTPUT_DIR = Path('images')
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['SF Pro Display', 'Helvetica Neue', 'Arial']
+apply_brand_style()
 
 # Chart 1: Facial distortion perception by focal length (from PLOS One study)
 def chart_facial_perception():

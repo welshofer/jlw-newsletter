@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
+from chart_style import output_path
 
 # Newsletter color scheme - indigo/violet for literary theme
 ACCENT = '#5B4B8A'      # --accent (indigo)
@@ -13,7 +14,7 @@ TEXT = '#1A1815'        # --text
 TEXT_SECONDARY = '#5C564D'  # --text-secondary
 GRID = '#E5E0D8'        # --border
 
-OUTPUT_DIR = Path('/Users/welshofer/clawd/jlw-newsletter/images')
+OUTPUT_DIR = Path(output_path('images'))
 
 def setup_style(ax, fig):
     """Apply consistent newsletter styling."""

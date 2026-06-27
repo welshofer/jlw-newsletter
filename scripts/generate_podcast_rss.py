@@ -3,13 +3,16 @@ import argparse
 import json
 import os
 import re
+import subprocess
 import sys
+import tempfile
 import wave
 from contextlib import closing
 from datetime import datetime, timezone
 from email.utils import format_datetime
 from pathlib import Path
 from typing import Optional, Tuple, Dict, List
+from urllib.parse import urljoin
 from xml.etree import ElementTree as ET
 
 try:
@@ -32,6 +35,30 @@ def load_config(path: Path) -> dict:
         return json.load(f)
 
 
+def write_bytes_atomic(output_path: Path, data: bytes) -> None:
+    """Write ``data`` to ``output_path`` atomically.
+
+    Writes to a temp file in the same directory (so os.replace stays on one
+    filesystem) and atomically renames it into place, leaving no truncated or
+    partial feed behind if the process is interrupted mid-write.
+    """
+    fd, tmp_name = tempfile.mkstemp(
+        dir=str(output_path.parent), prefix=output_path.name + ".", suffix=".tmp"
+    )
+    try:
+        with os.fdopen(fd, "wb") as f:
+            f.write(data)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp_name, output_path)
+    except Exception:
+        try:
+            os.unlink(tmp_name)
+        except OSError:
+            pass
+        raise
+
+
 def safe_join_url(base: str, filename: str) -> str:
     if not base.endswith("/"):
         base += "/"
@@ -39,16 +66,18 @@ def safe_join_url(base: str, filename: str) -> str:
 
 
 def absolutize_url(base: str, path: str) -> str:
+    # Already-absolute URLs pass through unchanged.
     if path.startswith("http://") or path.startswith("https://"):
         return path
+    # Protocol-relative URLs: keep the host, just supply a scheme.
     if path.startswith("//"):
         return "https:" + path
-    if path.startswith("../"):
-        path = path.lstrip("./")
-        # remove leading ../ segments
-        while path.startswith("../"):
-            path = path[3:]
-    return base.rstrip("/") + "/" + path.lstrip("/")
+    # Treat the base as a directory so relative references resolve against it,
+    # then let urljoin do proper RFC 3986 resolution (handling ./, ../, and
+    # absolute-path references, and collapsing any /./ or /../ segments).
+    if not base.endswith("/"):
+        base += "/"
+    return urljoin(base, path)
 
 
 def rfc2822_from_ts(ts: float) -> str:
@@ -70,6 +99,39 @@ def duration_from_wav(path: Path) -> Optional[int]:
                 return None
             return int(round(frames / rate))
     except Exception:
+        return None
+
+
+def duration_from_mp3(path: Path) -> Optional[int]:
+    """Derive an mp3's duration (whole seconds) via ffprobe.
+
+    Used as a fallback for older episodes whose source WAV has been pruned.
+    Returns None when ffprobe is unavailable or the duration can't be parsed.
+    """
+    try:
+        result = subprocess.run(
+            [
+                "ffprobe",
+                "-v",
+                "quiet",
+                "-show_entries",
+                "format=duration",
+                "-of",
+                "csv=p=0",
+                str(path),
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    out = result.stdout.strip()
+    if not out:
+        return None
+    try:
+        return int(round(float(out)))
+    except ValueError:
         return None
 
 
@@ -353,7 +415,9 @@ def build_feed(cfg: dict, base_dir: Path) -> ET.Element:
             if html_rec.get("image_src"):
                 item_image = absolutize_url(site_base_url, html_rec["image_src"])
 
-        duration = duration_from_wav(wav) if wav.exists() else None
+        # WAV is the primary source; fall back to the mp3 (via ffprobe) when
+        # the WAV has been pruned so older episodes keep <itunes:duration>.
+        duration = duration_from_wav(wav) if wav.exists() else duration_from_mp3(mp3)
         items.append(
             {
                 "base": base,
@@ -509,7 +573,7 @@ def main() -> None:
 
     rss = build_feed(cfg, base_dir)
     xml = ET.tostring(rss, encoding="utf-8", xml_declaration=True)
-    output_path.write_bytes(xml)
+    write_bytes_atomic(output_path, xml)
     print(f"Wrote {output_path}")
 
     if args.report_missing or args.report_missing_output:

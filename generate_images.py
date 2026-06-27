@@ -13,6 +13,25 @@ from chart_style import output_path
 OUTPUT_DIR = Path(output_path("images"))
 
 
+def safe_output_path(filename: str) -> Path:
+    """Resolve ``filename`` inside OUTPUT_DIR, rejecting path traversal.
+
+    A ``../..`` segment or an absolute path could otherwise escape OUTPUT_DIR and
+    let a caller write anywhere on disk. We reject any filename that carries a
+    directory component, then assert the resolved path stays directly under
+    OUTPUT_DIR. Raises ``ValueError`` on anything suspicious.
+    """
+    name = Path(filename).name
+    if filename != name or name in ("", ".", ".."):
+        raise ValueError(
+            f"invalid filename (no path separators allowed): {filename!r}"
+        )
+    resolved = (OUTPUT_DIR / name).resolve()
+    if resolved.parent != OUTPUT_DIR.resolve():
+        raise ValueError(f"filename escapes output directory: {filename!r}")
+    return resolved
+
+
 def main():
     OUTPUT_DIR.mkdir(exist_ok=True)
 
@@ -30,6 +49,14 @@ def main():
     filename = sys.argv[1]
     prompt = sys.argv[2]
     aspect = sys.argv[3] if len(sys.argv) > 3 else "16:9"
+
+    # Validate the destination BEFORE any network call so a malicious filename is
+    # rejected up front (and cannot escape OUTPUT_DIR via ../.. or an absolute path).
+    try:
+        out_file = safe_output_path(filename)
+    except ValueError as e:
+        print(f"Error: {e}")
+        exit(1)
 
     print(f"Generating: {filename}")
     print(f"Aspect: {aspect}")
@@ -64,7 +91,6 @@ def main():
             genai_image = part.as_image()
             pil_image = PILImage.open(io.BytesIO(genai_image.image_bytes))
 
-            out_file = OUTPUT_DIR / filename
             pil_image.save(out_file, "WEBP", quality=92)
             print(f"Saved: {out_file}")
             print(f"Size: {pil_image.size}")
